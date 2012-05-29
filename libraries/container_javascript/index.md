@@ -43,7 +43,7 @@ If your existing JavaScript codebase employs the '$' variable and you don't want
 {% endhighlight  %}
 
 ##Exposing the SMART Connect Interface
-##Instantiate a SMART\_CONNECT\_HOST
+###Instantiate a SMART\_CONNECT\_HOST
 
 smart-api-container attempts to handle the generic messaging and data routing that SMART Connect apps require. To get things started, first instantiate a SMART\_CONNECT\_HOST object. By convention, we'll call it SMART\_HOST
 
@@ -51,7 +51,7 @@ smart-api-container attempts to handle the generic messaging and data routing th
    	var SMART_HOST = new SMART_CONNECT_HOST();
 {% endhighlight  %}
 
-##Override SMART\_HOST.get\_credentials(app\_instance, callback)
+###Override SMART\_HOST.get\_credentials(app\_instance, callback)
 
 get_credentials is called automatically when a new app launches. Its job is to provide the fledgling app with SMART REST tokens, formatted as an App Instances Credential object (details below).
 
@@ -63,7 +63,7 @@ get_credentials is called automatically when a new app launches. Its job is to p
 
     App Instance Credentials object (details below) 
 
-##Override SMART\_HOST.get\_iframe(app\_instance, callback)
+###Override SMART\_HOST.get\_iframe(app\_instance, callback)
 
 get\_credentials is called automatically when a new app launches -- right after get_credentials. Its job is to provide the fledgling app with an empty iframe DOM element in which to render.
 
@@ -75,7 +75,7 @@ get\_credentials is called automatically when a new app launches -- right after 
 
     iframe DOM ojbect 
 
-##Override SMART\_HOST.handle\_api(app\_instance, api\_call, callback\_success, callback\_error)
+###Override SMART\_HOST.handle\_api(app\_instance, api\_call, callback\_success, callback\_error)
 
 handle_api is called whenever an already-running app needs to make a API call with SMART CONNECT. Its job is to obtain the results of the specified API call and return them back to the app.
 
@@ -100,7 +100,7 @@ handle_api is called whenever an already-running app needs to make a API call wi
 Note: your SMART Container may override additional functions if needed. Four functions are provided as hooks for this purpose: SMART_HOST.on_app_launch_begin, SMART_HOST.on_app_launch_complete, SMART_HOST.on_app_launch_delegated_begin, SMART_HOST.on_app_launch_delegated_complete. The framework calls these functions at the beginning and end of launch (and delegated launch) operations
 {% endhighlight  %}
 
-##Launch an app
+###Launch an app
 
 Your Container should provide some way for a user to trigger the launch of an app, for instance by clicking on the app's icon in a sidebar. When this occurs, you'll need to notify the SMART\_CONNECT\_HOST that an app launch has been requested. This will instigate the app launch process, beginning with the creation of an app\_instance with a unique ID. The SMART\_CONNECT\_HOST uses app\_instance objects to keep track of the currently-running apps.
 
@@ -112,7 +112,7 @@ SMART_HOST.launch_app(manifest, context, options); Inputs:
     JSON object the container may optionally attach to the new app instance 
 {% endhighlight  %}
 
-##Subscribe to app notifications
+###Subscribe to app notifications
 
 Apps that you've launch may send notifications and requests. For example, an app that desires more screen real estate may sent a "request\_fullscreen" notification. To subscribe to a notification, call SMART\_HOST.on as in the example below
 
@@ -128,7 +128,7 @@ SMART_HOST.on("request_fullscreen", function(app_instance) {
 });
 {% endhighlight  %}
 
-##Send notifications to an app
+###Send notifications to an app
 
 When important events occur, you should notify any running apps.
 
@@ -140,7 +140,7 @@ For example, if you permit a user to hide an app, you should call: SMART\_HOST.n
 
 And if you restore it to view you should call SMART\_HOST.notify\_app(app_instance, "foregrounded");
 
-##Closing apps when the patient record context changes
+###Closing apps when the patient record context changes
 
 The SMART Connect API works in a "one patient record at a time" paradigm: that is, within a given browser window, there is one "current patient record" in context, and all running apps share that context. When the patient record context changes, the set of running apps is effectively cleared by calling:
 
@@ -159,7 +159,7 @@ SMART_HOST.handle_context_changed = function(){
 
 ##Understanding App Instance, Manifest, and API Call JavaScript objects
 
-##App Instance Object
+###App Instance Object
 {% highlight javascript %}
 
 The SMART_CONNECT_HOST interface uses plain-old JavaScript objects to represent app instances as follows:
@@ -193,7 +193,7 @@ The SMART_CONNECT_HOST interface uses plain-old JavaScript objects to represent 
 }
 {% endhighlight %}
 
-##App Instance Credentials
+###App Instance Credentials
 
 To support REST apps, your SMART Container should generate OAuth tokens each time an app launches. The OAuth tokens are provided to the app as part of a credentials JavaScript object, which is automatically incorporated into the app_instance object. The credentials object includes
 
@@ -248,7 +248,7 @@ oauth_version="1.0",
 oauth_consumer_key="problem-list%40apps.smartplatforms.org"'
 {% endhighlight  %}
 
-##API Call Object
+###API Call Object
 
 When an app makes an API Call, your handler function will be invoked with an argument that looks like
 
@@ -263,7 +263,7 @@ When an app makes an API Call, your handler function will be invoked with an arg
 {% endhighlight  %}
 You can use this object to determine how to respond appropriately.
 
-##SMART Manifest Object
+###SMART Manifest Object
 
 You'll provide the SMART\_CONNECT\_HOST with details about an app to launch by passing a JavaScript manifest object that looks like the one below. For more details, see App Manifest Documentation.
 {% highlight javascript %}

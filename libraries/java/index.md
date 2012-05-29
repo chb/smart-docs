@@ -66,7 +66,7 @@ To write your own Java app using the SMART Java client, you'll need to include t
 
 For a complete example, please see src/org/smartplatforms/client/tests/Reminder.java. Here's a basic rundown of the process...
 
-##Import the SMART Java Client + Dependencies
+###Import the SMART Java Client + Dependencies
 
 The two major components you'll need to import are the SMART client libraries and the openrdf RDF parsing/querying package:
 {% highlight java %}
@@ -82,7 +82,7 @@ import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.BindingSet;
 {% endhighlight  %}
 
-##Instantiate the SMART Client
+###Instantiate the SMART Client
 
 When you instantiate a new SMART Client object, you'll need to supply an OAuth comsumer token + secret, as well as the base URL for the SMART Container. A good approach is to define these parameters in your servlet's web.xml (with the consumer token and secret set to our pre-defined "My App" values)
 
@@ -132,7 +132,7 @@ SMArtClient client = new SMArtClient(
   sConfig.getInitParameter("serverBaseURL"));
 {% endhighlight  %}
 
-##Obtain access token + secret
+###Obtain access token + secret
 
 In order to get data from a patient record, you'll need to obtain a record-based access token and secret. For background details about how an access token and secret are supplied to your app in the oauth_header URL parameter see HOWTO Build a SMART App - REST API Calls. If you're responding to a javax.servlet.doGet() method, you can use the following method to extract an access token and secret from the request
 
@@ -149,7 +149,7 @@ If you're not working with a javax.servlet request, you'll first need to your fr
     TokenSecret tokenSecret = new TokenSecret(authParams);
 {% endhighlight  %}
 
-##Make a REST API call
+###Make a REST API call
 
 Now that you've instantiated a SMART client object and obtained access tokens, you're ready to make a REST call to the SMART container. For example, you can obtain a patient's medication list via:
 {% highlight javascript %}
@@ -162,13 +162,11 @@ First, note the records_X_medications_GET method name: it looks like the SMART R
 
 Also note that the API call returns a RepositoryConnection object, which is an openrdf object representing the SMART RDF graph.
 
-##Work with the results
+###Work with the results
 
 Let's go through a simple query example here. For the complete low-down on how to use a RepositoryConnection object, you can refer to the [openrdf documentation](http://www.openrdf.org/doc/sesame2/api/org/openrdf/repository/RepositoryConnection.html).
 
 We'll use the following SPARQL query to pull out data from the repositoryconnection
-
-##Make a REST API call
 
 {% highlight javascript %}
 

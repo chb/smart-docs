@@ -55,7 +55,7 @@ Or you can get the complete SMART OAuth header for your app via
 
 <ul><li>SMART.credentials.oauth_header </li></ul>
 
-###Subscribe to notifications from the SMART Container
+##Subscribe to notifications from the SMART Container
 
 A container will notify an app when important events occur. Today the SMART API defines three Container-to-app notifications that your app can subscribe to
 

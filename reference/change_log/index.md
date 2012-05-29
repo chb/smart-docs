@@ -40,15 +40,15 @@ We've added vital signs to the SMART data model, including height, weight, BMI, 
 
 Here's a quick guide to making your app compatible with the changes described above.
 
-##Update your manifest file
+###Update your manifest file
 
 Update your app's manifest file, specifying your a name, description, author, id, version, mode scope, index, and icon.
 
-##Remove bootstrap.html
+###Remove bootstrap.html
 
 With our new app structure, you don't need to supply this boilerplate file anymore.
 
-##Wrap SMART JavaScript
+###Wrap SMART JavaScript
 
 Inside index.html, your app should include the JavaScript SMART API Client Library via:
 
@@ -58,14 +58,15 @@ Inside index.html, your app should include the JavaScript SMART API Client Libra
 
 Once you've included this, you'll have access to an object called SMART. But before you use it, you'll need to make sure it's ready by calling SMART.ready(callback) with your code in the callback.
 
-If needed, update your SMART client
+###If needed, update your SMART client
 
 If using the SMART Python (or Java) Client, download the latest version and update your local copy.
- If needed, pull REST OAuth tokens from URL parameter
+ 
+###If needed, pull REST OAuth tokens from URL parameter
 
 If you're updating a SMART REST app , you'll need to grab context and OAuth tokens from a URL parameter called oauth_header, instead of looking for a cookie. If your app makes additional page requests to its back end (such as AJAX calls, redirects, page switching), you may have to explicitly pass the oauth header (which can be obtained in JavaScript from the SMART.credentials.oauth_header object) to the back end.
 
-If needed, update your SPARQL queries
+###If needed, update your SPARQL queries
 
 We're no longer using predicates from the "dublin core elements" namespace (http://purl.org/dc/elements/1.1/). Instead, all dublic core predicates now come from the "dublin core terms" namespace (http://purl.org/dc/terms/). So you should update any queries, e.g. from http://purl.org/dc/elements/1.1/date, you should update them to http://purl.org/dc/terms/date.
 

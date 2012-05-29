@@ -30,6 +30,8 @@ Or you could run these examples on your own, via
 
 Let's work with some medication data, the kind returned by a SMART API call to GET /records/{record_id}/medications/. To start off, let's write a query to find the name of each medication in the list: 	 
 
+###Find Medication Names
+
 Note the use of the "distinct" keyword: as in SQL, distinct will prune the list for duplicates. So if the two medications in the patient record have the same name, this query will collapse them into one result.
 
 With rdfquery, we can achieve a similar result
@@ -43,6 +45,7 @@ SMART.MEDS_get().success(function(response) {
   });
 {% endhighlight  %}
 
+###Find Medication Quantities + Frequencies
 
 {% highlight javascript %}
 	Find Medication Quantities + Frequencies
@@ -68,7 +71,7 @@ SMART.MEDS_get().success(function(response) {
 
 Note the use of the "distinct" keyword: as in SQL, distinct will prune the list for duplicates. So if the two medications in the patient record have the same name, this query will collapse them into one result. 
 
-Find Medication Fulfillment Dates
+###Find Medication Fulfillment Dates
 
 {% highlight javascript %}
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -99,7 +102,7 @@ With rdfquery, we can achieve a similar result
    
 {% endhighlight  %}
 
-Find Medications Fulfilled Since January 2009
+###Find Medications Fulfilled Since January 2009
 
 {% highlight javascript %}
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -139,7 +142,7 @@ Again a similar result with rdfquery
 
 Here's a query that pulls out the first and last name from a patient's demographics
 
-##Find Patient's Name
+###Find Patient's Name
 
 {% highlight javascript %}
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -172,7 +175,7 @@ With rdfquery, we can achieve a similar result:
 
 Here's a query that pulls out the name of each problem
 
-##Find Patient's Problems
+###Find Patient's Problems
 {% highlight javascript %}
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 	PREFIX sp: <http://smartplatforms.org/terms#>
@@ -204,7 +207,7 @@ SMART.PROBLEMS_get().success(function(response) {
 
 Here's a query that pulls out the name of each problem
 
-##Finding Quantitative Labs
+###Finding Quantitative Labs
 
 {% highlight javascript %}
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

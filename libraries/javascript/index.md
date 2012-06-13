@@ -41,9 +41,9 @@ The javascript SMART object contains some helpful context describing the current
 	
 So, for example, to announce the patient's name, you could
 
-{% highlight javascript %}
+```javascript
 alert("The current patient is: " + SMART.record.full_name);
-{% endhighlight  %}
+```
 
 If you're looking to make some SMART REST calls, you may be interested in using REST authentication tokens, which you can access via
 

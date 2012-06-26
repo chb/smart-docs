@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Quick Intro to SMART
-tagline: for developers
+title: SMART Developers Documentation
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}

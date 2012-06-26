@@ -46,7 +46,7 @@ var Toc = {
                 }
         };
 
-        var well = $("<div class='row'><div class='span4'><div class='well'></div></div><div class='span8'> </div></div>");
+        var well = $("<div class='row'><div class='span7'><div class='well'></div></div><div class='span8'> </div></div>");
         var ul = $("<ul class='nav nav-list'></ul>");
         wrapper.prepend(well);
         well = $(".well", well);

@@ -13,8 +13,8 @@ var Toc = {
 
         function recurseSelection(selected, selectors) {
             selected.parent.nextUntil(selectors[0], selectors[1]).each(function(cnum, child) {
-                console.log("Found " );
-                console.log( child);
+                // console.log("Found " );
+                // console.log( child);
                 var cob = {parent: $(child), children: []};
                 selected.children.push(cob);
                 if (selectors.length > 2) {
@@ -50,7 +50,7 @@ var Toc = {
         var ul = $("<ul class='nav nav-list'></ul>");
         wrapper.prepend(well);
         well = $(".well", well);
-        console.log(well);
+        // console.log(well);
         well.append(ul);
         var level = 1;
         selected.children.forEach(function(c) {

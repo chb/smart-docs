@@ -1,5 +1,29 @@
+/* Style Overrides by Arjun */
+
 body { 
   padding-top: 20px; 
-  font-family: "Lucida Grande", Calibri, Verdana, "Helvetica Neue", Helvetica, sans-serif !important;
-
+  font-family: Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+p {
+  font-family: "Lucida Grande", Calibri, Verdana, "Helvetica Neue", Helvetica, sans-serif !important;
+  line-height: 20px;
+}
+
+code, pre {
+  font-family: Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Inconsolata, "Lucida Console", Monaco, "courier new", courier;
+}
+
+/* Prevent wrapping main title at 960px */
+#section1 {
+  font-size: 28px;
+}
+
+/* Adjust header sizes */
+.page-header h1 {
+  font-size: 28px;
+}
+
+h1 { font-size: 28px; }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; }

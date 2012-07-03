@@ -3,97 +3,140 @@ layout: page
 title: SMART Developers Documentation
 includenav: smartnav.markdown
 ---
+
 {% include JB/setup %}
 
-<div id="toc"> </div>
+<div style="margin: 35px; border: 4px solid #ccc; padding: 15px;">
+  This Guide is intended for software developers who want to write SMART apps
+  &mdash; and it's a work in progress! If you have any questions, please drop a
+  note in our <a
+  href="http://groups.google.com/group/smart-app-developers">SMART App
+  Developers Group</a>
+</div>
 
-#What is SMART?
-SMART provides a unified mechanism for diverse applications to interact with medical-record data. <em>SMART Apps</em>
-built against the SMART API can be embedded within any <em>SMART Container</em>. A SMART Container is, most often, an
-Electronic Medical Record (EMR) system used by physicians, but might also be a Personal Health Record (PHR) such as
-[http://indivohealth.org/ Indivo] used by patients, or a data-analytics platform such as [https://www.i2b2.org/ i2b2]
+
+## What is SMART?
+
+SMART provides a unified mechanism for diverse applications to interact with
+medical record data. _SMART Apps_ built against the SMART API can be
+embedded within any _SMART Container_. A SMART Container is, most often,
+an Electronic Medical Record (EMR) system used by physicians, but might also be
+a Personal Health Record (PHR) such as [Indivo](http://indivohealth.org) used
+by patients, or a data-analytics platform such as [i2b2](https://www.i2b2.org)
 used by researchers.
 
-For example, a SMART app might analyze a person's risk of heart disease based on recent labs and demographic
-information. This app can then be deployed on Regenstrief's CareWeb EHR, Children Hospital Boston's Indivo PCHR, or
-Harvard Medical School's i2b2 analytics engine. As other EMR vendors adopt the SMART platform, the app's reach increases
-''without changing a single line of code''.
+For example, a SMART app might analyze a person's risk of heart disease based
+on recent labs and demographic information. This app can then be deployed on
+Regenstrief's CareWeb EHR, Children Hospital Boston's Indivo PCHR, or Harvard
+Medical School's i2b2 analytics engine. As other EMR vendors adopt the SMART
+platform, the app's reach increases _without changing a single line of code_.
 
-<a href="{{BASE_PATH}}/images/Demo.screenshot.smart-reference.png" target="_blank"><img src="{{BASE_PATH}}/images/Demo.screenshot.smart-reference.png" width="300" height="212">
+<a href="{{BASE_PATH}}/images/Demo.screenshot.smart-reference.png"
+   target="_blank">
+   <img src="{{BASE_PATH}}/images/Demo.screenshot.smart-reference.png"
+        style="width: 100%; height: auto; margin: 26px auto;">
+
 </a>
+
 <a href="{{BASE_PATH}}/images/Demo.screenshot.smart-i2b2.png" target="_blank">
-<img src="{{BASE_PATH}}/images/Demo.screenshot.smart-i2b2.png" width="300" height="212">
+  <img src="{{BASE_PATH}}/images/Demo.screenshot.smart-i2b2.png"
+       style="width: 90%; height: auto; margin: 26px auto; display: block">
 </a>
 
-#Anatomy of a SMART App
 
-<a href="{{BASE_PATH}}/images/Anatomy-smart-app.png" target="_blank"><img src="{{BASE_PATH}}/images/Anatomy-smart-app.png" style="float: right"></a>
+## Anatomy of a SMART App
 
-A SMART app is a normal web application, embedded as a frame within the SMART Container's user interface, with access to
-the SMART API for interacting with health data. A patient, Penny, may use a medication browser app within her PCHR.
-Meanwhile, a primary care doctor Dave may use the same app within his clinic-based EMR to view the medications of a
-patient scheduled for an appointment next week. Penny's PCHR and Dave's EMR are both SMART containers; they both expose
-the SMART API; and they can both display the medication browser app. Though they may function very differently behind
-the scenes, they can both embed the exact same medication-list-manager app because they present the same API.
-Importantly, in any given user session (Penny's or Dave's), the medication-list-manager is connected to only ''one''
-SMART container.
+<a href="{{BASE_PATH}}/images/Anatomy-smart-app.png"
+   target="_blank">
+   <img src="{{BASE_PATH}}/images/Anatomy-smart-app.png"
+        style="width: 100%; height: auto; margin: 30px auto">
+</a>
 
-The screenshots to the right demonstrate the same medication list application running in the context of two different
-SMART containers: a simplified EMR, and the analytics platform i2b2.
+A SMART app is a normal web application, embedded as a frame within the SMART
+Container's user interface, with access to the SMART API for interacting with
+health data. A patient, Penny, may use a medication browser app within her
+PCHR. Meanwhile, a primary care doctor Dave may use the same app within his
+clinic-based EMR to view the medications of a patient scheduled for an
+appointment next week. Penny's PCHR and Dave's EMR are both SMART containers;
+they both expose the SMART API; and they can both display the medication
+browser app. Though they may function very differently behind the scenes, they
+can both embed the exact same medication-list-manager app because they present
+the same API. Importantly, in any given user session (Penny's or Dave's), the
+medication-list-manager is connected to only ''one'' SMART container.
+
+The screenshots to the right demonstrate the same medication list application
+running in the context of two different SMART containers: a simplified EMR, and
+the analytics platform i2b2.
 
 A SMART app can access the SMART API in two ways:
 
 1. via "SMART Connect", using Javascript calls from our client library
 2. via "SMART REST", using OAuth-signed REST calls to a SMART container
 
-Both of these approaches can be used to get at the same underlying data. SMART Connect is for simple applications whose
-logic can be completely built in HTML and JavaScript. SMART REST is for applications that may need to perform
-significant back-end processing, in particular when using additional external data sources.
+Both of these approaches can be used to get at the same underlying data. SMART
+Connect is for simple applications whose logic can be completely built in HTML
+and JavaScript. SMART REST is for applications that may need to perform
+significant back-end processing, in particular when using additional external
+data sources.
 
-Whether you access data via SMART Connect, SMART REST, or a combination, your app will load the
-[[Developers_Documentation:_SMART_App_Javascript_Libraries |
-SMART App Javascript Libraries]]. In the case of SMART Connect, this library is the sole access point. In the case of
-SMART REST, the library provides the OAuth token handoff and medical-record context, which your app can then send back
-to its back-end for use in REST calls. 
+Whether you access data via SMART Connect, SMART REST, or a combination, your
+app will load the [SMART App Javascript Libraries](/libraries/javascript/). In
+the case of SMART Connect, this library is the sole access point. In the case
+of SMART REST, the library provides the OAuth token handoff and medical-record
+context, which your app can then send back to its back-end for use in REST
+calls.
 
-##SMART Connect
 
-Writing a purely browser-based app in HTML5 and JavaScript is as easy as including the client-side JavaScript libraries
-and making API calls!  Keep in mind that SMART Connect calls can only access data while the end-user remains online,
-since authentication depends on that user's existing session with the SMART container. If your app needs to access data
-from your web application's backend or while the user is offline, you'll need to make some REST calls as well.
+## SMART Connect
 
-##SMART REST
+Writing a purely browser-based app in HTML5 and JavaScript is as easy as
+including the client-side JavaScript libraries and making API calls! Keep in
+mind that SMART Connect calls can only access data while the end-user remains
+online, since authentication depends on that user's existing session with the
+SMART container. If your app needs to access data from your web application's
+backend or while the user is offline, you'll need to make some REST calls as
+well.
 
-Apps with server-side requirements, or apps that need offline access to the SMART API, use the REST interface, which
-exposes data as resources accessible via HTTP GET, POST, PUT, or DELETE.  To ensure apps are authorized to access the
-resources
-they request, the SMART container authenticates each REST API call using OAuth, a scheme by which a SMART container or
-user may delegate
-access to applications.
 
-The delegation takes the form of a token/secret pair, generated by the SMART container and handed off to the application
-(with permission!). After tokens are obtained, each HTTP request is signed using the shared secret.
+## SMART REST
 
-Writing a SMART REST app requires a bit more work than a SMART Connect app, because the app must be able to:
+Apps with server-side requirements, or apps that need offline access to the
+SMART API, use the REST interface, which exposes data as resources accessible
+via HTTP GET, POST, PUT, or DELETE. To ensure apps are authorized to access the
+resources they request, the SMART container authenticates each REST API call
+using OAuth, a scheme by which a SMART container or user may delegate access to
+applications.
+
+The delegation takes the form of a token/secret pair, generated by the SMART
+container and handed off to the application (with permission!). After tokens
+are obtained, each HTTP request is signed using the shared secret.
+
+Writing a SMART REST app requires a bit more work than a SMART Connect app,
+because the app must be able to:
 
 1.  Interact with the SMART container to obtain tokens
 2.  Store tokens securely, maintaining appropriate sessions
 3.  Select the appropriate token and sign each SMART REST API call
 
-A few words about #1.  The [http://tools.ietf.org/html/rfc5849 OAuth specification] defines a "dance" among three
-parties (client app, the server, and the resource owner) enabling the client app to obtain access tokens. SMART REST
-apps obtain tokens by a simpler alternative using our JavaScript library, as explained in our tutorials.
+A few words about #1. The [OAuth
+specification](http://tools.ietf.org/html/rfc5849) defines a "dance" among
+three parties (client app, the server, and the resource owner) enabling the
+client app to obtain access tokens. SMART REST apps obtain tokens by a simpler
+alternative using our JavaScript library, as explained in our tutorials.
 
 To simplify the job of working with SMART REST, we provide client libraries in
-[Java](https://github.com/chb/smart_client_java) and [Python](https://github.com/chb/smart_client_python python).
+[Java](https://github.com/chb/smart_client_java) and
+[Python](https://github.com/chb/smart_client_python python).
 
-#OK, I'm ready to code
+
+## OK, I'm ready to code
 
 You'll want to follow our HOWTOs in order:
 
-1. [HOWTO Build a SMART App](howto/build_a_smart_app), which focused on SMART Connect.
+1. [HOWTO Build a SMART App](howto/build_a_smart_app), which focused on SMART
+Connect.
 2. [HOWTO Build a SMART App](howto/build_a_rest_app) - REST API Calls
-3. [HOWTO Build SMART Background and Helper Apps](howto/background_and_helper_apps)
+3. [HOWTO Build SMART Background and Helper
+Apps](howto/background_and_helper_apps)
 
-For all of these, you can find our code on [SMART source code on github](https://github.com/chb/)
+For all of these, you can find our code on [Github](https://github.com/chb/)

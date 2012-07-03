@@ -22,15 +22,15 @@ code, pre {
   font-family: Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Inconsolata, "Lucida Console", Monaco, "courier new", courier;
 }
 
-/* Prevent wrapping main title at 960px */
-#section1 {
-  font-size: 28px;
-  letter-spacing: -1px;
+em {
+  font-style: normal;
+  font-weight: bold;
+  color: #666;
 }
 
 /* Adjust header sizes */
-h1 { font-size: 28px; letter-spacing: -1px; }
-h2 { font-size: 22px; letter-spacing: -1px; }
+h1 { color: #666; font-size: 28px; letter-spacing: -1px; }
+h2 { color: #666; font-size: 22px; letter-spacing: -1px; }
 h3 { font-size: 16px; }
 
 .well {
@@ -40,4 +40,8 @@ h3 { font-size: 16px; }
 #smart_top_logo {
   display: block;
   margin: 0 auto 2em auto;
+}
+
+.nav {
+  font-size: small;
 }

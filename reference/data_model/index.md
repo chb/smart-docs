@@ -171,7 +171,7 @@ treated in isolation.
 <tr>
 <td width="30%">notes<br><small>Optional: 0 or 1</small>
 </td><td width="20%"><small>[<a href="http://smartplatforms.org/terms#Alert" class="external text" title="http://smartplatforms.org/terms#Alert" rel="nofollow">sp:Alert</a>]</small>
-</td><td width="50%">Message intended for a human recipient.	 [<a href="http://www.w3.org/2000/01/rdf-schema#Literal" class="external text" title="http://www.w3.org/2000/01/rdf-schema#Literal" rel="nofollow">rdfs:Literal</a>]
+</td><td width="50%">Message intended for a human recipient.     [<a href="http://www.w3.org/2000/01/rdf-schema#Literal" class="external text" title="http://www.w3.org/2000/01/rdf-schema#Literal" rel="nofollow">rdfs:Literal</a>]
 </td></tr>
 </tbody></table>
 
@@ -375,7 +375,7 @@ treated in isolation.
 <td width="30%"><b>severity</b><br><small>Required: exactly 1</small>
 </td><td width="20%"><small>[<a href="http://smartplatforms.org/terms#Allergy" class="external text" title="http://smartplatforms.org/terms#Allergy" rel="nofollow">sp:Allergy</a>]</small>
 </td><td width="50%"><a href="#Coded_Value_RDF" title=""> Coded Value</a> where code comes from <a href="#AllergySeverity_code_RDF" title=""> AllergySeverity</a>
-<p>Severity of an allergy	
+<p>Severity of an allergy    
 </p>
 </td></tr>
 </tbody></table>
@@ -776,64 +776,64 @@ Explicit record of an immunization given or not given to the patient.
   xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
 
    <sp:Immunization>
-	  <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
-	  <dcterms:date>2010-05-12T04:00:00Z</dcterms:date>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <dcterms:date>2010-05-12T04:00:00Z</dcterms:date>
 
-	  <sp:administrationStatus>
-	    <sp:CodedValue>
-	      <dcterms:title>Not Administered</dcterms:title>
-	      <sp:code>
-	        <sp:Code rdf:about="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered">
-	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus" /> 
-	          <dcterms:title>Not Administered</dcterms:title>
-	          <sp:system>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#</sp:system>
-	          <dcterms:identifier>notAdministered</dcterms:identifier>
-	        </sp:Code>
-	      </sp:code>
-	    </sp:CodedValue>
-	  </sp:administrationStatus>
+      <sp:administrationStatus>
+        <sp:CodedValue>
+          <dcterms:title>Not Administered</dcterms:title>
+          <sp:code>
+            <sp:Code rdf:about="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus" /> 
+              <dcterms:title>Not Administered</dcterms:title>
+              <sp:system>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#</sp:system>
+              <dcterms:identifier>notAdministered</dcterms:identifier>
+            </sp:Code>
+          </sp:code>
+        </sp:CodedValue>
+      </sp:administrationStatus>
 
-	  <sp:refusalReason>
-	    <sp:CodedValue>
-	      <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
-	      <sp:code>
-	        <sp:Code rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy">
-	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason" /> 
-	          <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
-	          <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
-	          <dcterms:identifier>allergy</dcterms:identifier>
-	        </sp:Code>
-	      </sp:code>
-	    </sp:CodedValue>
-	  </sp:refusalReason>
+      <sp:refusalReason>
+        <sp:CodedValue>
+          <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
+          <sp:code>
+            <sp:Code rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason" /> 
+              <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
+              <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+              <dcterms:identifier>allergy</dcterms:identifier>
+            </sp:Code>
+          </sp:code>
+        </sp:CodedValue>
+      </sp:refusalReason>
 
-	  <sp:productName>
-	    <sp:CodedValue>
-	      <dcterms:title>typhoid, oral</dcterms:title>
-	      <sp:code>
-	        <sp:Code rdf:about="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25">
-	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationProduct" /> 
-	          <dcterms:title>typhoid, oral</dcterms:title>
-	          <sp:system>http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#</sp:system>
-	          <dcterms:identifier>25</dcterms:identifier>
-	        </sp:Code>
-	      </sp:code>
-	    </sp:CodedValue>
-	  </sp:productName>
+      <sp:productName>
+        <sp:CodedValue>
+          <dcterms:title>typhoid, oral</dcterms:title>
+          <sp:code>
+            <sp:Code rdf:about="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationProduct" /> 
+              <dcterms:title>typhoid, oral</dcterms:title>
+              <sp:system>http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#</sp:system>
+              <dcterms:identifier>25</dcterms:identifier>
+            </sp:Code>
+          </sp:code>
+        </sp:CodedValue>
+      </sp:productName>
 
-	  <sp:productClass>
-	    <sp:CodedValue>
-	      <dcterms:title>TYPHOID</dcterms:title>
-	      <sp:code>
-	        <sp:Code rdf:about="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID">
-	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationClass" /> 
-	          <dcterms:title>TYPHOID</dcterms:title>
-	          <sp:system>http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#</sp:system>
-	          <dcterms:identifier>TYPHOID</dcterms:identifier>
-	        </sp:Code>
-	      </sp:code>
-	    </sp:CodedValue>
-	  </sp:productClass>
+      <sp:productClass>
+        <sp:CodedValue>
+          <dcterms:title>TYPHOID</dcterms:title>
+          <sp:code>
+            <sp:Code rdf:about="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationClass" /> 
+              <dcterms:title>TYPHOID</dcterms:title>
+              <sp:system>http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#</sp:system>
+              <dcterms:identifier>TYPHOID</dcterms:identifier>
+            </sp:Code>
+          </sp:code>
+        </sp:CodedValue>
+      </sp:productClass>
 
    </sp:Immunization>
 </rdf:RDF>
@@ -1179,8 +1179,8 @@ are available through RxNorm, including through the free <a href="http://rxnav.n
 <td width="30%">endDate<br><small>Optional: 0 or 1</small>
 </td><td width="20%"><small>[<a href="http://smartplatforms.org/terms#Medication" class="external text" title="http://smartplatforms.org/terms#Medication" rel="nofollow">sp:Medication</a>]</small>
 </td><td width="50%">
-<p>	When the patient stopped taking a medication 
-	 [<a href="http://www.w3.org/2001/XMLSchema#dateTime" class="external text" title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">xsd:dateTime</a>]
+<p>    When the patient stopped taking a medication 
+     [<a href="http://www.w3.org/2001/XMLSchema#dateTime" class="external text" title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">xsd:dateTime</a>]
 </p>
 </td></tr>
 <tr>
@@ -1208,8 +1208,8 @@ A single fulfillment event (that is, the medication was dispensed to the patient
 <td width="30%"><b>instructions</b><br><small>Required: exactly 1</small>
 </td><td width="20%"><small>[<a href="http://smartplatforms.org/terms#Medication" class="external text" title="http://smartplatforms.org/terms#Medication" rel="nofollow">sp:Medication</a>]</small>
 </td><td width="50%">
-<p>	Clinician-supplied instructions from the prescription signature 
-	 [<a href="http://www.w3.org/2000/01/rdf-schema#Literal" class="external text" title="http://www.w3.org/2000/01/rdf-schema#Literal" rel="nofollow">rdfs:Literal</a>]
+<p>    Clinician-supplied instructions from the prescription signature 
+     [<a href="http://www.w3.org/2000/01/rdf-schema#Literal" class="external text" title="http://www.w3.org/2000/01/rdf-schema#Literal" rel="nofollow">rdfs:Literal</a>]
 </p>
 </td></tr>
 <tr>
@@ -1237,8 +1237,8 @@ quantity="1", unit="{tablet}".
 <td width="30%"><b>startDate</b><br><small>Required: exactly 1</small>
 </td><td width="20%"><small>[<a href="http://smartplatforms.org/terms#Medication" class="external text" title="http://smartplatforms.org/terms#Medication" rel="nofollow">sp:Medication</a>]</small>
 </td><td width="50%">
-<p>	When the patient started taking a medication 
-	 [<a href="http://www.w3.org/2001/XMLSchema#dateTime" class="external text" title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">xsd:dateTime</a>]
+<p>    When the patient started taking a medication 
+     [<a href="http://www.w3.org/2001/XMLSchema#dateTime" class="external text" title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">xsd:dateTime</a>]
 </p>
 </td></tr>
 </tbody></table>

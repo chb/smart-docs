@@ -48,7 +48,7 @@ If your existing JavaScript codebase employs the '$' variable and you don't want
 smart-api-container attempts to handle the generic messaging and data routing that SMART Connect apps require. To get things started, first instantiate a SMART\_CONNECT\_HOST object. By convention, we'll call it SMART\_HOST
 
 {% highlight javascript %}
-   	var SMART_HOST = new SMART_CONNECT_HOST();
+       var SMART_HOST = new SMART_CONNECT_HOST();
 {% endhighlight  %}
 
 ###Override SMART\_HOST.get\_credentials(app\_instance, callback)
@@ -174,13 +174,13 @@ The SMART_CONNECT_HOST interface uses plain-old JavaScript objects to represent 
 
   context:  {  // UI apps need user and patient context; Frame UI apps need user context.
 
- 	user: {
-          id: "string",	// User ID assigned by the SMART Container
+     user: {
+          id: "string",    // User ID assigned by the SMART Container
           full_name: "string" // Flattened string representation of the user's name
         },
 
         record: {
-          id: "string",	// Patient Record ID assigned by the SMART Container
+          id: "string",    // Patient Record ID assigned by the SMART Container
           full_name: "string" // Flattened string representation of the patient's name
         }
 
@@ -274,7 +274,7 @@ You'll provide the SMART\_CONNECT\_HOST with details about an app to launch by p
   "id" : "med-list@apps.smartplatforms.org",
   "version" : ".1a",
 
-  "mode" : "ui",	
+  "mode" : "ui",    
   "scope": "record",
   "icon" :  "http://app-server/framework/med_list/icon.png",
   "index": "http://app-server/framework/med_list/index.html"

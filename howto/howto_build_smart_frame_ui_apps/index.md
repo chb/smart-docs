@@ -23,8 +23,8 @@ For example, the Frame UI app in this screenshot allows a user to select two app
     Present an HTML5 user-interface in-browser</li>
     <li>Obtain a list of apps that are installed in this container</li>
     <li>Launch multiple other UI Apps, incorporating them, for example, in a tiled grid </li>
-	</ul>	
-	
+    </ul>    
+    
 ##Declaring a Frame UI App
 
 Because Frame UI apps have extra capabilities such as listing and launching other apps, they need extra permissions from the container. To communicate this fact, a Frame UI app include the following line in its SMART Manifest: 
@@ -62,7 +62,7 @@ SMART.MANIFESTS_get(function(response) {
              });
            });
        });
-	   
+       
 {% endhighlight  %}
 
 This code fetches a list of manifests from the container \(SMART.MANIFESTS\_get\), loops through them, and displays an icon for each app available. It then attaches a click handler to each icon: when clicked, we call SMART_HOST.launch\_app to initiate the launch of this new app. We pass in the app's manifests \(m\) and our current context \(SMART.context\), which specifies the user and record. 

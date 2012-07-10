@@ -14,11 +14,11 @@ includenav: smartnav.markdown
 
 So far, we have talked about SMART apps that access medical record data on behalf of an active user of the EMR/PCHR/data-mining platform. What about apps that autonomously take action when no one is logged in? An app might want to check every medical record for a particular datapoint (e.g. a recalled drug). The SMART Platform supports this background app use case as follows:
 <ul>
-	<li>the app is specially authorized to loop through every known record in the system</li>
+    <li>the app is specially authorized to loop through every known record in the system</li>
     <li>on each looped record, the app obtains OAuth credentials necessary to access that one record.</li>
     <li>for each record, the app can access the SMART REST API as it normally would, using the credentials obtained for that record. </li>
-	</ul>
-	
+    </ul>
+    
 Importantly, a background app is not necessarily a web app, since it may not have a user-facing web interface. In this example, we will demonstrate just that: a simple Python program that acts as a SMART background app, but does not respond to any web requests. So, if you've figured out how to build a SMART REST app, all you need to know now is how to obtain the credentials needed to cycle through all the SMART Container's medical records.
 
 The first thing you need is, of course, a SmartClient instance to make REST API calls against the SMART container. If you don't have that library running yet, check out the SMART Python Client. Then
@@ -47,17 +47,17 @@ So, using a simple query to read drug names:
 
 {% highlight python %}
 
-	QUERY = """
-			 PREFIX dcterms:<http://purl.org/dc/terms/>
-			 PREFIX sp:<http://smartplatforms.org/terms#>
-			 PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-			 SELECT  ?drugname
-			 WHERE {
-				?med rdf:type sp:Medication .
-				?med sp:drugName ?drugname_code .
-				?drugname_code dcterms:title ?drugname .
-			 }
-			 """
+    QUERY = """
+             PREFIX dcterms:<http://purl.org/dc/terms/>
+             PREFIX sp:<http://smartplatforms.org/terms#>
+             PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+             SELECT  ?drugname
+             WHERE {
+                ?med rdf:type sp:Medication .
+                ?med sp:drugName ?drugname_code .
+                ?drugname_code dcterms:title ?drugname .
+             }
+             """
 {% endhighlight  %}
 
 We can simply iterate through the records, retrieve each record's medications, and print them to the screen: 
@@ -69,7 +69,7 @@ We can simply iterate through the records, retrieve each record's medications, a
     print "%s: %s" % (record_id, ", ".join([str(m) for m in med_names]))
 {% endhighlight  %}
 
-#Helper Apps	
+#Helper Apps    
 
 You now know how to build simple SMART apps in HTML and JavaScript, SMART apps that make REST API calls, and SMART apps that run entirely in the background without a UI. What about apps that provide services to other apps? These we call Helper Apps.
 

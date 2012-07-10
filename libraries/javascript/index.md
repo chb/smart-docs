@@ -36,9 +36,9 @@ The javascript SMART object contains some helpful context describing the current
 
 * SMART.user  {id, full_name}
 * SMART.record  {id, full_name}
-	
-	
-	
+    
+    
+    
 So, for example, to announce the patient's name, you could
 
 ```javascript
@@ -63,7 +63,7 @@ A container will notify an app when important events occur. Today the SMART API 
 * "foregrounded" -- the app has been restored to view</li>
 * "destroyed" -- the app is being shut down </li>
 
-	
+    
 Your app can use the "on" directive to take action when a notification arrives. For example
 
 {% highlight javascript %}
@@ -91,9 +91,9 @@ You can also use the SMART javascript object to make [any API call](http://wiki.
 * A dictionary of
 
 <ol><li>method HTTP method as string ('GET', 'POST', 'PUT', or 'DELETE')</li>
-	<li>url URL to post to, relative to the SMART container's API base</li>
-	<li>contentType as string (defaults to 'application/x-www-form-urlencoded')</li>
-	<li>data as string (for data other than x-www-form-urlencoded data) or dictionary (for x-www-form-urlencoded data)</li>
+    <li>url URL to post to, relative to the SMART container's API base</li>
+    <li>contentType as string (defaults to 'application/x-www-form-urlencoded')</li>
+    <li>data as string (for data other than x-www-form-urlencoded data) or dictionary (for x-www-form-urlencoded data)</li>
 </ol>
 
 * A callback function of
@@ -111,7 +111,7 @@ For example, we could retrieve all medications for the in-context record by call
                    data: {}
                 },
 
-	        function(response) {
+            function(response) {
                    alert('data received: ' + response.body);
                 });
 {% endhighlight  %}

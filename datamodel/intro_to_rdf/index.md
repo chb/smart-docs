@@ -18,7 +18,7 @@ RDF, the Resource Description Framework, is a web standard "for representing inf
 * predicate takes</li>
 * object atorvastatin 
 
-	
+    
 There are two key ideas here
 
 <ol><li>Everything (almost) is a resource.</li>
@@ -89,9 +89,9 @@ An XML-based representation known as RDF/XML serializes the same triple more ver
 {% highlight html %}
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:terms="http://purl.org/dc/terms/">
-	<rdf:Description rdf:about="http://dilute.net/poems/25">
-		<terms:title>Haiku entitled /  Substitutability: / the SMART way to go.</terms:title>
-	</rdf:Description>
+    <rdf:Description rdf:about="http://dilute.net/poems/25">
+        <terms:title>Haiku entitled /  Substitutability: / the SMART way to go.</terms:title>
+    </rdf:Description>
 </rdf:RDF>
 {% endhighlight  %}
 
@@ -109,11 +109,11 @@ SPARQL is a query language for interacting with RDF graphs. The syntax is design
 Given our breakfast graph above, let's write a query to find all the things I ate! Here's a first attempt (not quite perfect) 
 
 
-	PREFIX food: <http://joshuamandel.com/my_food_vocabulary/> 
-	SELECT ?f WHERE
-	{
-	  <http://joshuamandel.com/me> food:ate ?f.
-	} 
+    PREFIX food: <http://joshuamandel.com/my_food_vocabulary/> 
+    SELECT ?f WHERE
+    {
+      <http://joshuamandel.com/me> food:ate ?f.
+    } 
 
 
 
@@ -124,13 +124,13 @@ Now here's what the query does: it looks for triples that match the pattern insi
 But this query has a problem it returns the blank node \_stuff\_I\_ate\_this\_morning -- and not the actual foods! Let's fix it by adding to our WHERE clause
 
 
-	PREFIX food: <http://joshuamandel.com/my_food_vocabulary/>
-	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-	SELECT ?individual_food WHERE
-	{
-	  <http://joshuamandel.com/me> food:ate ?bunch_of_food.
-	  ?bunch_of_food rdf:li ?individual_food.
-	} 
+    PREFIX food: <http://joshuamandel.com/my_food_vocabulary/>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+    SELECT ?individual_food WHERE
+    {
+      <http://joshuamandel.com/me> food:ate ?bunch_of_food.
+      ?bunch_of_food rdf:li ?individual_food.
+    } 
 
 
 Now our where clause includes two statements we're looking for individual foods that are items in the list of foods eaten by me. In other words, now we're drilling down into the bunch of food to pull out individual items! This returns a list of three bindings for the ?individual_food "coffee", "milk", and "Joe's O's".

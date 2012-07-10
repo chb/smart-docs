@@ -35,7 +35,7 @@ Just like the app in the HOWTO, we serve the index file as follows in webpy:
  class RxReminder:
     def GET(self):
         # good stuff coming here
-		
+        
 {% endhighlight  %}
 
 #Initializing the SMART API Client
@@ -86,35 +86,35 @@ Then we'll get fancy with RDF, running a SPARQL query to find a list of fills fo
 
 {% highlight python %}
 
-	# Represent the list as an RDF graph
-			meds = client.records_X_medications_GET()
-			
-			# Find a list of all fulfillments for each med.
-			q = """
-				PREFIX dc:<http://purl.org/dc/elements/1.1/>
-				PREFIX dcterms:<http://purl.org/dc/terms/>
-				PREFIX sp:<http://smartplatforms.org/terms#>
-				PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-				   SELECT  ?med ?name ?quant ?when
-				   WHERE {
-						  ?med rdf:type sp:Medication .
-						 ?med sp:drugName ?medc.
-						  ?medc dcterms:title ?name.
-						  ?med sp:fulfillment ?fill.
-						  ?fill sp:dispenseDaysSupply ?quant.
-						  ?fill dc:date ?when.
-				   }
-				"""
-			pills = RDF.SPARQLQuery(q).execute(meds.graph)
-	
-			# Find the last fulfillment date for each medication
-			self.last_pill_dates = {}
-	
-			for pill in pills:
-				self.update_pill_dates(*pill)
-	
-			#Print a formatted list
-			return header + self.format_last_dates() + footer
+    # Represent the list as an RDF graph
+            meds = client.records_X_medications_GET()
+            
+            # Find a list of all fulfillments for each med.
+            q = """
+                PREFIX dc:<http://purl.org/dc/elements/1.1/>
+                PREFIX dcterms:<http://purl.org/dc/terms/>
+                PREFIX sp:<http://smartplatforms.org/terms#>
+                PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                   SELECT  ?med ?name ?quant ?when
+                   WHERE {
+                          ?med rdf:type sp:Medication .
+                         ?med sp:drugName ?medc.
+                          ?medc dcterms:title ?name.
+                          ?med sp:fulfillment ?fill.
+                          ?fill sp:dispenseDaysSupply ?quant.
+                          ?fill dc:date ?when.
+                   }
+                """
+            pills = RDF.SPARQLQuery(q).execute(meds.graph)
+    
+            # Find the last fulfillment date for each medication
+            self.last_pill_dates = {}
+    
+            for pill in pills:
+                self.update_pill_dates(*pill)
+    
+            #Print a formatted list
+            return header + self.format_last_dates() + footer
 
 {% endhighlight  %}
 

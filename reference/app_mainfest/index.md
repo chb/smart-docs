@@ -61,7 +61,7 @@ A UI App provides an index file and an icon. Optionally, the manifest file can d
   "id" : "med-list@apps.smartplatforms.org",
   "version" : ".1a",
 
-  "mode" : "ui",	
+  "mode" : "ui",    
   "scope": "record",
 
   "icon" :  "http://localhost:8001/framework/med_list/icon.png",

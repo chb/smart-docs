@@ -35,24 +35,24 @@ OAuth bundles two important features:
 <ol>
     <li>a way to label and sign HTTP requests using an identifier token and a secret string</li>
     <li>a dance involving the user's browser, the data server, and the server that wishes to consume the data, which, when the user approves the exchange, provides the data consumer with the token and secret needed to perform the authenticated API calls as per (1).</li>
-	</ol>
+    </ol>
 
 SMART employs (1), but implements a much simpler approach to (2), providing your app with the requisite token and secret. We'll describe this simpler approach here. At a high-level, your app can simply look for a URL parameter called `oauth_header` set by the SMART JavaScript client library. In this value, you will find the OAuth token and secret you need. 
 
 
 ##Passing Tokens via URL Parameter
 
-The SMART container will pass all necessary fields to your app via the `oauth_header` URL parameter. Specifically, the actual request sent to your app's backend server for index.html looks like this: 	
+The SMART container will pass all necessary fields to your app via the `oauth_header` URL parameter. Specifically, the actual request sent to your app's backend server for index.html looks like this:     
 {% highlight javascript %}GET /index.html?oauth_header={Header value here...}
-{% endhighlight  %}		
+{% endhighlight  %}        
 
 You need to first extract that header from the GET parameter: 
 {% highlight javascript %}oauth_header = web.input().oauth_header
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 You'll also to need to URL-decode it:
 {% highlight javascript %}oauth_header = urllib.unquote(oauth_header)
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 The field contains a complete OAuth Authorization header that includes a few extra fields, including notably smart\_record\_id, smart\_oauth\_token and smart\_oauth\_token\_secret. smart\_record\_id indicates the medical record ID of the current context, while the OAuth token and secret are the credentials your app needs to make REST API calls back into the SMART EMR. Why, then, are they themselves delivered in OAuth authorization header format? So you can verify that these tokens are authentic before you actually use them!
 
@@ -63,21 +63,21 @@ Thankfully, you don't need to worry too much about the details, because we provi
 {% highlight javascript %}
 # parse it into a python dictionary
  oauth_params = oauth.parse_header(oauth_header)
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 Then get the specific parameters you need to sign your own API calls: 
 {% highlight javascript %}
  record_id = oauth_params['smart_record_id']
  resource_credentials = {'oauth_token':        oauth_params['smart_oauth_token'],
                          'oauth_token_secret': oauth_params['smart_oauth_token_secret']}
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 The SMART Connect OAuth Header contains a few more parameters that will prove useful:
 
    <ul><li>
     smart_app_id: the identifier of the app being invoked</li>
     <li>smart_container_api_base: the base URL for API calls into the SMART EMR </li>
-	</ul>
+    </ul>
 
 Now, why would your app need these, since presumably it knows its own ID and where the SMART container is located to make API, right?
 
@@ -94,7 +94,7 @@ Using those instructions, you can instantiate a SmartClient with the credentials
                       {'consumer_key' : 'my-app@apps.smartplatforms.org',
                        'consumer_secret' : 'smartapp-secret'},
                       resource_credentials)
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 Since we're working against the SMART Reference EMR Sandbox, the APP_ID and consumer-level credentials are all fixed. Of course when connecting against a different SMART Container (e.g. your own), those will probably change. 
 
@@ -103,7 +103,7 @@ Since we're working against the SMART Reference EMR Sandbox, the APP_ID and cons
 With our smart_client instance ready to go, loaded with the right credentials, we can start making API calls. Let's get the medication list:
 {% highlight javascript %}
     medications = smart_client.records_X_medications_GET(record_id = record_id)
-{% endhighlight  %}	
+{% endhighlight  %}    
 Just like in the first SMART App we built, the result is an SMARTResponse object containing an RDF graph of data, which we can query for just the fields we want:
 {% highlight javascript %}
     query = """
@@ -122,7 +122,7 @@ Just like in the first SMART App we built, the result is an SMARTResponse object
  
     med_names_and_cuis = medications.graph.query(query)
     meds = [{'name': med[0], 'rxcui': med[1]} for med in med_names_and_cuis]
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 So far, we're not doing anything novel compared to our SMART Connect App. Let's make use of this fully capable backend we have, and integrate this data with other information. We'll use [RxNav](http://rxnav.nlm.nih.gov/), the National Library of Medicine's resource for RxNorm. In particular, we'll pull out the ingredients for each medication:
 {% highlight javascript %}
@@ -130,7 +130,7 @@ So far, we're not doing anything novel compared to our SMART Connect App. Let's 
       rxnav_info_xml = urllib.urlopen("http://rxnav.nlm.nih.gov/REST/rxcui/%s/related?rela=has_ingredient" % med['rxcui']).read()
       info = ElementTree.fromstring(rxnav_info_xml)
       med['ingredients'] = [ing.text for ing in info.findall('relatedGroup/conceptGroup/conceptProperties/name')]
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 Most of that code above is to quickly parse the XML we get back from RxNav and obtain the ingredient names.
 
@@ -138,7 +138,7 @@ Now that we've combined the SMART record data with a third-party data source, we
 
 {% highlight javascript %}
     meds_html = "\n".join(["<li>%s<br /><small>ingredients: %s</small><br /><br /></li>" % (str(med['name']), ", ".join(med['ingredients'])) for med in meds])
-{% endhighlight  %}	
+{% endhighlight  %}    
 
 and we're done.
 

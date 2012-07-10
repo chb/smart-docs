@@ -136,18 +136,18 @@ The results of a SMART API call using the client library is an SMARTResponse obj
 
 For example, if we want the list of medication names
 {% highlight javascript %}
-	query = """
-			 PREFIX dcterms:<http://purl.org/dc/terms/>
-			 PREFIX sp:<http://smartplatforms.org/terms#>
-			 PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-	
-			 SELECT ?drugname
-			 WHERE {
-			   ?med rdf:type sp:Medication .
-			   ?med sp:drugName ?drugname_code.
-			   ?drugname_code dcterms:title ?drugname.
-			 }
-			 """
+    query = """
+             PREFIX dcterms:<http://purl.org/dc/terms/>
+             PREFIX sp:<http://smartplatforms.org/terms#>
+             PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    
+             SELECT ?drugname
+             WHERE {
+               ?med rdf:type sp:Medication .
+               ?med sp:drugName ?drugname_code.
+               ?drugname_code dcterms:title ?drugname.
+             }
+             """
 
  
 med_names = medications.graph.query(query)

@@ -88,38 +88,38 @@ When you instantiate a new SMART Client object, you'll need to supply an OAuth c
 
 {% highlight xml %}
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-	   xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-	   xsi:schemaLocation='http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd' version="">
-	
-		<description>[Your app description]</description>
-		<display-name>[Your app name]</display-name>
-	
-		<servlet>
-			<servlet-name>smartapp</servlet-name>
-			<servlet-class>[your.app.Class]</servlet-class>
-	
-			<init-param>
-				<param-name>consumerKey</param-name>
-				<param-value>my-app@apps.smartplatforms.org</param-value>
-				<!-- param-value>developer-sandbox@apps.smartplatforms.org</param-value -->
-			</init-param>
-			<init-param>
-				<param-name>consumerSecret</param-name>
-				<param-value>smartapp-secret</param-value>
-			</init-param>
-			<init-param>
-				<param-name>serverBaseURL</param-name>
-				<param-value>http://sandbox-api.smartplatforms.org</param-value>
-			</init-param>
-		</servlet>
-	
-		<servlet-mapping>
-			<servlet-name>smartapp</servlet-name>
-			<url-pattern>/*</url-pattern>
-		</servlet-mapping>
-	</web-app>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <web-app xmlns="http://java.sun.com/xml/ns/javaee"
+       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+       xsi:schemaLocation='http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd' version="">
+    
+        <description>[Your app description]</description>
+        <display-name>[Your app name]</display-name>
+    
+        <servlet>
+            <servlet-name>smartapp</servlet-name>
+            <servlet-class>[your.app.Class]</servlet-class>
+    
+            <init-param>
+                <param-name>consumerKey</param-name>
+                <param-value>my-app@apps.smartplatforms.org</param-value>
+                <!-- param-value>developer-sandbox@apps.smartplatforms.org</param-value -->
+            </init-param>
+            <init-param>
+                <param-name>consumerSecret</param-name>
+                <param-value>smartapp-secret</param-value>
+            </init-param>
+            <init-param>
+                <param-name>serverBaseURL</param-name>
+                <param-value>http://sandbox-api.smartplatforms.org</param-value>
+            </init-param>
+        </servlet>
+    
+        <servlet-mapping>
+            <servlet-name>smartapp</servlet-name>
+            <url-pattern>/*</url-pattern>
+        </servlet-mapping>
+    </web-app>
 {% endhighlight  %}
 
 
@@ -170,19 +170,19 @@ We'll use the following SPARQL query to pull out data from the repositoryconnect
 
 {% highlight javascript %}
 
-	String sparqlForReminders = "PREFIX dc:<http://purl.org/dc/elements/1.1/>\n" + 
-	"PREFIX dcterms:<http://purl.org/dc/terms/>\n" + 
-	"PREFIX sp:<http://smartplatforms.org/terms#>\n" + 
-	"PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" + 
-	"SELECT  ?med ?name ?quant ?when\n" + 
-	"WHERE {\n" + 
-	"  ?med rdf:type sp:Medication .\n" + 
-	"  ?med sp:drugName ?medc.\n" + 
-	"  ?medc dcterms:title ?name.\n" + 
-	"  ?med sp:fulfillment ?fill.\n" + 
-	"  ?fill sp:dispenseDaysSupply ?quant.\n" + 
-	"  ?fill dc:date ?when.\n" + 
-	"}"
+    String sparqlForReminders = "PREFIX dc:<http://purl.org/dc/elements/1.1/>\n" + 
+    "PREFIX dcterms:<http://purl.org/dc/terms/>\n" + 
+    "PREFIX sp:<http://smartplatforms.org/terms#>\n" + 
+    "PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" + 
+    "SELECT  ?med ?name ?quant ?when\n" + 
+    "WHERE {\n" + 
+    "  ?med rdf:type sp:Medication .\n" + 
+    "  ?med sp:drugName ?medc.\n" + 
+    "  ?medc dcterms:title ?name.\n" + 
+    "  ?med sp:fulfillment ?fill.\n" + 
+    "  ?fill sp:dispenseDaysSupply ?quant.\n" + 
+    "  ?fill dc:date ?when.\n" + 
+    "}"
 
 {% endhighlight  %}
 

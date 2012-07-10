@@ -30,7 +30,10 @@ Or you could run these examples on your own, via
 * the command line using [rasqal](http://librdf.org/rasqal)
 * Python, Perl, PHP, or Ruby using [librdf](http://librdf.org)
 * Java using [Jena](http://jena.sourceforge.net),  [Sesame](http://www.openrdf.org), or [mulgara](http://www.mulgara.org).
-* Javascript When possible, we'll also provide examples that will work with the  javascript library [rdfquery](http://code.google.com/p/rdfquery/), which is  automatically provided by the  [smart-api-client.js](http://wiki.chip.org/smart-project/index.php/Developers_Do cumentation:_smart-api-client.js_Reference).
+* Javascript When possible, we'll also provide examples that will work with the
+* javascript library [rdfquery](http://code.google.com/p/rdfquery/), which is
+  automatically provided by the 
+  [smart-api-client.js](http://wiki.chip.org/smart-project/index.php/Developers_Do cumentation:_smart-api-client.js_Reference).
 
 
 # The Examples

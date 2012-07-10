@@ -6,7 +6,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intraemphasis",  "autolink", "strikethrough"]
+  extensions: ["no_intraemphasis",  "autolink", "strikethrough", "fenced_code"]
 pygments: true
 
 # Themes are encouraged to use these universal variables 

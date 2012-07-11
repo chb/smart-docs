@@ -1,0 +1,3436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns="http://smartplatforms.org/terms#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/9318-7">
+	<title xmlns="http://purl.org/dc/terms/">Albumin/Creat Ur-mRto</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">9318-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/60e2e718-035c-4a2f-9147-ae0f01d262d8">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19236"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19237"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19235"/>
+	<externalID>A964749878</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19231">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19232"/>
+	<minimum rdf:nodeID="node16vp4mgimx19233"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19232">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>29</value>
+	<unit>ug/mg{creat}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19233">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>ug/mg{creat}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19237">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19236">
+	<title xmlns="http://purl.org/dc/terms/">Albumin/Creat Ur-mRto</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/9318-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19235">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19231"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19234"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19234">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5</value>
+	<unit>ug/mg{creat}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2345-7">
+	<title xmlns="http://purl.org/dc/terms/">Glucose SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2345-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/dfe5b4cd-8212-4aeb-9829-c889bf27f2ee">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18856"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18855"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18857"/>
+	<externalID>A939376770</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18855">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18856">
+	<title xmlns="http://purl.org/dc/terms/">Glucose SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2345-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18857">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18859"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18861"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18861">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>157</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18860">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>99</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18859">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18860"/>
+	<minimum rdf:nodeID="node16vp4mgimx18858"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18858">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>70</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/3094-0">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">3094-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/4a837883-e5be-44cb-a6a1-f8d637d6d12e">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19426"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19422"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19425"/>
+	<externalID>A361543147</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19420">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>20</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19421">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>13</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19422">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19426">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/3094-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19425">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19424"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19421"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19424">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19420"/>
+	<minimum rdf:nodeID="node16vp4mgimx19423"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19423">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2160-0">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2160-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/b15f8155-e1cb-4a43-9e26-6d6d24a26d52">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18943"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18942"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18944"/>
+	<externalID>A324707081</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18942">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18943">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2160-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18944">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18948"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18945"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18948">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18947"/>
+	<minimum rdf:nodeID="node16vp4mgimx18946"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18947">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1.3</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18946">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.7</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18945">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.9</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/17861-6">
+	<title xmlns="http://purl.org/dc/terms/">Calcium SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">17861-6</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/dc32ddef-33d1-4fb6-a319-9f9b2a89502c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19221"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19222"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19218"/>
+	<externalID>A109342542</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19217">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>9.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19218">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19219"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19217"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19219">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19220"/>
+	<minimum rdf:nodeID="node16vp4mgimx19223"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19223">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>8.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19222">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19221">
+	<title xmlns="http://purl.org/dc/terms/">Calcium SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/17861-6"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19220">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>10.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2160-0">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2160-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/f0f55581-a38d-45d1-95b8-e630007b7d36">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19341"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19344"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19343"/>
+	<externalID>A255762822</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19338">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.86</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19339">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1.4</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19340">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.8</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19344">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19343">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19342"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19338"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19342">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19339"/>
+	<minimum rdf:nodeID="node16vp4mgimx19340"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19341">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2160-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/1920-8">
+	<title xmlns="http://purl.org/dc/terms/">AST SerPl-cCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">1920-8</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/5e501970-1032-4662-b0d8-aa3dc8c0664c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19170"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19169"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19171"/>
+	<externalID>A128814668</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19169">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19170">
+	<title xmlns="http://purl.org/dc/terms/">AST SerPl-cCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/1920-8"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19171">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19175"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19172"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19175">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19174"/>
+	<minimum rdf:nodeID="node16vp4mgimx19173"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19174">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>59</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19173">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>17</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19172">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>66</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2951-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/be5ed6f2-2189-4fd3-be7c-56e96cce9019">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18887"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18888"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18889"/>
+	<externalID>A876136672</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18887">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2951-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18888">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18889">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18891"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18890"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18893">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>145</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18892">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>135</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18891">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18893"/>
+	<minimum rdf:nodeID="node16vp4mgimx18892"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18890">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>136</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/30522-7">
+	<title xmlns="http://purl.org/dc/terms/">CRP SerPl HS-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">30522-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/a7fab0f4-2e7d-493c-97e4-2eacf835465c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19225"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19224"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19226"/>
+	<externalID>A613451995</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19224">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19225">
+	<title xmlns="http://purl.org/dc/terms/">CRP SerPl HS-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/30522-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19226">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19230"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19229"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19230">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19227"/>
+	<minimum rdf:nodeID="node16vp4mgimx19228"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19229">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.4</value>
+	<unit>mg/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19228">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19227">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3</value>
+	<unit>mg/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2075-0">
+	<title xmlns="http://purl.org/dc/terms/">Chloride SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2075-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18677">
+	<title xmlns="http://purl.org/dc/terms/">Chloride SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2075-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/5df04df2-0ac2-4e8d-bea3-46ff83f7efc6">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18677"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18679"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18683"/>
+	<externalID>A480802467</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18678">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>103</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18679">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18683">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18682"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18678"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18682">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18681"/>
+	<minimum rdf:nodeID="node16vp4mgimx18680"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18681">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>109</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18680">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>99</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2823-3">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2823-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/a570ad28-2908-4ca0-9d0f-a95ab0a11dd2">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19166"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19164"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19161"/>
+	<externalID>A921688744</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19161">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19162"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19163"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19162">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19165"/>
+	<minimum rdf:nodeID="node16vp4mgimx19167"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19163">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19167">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19166">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2823-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19165">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19164">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2075-0">
+	<title xmlns="http://purl.org/dc/terms/">Chloride SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2075-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/eddbc29b-b11b-4846-a8bd-43e19c08a166">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19532"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19531"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19536"/>
+	<externalID>A912660806</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19530">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>98</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19531">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19532">
+	<title xmlns="http://purl.org/dc/terms/">Chloride SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2075-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19536">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19535"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19534"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19535">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19533"/>
+	<minimum rdf:nodeID="node16vp4mgimx19530"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19534">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>99</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19533">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>108</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2571-8">
+	<title xmlns="http://purl.org/dc/terms/">Trigl SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2571-8</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/e7c80d51-259d-41e9-86be-3b7a2d5df41f">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18931"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18932"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18930"/>
+	<externalID>A377953923</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18927">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>105</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18928">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18929"/>
+	<minimum rdf:nodeID="node16vp4mgimx18933"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18929">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>150</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18933">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18932">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18931">
+	<title xmlns="http://purl.org/dc/terms/">Trigl SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2571-8"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18930">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18928"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18927"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/6768-6">
+	<title xmlns="http://purl.org/dc/terms/">ALP SerPl-cCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">6768-6</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/3549d888-5206-4fee-969a-24a27331958d">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19039"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19038"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19043"/>
+	<externalID>A725042581</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19037">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>129</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19038">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19039">
+	<title xmlns="http://purl.org/dc/terms/">ALP SerPl-cCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/6768-6"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19043">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19042"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19041"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19042">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19037"/>
+	<minimum rdf:nodeID="node16vp4mgimx19040"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19041">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>101</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19040">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>45</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/9318-7">
+	<title xmlns="http://purl.org/dc/terms/">Albumin/Creat Ur-mRto</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">9318-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/bf4ddc2d-43b1-4c6d-a7b5-a31606585313">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18987"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18984"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18986"/>
+	<externalID>A302536490</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18981">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18982"/>
+	<minimum rdf:nodeID="node16vp4mgimx18983"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18982">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>29</value>
+	<unit>ug/mg{creat}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18983">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>ug/mg{creat}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18987">
+	<title xmlns="http://purl.org/dc/terms/">Albumin/Creat Ur-mRto</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/9318-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18986">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18981"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18985"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18985">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>8</value>
+	<unit>ug/mg{creat}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18984">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/13955-0">
+	<title xmlns="http://purl.org/dc/terms/">HCV Ab Ser Ql EIA</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">13955-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/cafa6514-a36b-4929-a098-d5085ab7fe4a">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<narrativeResult rdf:nodeID="node16vp4mgimx18853"/>
+	<labName rdf:nodeID="node16vp4mgimx18852"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18851"/>
+	<externalID>A546162452</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18851">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18852">
+	<title xmlns="http://purl.org/dc/terms/">HCV Ab Ser Ql EIA</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/13955-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18853">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#NarrativeResult"/>
+	<value>Reactive</value>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2160-0">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2160-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/b1d22602-1da9-4d25-b003-90048f129da0">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19350"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19349"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19354"/>
+	<externalID>A940657670</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19348">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19349">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19350">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2160-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19354">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19353"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19348"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19353">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19352"/>
+	<minimum rdf:nodeID="node16vp4mgimx19351"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19352">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1.4</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19351">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.8</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2571-8">
+	<title xmlns="http://purl.org/dc/terms/">Trigl SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2571-8</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18752">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18753"/>
+	<minimum rdf:nodeID="node16vp4mgimx18754"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18753">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>150</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/f47a506a-922c-46d9-ba9e-18ec72414912">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18758"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18757"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18756"/>
+	<externalID>A981812416</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18754">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18758">
+	<title xmlns="http://purl.org/dc/terms/">Trigl SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2571-8"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18757">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18756">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18752"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18755"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18755">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>78</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2028-9">
+	<title xmlns="http://purl.org/dc/terms/">CO2 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2028-9</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18661">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18662"/>
+	<minimum rdf:nodeID="node16vp4mgimx18663"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18662">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>29</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/b196c493-8447-4828-9a3c-1b846a22b442">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18666"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18667"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18665"/>
+	<externalID>A780831180</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18663">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>22</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18667">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18666">
+	<title xmlns="http://purl.org/dc/terms/">CO2 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2028-9"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18665">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18661"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18664"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18664">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>27</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2951-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/35cea3f8-dcac-4f51-b890-bc6612ef2e34">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18915"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18914"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18919"/>
+	<externalID>A259003148</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18913">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>135</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18914">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18915">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2951-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18919">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18918"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18917"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18918">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18916"/>
+	<minimum rdf:nodeID="node16vp4mgimx18913"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18917">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>140</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18916">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>145</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2160-0">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2160-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/b3ae700c-975b-491b-a3e6-c3971dd8c69a">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18883"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18885"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18880"/>
+	<externalID>A422039668</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18880">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18881"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18882"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18881">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18884"/>
+	<minimum rdf:nodeID="node16vp4mgimx18886"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18882">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.9</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18886">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.8</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18885">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18884">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1.4</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18883">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2160-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/3094-0">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">3094-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18685">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18686"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18687"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18686">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18688"/>
+	<minimum rdf:nodeID="node16vp4mgimx18689"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/292b0634-66c8-4dbf-ba0c-3a5b92709158">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18691"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18690"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18685"/>
+	<externalID>A429225631</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18687">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>15</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18691">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/3094-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18690">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18689">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18688">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>20</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2085-9">
+	<title xmlns="http://purl.org/dc/terms/">HDLc SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2085-9</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/f8edba1f-c83e-40b6-89fb-ad8a379d865c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18979"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18973"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18978"/>
+	<externalID>A619354716</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18973">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18974">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18975">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18979">
+	<title xmlns="http://purl.org/dc/terms/">HDLc SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2085-9"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18978">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18977"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18976"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18977">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18974"/>
+	<minimum rdf:nodeID="node16vp4mgimx18975"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18976">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>25</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2345-7">
+	<title xmlns="http://purl.org/dc/terms/">Glucose SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2345-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/f2735856-2ceb-4ade-a651-cc078df5b33c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19027"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19026"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19028"/>
+	<externalID>A449849530</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19026">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19027">
+	<title xmlns="http://purl.org/dc/terms/">Glucose SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2345-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19028">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19031"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19030"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19032">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>110</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19031">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19032"/>
+	<minimum rdf:nodeID="node16vp4mgimx19029"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19030">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>220</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19029">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>75</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2028-9">
+	<title xmlns="http://purl.org/dc/terms/">CO2 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2028-9</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/d3c9b9cc-4d53-4f9a-8380-0ae8e649b77f">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19440"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19441"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19443"/>
+	<externalID>A332681892</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19437">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>29</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19438">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19437"/>
+	<minimum rdf:nodeID="node16vp4mgimx19439"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19439">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>22</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19443">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19438"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19442"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19442">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>29</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19441">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19440">
+	<title xmlns="http://purl.org/dc/terms/">CO2 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2028-9"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2093-3">
+	<title xmlns="http://purl.org/dc/terms/">Cholest SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2093-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18670">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>200</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/a5deabcc-009e-45ca-b0cd-fb836ea4489e">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18671"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18676"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18675"/>
+	<externalID>A781710986</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18671">
+	<title xmlns="http://purl.org/dc/terms/">Cholest SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2093-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18672">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>195</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18676">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18675">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18674"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18672"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18674">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18670"/>
+	<minimum rdf:nodeID="node16vp4mgimx18673"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18673">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2951-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/8c123271-f302-4ab2-b628-0137eee56784">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18936"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18935"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18937"/>
+	<externalID>A149610742</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18935">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18936">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2951-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18937">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18941"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18938"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18941">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18940"/>
+	<minimum rdf:nodeID="node16vp4mgimx18939"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18940">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>145</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18939">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>135</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18938">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>136</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/1742-6">
+	<title xmlns="http://purl.org/dc/terms/">ALT SerPl-cCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">1742-6</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/37bf139f-10c4-4922-863c-8b542a06f0e2">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19504"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19505"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19501"/>
+	<externalID>A629142834</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19501">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19502"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19503"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19502">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19507"/>
+	<minimum rdf:nodeID="node16vp4mgimx19506"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19503">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>115</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19507">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>72</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19506">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>21</value>
+	<unit>U/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19505">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19504">
+	<title xmlns="http://purl.org/dc/terms/">ALT SerPl-cCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/1742-6"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/13457-7">
+	<title xmlns="http://purl.org/dc/terms/">LDLc SerPl Calc-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">13457-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/e1b97247-9d2e-4c86-8f17-45dc97982da4">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19063"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19065"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19064"/>
+	<externalID>A369427090</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19060">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>145</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19061">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>100</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19062">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19061"/>
+	<minimum rdf:nodeID="node16vp4mgimx19066"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19066">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19065">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19064">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19062"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19060"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19063">
+	<title xmlns="http://purl.org/dc/terms/">LDLc SerPl Calc-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/13457-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2339-0">
+	<title xmlns="http://purl.org/dc/terms/">Glucose Bld-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2339-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18784">
+	<title xmlns="http://purl.org/dc/terms/">Glucose Bld-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2339-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/2599dcc0-f9fc-4914-9515-7df9499699e1">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18784"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18785"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18786"/>
+	<externalID>A959880599</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18785">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18786">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18790"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18787"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18790">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18789"/>
+	<minimum rdf:nodeID="node16vp4mgimx18788"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18789">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18788">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18787">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>237</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2857-1">
+	<title xmlns="http://purl.org/dc/terms/">PSA SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2857-1</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/97260e32-eeb7-4210-a9c7-28ec8624f782">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19444"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19449"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19446"/>
+	<externalID>A177444626</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19444">
+	<title xmlns="http://purl.org/dc/terms/">PSA SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2857-1"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19445">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.331</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19446">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19450"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19445"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19450">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19448"/>
+	<minimum rdf:nodeID="node16vp4mgimx19447"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19449">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19448">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19447">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2823-3">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2823-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/2d4009f9-6ed0-4715-af6d-887291dffd4d">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18963"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18962"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18961"/>
+	<externalID>A539437191</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18957">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18958"/>
+	<minimum rdf:nodeID="node16vp4mgimx18959"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18958">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18959">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18963">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2823-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18962">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18961">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18957"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18960"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18960">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>4.1</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/10466-1">
+	<title xmlns="http://purl.org/dc/terms/">Anion Gap3 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">10466-1</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/42dc25a1-77be-4e1c-8626-aa31e1b3dab3">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19430"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19431"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19428"/>
+	<externalID>A302614975</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19427">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19428">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19429"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19433"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19429">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19427"/>
+	<minimum rdf:nodeID="node16vp4mgimx19432"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19433">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>9</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19432">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19431">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19430">
+	<title xmlns="http://purl.org/dc/terms/">Anion Gap3 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/10466-1"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2885-2">
+	<title xmlns="http://purl.org/dc/terms/">Prot SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2885-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/af930dc8-26d7-411d-8e0b-74910664f522">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19092"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19091"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19094"/>
+	<externalID>A862175049</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19088">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19089"/>
+	<minimum rdf:nodeID="node16vp4mgimx19090"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19089">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>8.2</value>
+	<unit>g/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19090">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5.7</value>
+	<unit>g/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19094">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19088"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19093"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19093">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>7.7</value>
+	<unit>g/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19092">
+	<title xmlns="http://purl.org/dc/terms/">Prot SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2885-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19091">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2075-0">
+	<title xmlns="http://purl.org/dc/terms/">Chloride SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2075-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18773">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>105</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/d8d51529-c0a5-4113-abec-a18818722ae4">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18777"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18778"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18774"/>
+	<externalID>A982057060</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18774">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18775"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18779"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18775">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18773"/>
+	<minimum rdf:nodeID="node16vp4mgimx18776"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18779">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>100</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18778">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18777">
+	<title xmlns="http://purl.org/dc/terms/">Chloride SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2075-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18776">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>95</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/13457-7">
+	<title xmlns="http://purl.org/dc/terms/">LDLc SerPl Calc-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">13457-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/e8e455d6-3844-4a61-a273-143d31d3fc29">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19053"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19055"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19054"/>
+	<externalID>A770780973</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19051">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>124</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19052">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>100</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19053">
+	<title xmlns="http://purl.org/dc/terms/">LDLc SerPl Calc-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/13457-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19057">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19052"/>
+	<minimum rdf:nodeID="node16vp4mgimx19056"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19056">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19055">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19054">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19057"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19051"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2857-1">
+	<title xmlns="http://purl.org/dc/terms/">PSA SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2857-1</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/d9634c2b-28ce-4905-9ddb-ffd0f5cf7ccc">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19329"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19332"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19331"/>
+	<externalID>A179494091</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19326">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19327">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>4</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19328">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.31</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19332">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19331">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19330"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19328"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19330">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19327"/>
+	<minimum rdf:nodeID="node16vp4mgimx19326"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19329">
+	<title xmlns="http://purl.org/dc/terms/">PSA SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2857-1"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/1975-2">
+	<title xmlns="http://purl.org/dc/terms/">Bilirub SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">1975-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/4bed7fc3-1fd5-415f-a18c-d02764f05884">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19514"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19516"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19519"/>
+	<externalID>A314992512</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19514">
+	<title xmlns="http://purl.org/dc/terms/">Bilirub SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/1975-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19515">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1.3</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19516">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19520">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.7</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19519">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19518"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19520"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19518">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19515"/>
+	<minimum rdf:nodeID="node16vp4mgimx19517"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19517">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.2</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/13955-0">
+	<title xmlns="http://purl.org/dc/terms/">HCV Ab Ser Ql EIA</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">13955-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/99d881d3-a6bc-4d67-a1d5-ffd696d3f2c1">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<narrativeResult rdf:nodeID="node16vp4mgimx19511"/>
+	<labName rdf:nodeID="node16vp4mgimx19513"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19512"/>
+	<externalID>A241488306</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19511">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#NarrativeResult"/>
+	<value>Reactive</value>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19512">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19513">
+	<title xmlns="http://purl.org/dc/terms/">HCV Ab Ser Ql EIA</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/13955-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2986-8">
+	<title xmlns="http://purl.org/dc/terms/">Testost SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2986-8</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18745">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1000</value>
+	<unit>ng/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/2275399a-df74-4df9-9b04-f87f65b75bff">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18748"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18750"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18746"/>
+	<externalID>A953862580</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18746">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18747"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18751"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18747">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18745"/>
+	<minimum rdf:nodeID="node16vp4mgimx18749"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18751">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>355</value>
+	<unit>ng/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18750">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18749">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>300</value>
+	<unit>ng/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18748">
+	<title xmlns="http://purl.org/dc/terms/">Testost SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2986-8"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/3094-0">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">3094-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18712">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18713"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18714"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18713">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18716"/>
+	<minimum rdf:nodeID="node16vp4mgimx18715"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/32c11ec9-ab71-4537-b93a-7f1075abf264">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18717"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18718"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18712"/>
+	<externalID>A252726596</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18714">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>18</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18718">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18717">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/3094-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18716">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>20</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18715">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>9</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2823-3">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2823-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/83ed568d-e2cf-46a0-9445-4bc62de2c430">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18801"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18800"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18804"/>
+	<externalID>A786825551</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18798">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18799">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18800">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2005-07-31</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18804">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18803"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18802"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18803">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18798"/>
+	<minimum rdf:nodeID="node16vp4mgimx18799"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18802">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18801">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2823-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2028-9">
+	<title xmlns="http://purl.org/dc/terms/">CO2 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2028-9</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/41b8b81b-e1b3-4895-986f-cc62dbcb2914">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19451"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19456"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19455"/>
+	<externalID>A852851438</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19451">
+	<title xmlns="http://purl.org/dc/terms/">CO2 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2028-9"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19452">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19453"/>
+	<minimum rdf:nodeID="node16vp4mgimx19457"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19453">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>31</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19457">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>20</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19456">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19455">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19452"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19454"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19454">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>30</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2345-7">
+	<title xmlns="http://purl.org/dc/terms/">Glucose SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2345-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/c144db52-29f6-4056-85be-252996545cb8">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19406"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19405"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19410"/>
+	<externalID>A953816223</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19404">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>70</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19405">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19406">
+	<title xmlns="http://purl.org/dc/terms/">Glucose SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2345-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19410">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19408"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19407"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19409">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>109</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19408">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19409"/>
+	<minimum rdf:nodeID="node16vp4mgimx19404"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19407">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>167</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2085-9">
+	<title xmlns="http://purl.org/dc/terms/">HDLc SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2085-9</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/5b3282c9-d970-4a07-a5ef-ec90da912c24">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19103"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19099"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19101"/>
+	<externalID>A278656870</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19099">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19100">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>60</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19101">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19105"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19104"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19105">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19100"/>
+	<minimum rdf:nodeID="node16vp4mgimx19102"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19104">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>38</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19103">
+	<title xmlns="http://purl.org/dc/terms/">HDLc SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2085-9"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19102">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>40</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2339-0">
+	<title xmlns="http://purl.org/dc/terms/">Glucose Bld-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2339-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/bc0bafba-58cb-450d-9d50-403618402c6e">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19413"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19412"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19417"/>
+	<externalID>A958586226</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19412">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2006-11-13</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19413">
+	<title xmlns="http://purl.org/dc/terms/">Glucose Bld-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2339-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19414">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>272</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19418">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>109</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19417">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19416"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19414"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19416">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19418"/>
+	<minimum rdf:nodeID="node16vp4mgimx19415"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19415">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>70</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/17861-6">
+	<title xmlns="http://purl.org/dc/terms/">Calcium SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">17861-6</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/ef8e78fa-02f0-4810-85a2-2c21a5de1028">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18873"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18875"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18877"/>
+	<externalID>A337162964</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18873">
+	<title xmlns="http://purl.org/dc/terms/">Calcium SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/17861-6"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18874">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>8.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18875">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18879">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18878"/>
+	<minimum rdf:nodeID="node16vp4mgimx18874"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18878">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>10.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18877">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18879"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18876"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18876">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>9.1</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2951-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/c36b2cce-1d32-46eb-826a-4a7ec868432d">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19497"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19498"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19500"/>
+	<externalID>A314110683</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19494">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19495"/>
+	<minimum rdf:nodeID="node16vp4mgimx19496"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19495">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>145</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19496">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>135</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19500">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19494"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19499"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19499">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>140</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19498">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2005-07-31</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19497">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2951-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2823-3">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2823-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/34fd2f2d-9fe5-44c0-bcc3-cd843eac100e">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19523"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19522"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19527"/>
+	<externalID>A121924983</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19521">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19522">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2004-08-23</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19523">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2823-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19527">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19524"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19526"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19526">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.6</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19525">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19524">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19521"/>
+	<minimum rdf:nodeID="node16vp4mgimx19525"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/1751-7">
+	<title xmlns="http://purl.org/dc/terms/">Albumin SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">1751-7</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/e9d74ea9-ec21-468f-ac36-904620758e54">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18968"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18967"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18964"/>
+	<externalID>A444855848</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18964">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18965"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18966"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18965">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18970"/>
+	<minimum rdf:nodeID="node16vp4mgimx18969"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18966">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>4.2</value>
+	<unit>g/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18970">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>4.8</value>
+	<unit>g/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18969">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.2</value>
+	<unit>g/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18968">
+	<title xmlns="http://purl.org/dc/terms/">Albumin SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/1751-7"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18967">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/10466-1">
+	<title xmlns="http://purl.org/dc/terms/">Anion Gap3 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">10466-1</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/b5ece130-da2e-4dc1-a2e3-8d3486332825">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19195"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19199"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19198"/>
+	<externalID>A783974062</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19195">
+	<title xmlns="http://purl.org/dc/terms/">Anion Gap3 SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/10466-1"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19196">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19197"/>
+	<minimum rdf:nodeID="node16vp4mgimx19201"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19197">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19201">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19200">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>8</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19199">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19198">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19196"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19200"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2951-2</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/0f9e02e9-99fa-475a-b751-2efbeb6db87c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18864"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18863"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18865"/>
+	<externalID>A768322456</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18863">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18864">
+	<title xmlns="http://purl.org/dc/terms/">Sodium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2951-2"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18865">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18869"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18866"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18869">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18868"/>
+	<minimum rdf:nodeID="node16vp4mgimx18867"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18868">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>145</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18867">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>136</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18866">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>139</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2093-3">
+	<title xmlns="http://purl.org/dc/terms/">Cholest SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2093-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/3eba5239-5c5d-40ee-b6d7-bc6ffde93495">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19399"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19402"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19401"/>
+	<externalID>A810368959</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19396">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19397">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19398"/>
+	<minimum rdf:nodeID="node16vp4mgimx19396"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19398">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>200</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19402">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2009-08-30</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19401">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19397"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19400"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19400">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>165</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19399">
+	<title xmlns="http://purl.org/dc/terms/">Cholest SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2093-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2823-3">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2823-3</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18759">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/eddfa650-6cb3-466e-a275-175a79b410fa">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18765"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18759"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18762"/>
+	<externalID>A715787873</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18760">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.4</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18761">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>3.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18765">
+	<title xmlns="http://purl.org/dc/terms/">Potassium SerPl-sCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2823-3"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18764">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18763"/>
+	<minimum rdf:nodeID="node16vp4mgimx18761"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18763">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5.5</value>
+	<unit>mmol/L</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18762">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18764"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18760"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/17861-6">
+	<title xmlns="http://purl.org/dc/terms/">Calcium SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">17861-6</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/8243d9ee-8468-4d71-9898-32c122034532">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18724"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18725"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18723"/>
+	<externalID>A446894583</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18719">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18720"/>
+	<minimum rdf:nodeID="node16vp4mgimx18721"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18720">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>10.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18721">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>8.5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18725">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18724">
+	<title xmlns="http://purl.org/dc/terms/">Calcium SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/17861-6"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18723">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18719"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18722"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18722">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>9.3</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/3094-0">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">3094-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/94a98cdc-e14e-4a0b-851c-c1a1075a35da">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19467"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19472"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19470"/>
+	<externalID>A698605112</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19467">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/3094-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19468">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19469">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19473"/>
+	<minimum rdf:nodeID="node16vp4mgimx19468"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19473">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>20</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19472">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2005-07-31</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19471">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>11</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19470">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19469"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19471"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2339-0">
+	<title xmlns="http://purl.org/dc/terms/">Glucose Bld-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2339-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/026d5ebd-d42f-4dbe-b8e0-c7656cba7174">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19208"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19209"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19207"/>
+	<externalID>A454481656</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19203">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>110</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19204">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19203"/>
+	<minimum rdf:nodeID="node16vp4mgimx19205"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19205">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>65</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19209">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-12-11</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19208">
+	<title xmlns="http://purl.org/dc/terms/">Glucose Bld-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2339-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19207">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19204"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19206"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19206">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>237</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/3094-0">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">3094-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/4da42b4a-e0b1-4ea0-b1ea-39e8f8394829">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19114"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19113"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19109"/>
+	<externalID>A388379966</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19109">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19110"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19111"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19110">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19112"/>
+	<minimum rdf:nodeID="node16vp4mgimx19115"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19111">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>11</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19115">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19114">
+	<title xmlns="http://purl.org/dc/terms/">BUN SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/3094-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19113">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2007-08-01</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19112">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>20</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2160-0">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2160-0</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/7420346c-e5bf-478d-a62e-ad32129c2cd5">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx19465"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx19462"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx19464"/>
+	<externalID>A919861803</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19459">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx19460"/>
+	<minimum rdf:nodeID="node16vp4mgimx19461"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19460">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1.4</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19461">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.8</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19465">
+	<title xmlns="http://purl.org/dc/terms/">Creat SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2160-0"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19464">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx19459"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx19463"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19463">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>1</value>
+	<unit>mg/dL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx19462">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2005-07-31</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/LNC/2857-1">
+	<title xmlns="http://purl.org/dc/terms/">PSA SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/LOINC"/>
+	<system>http://purl.bioontology.org/ontology/LNC/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">2857-1</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1869612/lab_results/1b36d44f-eab1-4cf2-b21d-68b6cc3d718c">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#LabResult"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1869612"/>
+	<labName rdf:nodeID="node16vp4mgimx18949"/>
+	<specimenCollected rdf:nodeID="node16vp4mgimx18954"/>
+	<quantitativeResult rdf:nodeID="node16vp4mgimx18950"/>
+	<externalID>A999468015</externalID>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18949">
+	<title xmlns="http://purl.org/dc/terms/">PSA SerPl-mCnc</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/LNC/2857-1"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18950">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#QuantitativeResult"/>
+	<normalRange rdf:nodeID="node16vp4mgimx18951"/>
+	<valueAndUnit rdf:nodeID="node16vp4mgimx18955"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18951">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueRange"/>
+	<maximum rdf:nodeID="node16vp4mgimx18952"/>
+	<minimum rdf:nodeID="node16vp4mgimx18953"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18955">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0.31</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18954">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Attribution"/>
+	<startDate>2005-07-31</startDate>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18953">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>0</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx18952">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>4</value>
+	<unit>ng/mL</unit>
+</rdf:Description>
+
+</rdf:RDF>

@@ -44,13 +44,16 @@ GET /records/{record_id}/medications/. To start off, let's write a query to find
 the name of each medication in the list:
 
 
-### Find Medication Names
+### Find Medication Names or no
+
+<textarea id='q_med_names'></textarea>
+<button onclick='javascript:run_query($("#q_med_names"), "meds");'>Run Query on Sample Medications List</button>
 
 Note the use of the "distinct" keyword: as in SQL, distinct will prune the list
 for duplicates. So if the two medications in the patient record have the same
 name, this query will collapse them into one result.
 
-With rdfquery, we can achieve a similar result
+With rdfquery, we can achieve a similar result:
 
 {% highlight javascript %}
     SMART.MEDS_get().success(function(response) {
@@ -59,52 +62,16 @@ With rdfquery, we can achieve a similar result
                                .where("?med sp:drugName ?medc")
                                .where("?medc dcterms:title ?t");
       });
-{% endhighlight  %}
-
+{% endhighlight %}
 ### Find Medication Quantities + Frequencies
 
-{% highlight javascript %}
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX sp: <http://smartplatforms.org/terms#>
-    PREFIX dcterms: <http://purl.org/dc/terms/>
-    
-    SELECT  ?t ?quant_val ?quant_unit ?freq_val ?freq_unit
-      FROM <http://sandbox-api.smartplatforms.org/records/2169591/medications/>
-    WHERE {
-      ?m rdf:type sp:Medication .
-      ?m sp:drugName ?medc.
-      ?medc dcterms:title ?t.
-      ?m sp:quantity ?q.
-      ?q sp:value ?quant_val.
-      ?q sp:unit ?quant_unit.
-      ?m sp:frequency ?f.
-      ?f sp:value ?freq_val.
-      ?f sp:unit ?freq_unit.
-    }
-{% endhighlight  %}
-
-Note the use of the "distinct" keyword: as in SQL, distinct will prune the list
-for duplicates. So if the two medications in the patient record have the same
-name, this query will collapse them into one result.
+<textarea id='q_med_quants'></textarea>
+<button onclick='javascript:run_query($("#q_med_quants"), "meds");'>Run Query on Sample Medications List</button>
 
 ### Find Medication Fulfillment Dates
 
-{% highlight javascript %}
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX sp: <http://smartplatforms.org/terms#>
-    PREFIX dcterms: <http://purl.org/dc/terms/>
-    SELECT  distinct ?t ?fill_date
-      FROM <http://sandbox-api.smartplatforms.org/records/2169591/medications/>
-    WHERE {
-      ?m rdf:type sp:Medication .
-      ?m sp:drugName ?medc.
-      ?medc dcterms:title ?t.
-      ?m sp:fulfillment ?fill.
-      ?f dcterms:date ?fill_date.
-    }
-{% endhighlight  %}
-
-With rdfquery, we can achieve a similar result
+<textarea id='q_med_dates'></textarea>
+<button onclick='javascript:run_query($("#q_med_dates"), "meds");'>Run Query on Sample Medications List</button>
 
 {% highlight javascript %}
  SMART.MEDS_get().success(function(response) {
@@ -120,22 +87,9 @@ With rdfquery, we can achieve a similar result
 
 ### Find Medications Fulfilled Since January 2009
 
-{% highlight javascript %}
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX sp: <http://smartplatforms.org/terms#>
-    PREFIX dcterms: <http://purl.org/dc/terms/>
-    SELECT  distinct ?t
-      FROM <http://sandbox-api.smartplatforms.org/records/2169591/medications/>
-    WHERE {
-      ?m rdf:type sp:Medication .
-      ?m sp:drugName ?medc.
-      ?medc dcterms:title ?t.
-      ?m sp:fulfillment ?fill.
-      ?f dcterms:date ?fill_date.
-      FILTER( xsd:dateTime(?fill_date) > "2009-01-01T00:00:00Z"^^xsd:dateTime )
-    } ORDER BY (?t)
+<textarea id='q_med_since'></textarea>
+<button onclick='javascript:run_query($("#q_med_since"), "meds");'>Run Query on Sample Medications List</button>
 
-{% endhighlight  %}
 
 Again a similar result with rdfquery
 
@@ -161,30 +115,19 @@ demographics
 
 ### Find Patient's Name
 
-{% highlight javascript %}
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX sp: <http://smartplatforms.org/terms#>
-    PREFIX dcterms: <http://purl.org/dc/terms/>
-    PREFIX foaf:<http://xmlns.com/foaf/0.1/>
-    
-    SELECT ?d ?fn ?ln
-      FROM <http://sandbox-api.smartplatforms.org/records/2169591/demographics>
-    
-    WHERE {
-      ?d rdf:type foaf:Person.
-      ?d foaf:givenName ?fn.
-      ?d foaf:familyName ?ln.
-    }
-{% endhighlight  %}
+
+<textarea id='q_demographics'></textarea>
+<button onclick='javascript:run_query($("#q_demographics"), "demographics");'>Run Query on Sample Demographics</button>
 
 With rdfquery, we can achieve a similar result: 
 
 {% highlight javascript %}
     SMART.DEMOGRAPHICS_get().success(function(response) {
          var person = response.graph
-                               .where("?d rdf:type  <http://xmlns.com/foaf/0.1/Person>")
-                               .where("?d <http://xmlns.com/foaf/0.1/givenName>  ?fn")
-                               .where("?d  <http://xmlns.com/foaf/0.1/familyName> ?ln");
+                               .where("?d rdf:type  sp:Demographics")
+                               .where("?d v:n  ?name")
+                               .where("?name v:given-name ?fn")
+                               .where("?name v:family-name ?ln");
       });
 {% endhighlight  %}
 
@@ -193,20 +136,9 @@ With rdfquery, we can achieve a similar result:
 Here's a query that pulls out the name of each problem
 
 ### Find Patient's Problems
-{% highlight javascript %}
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX sp: <http://smartplatforms.org/terms#>
-    PREFIX dcterms: <http://purl.org/dc/terms/>
-    
-    SELECT ?p
-     FROM <http://sandbox-api.smartplatforms.org/records/2169591/problems/>
-    WHERE {
-     ?pr rdf:type sp:Problem .
-     ?pr sp:problemName ?pn .
-     ?pn dcterms:title ?p .
-    }
-{% endhighlight  %}
 
+<textarea id='q_problems'></textarea>
+<button onclick='javascript:run_query($("#q_problems"), "problems");'>Run Query on Sample Problem List</button>
 
 With rdfquery, we can achieve a similar result
 
@@ -220,45 +152,91 @@ With rdfquery, we can achieve a similar result
 {% endhighlight  %}
 
 
-## Getting some Problems
-
-Here's a query that pulls out the name of each problem
-
 ### Finding Quantitative Labs
 
-{% highlight javascript %}
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX sp: <http://smartplatforms.org/terms#>
-    PREFIX dcterms: <http://purl.org/dc/terms/>
-    PREFIX foaf:<http://xmlns.com/foaf/0.1/>
-    PREFIX v:<http://www.w3.org/2006/vcard/ns#>
-    SELECT  DISTINCT ?loinc_title ?lab_title ?value ?unit ?minvalue ?minunit ?maxvalue ?maxunit ?ncrminvalue ?ncrminunit
-      FROM <http://sandbox-api.smartplatforms.org/records/2169591/lab_results/> 
-    WHERE {
-      ?lr rdf:type sp:LabResult.
-      ?lr sp:labName ?labName .
-      ?labName dcterms:title ?loinc_title .
-      OPTIONAL{?labName sp:codeProvenance ?codeProvenance .}
-      OPTIONAL{?codeProvenance dcterms:title ?lab_title.}
-      ?lr sp:quantitativeResult ?quantitativeResult .
-      ?quantitativeResult sp:valueAndUnit ?valueAndUnit .
-      ?valueAndUnit sp:value ?value .
-      ?valueAndUnit sp:unit ?unit .
-      ?quantitativeResult sp:normalRange ?normalRange .
-      ?normalRange sp:minimum ?minimum .
-      ?minimum sp:value ?minvalue .
-      ?minimum sp:unit ?minunit .
-      ?normalRange sp:maximum ?maximum .
-      ?maximum sp:value ?maxvalue .
-      ?maximum sp:unit ?maxunit .
-      OPTIONAL{?quantitativeResult sp:nonCriticalRange ?nonCriticalRange .}
-      OPTIONAL{?nonCriticalRange sp:minimum ?ncrminimum .}
-      OPTIONAL{?ncrminimum sp:value ?ncrminvalue .}
-      OPTIONAL{?ncrminimum sp:unit ?ncrminunit .}
-      OPTIONAL{?lr sp:status ?status .}
-      OPTIONAL{?status dcterms:title ?status_title .}
-      OPTIONAL{?lr sp:abnormalInterpretation ?abnormalInterpretation.}
-    }
-{% endhighlight  %}
+<textarea id='q_labs'></textarea>
+<button onclick='javascript:run_query($("#q_labs"), "labs");'>Run Query on Sample Labs</button>
 
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+<script src='examples.js'></script>
+<script>
+  $.each(examples, function(i,e){
+    var tb = $("#"+e.id);
+    tb.css({width: e.width+"em", height: e.height+"em"});
+    tb.val(e.q);
+  });
+</script>
+
+<script src='rdf_store.js'></script>
+<script>
+  run_query = function(qta, store) {
+    var q = qta.val();  
+    var f = qta.next();
+
+    if (f.is("div[class='response']")) {
+      f.remove();  
+    }
+
+    f = $("<div class='response' style='border: 1px dashed black; width: 100%; overflow-x: hidden; overflow-y: auto; height: 10em;'></div>");
+    qta.after(f);
+    stores[store].execute(q, 
+    function(success, results){
+
+      f.html(resultsToTable(results));
+    });
+  };
+
+  var resultsToTable = function(results){
+    var t = "<table><tr>",
+        heads = [];
+
+        if (results.triples) {
+          results = results.triples;
+          results = $.map(results, function(r){
+            return {
+              subject: {value: r.subject.nominalValue},
+              predicate: {value: r.predicate.nominalValue},
+              object: {value: r.object.nominalValue},
+            }
+          });
+
+          results = results.sort(function(a,b){
+            if (a.subject.value > b.subject.value) return 1;
+            if (a.subject.value < b.subject.value) return -1;
+            return 0;
+          });
+        }
+        if (results.length > 0) {
+          $.each(results[0], function(k,v){
+            t += "<th>"+k+"</th>";
+            heads.push(k);
+          });
+        }
+        t += "</tr>"
+      $.each(results, function(i,r){
+        t += "<tr>";
+          $.each(heads, function(i,k){
+            t += "<td>"+r[k].value+"</td>";
+          });
+          t += "</tr>";
+      });
+      t += "</table>";
+    return t;
+  };
+
+  var stores = {
+    meds: new rdfstore.Store(),
+    labs: new rdfstore.Store(),
+    demographics: new rdfstore.Store(),
+    problems: new rdfstore.Store(),
+  };
+
+  $.each(stores, function(k,v) {
+    $.ajax(k+".xml",{"dataType": "text"}).then(function(r){
+      stores[k].load("application/rdf+xml", r, function(s,r){
+      });
+    });
+  });
+
+</script>

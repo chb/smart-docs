@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Build a SMART App: First Steps
+title: Build a SMART App - First Steps
 includenav: smartnav.markdown
 ---
 

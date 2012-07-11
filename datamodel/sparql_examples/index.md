@@ -44,7 +44,7 @@ GET /records/{record_id}/medications/. To start off, let's write a query to find
 the name of each medication in the list:
 
 
-### Find Medication Names or no
+### Find Medication Names
 
 <textarea id='q_med_names'></textarea>
 <button onclick='javascript:run_query($("#q_med_names"), "meds");'>Run Query on Sample Medications List</button>

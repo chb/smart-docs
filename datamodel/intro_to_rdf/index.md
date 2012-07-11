@@ -12,7 +12,7 @@ The SMART API supplies patient record data in the form of an RDF graph. If
 you've never used (or even heard of!) RDF, this document should help you get up
 to speed. So let's jump right in!
 
-# What is RDF, anyway?
+## What is RDF, anyway?
 
 RDF, the Resource Description Framework, is a web standard "for representing
 information about resources" (this according to the [W3C's RDF

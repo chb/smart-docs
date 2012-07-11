@@ -6,7 +6,7 @@ includenav: smartnav.markdown
 
 {% include JB/setup %}
 
-<div style="margin: 35px; border: 4px solid #ccc; padding: 15px;">
+<div class='simple_box'>
   This Guide is intended for software developers who want to write SMART apps
   &mdash; and it's a work in progress! If you have any questions, please drop a
   note in our <a

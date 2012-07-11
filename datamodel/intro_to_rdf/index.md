@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation Quick Introduction to RDF and SPARQL
-tagline: for developers
+title: A Quick Introduction to RDF and SPARQL
 includenav: smartnav.markdown
 ---
 

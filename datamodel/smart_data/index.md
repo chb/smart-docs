@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation Best Practices
-tagline: for developers
+title: Best Practices for SMART Data
 includenav: smartnav.markdown
 ---
 

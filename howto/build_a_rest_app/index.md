@@ -1,7 +1,6 @@
 ---
 layout: page
-title: HOWTO Build a SMART App - REST API Calls
-tagline:
+title: Build a SMART App With REST API Calls
 includenav: smartnav.markdown
 ---
 

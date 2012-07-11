@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation SMART Container DotNET Libraries
-tagline: for developers
+title: SMART Container DotNET Libraries
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}

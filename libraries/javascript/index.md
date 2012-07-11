@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation SMART App Javascript Libraries
-tagline: for developers
+title: SMART App Javascript Libraries
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}

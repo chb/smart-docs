@@ -1,10 +1,14 @@
 ---
 layout: page
-title: Developers Documentation REST API
-tagline: This is highly preliminary, not a commitment or final version of any particular API or data model. This is purely for internal collaboration and preview purposes.
+title: SMART REST API
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
+
+<div style="margin: 35px; border: 4px solid #ccc; padding: 15px;"> This is
+highly preliminary, not a commitment or final version of any particular API or
+data model. This is purely for internal collaboration and preview purposes.
+</div>
 
 <div id="toc"> </div>
 

@@ -1,14 +1,11 @@
 ---
 layout: page
-title: Developers Documentation Deferred
-tagline: for developers
+title: Using the jQuery Deferred Object with SMART Connect
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
 <div id="toc"> </div>
-
-# Using the jQuery Deferred Object with SMART Connect
 
 When using the SMART Javascript API you frequently want to make multiple
 requests for data (for instance to get both demographics and labs for a lab

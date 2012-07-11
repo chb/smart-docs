@@ -1,7 +1,6 @@
 ---
 layout: page
 title: HOWTO Build SMART Background and Helper Apps
-tagline: 
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}

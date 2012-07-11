@@ -1,14 +1,13 @@
 ---
 layout: page
-title: Developers Documentation SMART Container Javascript Libraries
-tagline: for developers
+title: SMART Container Javascript Libraries
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
 <div id="toc"> </div>
 
-#What is smart-api-container.js ?
+# What is smart-api-container.js ?
 
 smart-api-container.js enables a SMART container to talk with SMART apps, establishing inter-frame messaging to pass data and notifications between application and container.
 

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: HOWTO Build a SMART App
-tagline: for developers
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
@@ -10,7 +9,7 @@ includenav: smartnav.markdown
 
 This document is a complete SMART-App-Building walk-through. You should first read the [Main Page](../) 
 
-#ScreenCast
+# Screencast
 
 
 We are re-recording the screencast to catch up with the latest API old [screencast](http://vimeo.com/20113823).

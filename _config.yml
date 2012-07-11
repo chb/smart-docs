@@ -13,10 +13,10 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : SMART API
-tagline:  developers documentation
+tagline:
 author :
-  name : SMART Platforms 
-  email : info@smartplatforms.org 
+  name : SMART Platforms
+  email : info@smartplatforms.org
   github : chb
   twitter : username
   feedburner : feedname

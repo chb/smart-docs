@@ -1,7 +1,6 @@
 ---
 layout: page
-title: HOWTO Build SMART Frame UI Apps
-tagline:
+title: How To Build SMART Frame UI Apps
 includenav: smartnav.markdown
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation Changelog
-tagline: for developers
+title: Changelog
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}

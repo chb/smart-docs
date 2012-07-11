@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation Packaging Applications via SMART Manifest
-tagline: for developers
+title: Packaging Applications via SMART Manifest
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}

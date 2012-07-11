@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Developers Documentation SPARQL Examples for SMART
-tagline: for developers
+title: SPARQL Examples for SMART
 includenav: smartnav.markdown
 ---
 

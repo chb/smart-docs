@@ -1,7 +1,6 @@
 ---
 layout: page
-title: RxReminder App
-tagline: for developer
+title: The RxReminder Sample App
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
@@ -9,7 +8,7 @@ includenav: smartnav.markdown
 <div id="toc"> </div>
 
 
-#Developers Documentation: RxReminder - SMART REST in Action
+# The RxReminder App: SMART REST in Action
 
 You should read [HOWTO Build a SMART App - REST API](../build_a_rest_app) Calls first. 
 

@@ -18,8 +18,14 @@ p {
   margin-bottom: 16px;
 }
 
+/* code can be in sentences and not be bright red and in an box!! */
 code, pre {
   font-family: Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Inconsolata, "Lucida Console", Monaco, "courier new", courier;
+  padding: none;
+  color: #555;
+  background-color: none;
+  border: none;
+  font-size: inherit;
 }
 
 em {
@@ -30,12 +36,10 @@ em {
 
 /* Adjust header sizes */
 h1 { color: #666; font-size: 28px; letter-spacing: -1px; }
-h2 { color: #666; font-size: 22px; letter-spacing: -1px; }
-h3 { font-size: 16px; }
+h2 { color: #666; font-size: 22px; }
+h3 { color: #666; font-size: 16px; font-variant: small-caps; text-transform: uppercase}
 
-.well {
-  background-color: #f6f6f6;
-}
+.well {  background-color: #f6f6f6; }
 
 #smart_top_logo {
   display: block;
@@ -52,4 +56,8 @@ h3 { font-size: 16px; }
   text-align:center;
   color: #999;
   font-size: smaller;
+}
+
+.simple_box {
+  margin: 35px; border: 4px solid #ccc; padding: 15px;
 }

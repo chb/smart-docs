@@ -15,7 +15,7 @@ logic and REST API Calls.
 You should first read the [Main Page](../../) and [HOWTO Build a SMART App](../build_a_smart_app).
 
 
-# ScreenCast
+# Screencast
 
 We are re-recording the screencast to catch up with the latest API changes.
 Please see the text-based tutorial below, or see the old screencast.
@@ -162,7 +162,7 @@ we can start making API calls. Let's get the medication list:
 
 {% highlight javascript %}
     medications = smart_client.records_X_medications_GET(record_id = record_id)
-z% endhighlight  %}
+{% endhighlight  %}
 
 Just like in the first SMART App we built, the result is an SMARTResponse object
 containing an RDF graph of data, which we can query for just the fields we want:

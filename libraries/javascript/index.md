@@ -5,164 +5,177 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
-<div id="toc"> </div>
+<div id="toc"></div>
 
-#What is smart-api-client.js?
 
-Every SMART UI app includes an
+## What is `smart-api-client.js`?
 
-<ol><li>
-index.html loads smart-api-client.js to provide the app's functionality.</li></ol>
+Every SMART UI app includes an `index.html` page that loads the
+`smart-api-client.js` Javascript library to provide the app's functionality.
+This page describes the functionality that including `smart-api-client.js`
+provides.
 
-This page describes the functionality that including `smart-api-client.js` provides.
 
-##smart-api-client.js
+## Including `smart-api-client.js`
 
-You include this file in every additinal page of your app, e.g. via
+You include this file in every additional page of your app, e.g. via the HTML `<script>` tag:
 
 {% highlight html %}
  <script src="http://sandbox-dev.smartplatforms.org:8001/framework/smart/scripts/smart-api-client.js"></script>
-{% endhighlight  %}
+{% endhighlight %}
 
-Once this script loads, your app will have access to a javascript variable called SMART, which can be used to interact with the SMART container via the calls described below. 
+Once this script loads, your app will have access to a javascript variable
+called `SMART`, which can be used to interact with the SMART container via the
+calls described below.
 
-##Interacting with the SMART Container via javascript
+## Interacting with the SMART Container via Javascript
 
-Inside your index.html, you'll need to be sure the SMART library has finished loading before you can use it. Just put your code inside a call to `SMART.ready()` as shown below. Then you're all set to try out the features below!
+Inside your `index.html` file, you'll need to be sure the SMART library has
+finished loading before you can use it. Just put your code inside a call to
+`SMART.ready()` as shown below. Then you're all set to try out the features
+below!
 
+The javascript SMART object contains some helpful context describing the
+current SMART container user and patient record:
 
-The javascript SMART object contains some helpful context describing the current SMART container user and patient record
+* `SMART.user` contains {id, full_name}
+* `SMART.record` contains  {id, full_name}
 
-* SMART.user  {id, full_name}
-* SMART.record  {id, full_name}
-    
-    
-    
-So, for example, to announce the patient's name, you could
-
-```javascript
-alert("The current patient is: " + SMART.record.full_name);
-```
-
-If you're looking to make some SMART REST calls, you may be interested in using REST authentication tokens, which you can access via
-
-* SMART.credentials.rest_token
-* SMART.credentials.rest_sec
-
-
-Or you can get the complete SMART OAuth header for your app via
-
-<ul><li>SMART.credentials.oauth_header </li></ul>
-
-##Subscribe to notifications from the SMART Container
-
-A container will notify an app when important events occur. Today the SMART API defines three Container-to-app notifications that your app can subscribe to
-
-* "backgrounded" -- the app has been hidden from view</li>
-* "foregrounded" -- the app has been restored to view</li>
-* "destroyed" -- the app is being shut down </li>
-
-    
-Your app can use the "on" directive to take action when a notification arrives. For example
+So, for example, to announce the patient's name, you could:
 
 {% highlight javascript %}
-SMART.on("foregrounded", function() {
-  refreshAllData();
-  alert("Thanks for looking again!");
-});
-{% endhighlight  %}
+  alert("The current patient is: " + SMART.record.full_name);
+{% endhighlight %}
 
-##Send notifications to the SMART Container
+If you're looking to make some SMART REST calls, you may be interested in using
+REST authentication tokens, which you can access with:
 
-Your app can also send notifications to the container. Today the SMART API defines only a single App-to-Container notification, which allows an app to request additional screen real estate when there's something big to display
+* `SMART.credentials.rest_token`
+* `SMART.credentials.rest_sec`
 
-{% highlight javascript %}
-SMART.notify_host("request_fullscreen");
-{% endhighlight  %}
+Or you can get the complete SMART OAuth header for your app with:
 
-Please keep in mind that these app->container and container-->app notifications are "fire and forget"; they don't provide a callback mechanism.
+* `SMART.credentials.oauth_header`
 
-##Making API Calls
+## Notifications To and From the SMART Container
 
-You can also use the SMART javascript object to make [any API call](http://wiki.chip.org/smart-project/index.php/Developers_Documentation:_REST_API_Reference) by calling its api_call method, which takes two parameters
+### Subscribe to Notifications from the SMART Container
 
+A container will notify an app when important events occur. Today the SMART API
+defines three Container-to-app notifications that your app can subscribe to:
 
-* A dictionary of
+* `backgrounded`: the app has been hidden from view
+* `foregrounded`: the app has been restored to view
+* `destroyed`: the app is being shut down
 
-<ol><li>method HTTP method as string ('GET', 'POST', 'PUT', or 'DELETE')</li>
-    <li>url URL to post to, relative to the SMART container's API base</li>
-    <li>contentType as string (defaults to 'application/x-www-form-urlencoded')</li>
-    <li>data as string (for data other than x-www-form-urlencoded data) or dictionary (for x-www-form-urlencoded data)</li>
-</ol>
-
-* A callback function of
-
-<ol><li>contentType string set according to the response header</li>
-<li>data string representation of data </li>
-</ol>
-
-For example, we could retrieve all medications for the in-context record by calling
+Your app can use the `on` directive to take action when a notification arrives:
 
 {% highlight javascript %}
- SMART.api_call({ 
-                   method: 'GET',
-                   url: "/records/" + SMART.record.id + "/medications/",
-                   data: {}
-                },
-
-            function(response) {
-                   alert('data received: ' + response.body);
-                });
+  SMART.on("foregrounded", function() {
+    refreshAllData();
+    alert("Thanks for looking again!");
+  });
 {% endhighlight  %}
 
-#Convenience wrappers around common API calls
+### Send Notifications to the SMART Container
 
-But you shouldn't need to use the raw .api_call method very often, because the SMART javascript object also provides convenience wrappers around common API calls. The functions below all take a callback function of one argument: the RDF graph that holds the response data, parsed from raw RDF/XML via [rdfquery](http://code.google.com/p/rdfquery/).
-
-## SMART.ALLERGIES_get
-
-GETs all allergies from the in-context record 
-
-##SMART.DEMOGRAPHICS_get
-
-GETs all demographics from the in-context record 
-
-##SMART.FULFILLMENTS_get
-
-GETs the fulfillments from the in-context record 
-
-##SMART.LAB_RESULTS_get
-
-GETs all labs from the in-context record 
-
-##SMART.MANIFESTS_get
-
-GETs all SMART App manifests for apps installed in this container 
-
-##SMART.MANIFEST_get
-
-GETs a sing SMART App manifest 
-
-##GETs a sing SMART App manifest 
-
-GETs all medications from the in-context record 
-
-##SMART.NOTES_get
-
-GETs all notse from the in-context record 
-
-##SMART.PROBLEMS_get
-
-GETs all problems from the in-context record 
-
-##SMART.VITAL_SIGNS_get
-
-GETs all problems from the in-context record </pre> 
-
-#Pulling this together with a quick example...
+Your app can also send notifications to the container. Today the SMART API
+defines only a single App-to-Container notification, which allows an app to
+request additional screen real estate when there's something big to display:
 
 {% highlight javascript %}
-SMART.ready(function() {
-  alert("Hello, " + SMART.user.full_name);
-});
+  SMART.notify_host("request_fullscreen");
 {% endhighlight  %}
+
+Please keep in mind that these app->container and container-->app notifications
+are "fire and forget"; they don't provide a callback mechanism.
+
+
+## Making API Calls
+
+You can also use the SMART javascript object to make any [API][] by calling its
+`api_call` method, which takes two parameters:
+
+1. a dictionary of:
+  * `method`: the HTTP method as string ('GET', 'POST', 'PUT', or 'DELETE')
+  * `url`: the URL to post to, relative to the SMART container's API base
+  * `contentType`: the contentType as string (default: 'application/x-www-form-urlencoded')
+  * `data`
+    * as string (for data other than x-www-form-urlencoded data) OR
+    * as a dictionary (for x-www-form-urlencoded data)
+2. a callback function of
+  * `contentType`: a string set according to the response header
+  * `data`: a string representation of data
+
+For example, we could retrieve all medications for the in-context record by
+calling:
+
+{% highlight javascript %}
+  SMART.api_call(
+    {
+      method: 'GET',
+      url: "/records/" + SMART.record.id + "/medications/",
+      data: {}
+    },
+    function(response) { alert('data received: ' + response.body); });
+{% endhighlight  %}
+
+## Convenience Wrappers Around Common API Calls
+
+But you shouldn't need to use the raw `.api_call` method very often, because the
+SMART javascript object also provides convenience wrappers around common API
+calls. The functions below all take a callback function of one argument: the RDF
+graph that holds the response data, parsed from raw RDF/XML via
+[rdfquery](http://code.google.com/p/rdfquery/).
+
+
+### SMART.ALLERGIES_get
+
+GETs all allergies from the in-context record
+
+### SMART.DEMOGRAPHICS_get
+
+GETs all demographics from the in-context record
+
+### SMART.FULFILLMENTS_get
+
+GETs the fulfillments from the in-context record
+
+### SMART.LAB_RESULTS_get
+
+GETs all labs from the in-context record
+
+### SMART.MANIFESTS_get
+
+GETs all SMART App manifests for apps installed in this container
+
+### SMART.MANIFEST_get
+
+GETs a sing SMART App manifest
+
+### GETs a sing SMART App manifest
+
+GETs all medications from the in-context record
+
+### SMART.NOTES_get
+
+GETs all notes from the in-context record
+
+### SMART.PROBLEMS_get
+
+GETs all problems from the in-context record
+
+### SMART.VITAL_SIGNS_get
+
+GETs all problems from the in-context record
+
+## A Quick Example
+
+{% highlight javascript %}
+  SMART.ready(function() {
+    alert("Hello, " + SMART.user.full_name);
+  });
+{% endhighlight  %}
+
+
+[API]: /reference/rest_api

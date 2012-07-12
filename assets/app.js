@@ -59,3 +59,5 @@ var Toc = {
 
     }
 }
+
+// expand all code blocks: $('pre').css('overflow-x', 'visible') or 'auto'

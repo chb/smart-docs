@@ -5,254 +5,255 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
-<div style="margin: 35px; border: 4px solid #ccc; padding: 15px;"> This is
-highly preliminary, not a commitment or final version of any particular API or
-data model. This is purely for internal collaboration and preview purposes.
+<div class="simple_box">
+  N.B. This is highly preliminary, not a commitment or final version of any
+  particular API or data model. This is purely for internal collaboration and
+  preview purposes.
 </div>
 
-<div id="toc"> </div>
+<div id="toc"></div>
 
-The calls below are all written with respect to the base URL /. But any given SMART container will place all API calls its own base URL, e.g. [http://sample_smart_emr.com/smart-base/](http://sample_smart_emr.com/smart-base/).
 
-Any individual item that can be retrieved via GET should have a fully-dereferenceable URI. To continue the example above, a medication in our sample EMR might have the URI [http://sample_smart_emr.com/smart-base/records/123456/medications/664373](http://sample_smart_emr.com/smart-base/records/123456/medications/664373). 
+The calls below are all written with respect to the base URL /. But any given
+SMART container will place all API calls its own base URL, e.g.
+`http://sample_smart_emr.com/smart-base/`
 
-#Changelog
+Any individual item that can be retrieved via `GET` should have a
+_fully-dereferenceable_ `URI`. To continue the example above, a medication in our
+sample EMR might have the `URI`:
+`http://sample_smart_emr.com/smart-base/records/123456/medications/664373`
 
-[Changes to API + Payloads](http://wiki.chip.org/smart-project/index.php?title=Developers_Documentation:_Changelog)
+# Changelog
 
-[Atom Feed](http://wiki.chip.org/smart-project/index.php?title=Developers_Documentation:_Changelog&action=history&feed=atom)
+[Changes to API + Payloads](../change_log/)
 
-#Overview
+[Atom Feed FIXME]
 
-The SMART API provides access to individual resources (medications, fulfillment events, prescription events, problems, etc.) and groups of these resources. 
 
-##Read-only API 
+# Overview
 
-Please note that for the time being, the SMART API remains read-only. We are excited about continuing to define our read/write API -- but we want make our early APIs as easy as possible for EMR and PHR vendors to expose. 
+The SMART API provides access to individual resources (medications, fulfillment
+events, prescription events, problems, etc.) and groups of these resources.
 
-##REST Design Principles
+
+## Read-only API
+
+Please note that for the time being, the SMART API remains read-only. We are
+excited about continuing to define our read/write API &mdash; but we want make our
+early APIs as easy as possible for EMR and PHR vendors to expose.
+
+
+## REST Design Principles
 
 In general you can interact with a:
 
-* <b>Group of resources using</b>
-* GET to retrieve a group of resources such as /medications/
-* POST to add a group of resources such as /problems. POSTing will add new resources every time it is called; in other words, POST is not idempotent. 
+* Group of resources using:
+  * `GET` to retrieve a group of resources such as `/medications/`
+  * `POST` to add a group of resources such as `/problems`. `POST`ing will add new
+    resources every time it is called; in other words, `POST` is not idempotent. 
+* Single resource using:
+  * `GET` to retrieve a single resource such as /medications/{medication_id}
+  * `DELETE` to remove a single resource
+  * `PUT` to add a single resource tagged with an `external_id`.
 
-* <b>Single resource using</b>
-* GET to retrieve a single resource such as /medications/{medication_id}
-* DELETE to remove a single resource
-* PUT to add a single resource tagged with an external_id. When a resource is PUT, it replaces any existing resource with the same external_id. In other words, PUT is idempotent. When PUTting a resource such as a medication that may contain child resources (e.g. fulfillment events), these child nodes must not be included in the graph. Rather, they must be separately attached with another API call once the parent medication is PUT and has received an internal SMART id. So, PUTting a medication with two fulfillments actually takes three API calls: one for the medication, and one for each (child) fulfillment event. 
+    When a resource is `PUT`, it replaces any existing resource with the same
+    `external_id`. In other words, `PUT` is idempotent. When `PUT`ting a resource
+    such as a medication that may contain child resources (e.g. fulfillment events),
+    these child nodes must not be included in the graph. Rather, they must be
+    separately attached with another API call once the parent medication is `PUT`
+    and has received an internal SMART id. So, `PUT`ting a medication with two
+    fulfillments actually takes three API calls: one for the medication, and one for
+    each (child) fulfillment event.
 
-#OWL Ontology File
 
-The API calls listed below, as well as the RDF/XML payloads, are also defined in a machine-readable OWL file. The OWL file has been used to generate the documentation below, as well as our client-side REST libraries and API Playground app. 
+# OWL Ontology File
 
-#Container Calls
+The API calls listed below, as well as the RDF/XML payloads, are also defined in
+a machine-readable OWL file. The OWL file has been used to generate the
+documentation below, as well as our client-side REST libraries and API
+Playground app.
 
-##App Manifest 
 
-RDF Payload description
+# Container Calls
 
-Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404. Note that {descriptor} can be an app ID like "got-statins@apps.smartplatforms.org" or an intent string like "view_medications".
+## App Manifest
 
-{% highlight javascript %}
- GET /apps/{descriptor}/manifest
-{% endhighlight  %}
+    GET /apps/{descriptor}/manifest
+
+Returns a JSON SMART UI app manifest for the app matching `{descriptor}`, or `404`.
+Note that `{descriptor}` can be an app ID like
+`"got-statins@apps.smartplatforms.org"` or an intent string like
+`"view_medications"`.
+
+    GET /apps/manifests/
 
 Returns a JSON list of all SMART UI app manifests installed on the container.
-{% highlight javascript %}
- GET /apps/manifests/
-{% endhighlight  %}
-##Capabilities
+FIXME LINK RDF Payload description
 
-RDF Payload description
 
-Get capabilities for a container
+## Capabilities
 
-{% highlight javascript %}
- GET /capabilities/
-{% endhighlight  %}
+    GET /capabilities/
 
-##Demographics
+Get capabilities for a container. FIXME LINK RDF Payload description
 
-RDF Payload description
 
-Get an RDF graph of sp:Demographics elements for all patients that match the query. Matching treats family_name and given_name as the *beginning* of a name. For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Birthday is an ISO8601 string like "2008-03-21"; gender is "male" or "female". Gender, birthday, zipcode, and medical_record_number must match exactly.
+## Demographics
 
-{% highlight javascript %}
- GET /records/search?given_name={given_name}&family_name={family_name}&zipcode={zipcode}&birthday={birthday}&gender={gender}&medical_record_number={medical_record_number}
-{% endhighlight  %}
+    GET /records/search?given_name={given_name}&family_name={family_name}&zipcode={zipcode}&birthday={birthday}&gender={gender}&medical_record_number={medical_record_number}
 
-##Ontology 
+Get an RDF graph of `sp:Demographics` elements for all patients that match the
+query. Matching treats `family_name` and `given_name` as the *beginning* of a
+name. For instance `given_name='J'` matches `/^J/i` and thus matches `Josh`.
+Birthday is an `ISO8601` string like `2008-03-21`; gender is `male` or `female`.
+`gender`, `birthday`, `zipcode`, and `medical_record_number` must match exactly.
+FIXME LINK RDF Payload description
 
-RDF Payload description
 
-Get the ontology used by a SMART container
-{% highlight javascript %}
- GET /ontology
-{% endhighlight  %}
-##User
+## Ontology
 
-RDF Payload description
+    GET /ontology
 
-Get users by name (or all users if blank)
+Get the ontology used by a SMART container. FIXME LINK RDF Payload description
 
-{% highlight javascript %}
- GET /users/search?given_name={given_name}&family_name={family_name}
-{% endhighlight  %}
 
-Get a single user by internal ID
+## User
 
-{% highlight javascript %}
- GET /users/{user_id}
-{% endhighlight  %}
+    GET /users/search?given_name={given_name}&family_name={family_name}
 
-#Record Calls
+Get users by name (or all users if blank).
 
-##Alert
+    GET /users/{user_id}
 
-RDF Payload description
-[edit] Allergy
+Get a single user by internal ID.
 
-RDF Payload description
+FIXME LINK RDF Payload description
 
-Get all allergies for a patient
-{% highlight javascript %}
- GET /records/{record_id}/allergies/
-{% endhighlight  %}
-Get allergies for a patient
-{% highlight javascript %}
- GET /records/{record_id}/allergies/{allergy_id}
-{% endhighlight  %}
-##Demographics
 
-RDF Payload description
+# Record Calls
 
-Get all demographics for a patient
-{% highlight javascript %}
- GET /records/{record_id}/demographics
-{% endhighlight  %}
+## Allergy
 
-##Encounter
+    GET /records/{record_id}/allergies/
 
-RDF Payload description
+Get all allergies for a patient.
 
-Get all encounters for a patient
-{% highlight javascript %}
- GET /records/{record_id}/encounters/
-{% endhighlight  %}
+    GET /records/{record_id}/allergies/{allergy_id}
 
-Get encounters for a patient
-{% highlight javascript %}
- GET /records/{record_id}/encounters/{encounter_id}
-{% endhighlight  %}
-##Fulfillment
+Get allergies for a patient.
 
-RDF Payload description
+FIXME LINK RDF Payload description
+  
+  
+## Demographics
 
-Get all fulfillments for a patient
-{% highlight javascript %}
- GET /records/{record_id}/fulfillments/
-{% endhighlight  %}
+    GET /records/{record_id}/demographics
 
-Get fulfillments for a patient
+Get all demographics for a patient.
 
-{% highlight javascript %}
- GET /records/{record_id}/fulfillments/{fulfillment_id}
-{% endhighlight  %}
+FIXME LINK RDF Payload description
 
-##Immunization
 
-RDF Payload description
+## Encounter
 
-Get all immunizations for a patient
+    GET /records/{record_id}/encounters/
 
-{% highlight javascript %}
- GET /records/{record_id}/immunizations/
-{% endhighlight  %}
+Get all encounters for a patient.
 
-Get one immunization for a patient
+GET /records/{record_id}/encounters/{encounter_id}
 
-{% highlight javascript %}
- GET /records/{record_id}/immunizations/{immunization_id}
-{% endhighlight  %}
+Get an encounter for a patient.
 
-##Lab Result
+FIXME LINK RDF Payload description
 
-RDF Payload description
 
-Get all lab results for a patient
+## Fulfillment
 
-{% highlight javascript %}
- GET /records/{record_id}/lab_results/
-{% endhighlight  %}
+    GET /records/{record_id}/fulfillments/
 
-Get lab results for a patient
+Get all fulfillments for a patient.
 
-{% highlight javascript %}
- GET /records/{record_id}/lab_results/{lab_result_id}
-{% endhighlight  %}
+    GET /records/{record_id}/fulfillments/{fulfillment_id}
 
-##Medical Record
+Get one fulfillment for a patient.
 
-RDF Payload description
-##Medication
+FIXME LINK RDF Payload description
 
-RDF Payload description
 
-Get medication for a patient
+## Immunization
 
-{% highlight javascript %}
- GET /records/{record_id}/medications/{medication_id}
-{% endhighlight  %}
+FIXME LINK RDF Payload description
 
-Get all medications for a patient
+    GET /records/{record_id}/immunizations/
 
-{% highlight javascript %}
- GET /records/{record_id}/medications/
-{% endhighlight  %}
+Get all immunizations for a patient.
 
-##Problem
+    GET /records/{record_id}/immunizations/{immunization_id}
 
-RDF Payload description
+Get one immunization for a patient.
 
-Get problems for a patient
 
-{% highlight javascript %}
- GET /records/{record_id}/problems/{problem_id}
-{% endhighlight  %}
+## Lab Result
+
+    GET /records/{record_id}/lab_results/
+
+Get all lab results for a patient.
+
+    GET /records/{record_id}/lab_results/{lab_result_id}
+
+Get one lab result for a patient.
+
+FIXME LINK RDF Payload description
+
+
+## Medical Record
+
+FIXME LINK RDF Payload description
+
+
+## Medication
+
+    GET /records/{record_id}/medications/
+
+Get all medications for a patient.
+
+    GET /records/{record_id}/medications/{medication_id}
+
+Get medication for a patient.
+
+FIXME LINK RDF Payload description
+
+
+## Problem
+
+    GET /records/{record_id}/problems/
 
 Get all problems for a patient
 
-{% highlight javascript %}
- GET /records/{record_id}/problems/
-{% endhighlight  %}
+    GET /records/{record_id}/problems/{problem_id}
 
-##User Preferences
+Get one problem for a patient.
 
-RDF Payload description
+FIXME LINK RDF Payload description
 
-Get user preferences for an app
 
-{% highlight javascript %}
- GET /accounts/{user_id}/apps/{smart_app_id}/preferences
-{% endhighlight  %}
+## User Preferences
 
-##VitalSigns
+    GET /accounts/{user_id}/apps/{smart_app_id}/preferences
 
-RDF Payload description
+Get user preferences for an app.
+
+FIXME LINK RDF Payload description
+
+
+## VitalSigns
+
+    GET /records/{record_id}/vital_signs/
 
 Get all vital signs for a patient
 
-{% highlight javascript %}
- GET /records/{record_id}/vital_signs/
-{% endhighlight  %}
+    GET /records/{record_id}/vital_signs/{vital_signs_id}
 
-Get vital signs for a patient
+Get one vital sign for a patient
 
-{% highlight javascript %}
- GET /records/{record_id}/vital_signs/{vital_signs_id}
-{% endhighlight  %}
-
-
-
+FIXME LINK RDF Payload description

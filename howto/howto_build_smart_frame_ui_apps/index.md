@@ -26,11 +26,9 @@ apps to display side-by-side:
 
 ## What can Frame UI Apps do?
 
-<ul>
-  <li>Present an HTML5 user-interface in-browser</li>
-  <li>Obtain a list of apps that are installed in this container</li>
-  <li>Launch multiple other UI Apps, incorporating them, for example, in a tiled grid </li>
-</ul>
+* Present an HTML5 user-interface in-browser
+* Obtain a list of apps that are installed in this container
+* Launch multiple other UI Apps, incorporating them, for example, in a tiled grid
 
 
 ## Declaring a Frame UI App
@@ -51,11 +49,9 @@ _apps_ that also have some capabilities of _containers_. In other words,
 they _are_ apps and they can also _run_ apps. To make this work, Frame UI
 apps need to include three javascript libraries:
 
-<ul>
-  <li>`smart-api-client.js` to act as an app</li>
-  <li>`smart-api-container.js` to launch other apps</li>
-  <li>`smart-frame-ui.js` glue between the two libraries above</li>
-</ul>
+* `smart-api-client.js` to act as an app
+* `smart-api-container.js` to launch other apps
+* `smart-frame-ui.js` glue between the two libraries above
 
 
 ## Example Frame UI App
@@ -84,7 +80,7 @@ to display:
        });
 {% endhighlight  %}
 
-This code fetches a list of manifests from the container `SMART.MANIFESTS\_get`,
+This code fetches a list of manifests from the container `SMART.MANIFESTS_get`,
 loops through them, and displays an icon for each app available. It then
 attaches a click handler to each icon: when clicked, we call
 SMART\_HOST.launch\_app to initiate the launch of this new app. We pass in the
@@ -94,9 +90,9 @@ user and record.
 
 ### Handling an app launch:
 
-When a user clicks on an app icon and SMART\_HOST.launch_app is called, the
+When a user clicks on an app icon and SMART_HOST.launch_app is called, the
 SMART libraries take care of most details of the app launch process. But the
-SMART libraries expect a little bit of \"help\" (in the form of a helper
+SMART libraries expect a little bit of "help" (in the form of a helper
 function) to determine which IFRAME element to use in positioning the
 newly-launched app. Since our Frame UI app will perform a pretty simple layout,
 this doesn't take much. We'll assume that three IFRAMES are available on the

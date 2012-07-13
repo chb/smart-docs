@@ -204,7 +204,7 @@ discretionary. I could have called it ?nourishment or ?xyzzy. The name only
 matters within the context of my query.
 
 But this query has a problem it returns the blank node
-\_stuff\_I\_ate\_this\_morning -- and not the actual foods! Let's fix it by
+_stuff_I_ate_this_morning -- and not the actual foods! Let's fix it by
 adding to our WHERE clause
 
     PREFIX food: <http://joshuamandel.com/my_food_vocabulary/>

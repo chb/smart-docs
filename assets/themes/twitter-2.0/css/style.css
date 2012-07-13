@@ -28,9 +28,9 @@ code, pre {
   font-family: Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Inconsolata, "Lucida Console", Monaco, "courier new", courier;
   padding: none;
   color: #555;
-  background-color: #fefefe;
+  font-size: 96% !important;
   border: none;
-  font-size: 14px;
+  border-radius: 0px;
 }
 
 em {
@@ -79,9 +79,17 @@ h3 { color: #5f5f5f; font-size: 14px; font-variant: small-caps; text-transform: 
   padding: 15px;
 }
 
-.highlight pre {
-  background-color: #f0f0f0 !important;
-}
-
 .table caption { font-style: italic; }
 
+.highlight pre {
+  border-left: 2px solid #ddd;
+  border-radius: 0px;
+  overflow-x: visible;
+}
+
+.nav-tabs {
+  font-variant: small-caps;
+  text-transform: uppercase;
+  font-size: smaller !important;
+  border-bottom: none !important;
+}

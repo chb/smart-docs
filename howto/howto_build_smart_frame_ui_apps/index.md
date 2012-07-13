@@ -10,8 +10,9 @@ includenav: smartnav.markdown
 
 # What is a Frame UI App?
 
-<a href="{{BASE_PATH}}/images/Frame-ui-screenshot.png" target="_blank">
-    <img src="{{BASE_PATH}}/images/Frame-ui-screenshot.png" style="float: right" width="200" height="80">
+<a href="{{BASE_PATH}}/images/frame_ui_screenshot.png" target="_blank">
+    <img src="{{BASE_PATH}}/images/frame_ui_screenshot.png"
+    style="width: 100%; display: block; margin: 20px auto;">
 </a>
 
 SMART v0.4 allows developers to build a kind of meta-app, or "Frame UI App" that

@@ -31,25 +31,25 @@ Regenstrief's CareWeb EHR, Children Hospital Boston's Indivo PCHR, or Harvard
 Medical School's i2b2 analytics engine. As other EMR vendors adopt the SMART
 platform, the app's reach increases _without changing a single line of code_.
 
-<a href="{{BASE_PATH}}/images/Demo.screenshot.smart-reference.png"
+<a href="{{BASE_PATH}}/images/smart_emr_screenshot.png"
    target="_blank">
-   <img src="{{BASE_PATH}}/images/Demo.screenshot.smart-reference.png"
-        style="width: 100%; height: auto; margin: 26px auto;">
+   <img src="{{BASE_PATH}}/images/smart_emr_screenshot.png"
+        style="width: 100%; height: auto; margin: 26px auto; display: block">
 
 </a>
 
-<a href="{{BASE_PATH}}/images/Demo.screenshot.smart-i2b2.png" target="_blank">
-  <img src="{{BASE_PATH}}/images/Demo.screenshot.smart-i2b2.png"
-       style="width: 90%; height: auto; margin: 26px auto; display: block">
+<a href="{{BASE_PATH}}/images/smart_i2b2_screenshot.png" target="_blank">
+  <img src="{{BASE_PATH}}/images/smart_i2b2_screenshot.png"
+       style="width: 100%; height: auto; margin: 26px auto; display: block">
 </a>
 
 
 ## Anatomy of a SMART App
 
-<a href="{{BASE_PATH}}/images/Anatomy-smart-app.png"
+<a href="{{BASE_PATH}}/images/smart_app_anatomy.png"
    target="_blank">
-   <img src="{{BASE_PATH}}/images/Anatomy-smart-app.png"
-        style="width: 100%; height: auto; margin: 30px auto">
+   <img src="{{BASE_PATH}}/images/smart_app_anatomy.png"
+        style="width: 100%; height: auto; margin: 26px auto; display: block">
 </a>
 
 A SMART app is a normal web application, embedded as a frame within the SMART

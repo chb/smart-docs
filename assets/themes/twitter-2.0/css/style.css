@@ -9,7 +9,7 @@
 body {
   font-family: Corbel, "Lucida Grande", "Helvetica Neue", Helvetica, Verdana, sans-serif !important;
   font-size: 15px;
-  line-height: 1.37;
+  line-height: 1.4;
   background: #f6f6f6;
   color: #666;
   text-rendering: optimizelegibility;
@@ -19,7 +19,7 @@ body {
 p {
   font-family: Corbel, "Lucida Grande", "Helvetica Neue", Helvetica, Verdana, sans-serif !important;
   font-size: 15px !important;
-  line-height: 1.37;
+  line-height: 1.4;
   margin-bottom: 16px;
 }
 

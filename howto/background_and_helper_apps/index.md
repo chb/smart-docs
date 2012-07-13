@@ -7,8 +7,9 @@ includenav: smartnav.markdown
 
 ## Background Apps
 
-<a href="{{BASE_PATH}}/images/Background-app.png" target="_blank">
-  <img src="{{BASE_PATH}}/images/Background-app.png">
+<a href="{{BASE_PATH}}/images/background_app.png" target="_blank">
+  <img src="{{BASE_PATH}}/images/background_app.png"
+       style="width: 100%; display: block; margin: 20px auto;">
 </a>
 
 So far, we have talked about SMART apps that access medical record data on

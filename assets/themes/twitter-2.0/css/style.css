@@ -23,11 +23,15 @@ p {
   margin-bottom: 16px;
 }
 
+/* uhh, do _not_ use pre-wrap! */
+pre { white-space: pre !important; }
+code { padding: none !important; }
+
 /* code can be in sentences and not be bright red and in an box!! */
 code, pre {
   font-family: Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Inconsolata, "Lucida Console", Monaco, "courier new", courier;
-  padding: none;
-  color: #555;
+  padding: none !important;
+  color: #666;
   font-size: 96% !important;
   border: none;
   border-radius: 0px;
@@ -84,7 +88,12 @@ h3 { color: #5f5f5f; font-size: 14px; font-variant: small-caps; text-transform: 
 .highlight pre {
   border-left: 2px solid #ddd;
   border-radius: 0px;
-  overflow-x: visible;
+}
+
+/* overflow  needs to be reset to "visible". Scrollbars can be
+   added by setting to "auto" after the fact */
+.tab-content {
+  overflow: visible !important;
 }
 
 .nav-tabs {

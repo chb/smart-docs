@@ -196,7 +196,7 @@ Reset the SMART server, regenerate sample data, and reload:
 This is normal -- nothing has gone wrong.
 
 IMPORTANT: if you've enabled apps that are part of the sample apps below, you
-should **wait** to run `reset.sh` until you've got the sample apps server
+should *wait* to run `reset.sh` until you've got the sample apps server
 running. The SMART Reference EMR attempts to download the apps' manifest files,
 and if they're not available over HTTP, `reset.sh` won't complete successfully.
 If you mistakenly run `reset.sh` before setting up the SMART Sample Apps, don't
@@ -287,7 +287,7 @@ And finally, the Sample Apps:
     cd /path/to/smart_sample_apps/
     nohup python manage.py runconcurrentserver 0.0.0.0:8001 --noreload > log.txt 2>&1 &
 
-**Note**: In the above examples the console output is suppressed. If you are having
+*Note*: In the above examples the console output is suppressed. If you are having
 trouble with the server, you may want to redirect the output to the console or a
 log file.
 

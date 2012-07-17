@@ -5,6 +5,23 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
+
+<div>
+  <ul id="format_tabs" class="nav nav-tabs" data-tabs="tabs" style="margin-bottom: 0px;">
+    <li style="width: 140px">Show examples in</li>
+    <li class="active"><a href="#rdf_xml" data-toggle="tab" data-target='.rdf_xml'>RDF/XML</a></li>
+    <li><a href="#n_triples" data-toggle="tab" data-target='.n_triples'>N-Triples</a></li>
+    <li><a href="#turtle" data-toggle="tab" data-target='.turtle'>Turtle</a></li>
+    <li><a href="#json_ld" data-toggle="tab" data-target='.json_ld'>JSON-LD</a></li>
+  </ul>
+
+  <!-- <ul id="overflow_tabs" class="nav nav-tabs" data-tabs="tabs">
+    <li style="width: 140px">Show Code blocks</li>
+    <li class="active"><a href="" data-toggle="tab" data-target=''>compact</a></li>
+    <li><a href="" data-toggle="tab" data-target=''>expanded</a></li>
+  </ul> -->
+</div>
+
 <div class='simple_box'>
   This is highly preliminary, not a commitment or final version of any
   particular API or data model. This is purely for internal collaboration and
@@ -146,8 +163,8141 @@ via the `sp:medication` predicate
 {% endhighlight  %}
 
 
-  - - -
+---
 
 
 # Clinical Statement Types
 
+
+## <span id='Alert'>`Alert`</span>
+
+`Alert` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+Alerts are a way for an application to generate a message (about a patient record) intended for a human recipient.
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+
+  <sp:Alert> 
+    <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+    <sp:notes>Patient with T2DM is overdue for HbA1c</sp:notes>
+    <sp:severity>
+      <sp:CodedValue>
+        <dcterms:title>Warning</dcterms:title>
+        <sp:code>
+          <spcode:AlertSeverity rdf:about="http://smartplatforms.org/terms/codes/AlertSeverity#warning">
+            <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+            <dcterms:title>Warning</dcterms:title> 
+            <sp:system>http://smartplatforms.org/terms/codes/AlertSeverity#</sp:system>
+            <dcterms:identifier>warning</dcterms:identifier> 
+          </spcode:AlertSeverity>   
+        </sp:code>
+      </sp:CodedValue>
+
+    </sp:severity> 
+  </sp:Alert>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc575 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc575 <http://purl.org/dc/terms/title> "Warning" .
+_:YJwSAGuc575 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/AlertSeverity#warning> .
+<http://smartplatforms.org/terms/codes/AlertSeverity#warning> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/AlertSeverity#" .
+<http://smartplatforms.org/terms/codes/AlertSeverity#warning> <http://purl.org/dc/terms/identifier> "warning" .
+<http://smartplatforms.org/terms/codes/AlertSeverity#warning> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AlertSeverity> .
+<http://smartplatforms.org/terms/codes/AlertSeverity#warning> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/AlertSeverity#warning> <http://purl.org/dc/terms/title> "Warning" .
+_:YJwSAGuc574 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc574 <http://smartplatforms.org/terms#severity> _:YJwSAGuc575 .
+_:YJwSAGuc574 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Alert> .
+_:YJwSAGuc574 <http://smartplatforms.org/terms#notes> "Patient with T2DM is overdue for HbA1c" .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://smartplatforms.org/terms/codes/AlertSeverity#warning> a sp:Code,
+        spcode:AlertSeverity;
+    dcterms:identifier "warning";
+    dcterms:title "Warning";
+    sp:system "http://smartplatforms.org/terms/codes/AlertSeverity#" .
+
+[] a sp:Alert;
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:notes "Patient with T2DM is overdue for HbA1c";
+    sp:severity [ a sp:CodedValue;
+            dcterms:title "Warning";
+            sp:code <http://smartplatforms.org/terms/codes/AlertSeverity#warning> ] .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@id": "http://smartplatforms.org/terms/codes/AlertSeverity#warning",
+      "@type": [
+        "spcode:AlertSeverity",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "warning",
+      "dcterms:title": "Warning",
+      "sp:system": "http://smartplatforms.org/terms/codes/AlertSeverity#"
+    },
+    {
+      "@type": "sp:Alert",
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:notes": "Patient with T2DM is overdue for HbA1c",
+      "sp:severity": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Warning",
+        "sp:code": {
+          "@id": "http://smartplatforms.org/terms/codes/AlertSeverity#warning"
+        }
+      }
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Alert</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+alertLevel
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#alertLevel</span>
+<br />
+[Coded Value (Coded Value) where code comes from [AlertLevel code](AlertLevel)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+notes
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#notes</span>
+<br />
+Message intended for a human recipient.	 &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Allergy'>`Allergy`</span>
+
+`Allergy` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+SMART provides structure for representing alleriges accoring to well-specified standard vocabularies. A patient with no known allergies produces an AllergyExclusion providing further details (see below). Otherwise, each allergy has a category (drug, food, etc.), a severity, a reaction, and a substance or class of substances. Since we want these allergies to work as inputs to automated computations, we require specific coding systems to represent substances and classes of substances.
+
+1. A drug allergy to a particular drug (e.g. cephalexin) must define a "substance" field with an ingredient-type RxNorm code (tty="IN"). (This is to avoid overly-specific statements like "the patient is allergic to a 500mg cephalexin oral tablet"!)
+
+2. A drug allergy to an entire class of drugs (e.g. sulfonamides) must define a "class" field with an NDFRT code for the drug class.
+
+3. A food or environmental allergy must define a "substance" field with a UNII code.
+
+For instance, below are two allergies: first, an allergy to the entire class of sulfonamides (note the sp:class predicate and the NDFRT code provided); then, an allergy to a single cephalosporin drug, cephalexin (note the sp:substance predicate and the RxNorm Ingredient CUI provided):
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+      <sp:Allergy>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:drugClassAllergen>
+      <sp:CodedValue>
+        <dcterms:title>Sulfonamide Antibacterial</dcterms:title>
+        <sp:code>
+        <spcode:NDFRT rdf:about="http://purl.bioontology.org/ontology/NDFRT/N0000175503">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Sulfonamide Antibacterial</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/NDFRT/</sp:system>
+          <dcterms:identifier>N0000175503</dcterms:identifier>
+        </spcode:NDFRT>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:drugClassAllergen>
+      <sp:severity>
+      <sp:CodedValue>
+          <dcterms:title>Severe</dcterms:title>
+        <sp:code>
+        <spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/24484000">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Severe</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>24484000</dcterms:identifier>
+        </spcode:AllergySeverity>
+        </sp:code>
+      </sp:CodedValue>
+      </sp:severity>
+      <sp:allergicReaction>
+      <sp:CodedValue>
+          <dcterms:title>Anaphylaxis</dcterms:title>
+        <sp:code>
+        <spcode:SNOMED rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/39579001">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Anaphylaxis</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>39579001</dcterms:identifier>
+        </spcode:SNOMED>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:allergicReaction>
+      <sp:category>
+      <sp:CodedValue>
+          <dcterms:title>Drug allergy</dcterms:title>   
+        <sp:code>
+        <spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/416098002">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Drug allergy</dcterms:title>   
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>416098002</dcterms:identifier>
+        </spcode:AllergyCategory>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:category>
+   </sp:Allergy>
+
+  <sp:Allergy>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:drugAllergen>
+      <sp:CodedValue>
+          <dcterms:title>Cephalexin</dcterms:title>
+        <sp:code>
+        <spcode:RxNorm_Ingredient rdf:about="http://purl.bioontology.org/ontology/RXNORM/2231">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Cephalexin</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/RXNORM/</sp:system>
+          <dcterms:identifier>2231</dcterms:identifier>
+        </spcode:RxNorm_Ingredient>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:drugAllergen>
+      <sp:severity>
+      <sp:CodedValue>
+          <dcterms:title>Severe</dcterms:title>
+        <sp:code>
+        <spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/24484000">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Severe</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>24484000</dcterms:identifier>
+        </spcode:AllergySeverity>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:severity>
+      <sp:allergicReaction>
+      <sp:CodedValue>
+          <dcterms:title>Anaphylaxis</dcterms:title>
+        <sp:code>
+        <spcode:SNOMED rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/39579001">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Anaphylaxis</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>39579001</dcterms:identifier>
+        </spcode:SNOMED>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:allergicReaction>
+      <sp:category>
+      <sp:CodedValue>
+          <dcterms:title>Drug allergy</dcterms:title>   
+        <sp:code>
+        <spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/416098002">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Drug allergy</dcterms:title>   
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>416098002</dcterms:identifier>
+        </spcode:AllergyCategory>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:category>
+   </sp:Allergy>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc597 <http://purl.org/dc/terms/title> "Drug allergy" .
+_:YJwSAGuc597 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc597 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> .
+_:YJwSAGuc588 <http://smartplatforms.org/terms#severity> _:YJwSAGuc590 .
+_:YJwSAGuc588 <http://smartplatforms.org/terms#allergicReaction> _:YJwSAGuc591 .
+_:YJwSAGuc588 <http://smartplatforms.org/terms#drugClassAllergen> _:YJwSAGuc589 .
+_:YJwSAGuc588 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc588 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Allergy> .
+_:YJwSAGuc588 <http://smartplatforms.org/terms#category> _:YJwSAGuc592 .
+_:YJwSAGuc589 <http://purl.org/dc/terms/title> "Sulfonamide Antibacterial" .
+_:YJwSAGuc589 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc589 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/NDFRT/N0000175503> .
+_:YJwSAGuc595 <http://purl.org/dc/terms/title> "Severe" .
+_:YJwSAGuc595 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc595 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> .
+_:YJwSAGuc592 <http://purl.org/dc/terms/title> "Drug allergy" .
+_:YJwSAGuc592 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc592 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> .
+_:YJwSAGuc596 <http://purl.org/dc/terms/title> "Anaphylaxis" .
+_:YJwSAGuc596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc596 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://purl.org/dc/terms/title> "Cephalexin" .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/RxNorm_Ingredient> .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://purl.org/dc/terms/identifier> "2231" .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/RXNORM/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://purl.org/dc/terms/title> "Severe" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergySeverity> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://purl.org/dc/terms/identifier> "24484000" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+_:YJwSAGuc590 <http://purl.org/dc/terms/title> "Severe" .
+_:YJwSAGuc590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc590 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> .
+_:YJwSAGuc593 <http://smartplatforms.org/terms#severity> _:YJwSAGuc595 .
+_:YJwSAGuc593 <http://smartplatforms.org/terms#allergicReaction> _:YJwSAGuc596 .
+_:YJwSAGuc593 <http://smartplatforms.org/terms#drugAllergen> _:YJwSAGuc594 .
+_:YJwSAGuc593 <http://smartplatforms.org/terms#category> _:YJwSAGuc597 .
+_:YJwSAGuc593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Allergy> .
+_:YJwSAGuc593 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc591 <http://purl.org/dc/terms/title> "Anaphylaxis" .
+_:YJwSAGuc591 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc591 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> .
+_:YJwSAGuc594 <http://purl.org/dc/terms/title> "Cephalexin" .
+_:YJwSAGuc594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc594 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/RXNORM/2231> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://purl.org/dc/terms/title> "Drug allergy" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergyCategory> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://purl.org/dc/terms/identifier> "416098002" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://purl.org/dc/terms/title> "Anaphylaxis" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/SNOMED> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://purl.org/dc/terms/identifier> "39579001" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://purl.org/dc/terms/title> "Sulfonamide Antibacterial" .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/NDFRT> .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://purl.org/dc/terms/identifier> "N0000175503" .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/NDFRT/" .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> a sp:Code,
+        spcode:NDFRT;
+    dcterms:identifier "N0000175503";
+    dcterms:title "Sulfonamide Antibacterial";
+    sp:system "http://purl.bioontology.org/ontology/NDFRT/" .
+
+<http://purl.bioontology.org/ontology/RXNORM/2231> a sp:Code,
+        spcode:RxNorm_Ingredient;
+    dcterms:identifier "2231";
+    dcterms:title "Cephalexin";
+    sp:system "http://purl.bioontology.org/ontology/RXNORM/" .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> a sp:Code,
+        spcode:AllergySeverity;
+    dcterms:identifier "24484000";
+    dcterms:title "Severe";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> a sp:Code,
+        spcode:SNOMED;
+    dcterms:identifier "39579001";
+    dcterms:title "Anaphylaxis";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> a sp:Code,
+        spcode:AllergyCategory;
+    dcterms:identifier "416098002";
+    dcterms:title "Drug allergy";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+[] a sp:Allergy;
+    sp:allergicReaction [ a sp:CodedValue;
+            dcterms:title "Anaphylaxis";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> ];
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:category [ a sp:CodedValue;
+            dcterms:title "Drug allergy";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> ];
+    sp:drugClassAllergen [ a sp:CodedValue;
+            dcterms:title "Sulfonamide Antibacterial";
+            sp:code <http://purl.bioontology.org/ontology/NDFRT/N0000175503> ];
+    sp:severity [ a sp:CodedValue;
+            dcterms:title "Severe";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> ] .
+
+[] a sp:Allergy;
+    sp:allergicReaction [ a sp:CodedValue;
+            dcterms:title "Anaphylaxis";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> ];
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:category [ a sp:CodedValue;
+            dcterms:title "Drug allergy";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> ];
+    sp:drugAllergen [ a sp:CodedValue;
+            dcterms:title "Cephalexin";
+            sp:code <http://purl.bioontology.org/ontology/RXNORM/2231> ];
+    sp:severity [ a sp:CodedValue;
+            dcterms:title "Severe";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> ] .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@id": "http://purl.bioontology.org/ontology/NDFRT/N0000175503",
+      "@type": [
+        "sp:Code",
+        "spcode:NDFRT"
+      ],
+      "dcterms:identifier": "N0000175503",
+      "dcterms:title": "Sulfonamide Antibacterial",
+      "sp:system": "http://purl.bioontology.org/ontology/NDFRT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/39579001",
+      "@type": [
+        "spcode:SNOMED",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "39579001",
+      "dcterms:title": "Anaphylaxis",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/416098002",
+      "@type": [
+        "sp:Code",
+        "spcode:AllergyCategory"
+      ],
+      "dcterms:identifier": "416098002",
+      "dcterms:title": "Drug allergy",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/RXNORM/2231",
+      "@type": [
+        "sp:Code",
+        "spcode:RxNorm_Ingredient"
+      ],
+      "dcterms:identifier": "2231",
+      "dcterms:title": "Cephalexin",
+      "sp:system": "http://purl.bioontology.org/ontology/RXNORM/"
+    },
+    {
+      "@type": "sp:Allergy",
+      "sp:allergicReaction": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Anaphylaxis",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/39579001"
+        }
+      },
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:category": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Drug allergy",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/416098002"
+        }
+      },
+      "sp:drugAllergen": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Cephalexin",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/RXNORM/2231"
+        }
+      },
+      "sp:severity": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Severe",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/24484000"
+        }
+      }
+    },
+    {
+      "@type": "sp:Allergy",
+      "sp:allergicReaction": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Anaphylaxis",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/39579001"
+        }
+      },
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:category": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Drug allergy",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/416098002"
+        }
+      },
+      "sp:drugClassAllergen": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Sulfonamide Antibacterial",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/NDFRT/N0000175503"
+        }
+      },
+      "sp:severity": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Severe",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/24484000"
+        }
+      }
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/24484000",
+      "@type": [
+        "spcode:AllergySeverity",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "24484000",
+      "dcterms:title": "Severe",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Allergy</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+allergicReaction
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#allergicReaction</span>
+<br />
+[Coded Value (Coded Value) where code comes from [SNOMED code](SNOMED)
+Reaction associated with an allergy.  Code drawn from SNOMED-CT.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+category
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#category</span>
+<br />
+[Coded Value (Coded Value) where code comes from [AllergyCategory code](AllergyCategory)
+Category of an allergy (food, drug, other substance).
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+drugAllergen
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#drugAllergen</span>
+<br />
+[Coded Value (Coded Value) where code comes from [RxNorm_Ingredient code](RxNorm_Ingredient)
+For drug allergies, an RxNorm Concept at the ingredient level (TTY='in').
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+drugClassAllergen
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#drugClassAllergen</span>
+<br />
+[Coded Value (Coded Value) where code comes from [NDFRT code](NDFRT)
+Class of allergen, e.g. Sulfonamides or ACE inhibitors.  RDF Code node with code drawn from
+            NDF-RT: http://purl.bioontology.org/ontology/NDFRT/{NDFRT_ID}
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+foodAllergen
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#foodAllergen</span>
+<br />
+[Coded Value (Coded Value) where code comes from [UNII code](UNII)
+Substance acting as a food or environmental allergen.  For environmental and food substance is a UNII:
+
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+severity
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#severity</span>
+<br />
+[Coded Value (Coded Value) where code comes from [AllergySeverity code](AllergySeverity)
+Severity of an allergy	
+</td>
+</tr>
+
+</table>
+
+## <span id='Allergy_Exclusion'>`Allergy Exclusion`</span>
+
+`Allergy Exclusion` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+
+		In clinical documentation, asserting that a patient has "No known allergies" is very different from not mentioning whether a patient has any allergies.  It's a positive affirmation that a question was asked and answered.  SMART models this information as an explicit clinical statement of the type AllergyExclusion.
+
+		While it might seem inelegant to expose explicit AllergyExclusion statements, this model is designed to combat a clinical modeling pattern where a single flag ("isNegated" or "negationIndicator" for example) negates the meaning of an entire statement.  Interpreting statements in a world where negation flags exist can be tricky.  Every app has to understand the subtlety of this flag -- and it's not always clear what it means to negate a statement with multiple parts.  For more information about exclusion statements in clinical modeling, see http://omowizard.wordpress.com/2011/06/06/unambiguous-data-positive-presence-positive-absence/.
+	
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+
+<sp:AllergyExclusion>
+  <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+  <sp:allergyExclusionName>
+      <sp:CodedValue>
+        <dcterms:title>No known allergies</dcterms:title>
+        <sp:code>
+          <spcode:AllergyExclusion rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/160244002">
+           <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+           <dcterms:title>No known allergies</dcterms:title>
+           <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+           <dcterms:identifier>160244002</dcterms:identifier>
+          </spcode:AllergyExclusion>
+        </sp:code>
+      </sp:CodedValue>
+  </sp:allergyExclusionName>
+</sp:AllergyExclusion>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergyExclusion> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://purl.org/dc/terms/title> "No known allergies" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://purl.org/dc/terms/identifier> "160244002" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+_:YJwSAGuc623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc623 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> .
+_:YJwSAGuc623 <http://purl.org/dc/terms/title> "No known allergies" .
+_:YJwSAGuc622 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#AllergyExclusion> .
+_:YJwSAGuc622 <http://smartplatforms.org/terms#allergyExclusionName> _:YJwSAGuc623 .
+_:YJwSAGuc622 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> a sp:Code,
+        spcode:AllergyExclusion;
+    dcterms:identifier "160244002";
+    dcterms:title "No known allergies";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+[] a sp:AllergyExclusion;
+    sp:allergyExclusionName [ a sp:CodedValue;
+            dcterms:title "No known allergies";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> ];
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591> .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/160244002",
+      "@type": [
+        "sp:Code",
+        "spcode:AllergyExclusion"
+      ],
+      "dcterms:identifier": "160244002",
+      "dcterms:title": "No known allergies",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@type": "sp:AllergyExclusion",
+      "sp:allergyExclusionName": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "No known allergies",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/160244002"
+        }
+      },
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      }
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#AllergyExclusion</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+allergyExclusionName
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#allergyExclusionName</span>
+<br />
+[Coded Value (Coded Value) where code comes from [AllergyExclusion code](AllergyExclusion)
+Nature of the allergy exclusion.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+</table>
+
+## <span id='Demographics'>`Demographics`</span>
+
+`Demographics` is a subtype of and inherits properties from:
+[Component](#Component), [Person](#Person), [SMART Statement](#SMART_Statement), [VCard](#VCard)
+
+
+In RDF/XML, patient Bob Odenkirk looks like this: 
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/">
+   <sp:Demographics>
+     <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+     <v:n>
+        <v:Name>
+            <v:given-name>Bob</v:given-name>
+            <v:additional-name>J</v:additional-name>
+            <v:family-name>Odenkirk</v:family-name>
+        </v:Name>
+     </v:n>
+
+     <v:adr>
+        <v:Address>
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Home" />
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Pref" />
+
+          <v:street-address>15 Main St</v:street-address>
+          <v:extended-address>Apt 2</v:extended-address>
+          <v:locality>Wonderland</v:locality>
+          <v:region>OZ</v:region>
+          <v:postal-code>54321</v:postal-code>
+          <v:country>USA</v:country>
+        </v:Address>
+     </v:adr>
+
+     <v:tel>
+        <v:Tel>
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Home" />
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Pref" />
+          <rdf:value>800-555-1212</rdf:value>
+        </v:Tel>
+     </v:tel>
+
+     <v:tel>
+        <v:Tel>
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Cell" />
+          <rdf:value>800-555-1515</rdf:value>
+        </v:Tel>
+     </v:tel>
+
+     <foaf:gender>male</foaf:gender>
+     <v:bday>1959-12-25</v:bday>
+     <v:email>bob.odenkirk@example.com</v:email>
+
+     <sp:medicalRecordNumber>
+       <sp:Code>
+        <dcterms:title>My Hospital Record 2304575</dcterms:title> 
+        <dcterms:identifier>2304575</dcterms:identifier> 
+        <sp:system>My Hospital Record</sp:system> 
+       </sp:Code>
+     </sp:medicalRecordNumber>
+
+   </sp:Demographics>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc638 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+_:YJwSAGuc638 <http://purl.org/dc/terms/title> "My Hospital Record 2304575" .
+_:YJwSAGuc638 <http://smartplatforms.org/terms#system> "My Hospital Record" .
+_:YJwSAGuc638 <http://purl.org/dc/terms/identifier> "2304575" .
+_:YJwSAGuc633 <http://www.w3.org/2006/vcard/ns#n> _:YJwSAGuc634 .
+_:YJwSAGuc633 <http://xmlns.com/foaf/0.1/gender> "male" .
+_:YJwSAGuc633 <http://www.w3.org/2006/vcard/ns#adr> _:YJwSAGuc635 .
+_:YJwSAGuc633 <http://www.w3.org/2006/vcard/ns#tel> _:YJwSAGuc637 .
+_:YJwSAGuc633 <http://www.w3.org/2006/vcard/ns#tel> _:YJwSAGuc636 .
+_:YJwSAGuc633 <http://www.w3.org/2006/vcard/ns#bday> "1959-12-25" .
+_:YJwSAGuc633 <http://www.w3.org/2006/vcard/ns#email> "bob.odenkirk@example.com" .
+_:YJwSAGuc633 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc633 <http://smartplatforms.org/terms#medicalRecordNumber> _:YJwSAGuc638 .
+_:YJwSAGuc633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Demographics> .
+_:YJwSAGuc637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Cell> .
+_:YJwSAGuc637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Tel> .
+_:YJwSAGuc637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "800-555-1515" .
+_:YJwSAGuc636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Tel> .
+_:YJwSAGuc636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Pref> .
+_:YJwSAGuc636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Home> .
+_:YJwSAGuc636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "800-555-1212" .
+_:YJwSAGuc635 <http://www.w3.org/2006/vcard/ns#region> "OZ" .
+_:YJwSAGuc635 <http://www.w3.org/2006/vcard/ns#extended-address> "Apt 2" .
+_:YJwSAGuc635 <http://www.w3.org/2006/vcard/ns#street-address> "15 Main St" .
+_:YJwSAGuc635 <http://www.w3.org/2006/vcard/ns#postal-code> "54321" .
+_:YJwSAGuc635 <http://www.w3.org/2006/vcard/ns#locality> "Wonderland" .
+_:YJwSAGuc635 <http://www.w3.org/2006/vcard/ns#country> "USA" .
+_:YJwSAGuc635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
+_:YJwSAGuc635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Pref> .
+_:YJwSAGuc635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Home> .
+_:YJwSAGuc634 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
+_:YJwSAGuc634 <http://www.w3.org/2006/vcard/ns#given-name> "Bob" .
+_:YJwSAGuc634 <http://www.w3.org/2006/vcard/ns#family-name> "Odenkirk" .
+_:YJwSAGuc634 <http://www.w3.org/2006/vcard/ns#additional-name> "J" .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+[] a sp:Demographics;
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:medicalRecordNumber [ a sp:Code;
+            dcterms:identifier "2304575";
+            dcterms:title "My Hospital Record 2304575";
+            sp:system "My Hospital Record" ];
+    vcard:adr [ a vcard:Address,
+                vcard:Home,
+                vcard:Pref;
+            vcard:country "USA";
+            vcard:extended-address "Apt 2";
+            vcard:locality "Wonderland";
+            vcard:postal-code "54321";
+            vcard:region "OZ";
+            vcard:street-address "15 Main St" ];
+    vcard:bday "1959-12-25";
+    vcard:email "bob.odenkirk@example.com";
+    vcard:n [ a vcard:Name;
+            vcard:additional-name "J";
+            vcard:family-name "Odenkirk";
+            vcard:given-name "Bob" ];
+    vcard:tel [ a vcard:Home,
+                vcard:Pref,
+                vcard:Tel;
+            rdf:value "800-555-1212" ],
+        [ a vcard:Cell,
+                vcard:Tel;
+            rdf:value "800-555-1515" ];
+    foaf:gender "male" .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@type": "sp:Demographics",
+  "foaf:gender": "male",
+  "sp:belongsTo": {
+    "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+  },
+  "sp:medicalRecordNumber": {
+    "@type": "sp:Code",
+    "dcterms:identifier": "2304575",
+    "dcterms:title": "My Hospital Record 2304575",
+    "sp:system": "My Hospital Record"
+  },
+  "vcard:adr": {
+    "@type": [
+      "vcard:Address",
+      "vcard:Pref",
+      "vcard:Home"
+    ],
+    "vcard:country": "USA",
+    "vcard:extended-address": "Apt 2",
+    "vcard:locality": "Wonderland",
+    "vcard:postal-code": "54321",
+    "vcard:region": "OZ",
+    "vcard:street-address": "15 Main St"
+  },
+  "vcard:bday": "1959-12-25",
+  "vcard:email": "bob.odenkirk@example.com",
+  "vcard:n": {
+    "@type": "vcard:Name",
+    "vcard:additional-name": "J",
+    "vcard:family-name": "Odenkirk",
+    "vcard:given-name": "Bob"
+  },
+  "vcard:tel": [
+    {
+      "@type": [
+        "vcard:Cell",
+        "vcard:Tel"
+      ],
+      "rdf:value": "800-555-1515"
+    },
+    {
+      "@type": [
+        "vcard:Tel",
+        "vcard:Pref",
+        "vcard:Home"
+      ],
+      "rdf:value": "800-555-1212"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Demographics</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+ethnicity
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#ethnicity</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+medicalRecordNumber
+<br />
+<span style='font-size: small; font-weight: normal'>Required: 1 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#medicalRecordNumber</span>
+<br />
+[Code (Code)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+preferredLanguage
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#preferredLanguage</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+race
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#race</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+bday
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#bday</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+email
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#email</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+n
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#n</span>
+<br />
+[Name (Name)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+tel
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#tel</span>
+<br />
+[Tel (Tel)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+gender
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://xmlns.com/foaf/0.1/gender</span>
+<br />
+A person's (administrative) gender.  This should consist of the string "male" or "female". &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Encounter'>`Encounter`</span>
+
+`Encounter` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+      <sp:Encounter>
+      <sp:belongsTo  rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:startDate>2010-05-12T04:00:00Z</sp:startDate>
+      <sp:endDate>2010-05-12T04:20:00Z</sp:endDate>
+      <sp:encounterType>
+       <sp:CodedValue>
+         <dcterms:title>Ambulatory encounter</dcterms:title>
+         <sp:code>
+          <spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#ambulatory">
+            <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+            <dcterms:title>Ambulatory encounter</dcterms:title>
+            <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+            <dcterms:identifier>ambulatory</dcterms:identifier> 
+          </spcode:EncounterType>       
+         </sp:code>
+       </sp:CodedValue>
+
+      </sp:encounterType>
+    </sp:Encounter>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc675 <http://smartplatforms.org/terms#encounterType> _:YJwSAGuc676 .
+_:YJwSAGuc675 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc675 <http://smartplatforms.org/terms#startDate> "2010-05-12T04:00:00Z" .
+_:YJwSAGuc675 <http://smartplatforms.org/terms#endDate> "2010-05-12T04:20:00Z" .
+_:YJwSAGuc675 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Encounter> .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/EncounterType#" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/identifier> "ambulatory" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/EncounterType> .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+_:YJwSAGuc676 <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+_:YJwSAGuc676 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> .
+_:YJwSAGuc676 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> a sp:Code,
+        spcode:EncounterType;
+    dcterms:identifier "ambulatory";
+    dcterms:title "Ambulatory encounter";
+    sp:system "http://smartplatforms.org/terms/codes/EncounterType#" .
+
+[] a sp:Encounter;
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:encounterType [ a sp:CodedValue;
+            dcterms:title "Ambulatory encounter";
+            sp:code <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> ];
+    sp:endDate "2010-05-12T04:20:00Z";
+    sp:startDate "2010-05-12T04:00:00Z" .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@type": "sp:Encounter",
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:encounterType": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Ambulatory encounter",
+        "sp:code": {
+          "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory"
+        }
+      },
+      "sp:endDate": "2010-05-12T04:20:00Z",
+      "sp:startDate": "2010-05-12T04:00:00Z"
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory",
+      "@type": [
+        "spcode:EncounterType",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "ambulatory",
+      "dcterms:title": "Ambulatory encounter",
+      "sp:system": "http://smartplatforms.org/terms/codes/EncounterType#"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Encounter</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+encounterType
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#encounterType</span>
+<br />
+[Coded Value (Coded Value) where code comes from [EncounterType code](EncounterType)
+Type of encounter
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+endDate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#endDate</span>
+<br />
+Date when encounter ended &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+facility
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#facility</span>
+<br />
+[Organization (Organization)
+Facility where encounter occurred
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+provider
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#provider</span>
+<br />
+[Provider (Provider)
+Provider responsible for encounter
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+startDate
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#startDate</span>
+<br />
+Date when encounter began &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Fulfillment'>`Fulfillment`</span>
+
+`Fulfillment` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#">
+ <sp:Fulfillment>
+    <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+    <dcterms:date>2010-05-12T04:00:00Z</dcterms:date>
+    <sp:medication rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591/medications/123" />
+    <sp:provider>
+      <sp:Provider>
+        <v:n>
+          <v:Name>
+           <v:given-name>Joshua</v:given-name>
+           <v:family-name>Mandel</v:family-name>
+          </v:Name>
+        </v:n>
+        <sp:npiNumber>5235235</sp:npiNumber>
+        <sp:deaNumber>325555555</sp:deaNumber>
+      </sp:Provider>
+    </sp:provider>
+    <sp:pharmacy>
+      <sp:Pharmacy>
+        <sp:ncpdpId>5235235</sp:ncpdpId>
+            <v:organization-name>CVS #588</v:organization-name>
+            <v:adr>
+              <v:Address>
+                <v:street-address>111 Lake Drive</v:street-address>
+                <v:locality>WonderCity</v:locality>
+                <v:postal-code>5555</v:postal-code>
+                <v:country-name>Australia</v:country-name>
+              </v:Address>
+              </v:adr>
+      </sp:Pharmacy>
+    </sp:pharmacy>
+    <sp:pbm>T00000000001011</sp:pbm>
+    <sp:quantityDispensed>
+      <sp:ValueAndUnit>
+        <sp:value>60</sp:value>
+        <sp:unit>{tablet}</sp:unit>
+      </sp:ValueAndUnit>
+    </sp:quantityDispensed>
+    <sp:dispenseDaysSupply>30</sp:dispenseDaysSupply>
+ </sp:Fulfillment>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc698 <http://smartplatforms.org/terms#dispenseDaysSupply> "30" .
+_:YJwSAGuc698 <http://smartplatforms.org/terms#provider> _:YJwSAGuc699 .
+_:YJwSAGuc698 <http://smartplatforms.org/terms#medication> <http://sandbox-api.smartplatforms.org/records/2169591/medications/123> .
+_:YJwSAGuc698 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Fulfillment> .
+_:YJwSAGuc698 <http://smartplatforms.org/terms#quantityDispensed> _:YJwSAGuc703 .
+_:YJwSAGuc698 <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
+_:YJwSAGuc698 <http://smartplatforms.org/terms#pbm> "T00000000001011" .
+_:YJwSAGuc698 <http://smartplatforms.org/terms#pharmacy> _:YJwSAGuc701 .
+_:YJwSAGuc698 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc699 <http://smartplatforms.org/terms#deaNumber> "325555555" .
+_:YJwSAGuc699 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
+_:YJwSAGuc699 <http://smartplatforms.org/terms#npiNumber> "5235235" .
+_:YJwSAGuc699 <http://www.w3.org/2006/vcard/ns#n> _:YJwSAGuc700 .
+_:YJwSAGuc702 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
+_:YJwSAGuc702 <http://www.w3.org/2006/vcard/ns#country-name> "Australia" .
+_:YJwSAGuc702 <http://www.w3.org/2006/vcard/ns#postal-code> "5555" .
+_:YJwSAGuc702 <http://www.w3.org/2006/vcard/ns#street-address> "111 Lake Drive" .
+_:YJwSAGuc702 <http://www.w3.org/2006/vcard/ns#locality> "WonderCity" .
+_:YJwSAGuc703 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc703 <http://smartplatforms.org/terms#unit> "{tablet}" .
+_:YJwSAGuc703 <http://smartplatforms.org/terms#value> "60" .
+_:YJwSAGuc701 <http://www.w3.org/2006/vcard/ns#organization-name> "CVS #588" .
+_:YJwSAGuc701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Pharmacy> .
+_:YJwSAGuc701 <http://www.w3.org/2006/vcard/ns#adr> _:YJwSAGuc702 .
+_:YJwSAGuc701 <http://smartplatforms.org/terms#ncpdpId> "5235235" .
+_:YJwSAGuc700 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
+_:YJwSAGuc700 <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
+_:YJwSAGuc700 <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+[] a sp:Fulfillment;
+    dcterms:date "2010-05-12T04:00:00Z";
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:dispenseDaysSupply "30";
+    sp:medication <http://sandbox-api.smartplatforms.org/records/2169591/medications/123>;
+    sp:pbm "T00000000001011";
+    sp:pharmacy [ a sp:Pharmacy;
+            sp:ncpdpId "5235235";
+            vcard:adr [ a vcard:Address;
+                    vcard:country-name "Australia";
+                    vcard:locality "WonderCity";
+                    vcard:postal-code "5555";
+                    vcard:street-address "111 Lake Drive" ];
+            vcard:organization-name "CVS #588" ];
+    sp:provider [ a sp:Provider;
+            sp:deaNumber "325555555";
+            sp:npiNumber "5235235";
+            vcard:n [ a vcard:Name;
+                    vcard:family-name "Mandel";
+                    vcard:given-name "Joshua" ] ];
+    sp:quantityDispensed [ a sp:ValueAndUnit;
+            sp:unit "{tablet}";
+            sp:value "60" ] .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@type": "sp:Fulfillment",
+  "dcterms:date": "2010-05-12T04:00:00Z",
+  "sp:belongsTo": {
+    "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+  },
+  "sp:dispenseDaysSupply": "30",
+  "sp:medication": {
+    "@id": "http://sandbox-api.smartplatforms.org/records/2169591/medications/123"
+  },
+  "sp:pbm": "T00000000001011",
+  "sp:pharmacy": {
+    "@type": "sp:Pharmacy",
+    "sp:ncpdpId": "5235235",
+    "vcard:adr": {
+      "@type": "vcard:Address",
+      "vcard:country-name": "Australia",
+      "vcard:locality": "WonderCity",
+      "vcard:postal-code": "5555",
+      "vcard:street-address": "111 Lake Drive"
+    },
+    "vcard:organization-name": "CVS #588"
+  },
+  "sp:provider": {
+    "@type": "sp:Provider",
+    "sp:deaNumber": "325555555",
+    "sp:npiNumber": "5235235",
+    "vcard:n": {
+      "@type": "vcard:Name",
+      "vcard:family-name": "Mandel",
+      "vcard:given-name": "Joshua"
+    }
+  },
+  "sp:quantityDispensed": {
+    "@type": "sp:ValueAndUnit",
+    "sp:unit": "{tablet}",
+    "sp:value": "60"
+  }
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Fulfillment</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+date
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/date</span>
+<br />
+Date on which medication was dispensed &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+dispenseDaysSupply
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#dispenseDaysSupply</span>
+<br />
+The number of days' supply dispensed &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+medication
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#medication</span>
+<br />
+[Medication (Medication)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+pbm
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#pbm</span>
+<br />
+The PBM providing payment for medications &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+pharmacy
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#pharmacy</span>
+<br />
+[Pharmacy (Pharmacy)
+The pharmacy that dispensed the medication
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+provider
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#provider</span>
+<br />
+[Provider (Provider)
+Clinician who prescribed the medication
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+quantityDispensed
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#quantityDispensed</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+Quantity dispensed, with units
+</td>
+</tr>
+
+</table>
+
+## <span id='Immunization'>`Immunization`</span>
+
+`Immunization` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+Explicit record of an immunization given or not given to the patient.
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+
+   <sp:Immunization>
+	  <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+	  <dcterms:date>2010-05-12T04:00:00Z</dcterms:date>
+
+	  <sp:administrationStatus>
+	    <sp:CodedValue>
+	      <dcterms:title>Not Administered</dcterms:title>
+	      <sp:code>
+	        <sp:Code rdf:about="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered">
+	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus" /> 
+	          <dcterms:title>Not Administered</dcterms:title>
+	          <sp:system>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#</sp:system>
+	          <dcterms:identifier>notAdministered</dcterms:identifier>
+	        </sp:Code>
+	      </sp:code>
+	    </sp:CodedValue>
+	  </sp:administrationStatus>
+
+	  <sp:refusalReason>
+	    <sp:CodedValue>
+	      <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
+	      <sp:code>
+	        <sp:Code rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy">
+	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason" /> 
+	          <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
+	          <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+	          <dcterms:identifier>allergy</dcterms:identifier>
+	        </sp:Code>
+	      </sp:code>
+	    </sp:CodedValue>
+	  </sp:refusalReason>
+
+	  <sp:productName>
+	    <sp:CodedValue>
+	      <dcterms:title>typhoid, oral</dcterms:title>
+	      <sp:code>
+	        <sp:Code rdf:about="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25">
+	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationProduct" /> 
+	          <dcterms:title>typhoid, oral</dcterms:title>
+	          <sp:system>http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#</sp:system>
+	          <dcterms:identifier>25</dcterms:identifier>
+	        </sp:Code>
+	      </sp:code>
+	    </sp:CodedValue>
+	  </sp:productName>
+
+	  <sp:productClass>
+	    <sp:CodedValue>
+	      <dcterms:title>TYPHOID</dcterms:title>
+	      <sp:code>
+	        <sp:Code rdf:about="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID">
+	          <rdf:type rdf:resource="http://smartplatforms.org/terms/codes/ImmunizationClass" /> 
+	          <dcterms:title>TYPHOID</dcterms:title>
+	          <sp:system>http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#</sp:system>
+	          <dcterms:identifier>TYPHOID</dcterms:identifier>
+	        </sp:Code>
+	      </sp:code>
+	    </sp:CodedValue>
+	  </sp:productClass>
+
+   </sp:Immunization>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc734 <http://purl.org/dc/terms/title> "typhoid, oral" .
+_:YJwSAGuc734 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc734 <http://smartplatforms.org/terms#code> <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> .
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://purl.org/dc/terms/title> "Allergy to vaccine/vaccine components, or allergy to eggs" .
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#" .
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason> .
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://purl.org/dc/terms/identifier> "allergy" .
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://purl.org/dc/terms/title> "Not Administered" .
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#" .
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus> .
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://purl.org/dc/terms/identifier> "notAdministered" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://purl.org/dc/terms/title> "typhoid, oral" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://smartplatforms.org/terms#system> "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationProduct> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://purl.org/dc/terms/identifier> "25" .
+_:YJwSAGuc735 <http://purl.org/dc/terms/title> "TYPHOID" .
+_:YJwSAGuc735 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc735 <http://smartplatforms.org/terms#code> <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> .
+_:YJwSAGuc733 <http://purl.org/dc/terms/title> "Allergy to vaccine/vaccine components, or allergy to eggs" .
+_:YJwSAGuc733 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc733 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> .
+_:YJwSAGuc731 <http://smartplatforms.org/terms#productClass> _:YJwSAGuc735 .
+_:YJwSAGuc731 <http://smartplatforms.org/terms#productName> _:YJwSAGuc734 .
+_:YJwSAGuc731 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc731 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Immunization> .
+_:YJwSAGuc731 <http://smartplatforms.org/terms#refusalReason> _:YJwSAGuc733 .
+_:YJwSAGuc731 <http://smartplatforms.org/terms#administrationStatus> _:YJwSAGuc732 .
+_:YJwSAGuc731 <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
+_:YJwSAGuc732 <http://purl.org/dc/terms/title> "Not Administered" .
+_:YJwSAGuc732 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc732 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://purl.org/dc/terms/title> "TYPHOID" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://smartplatforms.org/terms#system> "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationClass> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://purl.org/dc/terms/identifier> "TYPHOID" .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> a sp:Code,
+        spcode:ImmunizationAdministrationStatus;
+    dcterms:identifier "notAdministered";
+    dcterms:title "Not Administered";
+    sp:system "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#" .
+
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> a sp:Code,
+        spcode:ImmunizationRefusalReason;
+    dcterms:identifier "allergy";
+    dcterms:title "Allergy to vaccine/vaccine components, or allergy to eggs";
+    sp:system "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#" .
+
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> a sp:Code,
+        spcode:ImmunizationProduct;
+    dcterms:identifier "25";
+    dcterms:title "typhoid, oral";
+    sp:system "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
+
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> a sp:Code,
+        spcode:ImmunizationClass;
+    dcterms:identifier "TYPHOID";
+    dcterms:title "TYPHOID";
+    sp:system "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
+
+[] a sp:Immunization;
+    dcterms:date "2010-05-12T04:00:00Z";
+    sp:administrationStatus [ a sp:CodedValue;
+            dcterms:title "Not Administered";
+            sp:code <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> ];
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:productClass [ a sp:CodedValue;
+            dcterms:title "TYPHOID";
+            sp:code <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> ];
+    sp:productName [ a sp:CodedValue;
+            dcterms:title "typhoid, oral";
+            sp:code <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> ];
+    sp:refusalReason [ a sp:CodedValue;
+            dcterms:title "Allergy to vaccine/vaccine components, or allergy to eggs";
+            sp:code <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> ] .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@id": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy",
+      "@type": [
+        "sp:Code",
+        "spcode:ImmunizationRefusalReason"
+      ],
+      "dcterms:identifier": "allergy",
+      "dcterms:title": "Allergy to vaccine/vaccine components, or allergy to eggs",
+      "sp:system": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#"
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered",
+      "@type": [
+        "sp:Code",
+        "spcode:ImmunizationAdministrationStatus"
+      ],
+      "dcterms:identifier": "notAdministered",
+      "dcterms:title": "Not Administered",
+      "sp:system": "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#"
+    },
+    {
+      "@type": "sp:Immunization",
+      "dcterms:date": "2010-05-12T04:00:00Z",
+      "sp:administrationStatus": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Not Administered",
+        "sp:code": {
+          "@id": "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered"
+        }
+      },
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:productClass": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "TYPHOID",
+        "sp:code": {
+          "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID"
+        }
+      },
+      "sp:productName": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "typhoid, oral",
+        "sp:code": {
+          "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25"
+        }
+      },
+      "sp:refusalReason": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Allergy to vaccine/vaccine components, or allergy to eggs",
+        "sp:code": {
+          "@id": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy"
+        }
+      }
+    },
+    {
+      "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID",
+      "@type": [
+        "sp:Code",
+        "spcode:ImmunizationClass"
+      ],
+      "dcterms:identifier": "TYPHOID",
+      "dcterms:title": "TYPHOID",
+      "sp:system": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#"
+    },
+    {
+      "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25",
+      "@type": [
+        "sp:Code",
+        "spcode:ImmunizationProduct"
+      ],
+      "dcterms:identifier": "25",
+      "dcterms:title": "typhoid, oral",
+      "sp:system": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Immunization</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+date
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/date</span>
+<br />
+ISO8601 formatted date and time when the medication was administered or offered. &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+administrationStatus
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#administrationStatus</span>
+<br />
+[Coded Value (Coded Value) where code comes from [ImmunizationAdministrationStatus code](ImmunizationAdministrationStatus)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+productClass
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#productClass</span>
+<br />
+[Coded Value (Coded Value) where code comes from [ImmunizationClass code](ImmunizationClass)
+coded name for the product class, according to the set of codes in the CDC Vaccine Groups controlled vocabulary.  For example, a class code meaning 'Rotavirus' would be assigned for a specific product such as Rotarix product.
+
+
+productClass codes are drawn from the CDC's Vaccine Group vocabulary.  URIs are of the form:
+http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#code
+
+
+For example, the URI for the ROTAVIRUS code is:
+http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#ROTAVIRUS
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+productName
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#productName</span>
+<br />
+[Coded Value (Coded Value) where code comes from [ImmunizationProduct code](ImmunizationProduct)
+coded describing the product according to the set of codes in the CVX for immunizationa controlled vocabulary.  CVX Code URIs should be represented as:
+
+http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#{code}
+
+
+For exampe, the code for "adenovirus, type 4" is 54, and its URI is:
+
+http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#54
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+refusalReason
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#refusalReason</span>
+<br />
+[Coded Value (Coded Value) where code comes from [ImmunizationRefusalReason code](ImmunizationRefusalReason)
+If the administration status indicates this vaccination was refused, refusalReason is a CodedValue whose code is belongs to a controlled vocabulary of refusal reasons.
+</td>
+</tr>
+
+</table>
+
+## <span id='Lab_Result'>`Lab Result`</span>
+
+`Lab Result` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+In RDF/XML, a serum sodium result looks like this: 
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:sp="http://smartplatforms.org/terms#" 
+  xmlns:dcterms="http://purl.org/dc/terms/" 
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/">
+
+  <sp:LabResult>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:labName>
+    <sp:CodedValue>
+            <dcterms:title>Serum sodium</dcterms:title>
+            <sp:provenance>
+              <sp:CodeProvenance>
+                <sp:sourceCode rdf:resource="http://my.local.coding.system/01234" />
+                <dcterms:title>Random blood sodium level</dcterms:title>
+                <sp:translationFidelity rdf:resource="http://smartplatforms.org/terms/codes/TranslationFidelity#verified"/>
+              </sp:CodeProvenance>
+            </sp:provenance>
+        <sp:code>
+              <spcode:LOINC rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Serum sodium</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>2951-2</dcterms:identifier> 
+              </spcode:LOINC>    
+          </sp:code>
+        </sp:CodedValue>
+      </sp:labName>
+
+      <sp:quantitativeResult>
+        <sp:QuantitativeResult>
+          <sp:valueAndUnit>
+            <sp:ValueAndUnit>
+              <sp:value>140</sp:value>
+              <sp:unit>mEq/L</sp:unit>
+            </sp:ValueAndUnit>
+          </sp:valueAndUnit>
+          <sp:normalRange>
+             <sp:ValueRange>
+              <sp:minimum>
+                <sp:ValueAndUnit>
+                   <sp:value>135</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:minimum>
+              <sp:maximum>
+                <sp:ValueAndUnit>
+                   <sp:value>145</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:maximum>
+             </sp:ValueRange>
+          </sp:normalRange>
+          <sp:nonCriticalRange>
+             <sp:ValueRange>
+              <sp:minimum>
+                <sp:ValueAndUnit>
+                   <sp:value>120</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:minimum>
+              <sp:maximum>
+                <sp:ValueAndUnit>
+                   <sp:value>155</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:maximum>
+             </sp:ValueRange>
+          </sp:nonCriticalRange>
+        </sp:QuantitativeResult>
+      </sp:quantitativeResult>
+      <sp:accessionNumber>AC09205823577</sp:accessionNumber>
+      <sp:labStatus>
+    <sp:CodedValue>
+      <dcterms:title>Final results: complete and verified</dcterms:title>      
+      <sp:code>
+        <spcode:LabResultStatus rdf:about="http://smartplatforms.org/terms/codes/LabStatus#final">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Final</dcterms:title>      
+          <sp:system>http://smartplatforms.org/terms/codes/LabStatus#</sp:system>
+          <dcterms:identifier>final</dcterms:identifier> 
+        </spcode:LabResultStatus>    
+      </sp:code>
+    </sp:CodedValue>
+
+      </sp:labStatus>
+      <sp:abnormalInterpretation>
+    <sp:CodedValue>
+      <dcterms:title>Normal</dcterms:title>      
+      <sp:code>
+        <spcode:LabResultInterpretation rdf:about="http://smartplatforms.org/terms/codes/LabResultInterpretation#normal">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Normal</dcterms:title>      
+          <sp:system>http://smartplatforms.org/terms/codes/LabResultInterpretation#</sp:system>
+          <dcterms:identifier>normal</dcterms:identifier> 
+        </spcode:LabResultInterpretation>    
+      </sp:code>
+    </sp:CodedValue>
+
+      </sp:abnormalInterpretation>
+      <sp:specimenCollected>
+        <sp:Attribution>
+          <sp:startDate>2010-12-27T17:00:00</sp:startDate>
+        </sp:Attribution>
+      </sp:specimenCollected>
+      <sp:notes>Blood sample appears to have hemolyzed</sp:notes>
+   </sp:LabResult>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc759 <http://purl.org/dc/terms/title> "Random blood sodium level" .
+_:YJwSAGuc759 <http://smartplatforms.org/terms#sourceCode> <http://my.local.coding.system/01234> .
+_:YJwSAGuc759 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodeProvenance> .
+_:YJwSAGuc759 <http://smartplatforms.org/terms#translationFidelity> <http://smartplatforms.org/terms/codes/TranslationFidelity#verified> .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://purl.org/dc/terms/title> "Final" .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LabResultStatus> .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/LabStatus#" .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://purl.org/dc/terms/identifier> "final" .
+_:YJwSAGuc768 <http://purl.org/dc/terms/title> "Final results: complete and verified" .
+_:YJwSAGuc768 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc768 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/LabStatus#final> .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://purl.org/dc/terms/title> "Serum sodium" .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LOINC> .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://purl.org/dc/terms/identifier> "2951-2" .
+_:YJwSAGuc767 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:YJwSAGuc767 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc767 <http://smartplatforms.org/terms#value> "155" .
+_:YJwSAGuc766 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:YJwSAGuc766 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc766 <http://smartplatforms.org/terms#value> "120" .
+_:YJwSAGuc761 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:YJwSAGuc761 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc761 <http://smartplatforms.org/terms#value> "140" .
+_:YJwSAGuc762 <http://smartplatforms.org/terms#maximum> _:YJwSAGuc764 .
+_:YJwSAGuc762 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueRange> .
+_:YJwSAGuc762 <http://smartplatforms.org/terms#minimum> _:YJwSAGuc763 .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://purl.org/dc/terms/title> "Normal" .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LabResultInterpretation> .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/LabResultInterpretation#" .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://purl.org/dc/terms/identifier> "normal" .
+_:YJwSAGuc764 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:YJwSAGuc764 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc764 <http://smartplatforms.org/terms#value> "145" .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#labStatus> _:YJwSAGuc768 .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#labName> _:YJwSAGuc758 .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#accessionNumber> "AC09205823577" .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#abnormalInterpretation> _:YJwSAGuc769 .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#quantitativeResult> _:YJwSAGuc760 .
+_:YJwSAGuc757 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#LabResult> .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#specimenCollected> _:YJwSAGuc770 .
+_:YJwSAGuc757 <http://smartplatforms.org/terms#notes> "Blood sample appears to have hemolyzed" .
+_:YJwSAGuc758 <http://purl.org/dc/terms/title> "Serum sodium" .
+_:YJwSAGuc758 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc758 <http://smartplatforms.org/terms#provenance> _:YJwSAGuc759 .
+_:YJwSAGuc758 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/2951-2> .
+_:YJwSAGuc770 <http://smartplatforms.org/terms#startDate> "2010-12-27T17:00:00" .
+_:YJwSAGuc770 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Attribution> .
+_:YJwSAGuc760 <http://smartplatforms.org/terms#normalRange> _:YJwSAGuc762 .
+_:YJwSAGuc760 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#QuantitativeResult> .
+_:YJwSAGuc760 <http://smartplatforms.org/terms#nonCriticalRange> _:YJwSAGuc765 .
+_:YJwSAGuc760 <http://smartplatforms.org/terms#valueAndUnit> _:YJwSAGuc761 .
+_:YJwSAGuc763 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:YJwSAGuc763 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc763 <http://smartplatforms.org/terms#value> "135" .
+_:YJwSAGuc765 <http://smartplatforms.org/terms#maximum> _:YJwSAGuc767 .
+_:YJwSAGuc765 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueRange> .
+_:YJwSAGuc765 <http://smartplatforms.org/terms#minimum> _:YJwSAGuc766 .
+_:YJwSAGuc769 <http://purl.org/dc/terms/title> "Normal" .
+_:YJwSAGuc769 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc769 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://purl.bioontology.org/ontology/LNC/2951-2> a sp:Code,
+        spcode:LOINC;
+    dcterms:identifier "2951-2";
+    dcterms:title "Serum sodium";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> a sp:Code,
+        spcode:LabResultInterpretation;
+    dcterms:identifier "normal";
+    dcterms:title "Normal";
+    sp:system "http://smartplatforms.org/terms/codes/LabResultInterpretation#" .
+
+<http://smartplatforms.org/terms/codes/LabStatus#final> a sp:Code,
+        spcode:LabResultStatus;
+    dcterms:identifier "final";
+    dcterms:title "Final";
+    sp:system "http://smartplatforms.org/terms/codes/LabStatus#" .
+
+[] a sp:LabResult;
+    sp:abnormalInterpretation [ a sp:CodedValue;
+            dcterms:title "Normal";
+            sp:code <http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> ];
+    sp:accessionNumber "AC09205823577";
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:labName [ a sp:CodedValue;
+            dcterms:title "Serum sodium";
+            sp:code <http://purl.bioontology.org/ontology/LNC/2951-2>;
+            sp:provenance [ a sp:CodeProvenance;
+                    dcterms:title "Random blood sodium level";
+                    sp:sourceCode <http://my.local.coding.system/01234>;
+                    sp:translationFidelity <http://smartplatforms.org/terms/codes/TranslationFidelity#verified> ] ];
+    sp:labStatus [ a sp:CodedValue;
+            dcterms:title "Final results: complete and verified";
+            sp:code <http://smartplatforms.org/terms/codes/LabStatus#final> ];
+    sp:notes "Blood sample appears to have hemolyzed";
+    sp:quantitativeResult [ a sp:QuantitativeResult;
+            sp:nonCriticalRange [ a sp:ValueRange;
+                    sp:maximum [ a sp:ValueAndUnit;
+                            sp:unit "mEq/L";
+                            sp:value "155" ];
+                    sp:minimum [ a sp:ValueAndUnit;
+                            sp:unit "mEq/L";
+                            sp:value "120" ] ];
+            sp:normalRange [ a sp:ValueRange;
+                    sp:maximum [ a sp:ValueAndUnit;
+                            sp:unit "mEq/L";
+                            sp:value "145" ];
+                    sp:minimum [ a sp:ValueAndUnit;
+                            sp:unit "mEq/L";
+                            sp:value "135" ] ];
+            sp:valueAndUnit [ a sp:ValueAndUnit;
+                    sp:unit "mEq/L";
+                    sp:value "140" ] ];
+    sp:specimenCollected [ a sp:Attribution;
+            sp:startDate "2010-12-27T17:00:00" ] .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@type": "sp:LabResult",
+      "sp:abnormalInterpretation": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Normal",
+        "sp:code": {
+          "@id": "http://smartplatforms.org/terms/codes/LabResultInterpretation#normal"
+        }
+      },
+      "sp:accessionNumber": "AC09205823577",
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:labName": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Serum sodium",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/LNC/2951-2"
+        },
+        "sp:provenance": {
+          "@type": "sp:CodeProvenance",
+          "dcterms:title": "Random blood sodium level",
+          "sp:sourceCode": {
+            "@id": "http://my.local.coding.system/01234"
+          },
+          "sp:translationFidelity": {
+            "@id": "http://smartplatforms.org/terms/codes/TranslationFidelity#verified"
+          }
+        }
+      },
+      "sp:labStatus": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Final results: complete and verified",
+        "sp:code": {
+          "@id": "http://smartplatforms.org/terms/codes/LabStatus#final"
+        }
+      },
+      "sp:notes": "Blood sample appears to have hemolyzed",
+      "sp:quantitativeResult": {
+        "@type": "sp:QuantitativeResult",
+        "sp:nonCriticalRange": {
+          "@type": "sp:ValueRange",
+          "sp:maximum": {
+            "@type": "sp:ValueAndUnit",
+            "sp:unit": "mEq/L",
+            "sp:value": "155"
+          },
+          "sp:minimum": {
+            "@type": "sp:ValueAndUnit",
+            "sp:unit": "mEq/L",
+            "sp:value": "120"
+          }
+        },
+        "sp:normalRange": {
+          "@type": "sp:ValueRange",
+          "sp:maximum": {
+            "@type": "sp:ValueAndUnit",
+            "sp:unit": "mEq/L",
+            "sp:value": "145"
+          },
+          "sp:minimum": {
+            "@type": "sp:ValueAndUnit",
+            "sp:unit": "mEq/L",
+            "sp:value": "135"
+          }
+        },
+        "sp:valueAndUnit": {
+          "@type": "sp:ValueAndUnit",
+          "sp:unit": "mEq/L",
+          "sp:value": "140"
+        }
+      },
+      "sp:specimenCollected": {
+        "@type": "sp:Attribution",
+        "sp:startDate": "2010-12-27T17:00:00"
+      }
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/LabStatus#final",
+      "@type": [
+        "spcode:LabResultStatus",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "final",
+      "dcterms:title": "Final",
+      "sp:system": "http://smartplatforms.org/terms/codes/LabStatus#"
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/LabResultInterpretation#normal",
+      "@type": [
+        "spcode:LabResultInterpretation",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "normal",
+      "dcterms:title": "Normal",
+      "sp:system": "http://smartplatforms.org/terms/codes/LabResultInterpretation#"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/2951-2",
+      "@type": [
+        "spcode:LOINC",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "2951-2",
+      "dcterms:title": "Serum sodium",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#LabResult</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+abnormalInterpretation
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#abnormalInterpretation</span>
+<br />
+[Coded Value (Coded Value) where code comes from [LabResultInterpretation code](LabResultInterpretation)
+Abnormal interpretation status for this lab
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+accessionNumber
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#accessionNumber</span>
+<br />
+External accession number for a lab result &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+labName
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#labName</span>
+<br />
+[Coded Value (Coded Value) where code comes from [LOINC code](LOINC)
+LOINC Coded Value for result (e.g. with title='Serum Sodium' and code=http://purl.bioontology.org/ontology/LNC/2951-2
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+labStatus
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#labStatus</span>
+<br />
+[Coded Value (Coded Value) where code comes from [LabResultStatus code](LabResultStatus)
+Workflow status of this lab value (e.g. "finalized")
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+narrativeResult
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#narrativeResult</span>
+<br />
+[NarrativeResult (NarrativeResult)
+Narrative result, if any.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+notes
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#notes</span>
+<br />
+Free-text notes about this result. &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+quantitativeResult
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#quantitativeResult</span>
+<br />
+[QuantitativeResult (QuantitativeResult)
+Qualitative result, if any
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+specimenCollected
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#specimenCollected</span>
+<br />
+[Attribution (Attribution)
+Attribution specificying when specimen was collected and who was responsible for them.
+</td>
+</tr>
+
+</table>
+
+## <span id='Medical_Record'>`Medical Record`</span>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#MedicalRecord</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+hasStatement
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#hasStatement</span>
+<br />
+[SMART Statement (SMART Statement)
+</td>
+</tr>
+
+</table>
+
+## <span id='Medication'>`Medication`</span>
+
+`Medication` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+The SMART medication type expresses a medication at the level of an RxNorm branded or generic drug concept (e.g. "20 mg generic loratadine" or "20 mg brand-name claritin").  A medication may include start- and end-dates, as well as a free-text "instructions" field describing how it should be taken.  When the instructions are simple enough, we also represent them in a structured way, aiming to capture about 80% of outpatient medication dosing schedules.  A very simple semantic structure defines how much to take ("quantity") and how often ("frequency"). Both quantity and frequency are defined with expressions from [http://www.unitsofmeasure.org The Unified Code for Units of Measure], or UCUM (see below).
+
+In RDF/XML notation, a patient on oral amitriptyline 50 mg tablets might provide the following RDF sub-graph as part of a medication list:
+    
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"
+  xmlns:dcterms="http://purl.org/dc/terms/">
+   <sp:Medication>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:drugName>
+      <sp:CodedValue>
+          <dcterms:title>AMITRIPTYLINE HCL 50 MG TAB</dcterms:title>
+          <sp:code>
+            <spcode:RxNorm_Semantic rdf:about="http://purl.bioontology.org/ontology/RXNORM/856845">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+              <sp:system>http://purl.bioontology.org/ontology/RXNORM/</sp:system>
+              <dcterms:identifier>856845</dcterms:identifier>
+              <dcterms:title>AMITRIPTYLINE HCL 50 MG TAB</dcterms:title>
+            </spcode:RxNorm_Semantic>    
+          </sp:code>
+      </sp:CodedValue>
+      </sp:drugName>
+      <sp:startDate>2007-03-14</sp:startDate>
+      <sp:endDate>2007-08-14</sp:endDate>
+      <sp:instructions>Take two tablets twice daily as needed for pain</sp:instructions>
+      <sp:quantity>
+          <sp:ValueAndUnit>
+            <sp:value>2</sp:value>
+            <sp:unit>{tablet}</sp:unit>
+          </sp:ValueAndUnit>
+      </sp:quantity>
+      <sp:frequency>
+          <sp:ValueAndUnit>
+            <sp:value>2</sp:value>
+            <sp:unit>/d</sp:unit>
+          </sp:ValueAndUnit>
+      </sp:frequency>
+   </sp:Medication>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc806 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc806 <http://smartplatforms.org/terms#unit> "{tablet}" .
+_:YJwSAGuc806 <http://smartplatforms.org/terms#value> "2" .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/RxNorm_Semantic> .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://purl.org/dc/terms/title> "AMITRIPTYLINE HCL 50 MG TAB" .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/RXNORM/" .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://purl.org/dc/terms/identifier> "856845" .
+_:YJwSAGuc805 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc805 <http://purl.org/dc/terms/title> "AMITRIPTYLINE HCL 50 MG TAB" .
+_:YJwSAGuc805 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/RXNORM/856845> .
+_:YJwSAGuc807 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:YJwSAGuc807 <http://smartplatforms.org/terms#unit> "/d" .
+_:YJwSAGuc807 <http://smartplatforms.org/terms#value> "2" .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#instructions> "Take two tablets twice daily as needed for pain" .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#endDate> "2007-08-14" .
+_:YJwSAGuc804 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Medication> .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#startDate> "2007-03-14" .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#frequency> _:YJwSAGuc807 .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#drugName> _:YJwSAGuc805 .
+_:YJwSAGuc804 <http://smartplatforms.org/terms#quantity> _:YJwSAGuc806 .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://purl.bioontology.org/ontology/RXNORM/856845> a sp:Code,
+        spcode:RxNorm_Semantic;
+    dcterms:identifier "856845";
+    dcterms:title "AMITRIPTYLINE HCL 50 MG TAB";
+    sp:system "http://purl.bioontology.org/ontology/RXNORM/" .
+
+[] a sp:Medication;
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:drugName [ a sp:CodedValue;
+            dcterms:title "AMITRIPTYLINE HCL 50 MG TAB";
+            sp:code <http://purl.bioontology.org/ontology/RXNORM/856845> ];
+    sp:endDate "2007-08-14";
+    sp:frequency [ a sp:ValueAndUnit;
+            sp:unit "/d";
+            sp:value "2" ];
+    sp:instructions "Take two tablets twice daily as needed for pain";
+    sp:quantity [ a sp:ValueAndUnit;
+            sp:unit "{tablet}";
+            sp:value "2" ];
+    sp:startDate "2007-03-14" .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@id": "http://purl.bioontology.org/ontology/RXNORM/856845",
+      "@type": [
+        "spcode:RxNorm_Semantic",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "856845",
+      "dcterms:title": "AMITRIPTYLINE HCL 50 MG TAB",
+      "sp:system": "http://purl.bioontology.org/ontology/RXNORM/"
+    },
+    {
+      "@type": "sp:Medication",
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:drugName": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "AMITRIPTYLINE HCL 50 MG TAB",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/RXNORM/856845"
+        }
+      },
+      "sp:endDate": "2007-08-14",
+      "sp:frequency": {
+        "@type": "sp:ValueAndUnit",
+        "sp:unit": "/d",
+        "sp:value": "2"
+      },
+      "sp:instructions": "Take two tablets twice daily as needed for pain",
+      "sp:quantity": {
+        "@type": "sp:ValueAndUnit",
+        "sp:unit": "{tablet}",
+        "sp:value": "2"
+      },
+      "sp:startDate": "2007-03-14"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Medication</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+drugName
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#drugName</span>
+<br />
+[Coded Value (Coded Value) where code comes from [RxNorm_Semantic code](RxNorm_Semantic)
+RxNorm Concept ID for this medication.  Note: the RxNorm CUI for a SMART medication should have one of the following four types:  SCD (Semantic Clinical Drug), SBD (Semantic Branded Drug), GPCK (Generic Pack), BPCK (Brand Name Pack).   Restricting medications to these four RxNorm types can also be expressed as "TTY in ('SCD','SBD','GPCK','BPCK')" -- and this restriction ensures that SMART medications use concepts of the appropriate specificity:  concepts like "650 mg generic acetaminophen" or "20 mg brand-name Claritin".   Please note that SMART medications do not include explicit structured data about pill strength, concentration, or precise ingredients.  These data are available through RxNorm, including through the free [http://rxnav.nlm.nih.gov/RxNormRestAPI.html RxNav REST API].  Code element with code drawn from http://purl.bioontology.org/ontology/RXNORM/{rxcui}
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+endDate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#endDate</span>
+<br />
+
+	When the patient stopped taking a medication 
+	 &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+frequency
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#frequency</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+
+For a medication with a simple dosing schedule, record how often to take the medication.  The frequency should be recorded as a [http://www.unitsofmeasure.org/ UCUM] expression.  In this case we use a restricted subset of UCUM that defines the following units only:  "/d" (per day), "/wk" (per week), "/mo" (per month).  For example, you would express the concept of "TID" or "three times daily" as a ValueAndUnit node with quantity="3", unit="/d". 
+	
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+fulfillment
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#fulfillment</span>
+<br />
+[Fulfillment (Fulfillment)
+
+A single fulfillment event (that is, the medication was dispensed to the patient by a pharmacy)
+	
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+instructions
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#instructions</span>
+<br />
+
+	Clinician-supplied instructions from the prescription signature 
+	 &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+provenance
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#provenance</span>
+<br />
+[Code (Code) where code comes from [MedicationProvenance code](MedicationProvenance)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+quantity
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#quantity</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+
+For a medication with a simple dosing schedule, record the amount to take with each administration.  The quantity should be recorded as a [http://www.unitsofmeasure.org/ UCUM] expression.  For some medications, the appoporiate quantity will be a volume (e.g. "5 mL" of an oral acetaminophen solution).  For other medications, the appropriate quantity may be expresses in terms of tablets, puffs, or actuations:  UCUM call these "non-units", and they should be written inside of curly braces to avoid confusion.  For example, you would express "1 tablet" as a ValueAndUnit node with quantity="1", unit="{tablet}".
+	
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+startDate
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#startDate</span>
+<br />
+
+	When the patient started taking a medication 
+	 &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Problem'>`Problem`</span>
+
+`Problem` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+    <sp:Problem>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:problemName>
+      <sp:CodedValue>
+          <dcterms:title>Backache (finding)</dcterms:title>      
+          <sp:code>
+            <spcode:SNOMED rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/161891005">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+              <dcterms:title>Backache (finding)</dcterms:title>      
+              <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+              <dcterms:identifier>161891005</dcterms:identifier> 
+            </spcode:SNOMED>
+          </sp:code>
+      </sp:CodedValue>
+      </sp:problemName>
+      <sp:startDate>2007-06-12</sp:startDate>
+      <sp:endDate>2007-08-01</sp:endDate>
+    </sp:Problem>
+</rdf:RDF>
+
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+_:YJwSAGuc839 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/161891005> .
+_:YJwSAGuc839 <http://purl.org/dc/terms/title> "Backache (finding)" .
+_:YJwSAGuc839 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc838 <http://smartplatforms.org/terms#problemName> _:YJwSAGuc839 .
+_:YJwSAGuc838 <http://smartplatforms.org/terms#startDate> "2007-06-12" .
+_:YJwSAGuc838 <http://smartplatforms.org/terms#endDate> "2007-08-01" .
+_:YJwSAGuc838 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Problem> .
+_:YJwSAGuc838 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://purl.org/dc/terms/identifier> "161891005" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://purl.org/dc/terms/title> "Backache (finding)" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/SNOMED> .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> a sp:Code,
+        spcode:SNOMED;
+    dcterms:identifier "161891005";
+    dcterms:title "Backache (finding)";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+[] a sp:Problem;
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:endDate "2007-08-01";
+    sp:problemName [ a sp:CodedValue;
+            dcterms:title "Backache (finding)";
+            sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/161891005> ];
+    sp:startDate "2007-06-12" .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@type": "sp:Problem",
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:endDate": "2007-08-01",
+      "sp:problemName": {
+        "@type": "sp:CodedValue",
+        "dcterms:title": "Backache (finding)",
+        "sp:code": {
+          "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/161891005"
+        }
+      },
+      "sp:startDate": "2007-06-12"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/161891005",
+      "@type": [
+        "sp:Code",
+        "spcode:SNOMED"
+      ],
+      "dcterms:identifier": "161891005",
+      "dcterms:title": "Backache (finding)",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Problem</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+endDate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#endDate</span>
+<br />
+Date on which problem resolved, if any. &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+notes
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#notes</span>
+<br />
+Additional notes about the problem &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+problemName
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#problemName</span>
+<br />
+[Coded Value (Coded Value) where code comes from [SNOMED code](SNOMED)
+SNOMED-CT Concept for the problem
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+startDate
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#startDate</span>
+<br />
+Date on which problem began &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='SMART_Statement'>`SMART Statement`</span>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Statement</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+</table>
+
+## <span id='User_Preferences'>`User Preferences`</span>
+
+
+## <span id='VitalSigns'>`VitalSigns`</span>
+
+`VitalSigns` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
+
+
+<div class='rdf_xml active'>{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+
+  <sp:VitalSigns>
+    <sp:belongsTo  rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+    <dcterms:date>2010-05-12T04:00:00Z</dcterms:date>
+    <sp:encounter>
+      <sp:Encounter>
+        <sp:belongsTo  rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+        <sp:startDate>2010-05-12T04:00:00Z</sp:startDate>
+        <sp:endDate>2010-05-12T04:20:00Z</sp:endDate>
+        <sp:encounterType>
+          <sp:CodedValue>
+            <dcterms:title>Ambulatory encounter</dcterms:title>
+            <sp:code>
+              <spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#ambulatory">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Ambulatory encounter</dcterms:title>
+                <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+                <dcterms:identifier>ambulatory</dcterms:identifier> 
+              </spcode:EncounterType>       
+            </sp:code>
+          </sp:CodedValue>
+        </sp:encounterType>
+      </sp:Encounter>    
+    </sp:encounter>
+    <sp:height>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Body height</dcterms:title>
+            <sp:code>
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8302-2">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Body height</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>8302-2</dcterms:identifier> 
+              </spcode:VitalSign>    
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>1.80</sp:value>
+        <sp:unit>m</sp:unit>
+      </sp:VitalSign>
+    </sp:height>
+    <sp:weight>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Body weight</dcterms:title>
+            <sp:code>    
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/3141-9">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Body weight</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>3141-9</dcterms:identifier> 
+              </spcode:VitalSign>
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>70.8</sp:value>
+        <sp:unit>kg</sp:unit>
+      </sp:VitalSign>
+    </sp:weight>
+    <sp:bodyMassIndex>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Body mass index</dcterms:title>
+            <sp:code>
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/39156-5">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Body mass index</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>39156-5</dcterms:identifier> 
+              </spcode:VitalSign>        
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>21.8</sp:value>
+        <sp:unit>kg/m2</sp:unit>
+      </sp:VitalSign>
+    </sp:bodyMassIndex>
+    <sp:respiratoryRate>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Respiration rate</dcterms:title>
+            <sp:code>
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/9279-1">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Respiration rate</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>9279-1</dcterms:identifier> 
+              </spcode:VitalSign>    
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>16</sp:value>
+        <sp:unit>{breaths}/min</sp:unit>
+      </sp:VitalSign>
+    </sp:respiratoryRate>
+    <sp:heartRate>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Heart rate</dcterms:title>
+            <sp:code>
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8867-4">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Heart rate</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>8867-4</dcterms:identifier> 
+              </spcode:VitalSign>
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>70</sp:value>
+        <sp:unit>{beats}/min</sp:unit>
+      </sp:VitalSign>
+    </sp:heartRate>
+    <sp:oxygenSaturation>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Oxygen saturation</dcterms:title>
+            <sp:code>
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/2710-2">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Oxygen saturation</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>2710-2</dcterms:identifier> 
+              </spcode:VitalSign>        
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>99</sp:value>
+        <sp:unit>%{HemoglobinSaturation}</sp:unit>
+      </sp:VitalSign>
+    </sp:oxygenSaturation>
+    <sp:temperature>
+      <sp:VitalSign>
+        <sp:vitalName>
+          <sp:CodedValue>
+            <dcterms:title>Body temperature</dcterms:title>
+            <sp:code>
+              <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8310-5">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Body temperature</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>8310-5</dcterms:identifier> 
+              </spcode:VitalSign>        
+            </sp:code>
+          </sp:CodedValue>
+        </sp:vitalName>
+        <sp:value>37</sp:value>
+        <sp:unit>Cel</sp:unit>
+      </sp:VitalSign>
+    </sp:temperature>
+    <sp:bloodPressure>
+      <sp:BloodPressure>
+        <sp:systolic>
+          <sp:VitalSign>
+            <sp:vitalName>
+              <sp:CodedValue>
+                <dcterms:title>Intravascular systolic</dcterms:title>
+                <sp:code>
+                  <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8480-6">
+                    <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                    <dcterms:title>Intravascular systolic</dcterms:title>
+                    <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                    <dcterms:identifier>8480-6</dcterms:identifier> 
+                  </spcode:VitalSign>        
+                </sp:code>
+              </sp:CodedValue>
+            </sp:vitalName>
+            <sp:value>132</sp:value>
+            <sp:unit>mm[Hg]</sp:unit>
+          </sp:VitalSign>
+        </sp:systolic>
+        <sp:diastolic>
+          <sp:VitalSign>
+            <sp:vitalName>
+              <sp:CodedValue>
+                <dcterms:title>Intravascular diastolic</dcterms:title>
+                <sp:code>
+                  <spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8462-4">
+                    <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                    <dcterms:title>Intravascular diastolic</dcterms:title>
+                    <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                    <dcterms:identifier>8462-4</dcterms:identifier> 
+                  </spcode:VitalSign>        
+                </sp:code>
+              </sp:CodedValue>
+            </sp:vitalName>
+            <sp:value>82</sp:value>
+            <sp:unit>mm[Hg]</sp:unit>
+          </sp:VitalSign>
+        </sp:diastolic>
+        <sp:bodyPosition>
+          <sp:CodedValue>
+            <dcterms:title>Sitting</dcterms:title>
+            <sp:code>
+              <spcode:BloodPressureBodyPosition rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/33586001" >
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Sitting</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+                <dcterms:identifier>33586001</dcterms:identifier> 
+              </spcode:BloodPressureBodyPosition>        
+            </sp:code>
+          </sp:CodedValue>
+        </sp:bodyPosition>
+        <sp:bodySite>
+          <sp:CodedValue>
+            <dcterms:title>Right arm</dcterms:title>
+            <sp:code>
+              <spcode:BloodPressureBodySite rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/368209003" >
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Right arm</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+                <dcterms:identifier>368209003</dcterms:identifier> 
+              </spcode:BloodPressureBodySite>        
+            </sp:code>
+          </sp:CodedValue>
+        </sp:bodySite>
+      </sp:BloodPressure>
+    </sp:bloodPressure>
+  </sp:VitalSigns>
+</rdf:RDF>
+{% endhighlight %}</div>
+
+<div class='n_triples'>{% highlight xml %}
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://purl.org/dc/terms/identifier> "8462-4" .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://purl.org/dc/terms/title> "Intravascular diastolic" .
+_:YJwSAGuc867 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc867 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/3141-9> .
+_:YJwSAGuc867 <http://purl.org/dc/terms/title> "Body weight" .
+_:YJwSAGuc883 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc883 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/33586001> .
+_:YJwSAGuc883 <http://purl.org/dc/terms/title> "Sitting" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/identifier> "ambulatory" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/EncounterType#" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/EncounterType> .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+_:YJwSAGuc870 <http://smartplatforms.org/terms#unit> "{breaths}/min" .
+_:YJwSAGuc870 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc870 <http://smartplatforms.org/terms#value> "16" .
+_:YJwSAGuc870 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc871 .
+<http://purl.bioontology.org/ontology/LNC/39156-5> <http://purl.org/dc/terms/identifier> "39156-5" .
+<http://purl.bioontology.org/ontology/LNC/39156-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/39156-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/39156-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/39156-5> <http://purl.org/dc/terms/title> "Body mass index" .
+_:YJwSAGuc871 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc871 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/9279-1> .
+_:YJwSAGuc871 <http://purl.org/dc/terms/title> "Respiration rate" .
+_:YJwSAGuc869 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc869 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/39156-5> .
+_:YJwSAGuc869 <http://purl.org/dc/terms/title> "Body mass index" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://purl.org/dc/terms/identifier> "368209003" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/BloodPressureBodySite> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://purl.org/dc/terms/title> "Right arm" .
+_:YJwSAGuc881 <http://smartplatforms.org/terms#unit> "mm[Hg]" .
+_:YJwSAGuc881 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc881 <http://smartplatforms.org/terms#value> "82" .
+_:YJwSAGuc881 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc882 .
+_:YJwSAGuc868 <http://smartplatforms.org/terms#unit> "kg/m2" .
+_:YJwSAGuc868 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc868 <http://smartplatforms.org/terms#value> "21.8" .
+_:YJwSAGuc868 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc869 .
+_:YJwSAGuc875 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc875 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/2710-2> .
+_:YJwSAGuc875 <http://purl.org/dc/terms/title> "Oxygen saturation" .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://purl.org/dc/terms/identifier> "2710-2" .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://purl.org/dc/terms/title> "Oxygen saturation" .
+_:YJwSAGuc873 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc873 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8867-4> .
+_:YJwSAGuc873 <http://purl.org/dc/terms/title> "Heart rate" .
+_:YJwSAGuc877 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc877 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8310-5> .
+_:YJwSAGuc877 <http://purl.org/dc/terms/title> "Body temperature" .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://purl.org/dc/terms/identifier> "9279-1" .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://purl.org/dc/terms/title> "Respiration rate" .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://purl.org/dc/terms/identifier> "8867-4" .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://purl.org/dc/terms/title> "Heart rate" .
+_:YJwSAGuc863 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc863 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> .
+_:YJwSAGuc863 <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+_:YJwSAGuc864 <http://smartplatforms.org/terms#unit> "m" .
+_:YJwSAGuc864 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc864 <http://smartplatforms.org/terms#value> "1.80" .
+_:YJwSAGuc864 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc865 .
+_:YJwSAGuc880 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc880 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8480-6> .
+_:YJwSAGuc880 <http://purl.org/dc/terms/title> "Intravascular systolic" .
+_:YJwSAGuc878 <http://smartplatforms.org/terms#diastolic> _:YJwSAGuc881 .
+_:YJwSAGuc878 <http://smartplatforms.org/terms#bodyPosition> _:YJwSAGuc883 .
+_:YJwSAGuc878 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#BloodPressure> .
+_:YJwSAGuc878 <http://smartplatforms.org/terms#bodySite> _:YJwSAGuc884 .
+_:YJwSAGuc878 <http://smartplatforms.org/terms#systolic> _:YJwSAGuc879 .
+_:YJwSAGuc884 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc884 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/368209003> .
+_:YJwSAGuc884 <http://purl.org/dc/terms/title> "Right arm" .
+_:YJwSAGuc876 <http://smartplatforms.org/terms#unit> "Cel" .
+_:YJwSAGuc876 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc876 <http://smartplatforms.org/terms#value> "37" .
+_:YJwSAGuc876 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc877 .
+_:YJwSAGuc865 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc865 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8302-2> .
+_:YJwSAGuc865 <http://purl.org/dc/terms/title> "Body height" .
+_:YJwSAGuc882 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:YJwSAGuc882 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8462-4> .
+_:YJwSAGuc882 <http://purl.org/dc/terms/title> "Intravascular diastolic" .
+_:YJwSAGuc866 <http://smartplatforms.org/terms#unit> "kg" .
+_:YJwSAGuc866 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc866 <http://smartplatforms.org/terms#value> "70.8" .
+_:YJwSAGuc866 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc867 .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://purl.org/dc/terms/identifier> "8310-5" .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://purl.org/dc/terms/title> "Body temperature" .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#bodyMassIndex> _:YJwSAGuc868 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#height> _:YJwSAGuc864 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#respiratoryRate> _:YJwSAGuc870 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#heartRate> _:YJwSAGuc872 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#oxygenSaturation> _:YJwSAGuc874 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#weight> _:YJwSAGuc866 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#temperature> _:YJwSAGuc876 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#bloodPressure> _:YJwSAGuc878 .
+_:YJwSAGuc861 <http://smartplatforms.org/terms#encounter> _:YJwSAGuc862 .
+_:YJwSAGuc861 <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
+_:YJwSAGuc861 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSigns> .
+_:YJwSAGuc872 <http://smartplatforms.org/terms#unit> "{beats}/min" .
+_:YJwSAGuc872 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc872 <http://smartplatforms.org/terms#value> "70" .
+_:YJwSAGuc872 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc873 .
+_:YJwSAGuc874 <http://smartplatforms.org/terms#unit> "%{HemoglobinSaturation}" .
+_:YJwSAGuc874 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc874 <http://smartplatforms.org/terms#value> "99" .
+_:YJwSAGuc874 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc875 .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://purl.org/dc/terms/identifier> "8480-6" .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://purl.org/dc/terms/title> "Intravascular systolic" .
+<http://purl.bioontology.org/ontology/LNC/8302-2> <http://purl.org/dc/terms/identifier> "8302-2" .
+<http://purl.bioontology.org/ontology/LNC/8302-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/8302-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8302-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8302-2> <http://purl.org/dc/terms/title> "Body height" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://purl.org/dc/terms/identifier> "33586001" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/BloodPressureBodyPosition> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://purl.org/dc/terms/title> "Sitting" .
+_:YJwSAGuc862 <http://smartplatforms.org/terms#endDate> "2010-05-12T04:20:00Z" .
+_:YJwSAGuc862 <http://smartplatforms.org/terms#encounterType> _:YJwSAGuc863 .
+_:YJwSAGuc862 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:YJwSAGuc862 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Encounter> .
+_:YJwSAGuc862 <http://smartplatforms.org/terms#startDate> "2010-05-12T04:00:00Z" .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://purl.org/dc/terms/identifier> "3141-9" .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://purl.org/dc/terms/title> "Body weight" .
+_:YJwSAGuc879 <http://smartplatforms.org/terms#unit> "mm[Hg]" .
+_:YJwSAGuc879 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:YJwSAGuc879 <http://smartplatforms.org/terms#value> "132" .
+_:YJwSAGuc879 <http://smartplatforms.org/terms#vitalName> _:YJwSAGuc880 .
+
+
+{% endhighlight %}</div>
+
+<div class='turtle'>{% highlight xml %}
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sp: <http://smartplatforms.org/terms#> .
+@prefix spcode: <http://smartplatforms.org/terms/codes/> .
+
+<http://purl.bioontology.org/ontology/LNC/2710-2> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "2710-2";
+    dcterms:title "Oxygen saturation";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/3141-9> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "3141-9";
+    dcterms:title "Body weight";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/39156-5> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "39156-5";
+    dcterms:title "Body mass index";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/8302-2> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "8302-2";
+    dcterms:title "Body height";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/8310-5> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "8310-5";
+    dcterms:title "Body temperature";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/8462-4> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "8462-4";
+    dcterms:title "Intravascular diastolic";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/8480-6> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "8480-6";
+    dcterms:title "Intravascular systolic";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/8867-4> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "8867-4";
+    dcterms:title "Heart rate";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/LNC/9279-1> a sp:Code,
+        spcode:VitalSign;
+    dcterms:identifier "9279-1";
+    dcterms:title "Respiration rate";
+    sp:system "http://purl.bioontology.org/ontology/LNC/" .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> a sp:Code,
+        spcode:BloodPressureBodyPosition;
+    dcterms:identifier "33586001";
+    dcterms:title "Sitting";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> a sp:Code,
+        spcode:BloodPressureBodySite;
+    dcterms:identifier "368209003";
+    dcterms:title "Right arm";
+    sp:system "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> a sp:Code,
+        spcode:EncounterType;
+    dcterms:identifier "ambulatory";
+    dcterms:title "Ambulatory encounter";
+    sp:system "http://smartplatforms.org/terms/codes/EncounterType#" .
+
+[] a sp:VitalSigns;
+    dcterms:date "2010-05-12T04:00:00Z";
+    sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+    sp:bloodPressure [ a sp:BloodPressure;
+            sp:bodyPosition [ a sp:CodedValue;
+                    dcterms:title "Sitting";
+                    sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/33586001> ];
+            sp:bodySite [ a sp:CodedValue;
+                    dcterms:title "Right arm";
+                    sp:code <http://purl.bioontology.org/ontology/SNOMEDCT/368209003> ];
+            sp:diastolic [ a sp:VitalSign;
+                    sp:unit "mm[Hg]";
+                    sp:value "82";
+                    sp:vitalName [ a sp:CodedValue;
+                            dcterms:title "Intravascular diastolic";
+                            sp:code <http://purl.bioontology.org/ontology/LNC/8462-4> ] ];
+            sp:systolic [ a sp:VitalSign;
+                    sp:unit "mm[Hg]";
+                    sp:value "132";
+                    sp:vitalName [ a sp:CodedValue;
+                            dcterms:title "Intravascular systolic";
+                            sp:code <http://purl.bioontology.org/ontology/LNC/8480-6> ] ] ];
+    sp:bodyMassIndex [ a sp:VitalSign;
+            sp:unit "kg/m2";
+            sp:value "21.8";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Body mass index";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/39156-5> ] ];
+    sp:encounter [ a sp:Encounter;
+            sp:belongsTo <http://sandbox-api.smartplatforms.org/records/2169591>;
+            sp:encounterType [ a sp:CodedValue;
+                    dcterms:title "Ambulatory encounter";
+                    sp:code <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> ];
+            sp:endDate "2010-05-12T04:20:00Z";
+            sp:startDate "2010-05-12T04:00:00Z" ];
+    sp:heartRate [ a sp:VitalSign;
+            sp:unit "{beats}/min";
+            sp:value "70";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Heart rate";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/8867-4> ] ];
+    sp:height [ a sp:VitalSign;
+            sp:unit "m";
+            sp:value "1.80";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Body height";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/8302-2> ] ];
+    sp:oxygenSaturation [ a sp:VitalSign;
+            sp:unit "%{HemoglobinSaturation}";
+            sp:value "99";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Oxygen saturation";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/2710-2> ] ];
+    sp:respiratoryRate [ a sp:VitalSign;
+            sp:unit "{breaths}/min";
+            sp:value "16";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Respiration rate";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/9279-1> ] ];
+    sp:temperature [ a sp:VitalSign;
+            sp:unit "Cel";
+            sp:value "37";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Body temperature";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/8310-5> ] ];
+    sp:weight [ a sp:VitalSign;
+            sp:unit "kg";
+            sp:value "70.8";
+            sp:vitalName [ a sp:CodedValue;
+                    dcterms:title "Body weight";
+                    sp:code <http://purl.bioontology.org/ontology/LNC/3141-9> ] ] .
+
+
+{% endhighlight %}</div>
+
+<div class='json_ld'>{% highlight javascript %}
+{
+  "@context": {
+    "api": "http://smartplatforms.org/terms/api#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "http://smartplatforms.org/terms#",
+    "spcode": "http://smartplatforms.org/terms/codes/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": [
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/39156-5",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "39156-5",
+      "dcterms:title": "Body mass index",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/9279-1",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "9279-1",
+      "dcterms:title": "Respiration rate",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8480-6",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "8480-6",
+      "dcterms:title": "Intravascular systolic",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8302-2",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "8302-2",
+      "dcterms:title": "Body height",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/3141-9",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "3141-9",
+      "dcterms:title": "Body weight",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8867-4",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "8867-4",
+      "dcterms:title": "Heart rate",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@type": "sp:VitalSigns",
+      "dcterms:date": "2010-05-12T04:00:00Z",
+      "sp:belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "sp:bloodPressure": {
+        "@type": "sp:BloodPressure",
+        "sp:bodyPosition": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Sitting",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/33586001"
+          }
+        },
+        "sp:bodySite": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Right arm",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/368209003"
+          }
+        },
+        "sp:diastolic": {
+          "@type": "sp:VitalSign",
+          "sp:unit": "mm[Hg]",
+          "sp:value": "82",
+          "sp:vitalName": {
+            "@type": "sp:CodedValue",
+            "dcterms:title": "Intravascular diastolic",
+            "sp:code": {
+              "@id": "http://purl.bioontology.org/ontology/LNC/8462-4"
+            }
+          }
+        },
+        "sp:systolic": {
+          "@type": "sp:VitalSign",
+          "sp:unit": "mm[Hg]",
+          "sp:value": "132",
+          "sp:vitalName": {
+            "@type": "sp:CodedValue",
+            "dcterms:title": "Intravascular systolic",
+            "sp:code": {
+              "@id": "http://purl.bioontology.org/ontology/LNC/8480-6"
+            }
+          }
+        }
+      },
+      "sp:bodyMassIndex": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "kg/m2",
+        "sp:value": "21.8",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Body mass index",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/39156-5"
+          }
+        }
+      },
+      "sp:encounter": {
+        "@type": "sp:Encounter",
+        "sp:belongsTo": {
+          "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+        },
+        "sp:encounterType": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Ambulatory encounter",
+          "sp:code": {
+            "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory"
+          }
+        },
+        "sp:endDate": "2010-05-12T04:20:00Z",
+        "sp:startDate": "2010-05-12T04:00:00Z"
+      },
+      "sp:heartRate": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "{beats}/min",
+        "sp:value": "70",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Heart rate",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/8867-4"
+          }
+        }
+      },
+      "sp:height": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "m",
+        "sp:value": "1.80",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Body height",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/8302-2"
+          }
+        }
+      },
+      "sp:oxygenSaturation": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "%{HemoglobinSaturation}",
+        "sp:value": "99",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Oxygen saturation",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/2710-2"
+          }
+        }
+      },
+      "sp:respiratoryRate": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "{breaths}/min",
+        "sp:value": "16",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Respiration rate",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/9279-1"
+          }
+        }
+      },
+      "sp:temperature": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "Cel",
+        "sp:value": "37",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Body temperature",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/8310-5"
+          }
+        }
+      },
+      "sp:weight": {
+        "@type": "sp:VitalSign",
+        "sp:unit": "kg",
+        "sp:value": "70.8",
+        "sp:vitalName": {
+          "@type": "sp:CodedValue",
+          "dcterms:title": "Body weight",
+          "sp:code": {
+            "@id": "http://purl.bioontology.org/ontology/LNC/3141-9"
+          }
+        }
+      }
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8462-4",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "8462-4",
+      "dcterms:title": "Intravascular diastolic",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory",
+      "@type": [
+        "spcode:EncounterType",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "ambulatory",
+      "dcterms:title": "Ambulatory encounter",
+      "sp:system": "http://smartplatforms.org/terms/codes/EncounterType#"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/2710-2",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "2710-2",
+      "dcterms:title": "Oxygen saturation",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/33586001",
+      "@type": [
+        "spcode:BloodPressureBodyPosition",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "33586001",
+      "dcterms:title": "Sitting",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/368209003",
+      "@type": [
+        "spcode:BloodPressureBodySite",
+        "sp:Code"
+      ],
+      "dcterms:identifier": "368209003",
+      "dcterms:title": "Right arm",
+      "sp:system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8310-5",
+      "@type": [
+        "sp:Code",
+        "spcode:VitalSign"
+      ],
+      "dcterms:identifier": "8310-5",
+      "dcterms:title": "Body temperature",
+      "sp:system": "http://purl.bioontology.org/ontology/LNC/"
+    }
+  ]
+}
+{% endhighlight %}</div>
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#VitalSigns</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+date
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/date</span>
+<br />
+Date + time when vital signs were recorded &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+belongsTo
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#belongsTo</span>
+<br />
+[Medical Record (Medical Record)
+The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bloodPressure
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#bloodPressure</span>
+<br />
+[BloodPressure (BloodPressure)
+Patient's systolic + diastolic Blood Pressure in mmHg, with optinal position coding
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bodyMassIndex
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#bodyMassIndex</span>
+<br />
+[VitalSign (VitalSign)where unit has value: kg/m2
+Patient's Body Mass Index.  
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+encounter
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#encounter</span>
+<br />
+[Encounter (Encounter)
+Encounter at which vital signs were measured. This should specify a date and encounter type, at minimum.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+heartRate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#heartRate</span>
+<br />
+[VitalSign (VitalSign)where unit has value: {beats}/min
+Patient's Heart Rate per minute. 
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+height
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#height</span>
+<br />
+[VitalSign (VitalSign)where unit has value: m
+Patient's height in meters.  
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+oxygenSaturation
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#oxygenSaturation</span>
+<br />
+[VitalSign (VitalSign)where unit has value: %{HemoglobinSaturation}
+Patient's oxygen saturation in percent.  
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+respiratoryRate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#respiratoryRate</span>
+<br />
+[VitalSign (VitalSign)where unit has value: {breaths}/min
+Patient's Respiratory Rate per minute. 
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+temperature
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#temperature</span>
+<br />
+[VitalSign (VitalSign)where unit has value: Cel
+Patient's Temperature in Celcius. 
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+weight
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#weight</span>
+<br />
+[VitalSign (VitalSign)where unit has value: kg
+Patient's weight in kg. 
+</td>
+</tr>
+
+</table>
+
+# Component Types
+
+
+## <span id='Address'>`Address`</span>
+
+`Address` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+A v:Address element can be given additional types to indicate:
+
+ * Preferred Status (v:Pref)
+ * Home address (v:Home)
+ * Work address (v:Work)
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://www.w3.org/2006/vcard/ns#Address</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+country-name
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#country-name</span>
+<br />
+Country name &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+extended-address
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#extended-address</span>
+<br />
+City Name &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+locality
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#locality</span>
+<br />
+City Name &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+postal-code
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#postal-code</span>
+<br />
+Postal code &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+region
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#region</span>
+<br />
+e.g. state abbreviation &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+street-address
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#street-address</span>
+<br />
+Street address &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Attribution'>`Attribution`</span>
+
+`Attribution` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Attribution</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+endDate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#endDate</span>
+<br />
+End Time of attributed event (if instantaneous, this is not provided) &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+participant
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#participant</span>
+<br />
+[Participant (Participant)
+Participant in Attribution
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+startDate
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#startDate</span>
+<br />
+Start Time of attributed event (if instantaneous, this is the only time) &#91;[http://www.w3.org/2001/XMLSchema#dateTime xsd:dateTime]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='BloodPressure'>`BloodPressure`</span>
+
+`BloodPressure` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#BloodPressure</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+bodyPosition
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#bodyPosition</span>
+<br />
+[Coded Value (Coded Value) where code comes from [BloodPressureBodyPosition code](BloodPressureBodyPosition)
+Position of patient when blood pressure was recorded
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bodySite
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#bodySite</span>
+<br />
+[Coded Value (Coded Value) where code comes from [BloodPressureBodySite code](BloodPressureBodySite)
+Site on patient's body where blood pressure was recorded
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+diastolic
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#diastolic</span>
+<br />
+[VitalSign (VitalSign)where unit has value: mm[Hg]
+diastolic blood pressure in mmHG. 
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+method
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#method</span>
+<br />
+[Coded Value (Coded Value) where code comes from [BloodPressureMethod code](BloodPressureMethod)
+Method by which blood pressure was recorded.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+systolic
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#systolic</span>
+<br />
+[VitalSign (VitalSign)where unit has value: mm[Hg]
+systolic blood pressure in mmHG.
+</td>
+</tr>
+
+</table>
+
+## <span id='Code'>`Code`</span>
+
+`Code` is a subtype of and inherits properties from:
+[Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Code</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='CodeProvenance'>`CodeProvenance`</span>
+
+`CodeProvenance` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#CodeProvenance</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+sourceCode
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#sourceCode</span>
+<br />
+ &#91;[http://www.w3.org/2001/XMLSchema#anyURI xsd:anyURI]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+translationFidelity
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#translationFidelity</span>
+<br />
+[TranslationFidelity code (TranslationFidelity code)
+</td>
+</tr>
+
+</table>
+
+## <span id='Coded_Value'>`Coded Value`</span>
+
+`Coded Value` is a subtype of and inherits properties from:
+[Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#CodedValue</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+code
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#code</span>
+<br />
+[Code (Code)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+provenance
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#provenance</span>
+<br />
+[CodeProvenance (CodeProvenance)
+</td>
+</tr>
+
+</table>
+
+## <span id='DataType'>`DataType`</span>
+
+`DataType` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+## <span id='Name'>`Name`</span>
+
+`Name` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://www.w3.org/2006/vcard/ns#Name</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+additional-name
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#additional-name</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+family-name
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#family-name</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+given-name
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#given-name</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+honorific-prefix
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#honorific-prefix</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+honorific-suffix
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#honorific-suffix</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='NarrativeResult'>`NarrativeResult`</span>
+
+`NarrativeResult` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#NarrativeResult</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+value
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#value</span>
+<br />
+Value of result (free text) &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='NominalResult'>`NominalResult`</span>
+
+`NominalResult` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#NominalResult</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+value
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#value</span>
+<br />
+value of result (free text). &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='OrdinalResult'>`OrdinalResult`</span>
+
+`OrdinalResult` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#OrdinalResult</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+value
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#value</span>
+<br />
+value of result (free text). &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Organization'>`Organization`</span>
+
+`Organization` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Organization</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+organization-name
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#organization-name</span>
+<br />
+Name of the organization &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Participant'>`Participant`</span>
+
+`Participant` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Participant</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+organization
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#organization</span>
+<br />
+[Organization (Organization)
+Organization of participant
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+person
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#person</span>
+<br />
+[Person (Person)
+Person who participated
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+role
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#role</span>
+<br />
+Role of participant (free text) &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Person'>`Person`</span>
+
+`Person` is a subtype of and inherits properties from:
+[Component](#Component), [VCard](#VCard)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Person</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+ethnicity
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#ethnicity</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+preferredLanguage
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#preferredLanguage</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+race
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#race</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bday
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#bday</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+email
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#email</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+n
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#n</span>
+<br />
+[Name (Name)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+tel
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#tel</span>
+<br />
+[Tel (Tel)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+gender
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://xmlns.com/foaf/0.1/gender</span>
+<br />
+A person's (administrative) gender.  This should consist of the string "male" or "female". &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Pharmacy'>`Pharmacy`</span>
+
+`Pharmacy` is a subtype of and inherits properties from:
+[Component](#Component), [Organization](#Organization)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Pharmacy</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+ncpdpId
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#ncpdpId</span>
+<br />
+Pharmacy's National Council for Prescription Drug Programs ID Number (NCPDP ID) &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+organization-name
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#organization-name</span>
+<br />
+Name of the organization &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='Provider'>`Provider`</span>
+
+`Provider` is a subtype of and inherits properties from:
+[Component](#Component), [Person](#Person), [VCard](#VCard)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#Provider</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+deaNumber
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#deaNumber</span>
+<br />
+Provider's Drug Enforcement Agency Number &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+ethnicity
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#ethnicity</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+npiNumber
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#npiNumber</span>
+<br />
+Provider's National Provider Identification Number &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+preferredLanguage
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#preferredLanguage</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+race
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#race</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bday
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#bday</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+email
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#email</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+n
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#n</span>
+<br />
+[Name (Name)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+tel
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#tel</span>
+<br />
+[Tel (Tel)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+gender
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://xmlns.com/foaf/0.1/gender</span>
+<br />
+A person's (administrative) gender.  This should consist of the string "male" or "female". &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='QuantitativeResult'>`QuantitativeResult`</span>
+
+`QuantitativeResult` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#QuantitativeResult</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+nonCriticalRange
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#nonCriticalRange</span>
+<br />
+[ValueRange (ValueRange)
+Non-critical range for result.  (Results outside this range are considered "critical.")
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+normalRange
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#normalRange</span>
+<br />
+[ValueRange (ValueRange)
+Normal range for result. (Results outside this range are considered "abnormal".)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+valueAndUnit
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#valueAndUnit</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+Value and unit
+</td>
+</tr>
+
+</table>
+
+## <span id='Tel'>`Tel`</span>
+
+`Tel` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+A v:Tel element can be given additional types to indicate:
+
+ * Preferred Status (v:Pref)
+ * Cell phone (v:Cell)
+ * Home phone (v:Home)
+ * Work phone (v:Work)
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://www.w3.org/2006/vcard/ns#Tel</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+value
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='VCard'>`VCard`</span>
+
+`VCard` is a subtype of and inherits properties from:
+[Component](#Component)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://www.w3.org/2006/vcard/ns#VCard</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bday
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#bday</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+email
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#email</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+n
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#n</span>
+<br />
+[Name (Name)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+tel
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#tel</span>
+<br />
+[Tel (Tel)
+</td>
+</tr>
+
+</table>
+
+## <span id='ValueAndUnit'>`ValueAndUnit`</span>
+
+`ValueAndUnit` is a subtype of and inherits properties from:
+[Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#ValueAndUnit</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+unit
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#unit</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+value
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#value</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='ValueRange'>`ValueRange`</span>
+
+`ValueRange` is a subtype of and inherits properties from:
+[Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#ValueRange</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+maximum
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#maximum</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+Maximum value in range (not inclusive)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+minimum
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#minimum</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+Minimum value in range (inclusive)
+</td>
+</tr>
+
+</table>
+
+## <span id='ValueRatio'>`ValueRatio`</span>
+
+`ValueRatio` is a subtype of and inherits properties from:
+[Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#ValueRatio</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+denominator
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#denominator</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+Denominator of the ratio.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+numerator
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#numerator</span>
+<br />
+[ValueAndUnit (ValueAndUnit)
+Numerator of the ratio.
+</td>
+</tr>
+
+</table>
+
+## <span id='VitalSign'>`VitalSign`</span>
+
+`VitalSign` is a subtype of and inherits properties from:
+[Component](#Component), [DataType](#DataType), [ValueAndUnit](#ValueAndUnit)
+
+
+Vital Sign:  includes a LOINC code specifying which measurement is being reported, alongside a value and unit.
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#VitalSign</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+unit
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#unit</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+value
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#value</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+vitalName
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#vitalName</span>
+<br />
+[Coded Value (Coded Value) where code comes from [VitalSign code](VitalSign)
+LOINC Coded Value for the vital sign type
+</td>
+</tr>
+
+</table>
+
+# Container-level Types
+
+
+## <span id='App_Manifest'>`App Manifest`</span>
+
+
+## <span id='Capabilities'>`Capabilities`</span>
+
+A SMART Container exposes a set of capabilities as a JSON structure.  The example below shows the capabilities of a container that provides Demographics, Encounters, and Vital Signs only.
+
+<div class='rdf_xml active'>{% highlight xml %}
+
+{
+    "http://smartplatforms.org/terms#Demographics": {
+        "methods": [
+            "GET"
+        ]
+    }, 
+    "http://smartplatforms.org/terms#Encounter": {
+        "methods": [
+            "GET"
+        ]
+    }, 
+    "http://smartplatforms.org/terms#VitalSigns": {
+        "methods": [
+            "GET"
+        ]
+    }
+}
+
+{% endhighlight %}</div>
+
+
+## <span id='Ontology'>`Ontology`</span>
+
+An OWL ontology representing SMART data types + API calls
+
+<div class='rdf_xml active'>{% highlight xml %}
+See: http://sandbox-api.smartplatforms.org/ontology
+{% endhighlight %}</div>
+
+
+## <span id='User'>`User`</span>
+
+`User` is a subtype of and inherits properties from:
+[Component](#Component), [Person](#Person), [VCard](#VCard)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#User</caption>
+<tbody>
+<tr><td style='width: 30%;
+'>
+
+
+department
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#department</span>
+<br />
+A user's department &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+ethnicity
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#ethnicity</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+preferredLanguage
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#preferredLanguage</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+race
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#race</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+role
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#role</span>
+<br />
+A user's role &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+adr
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#adr</span>
+<br />
+[Address (Address)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+bday
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#bday</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+email
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#email</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+n
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#n</span>
+<br />
+[Name (Name)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+tel
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://www.w3.org/2006/vcard/ns#tel</span>
+<br />
+[Tel (Tel)
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+gender
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://xmlns.com/foaf/0.1/gender</span>
+<br />
+A person's (administrative) gender.  This should consist of the string "male" or "female". &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+# Data code Types
+
+
+## <span id='AlertLevel_code'>`AlertLevel code`</span>
+
+`AlertLevel` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:AlertLevel rdf:about="http://smartplatforms.org/terms/codes/AlertLevel#warning">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Warning</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/AlertLevel#</sp:system>
+  <dcterms:identifier>warning</dcterms:identifier>
+</spcode:AlertLevel>
+
+
+
+<spcode:AlertLevel rdf:about="http://smartplatforms.org/terms/codes/AlertLevel#severe">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Severe</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/AlertLevel#</sp:system>
+  <dcterms:identifier>severe</dcterms:identifier>
+</spcode:AlertLevel>
+
+
+
+<spcode:AlertLevel rdf:about="http://smartplatforms.org/terms/codes/AlertLevel#info">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Info</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/AlertLevel#</sp:system>
+  <dcterms:identifier>info</dcterms:identifier>
+</spcode:AlertLevel>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AlertLevel</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='AllergyCategory_code'>`AllergyCategory code`</span>
+
+`AllergyCategory` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [SNOMED](#SNOMED)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/414285001">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Food allergy</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>414285001</dcterms:identifier>
+</spcode:AllergyCategory>
+
+
+
+<spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/426232007">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Environmental allergy</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>426232007</dcterms:identifier>
+</spcode:AllergyCategory>
+
+
+
+<spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/416098002">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Drug allergy</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>416098002</dcterms:identifier>
+</spcode:AllergyCategory>
+
+
+
+<spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/59037007">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Drug intolerance</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>59037007</dcterms:identifier>
+</spcode:AllergyCategory>
+
+
+
+<spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/235719002">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Food intolerance</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>235719002</dcterms:identifier>
+</spcode:AllergyCategory>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AllergyCategory</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='AllergyExclusion_code'>`AllergyExclusion code`</span>
+
+`AllergyExclusion` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [SNOMED](#SNOMED)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:AllergyExclusion rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/160244002">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>No known allergies</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>160244002</dcterms:identifier>
+</spcode:AllergyExclusion>
+
+
+
+<spcode:AllergyExclusion rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/428607008">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>No known environmental allergy</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>428607008</dcterms:identifier>
+</spcode:AllergyExclusion>
+
+
+
+<spcode:AllergyExclusion rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/429625007">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>No known food allergy</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>429625007</dcterms:identifier>
+</spcode:AllergyExclusion>
+
+
+
+<spcode:AllergyExclusion rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/409137002">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>No known history of drug allergy</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>409137002</dcterms:identifier>
+</spcode:AllergyExclusion>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AllergyExclusion</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='AllergySeverity_code'>`AllergySeverity code`</span>
+
+`AllergySeverity` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [SNOMED](#SNOMED)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/255604002">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Mild</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>255604002</dcterms:identifier>
+</spcode:AllergySeverity>
+
+
+
+<spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/442452003">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Life threatening</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>442452003</dcterms:identifier>
+</spcode:AllergySeverity>
+
+
+
+<spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/6736007">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Moderate</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>6736007</dcterms:identifier>
+</spcode:AllergySeverity>
+
+
+
+<spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/399166001">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Fatal</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>399166001</dcterms:identifier>
+</spcode:AllergySeverity>
+
+
+
+<spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/24484000">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Severe</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>24484000</dcterms:identifier>
+</spcode:AllergySeverity>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AllergySeverity</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='BloodPressureBodyPosition_code'>`BloodPressureBodyPosition code`</span>
+
+`BloodPressureBodyPosition` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [SNOMED](#SNOMED)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:BloodPressureBodyPosition rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/40199007">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Supine</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>40199007</dcterms:identifier>
+</spcode:BloodPressureBodyPosition>
+
+
+
+<spcode:BloodPressureBodyPosition rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/33586001">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Sitting</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>33586001</dcterms:identifier>
+</spcode:BloodPressureBodyPosition>
+
+
+
+<spcode:BloodPressureBodyPosition rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/10904000">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Standing</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>10904000</dcterms:identifier>
+</spcode:BloodPressureBodyPosition>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/BloodPressureBodyPosition</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='BloodPressureBodySite_code'>`BloodPressureBodySite code`</span>
+
+`BloodPressureBodySite` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [SNOMED](#SNOMED)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:BloodPressureBodySite rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/61396006">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Left thigh</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>61396006</dcterms:identifier>
+</spcode:BloodPressureBodySite>
+
+
+
+<spcode:BloodPressureBodySite rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/368209003">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Right arm</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>368209003</dcterms:identifier>
+</spcode:BloodPressureBodySite>
+
+
+
+<spcode:BloodPressureBodySite rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/11207009">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Right thigh</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>11207009</dcterms:identifier>
+</spcode:BloodPressureBodySite>
+
+
+
+<spcode:BloodPressureBodySite rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/368208006">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Left arm</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+  <dcterms:identifier>368208006</dcterms:identifier>
+</spcode:BloodPressureBodySite>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/BloodPressureBodySite</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='BloodPressureMethod_code'>`BloodPressureMethod code`</span>
+
+`BloodPressureMethod` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:BloodPressureMethod rdf:about="http://smartplatforms.org/terms/codes/BloodPressureMethod#invasive">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Invasive</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/BloodPressureMethod#</sp:system>
+  <dcterms:identifier>invasive</dcterms:identifier>
+</spcode:BloodPressureMethod>
+
+
+
+<spcode:BloodPressureMethod rdf:about="http://smartplatforms.org/terms/codes/BloodPressureMethod#palpation">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Palpation</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/BloodPressureMethod#</sp:system>
+  <dcterms:identifier>palpation</dcterms:identifier>
+</spcode:BloodPressureMethod>
+
+
+
+<spcode:BloodPressureMethod rdf:about="http://smartplatforms.org/terms/codes/BloodPressureMethod#machine">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Machine</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/BloodPressureMethod#</sp:system>
+  <dcterms:identifier>machine</dcterms:identifier>
+</spcode:BloodPressureMethod>
+
+
+
+<spcode:BloodPressureMethod rdf:about="http://smartplatforms.org/terms/codes/BloodPressureMethod#auscultation">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Auscultation</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/BloodPressureMethod#</sp:system>
+  <dcterms:identifier>auscultation</dcterms:identifier>
+</spcode:BloodPressureMethod>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/BloodPressureMethod</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='EncounterType_code'>`EncounterType code`</span>
+
+`EncounterType` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#home">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Home encounter</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+  <dcterms:identifier>home</dcterms:identifier>
+</spcode:EncounterType>
+
+
+
+<spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#emergency">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Emergency encounter</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+  <dcterms:identifier>emergency</dcterms:identifier>
+</spcode:EncounterType>
+
+
+
+<spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#ambulatory">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Ambulatory encounter</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+  <dcterms:identifier>ambulatory</dcterms:identifier>
+</spcode:EncounterType>
+
+
+
+<spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#inpatient">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Inpatient encounter</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+  <dcterms:identifier>inpatient</dcterms:identifier>
+</spcode:EncounterType>
+
+
+
+<spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#field">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Field encounter</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+  <dcterms:identifier>field</dcterms:identifier>
+</spcode:EncounterType>
+
+
+
+<spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#virtual">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Virtual encounter</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+  <dcterms:identifier>virtual</dcterms:identifier>
+</spcode:EncounterType>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/EncounterType</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='ImmunizationAdministrationStatus_code'>`ImmunizationAdministrationStatus code`</span>
+
+`ImmunizationAdministrationStatus` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:ImmunizationAdministrationStatus rdf:about="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#doseGiven">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Dose Given</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#</sp:system>
+  <dcterms:identifier>doseGiven</dcterms:identifier>
+</spcode:ImmunizationAdministrationStatus>
+
+
+
+<spcode:ImmunizationAdministrationStatus rdf:about="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Not Administered</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#</sp:system>
+  <dcterms:identifier>notAdministered</dcterms:identifier>
+</spcode:ImmunizationAdministrationStatus>
+
+
+
+<spcode:ImmunizationAdministrationStatus rdf:about="http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#partialDose">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Dose Partially Administered</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#</sp:system>
+  <dcterms:identifier>partialDose</dcterms:identifier>
+</spcode:ImmunizationAdministrationStatus>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='ImmunizationClass_code'>`ImmunizationClass code`</span>
+
+`ImmunizationClass` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+codes are drawn from the CDC's Vaccine Group vocabulary.  URIs are of the form:
+
+http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#code
+
+
+system = http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ImmunizationClass</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='ImmunizationProduct_code'>`ImmunizationProduct code`</span>
+
+`ImmunizationProduct` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+codes are drawn from the CDC's Vaccine Group vocabulary.  URIs are of the form:
+
+http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#code
+
+
+system = http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ImmunizationProduct</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='ImmunizationRefusalReason_code'>`ImmunizationRefusalReason code`</span>
+
+`ImmunizationRefusalReason` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#vaccineUnavailable">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Vaccine unavailable at visit</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>vaccineUnavailable</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#patientUndergoingDesensitizationTherapy">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Patient undergoing desensitization therapy</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>patientUndergoingDesensitizationTherapy</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#notIndicatedPerGuidelines">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Not indicated per guidelines</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>notIndicatedPerGuidelines</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#recentChemoOrRadiaton">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Recent chemotherapy/radiaton</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>recentChemoOrRadiaton</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Allergy to vaccine/vaccine components, or allergy to eggs</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>allergy</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#providerDeferred">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Provider deferred</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>providerDeferred</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#documentedImmunityOrPreviousDisease">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Documented immunity or previous disease</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>documentedImmunityOrPreviousDisease</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#previouslyVaccinated">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Previously vaccinated</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>previouslyVaccinated</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#contraindicated">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Contraindicated</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>contraindicated</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#patientOrParentRefused">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Patient/parent refused</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>patientOrParentRefused</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#comfortMeasuresOnly">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Comfort Measures Only</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>comfortMeasuresOnly</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#possiblePriorAllergyOrReaction">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Possible allergy/reaction to prior dose</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>possiblePriorAllergyOrReaction</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+
+
+<spcode:ImmunizationRefusalReason rdf:about="http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#recentOrganOrStemCellTransplant">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Recent organ/stem cell transplant</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#</sp:system>
+  <dcterms:identifier>recentOrganOrStemCellTransplant</dcterms:identifier>
+</spcode:ImmunizationRefusalReason>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='LOINC_code'>`LOINC code`</span>
+
+`LOINC` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+LOINC code where URI matches:  http://purl.bioontology.org/ontology/LNC/{loinc_code}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/LOINC</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='LabResultInterpretation_code'>`LabResultInterpretation code`</span>
+
+`LabResultInterpretation` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:LabResultInterpretation rdf:about="http://smartplatforms.org/terms/codes/LabResultInterpretation#normal">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Normal</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/LabResultInterpretation#</sp:system>
+  <dcterms:identifier>normal</dcterms:identifier>
+</spcode:LabResultInterpretation>
+
+
+
+<spcode:LabResultInterpretation rdf:about="http://smartplatforms.org/terms/codes/LabResultInterpretation#critical">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Critical</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/LabResultInterpretation#</sp:system>
+  <dcterms:identifier>critical</dcterms:identifier>
+</spcode:LabResultInterpretation>
+
+
+
+<spcode:LabResultInterpretation rdf:about="http://smartplatforms.org/terms/codes/LabResultInterpretation#abnormal">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Abnormal</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/LabResultInterpretation#</sp:system>
+  <dcterms:identifier>abnormal</dcterms:identifier>
+</spcode:LabResultInterpretation>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/LabResultInterpretation</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='LabResultStatus_code'>`LabResultStatus code`</span>
+
+`LabResultStatus` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:LabResultStatus rdf:about="http://smartplatforms.org/terms/codes/LabStatus#correction">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Correction</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/LabStatus#</sp:system>
+  <dcterms:identifier>correction</dcterms:identifier>
+</spcode:LabResultStatus>
+
+
+
+<spcode:LabResultStatus rdf:about="http://smartplatforms.org/terms/codes/LabStatus#preliminary">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Preliminary</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/LabStatus#</sp:system>
+  <dcterms:identifier>preliminary</dcterms:identifier>
+</spcode:LabResultStatus>
+
+
+
+<spcode:LabResultStatus rdf:about="http://smartplatforms.org/terms/codes/LabStatus#final">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Final</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/LabStatus#</sp:system>
+  <dcterms:identifier>final</dcterms:identifier>
+</spcode:LabResultStatus>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/LabResultStatus</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='MedicalRecordNumber_code'>`MedicalRecordNumber code`</span>
+
+`MedicalRecordNumber` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/MedicalRecordNumber</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='MedicationProvenance_code'>`MedicationProvenance code`</span>
+
+`MedicationProvenance` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:MedicationProvenance rdf:about="http://smartplatforms.org/terms/codes/MedicationProvenance#prescription">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Derived by prescription</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/MedicationProvenance#</sp:system>
+  <dcterms:identifier>prescription</dcterms:identifier>
+</spcode:MedicationProvenance>
+
+
+
+<spcode:MedicationProvenance rdf:about="http://smartplatforms.org/terms/codes/MedicationProvenance#fulfillment">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Derived by fulfillment</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/MedicationProvenance#</sp:system>
+  <dcterms:identifier>fulfillment</dcterms:identifier>
+</spcode:MedicationProvenance>
+
+
+
+<spcode:MedicationProvenance rdf:about="http://smartplatforms.org/terms/codes/MedicationProvenance#administration">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Derived by administration</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/MedicationProvenance#</sp:system>
+  <dcterms:identifier>administration</dcterms:identifier>
+</spcode:MedicationProvenance>
+
+
+
+<spcode:MedicationProvenance rdf:about="http://smartplatforms.org/terms/codes/MedicationProvenance#reconciliation">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Derived by medication reconciliation</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/MedicationProvenance#</sp:system>
+  <dcterms:identifier>reconciliation</dcterms:identifier>
+</spcode:MedicationProvenance>
+
+
+
+<spcode:MedicationProvenance rdf:about="http://smartplatforms.org/terms/codes/MedicationProvenance#patientReport">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Derived by patient report</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/MedicationProvenance#</sp:system>
+  <dcterms:identifier>patientReport</dcterms:identifier>
+</spcode:MedicationProvenance>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/MedicationProvenance</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='NDFRT_code'>`NDFRT code`</span>
+
+`NDFRT` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/NDFRT</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='RxNorm_code'>`RxNorm code`</span>
+
+`RxNorm` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/RxNorm</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='RxNorm_Ingredient_code'>`RxNorm_Ingredient code`</span>
+
+`RxNorm_Ingredient` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [RxNorm](#RxNorm)
+
+
+RxNorm TTY='in'
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/RxNorm_Ingredient</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='RxNorm_Semantic_code'>`RxNorm_Semantic code`</span>
+
+`RxNorm_Semantic` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [RxNorm](#RxNorm)
+
+
+RxNorm TTY in ('SCD','SBD','GPCK','BPCK')
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/RxNorm_Semantic</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='SNOMED_code'>`SNOMED code`</span>
+
+`SNOMED` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+SNOMED code with URI matchign http://purl.bioontology.org/ontology/SNOMEDCT/{snomed_concept_id}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/SNOMED</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='TranslationFidelity_code'>`TranslationFidelity code`</span>
+
+`TranslationFidelity` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:TranslationFidelity rdf:about="http://smartplatforms.org/terms/codes/TranslationFidelity#automated">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Automated</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/TranslationFidelity#</sp:system>
+  <dcterms:identifier>automated</dcterms:identifier>
+</spcode:TranslationFidelity>
+
+
+
+<spcode:TranslationFidelity rdf:about="http://smartplatforms.org/terms/codes/TranslationFidelity#unmappable">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Unmappable</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/TranslationFidelity#</sp:system>
+  <dcterms:identifier>unmappable</dcterms:identifier>
+</spcode:TranslationFidelity>
+
+
+
+<spcode:TranslationFidelity rdf:about="http://smartplatforms.org/terms/codes/TranslationFidelity#verified">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Verified</dcterms:title>
+  <sp:system>http://smartplatforms.org/terms/codes/TranslationFidelity#</sp:system>
+  <dcterms:identifier>verified</dcterms:identifier>
+</spcode:TranslationFidelity>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/TranslationFidelity</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='UNII_code'>`UNII code`</span>
+
+`UNII` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType)
+
+
+UNII code with URI matching http://fda.gov/UNII/{UNII}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/UNII</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>
+
+## <span id='VitalSign_code'>`VitalSign code`</span>
+
+`VitalSign` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [LOINC](#LOINC)
+
+
+Constrained to one of: 
+ {% highlight xml %}
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8462-4">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Intravascular diastolic</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>8462-4</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/9279-1">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Respiration rate</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>9279-1</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/39156-5">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Body mass index</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>39156-5</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8310-5">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Body temperature</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>8310-5</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/2710-2">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Oxygen saturation</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>2710-2</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8302-2">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Body height</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>8302-2</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8867-4">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Heart rate</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>8867-4</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8480-6">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Intravascular systolic</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>8480-6</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/3141-9">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Body weight</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>3141-9</dcterms:identifier>
+</spcode:VitalSign>
+
+
+
+<spcode:VitalSign rdf:about="http://purl.bioontology.org/ontology/LNC/8306-3">
+  <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+  <dcterms:title>Body height (lying)</dcterms:title>
+  <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+  <dcterms:identifier>8306-3</dcterms:identifier>
+</spcode:VitalSign>
+
+{% endhighlight %}
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/VitalSign</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ &#91;[http://www.w3.org/2000/01/rdf-schema#Literal rdfs:Literal]&#93;
+</td>
+</tr>
+
+</table>

@@ -113,3 +113,33 @@ footer {
   font-size: smaller !important;
   border-bottom: none !important;
 }
+
+.nav-tabs > li {
+  margin-left: 20px;
+}
+
+.nav-tabs > li > a {
+  padding: 3px 0 0 0;
+  border: none;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  background-color: inherit;
+  border: none;
+  padding: 3px 0 0 0;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  color: #555555;
+  background-color: inherit;
+  border: none !important;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+
+.rdf_xml, .n_triples, .turtle, .json_ld {
+  display: none;
+}
+.rdf_xml.active, .n_triples.active, .turtle.active, .json_ld.active {
+  display: block;
+}

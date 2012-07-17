@@ -38,6 +38,14 @@ code, pre {
   word-wrap: normal !important;
 }
 
+
+.highlight pre {
+    white-space:pre;
+    word-wrap:normal;
+    overflow-x: auto;
+}
+
+
 /* in Markdown-land a single _ or * is an <em>, __ or ** is <strong> */
 em {
   font-style: normal;
@@ -99,12 +107,6 @@ footer {
 .highlight pre {
   border-left: 2px solid #ddd;
   border-radius: 0px;
-}
-
-/* overflow  needs to be reset to "visible". Scrollbars can be
-   added by setting to "auto" after the fact */
-.tab-content {
-  overflow: visible !important;
 }
 
 .nav-tabs {

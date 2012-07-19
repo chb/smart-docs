@@ -22,8 +22,8 @@ needs some extra command line tools to compile code, you first have to do
   `Xcode > Preferences > Downloads > Components` and install the `Command Line
   Tools`
 
-* Download only the [`Command Line Tools`][] from the Apple Developer Center
-  (you will need a free developer account for this)
+* Download only the [Command Line Tools][] (search for the correct version) from
+  the Apple Developer Center (you will need a free developer account for this)
 
 
 [Homebrew][] is a superb replacement for the old managers Fink and MacPorts and

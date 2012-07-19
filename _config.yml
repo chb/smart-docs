@@ -2,7 +2,13 @@
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /:categories/:year/:month/:day/:title 
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "utils"]
+exclude: [".rvmrc",
+          ".rbenv-version",
+          "README.md",
+          "Rakefile",
+          "changelog.md",
+          "utils",
+          "smart_common"]
 auto: true
 markdown: redcarpet
 redcarpet:

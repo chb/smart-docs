@@ -113,7 +113,7 @@ def type_start(t):
         print """{% endhighlight %}\n"""
 
     if example:
-        print "{% include example_format_tabs %}\n"
+        print "{% include example_format_tabs.html %}\n"
         print "<div class='rdf_xml active'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%example
         try:
             ex_graph = parse_rdf(example)

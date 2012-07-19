@@ -9,6 +9,7 @@
 
 import copy
 import sys
+import yaml
 
 # setup the ontology
 from smart_common.rdf_tools.rdf_ontology import *
@@ -23,11 +24,25 @@ plugin.register('json-ld',
                 'JsonLDSerializer')
 
 
-## create smart_jsonld_context: copied from smart_sample_apps,
-# should be in smart_common
+f = None
+try:
+    f = open(os.getcwd()+'/_config.yml').read()
+except:
+    raise IOError, "Can't read _config.yml"
+
+if f != None:
+    config = yaml.load(f)
+
+SP_STATMENT = "http://smartplatforms.org/terms#Statement"
+CONTEXT_URI = config['production_url']+'/reference/datamodel/contexts/smart_context.jsonld'
+
+
+
+# create smart_jsonld_context, copied from smart_sample_apps
+# could be in smart_common
 seen = {}
 context = {}
-ns = SMART_Class["http://smartplatforms.org/terms#Statement"].graph.namespace_manager
+ns = SMART_Class[SP_STATMENT].graph.namespace_manager
 
 def add_term(uri):
     if not isinstance(uri, rdflib.URIRef):
@@ -37,9 +52,10 @@ def add_term(uri):
     jname = jname.replace("sp:", "")
     jname = jname.replace(":", "__")
     jname = jname.replace("-","_")
-    assert jname not in seen or seen[jname]==uri, "predicate appears in >1 vocab: %s, %s"%(uri, seen[jname])
+    assert jname not in seen or seen[jname]==uri, \
+        "predicate appears in >1 vocab: %s, %s"%(uri, seen[jname])
     seen[jname] = uri
-    context[jname] =  {"@id": str(uri)}
+    context[jname] = {"@id": str(uri)}
     return jname
 
 for c in SMART_Class.store.values():
@@ -105,7 +121,10 @@ def type_start(t):
             return
         print "<div class='n_triples'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='nt')
         print "<div class='turtle'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='turtle')
-        print "<div class='json_ld'>{%% highlight javascript %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='json-ld', indent=2, context=context)
+
+        print "<div class='json_ld'>{%% highlight javascript %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(
+            format='json-ld', indent=2, context=context, context_uri=CONTEXT_URI
+        )
 
 def properties_start(type):
     print """\n<table class='table table-striped'>\n<caption align='bottom' style='font-style: italic'>%s</caption>\n<tbody>""" % type

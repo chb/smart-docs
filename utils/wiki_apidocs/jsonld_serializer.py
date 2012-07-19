@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 """
+
+Note: Modified by arjun.sanyal@childrens.harvard.edu to take a context_uri
+param to ouput rather than the whole context.
+
+
 This serialiser will output an RDF Graph as a JSON-LD formatted document. See:
 
     http://json-ld.org/
@@ -67,19 +72,23 @@ class JsonLDSerializer(Serializer):
                     "Given encoding was: %s" % encoding)
 
         context_data = kwargs.get('context')
+        context_uri = kwargs.get('context_uri')
         generate_compact = kwargs.get('compact', True)
         indent = kwargs.get('indent', 2)
         separators = (',',': ')
         sort_keys = True
-        tree = to_tree(self.store, context_data, base,
-                generate_compact=generate_compact)
+        tree = to_tree(self.store,
+                       context_data,
+                       base,
+                       generate_compact,
+                       context_uri)
         data = json.dumps(tree, indent=indent, separators=separators,
                 sort_keys=sort_keys)
 
         stream.write(data.encode(encoding, 'replace'))
 
 
-def to_tree(graph, context_data=None, base=None, generate_compact=True):
+def to_tree(graph, context_data=None, base=None, generate_compact=True, context_uri=None):
     """
     @@ TODO: add docstring describing usage
     """
@@ -100,7 +109,9 @@ def to_tree(graph, context_data=None, base=None, generate_compact=True):
     else:
         context = Context(context_data)
 
-    if context_data:
+    if context_uri:
+        tree[context.context_key] = context_uri
+    else:
         tree[context.context_key] = context_data
 
     nodes = []

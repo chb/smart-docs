@@ -1354,35 +1354,36 @@
     constructor: Tab
 
   , show: function () {
-
       var $this = this.element
         , $ul = $this.closest('ul:not(.dropdown-menu)')
         , selector = $this.attr('data-target')
         , previous
         , $target
-        , parentClass
 
+      // if no data-target, use href
       if (!selector) {
         selector = $this.attr('href')
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
-      parentClass = '.'+$this.attr('data-target').substring(1, $this.attr('data-target').length) + '_li'
-      
+      // if this <li> is already active, return
       if ( $this.parent('li').hasClass('active') ) return
 
       previous = $ul.find('.active a').last()[0]
 
+      // trigger the show event on this <a>
       $this.trigger({
         type: 'show'
       , relatedTarget: previous
       })
 
+      // select the elements with the selector
       $target = $(selector)
 
-      // this.activate($this.parent('li'), $ul)
-      // aks: activate all li's of this class
-      this.activate($(parentClass), $('body').find("ul[data-tabs='tabs']") )
+      // deactivate the currently active <li> and activate this <li>
+      this.activate($this.parent('li'), $ul)
+
+      // deactivate the current target's active sibling and activate it
       this.activate($target, $target.parent(), function () {
         $this.trigger({
           type: 'shown'

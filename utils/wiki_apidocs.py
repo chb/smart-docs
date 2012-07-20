@@ -78,9 +78,10 @@ def type_start(t):
 
     description = t.description
     example = t.example
+    name_id = name.replace(' ', '_')
 
     # add <span id='name'> to these <h2>'s for internal anchors
-    print "\n## <span id='%s'>`%s`</span>\n" % (name.replace(' ', '_'), name)
+    print "\n## <span id='%s'>`%s`</span>\n" % (name_id, name)
 
     if len(t.parents) > 0:
         print "`%s` is a subtype of and inherits properties from:" % type_name_string(t)
@@ -113,7 +114,19 @@ def type_start(t):
         print """{% endhighlight %}\n"""
 
     if example:
-        print "{% include example_format_tabs.html %}\n"
+        print "<div id='%s'>" % ( name_id+ "_examples")
+        print """
+<div class='format_tabs'>
+  <ul class="nav nav-tabs" data-tabs="tabs">
+    <li style="margin-left: 0px;">Show example in</li>
+    <li class="active"><a href="" data-target="#%s_examples > div.rdf_xml" data-toggle="tab">RDF/XML</a></li>
+    <li class="">      <a href="" data-target="#%s_examples > div.n_triples" data-toggle="tab">N-Triples</a></li>
+    <li class="">      <a href="" data-target="#%s_examples > div.turtle" data-toggle="tab">Turtle</a></li>
+    <li class="">      <a href="" data-target="#%s_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
+  </ul>
+</div>
+        """ % (name_id, name_id, name_id, name_id)
+
         print "<div class='rdf_xml active'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%example
         try:
             ex_graph = parse_rdf(example)
@@ -125,7 +138,7 @@ def type_start(t):
         print "<div class='json_ld'>{%% highlight javascript %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(
             format='json-ld', indent=2, context=context, context_uri=CONTEXT_URI
         )
-
+        print "</div>"
 def properties_start(type):
     print """\n<table class='table table-striped'>\n<caption align='bottom' style='font-style: italic'>%s</caption>\n<tbody>""" % type
 

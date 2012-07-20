@@ -25,7 +25,6 @@ p {
 
 /* uhh, do _not_ use pre-wrap! */
 pre { white-space: pre !important; }
-code { padding: none !important; }
 
 /* code can be in sentences and not be bright red and in an box!! */
 code, pre {

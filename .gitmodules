@@ -1,3 +1,6 @@
 [submodule "smart_common"]
 	path = smart_common
 	url = git://github.com/chb/smart_common.git
+[submodule "utils/rdflib-jsonld"]
+	path = utils/rdflib-jsonld
+	url = git@github.com:arjunsanyal/rdflib-jsonld.git

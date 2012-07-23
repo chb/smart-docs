@@ -7,20 +7,32 @@
 # $ python utils/wiki_apidocs.py api > api
 # (copy payload document into static api document at the appropriate section)
 
+DEBUG = False
+
 import copy
 import sys
 import yaml
+import pprint
+import os
 
 # setup the ontology
 from smart_common.rdf_tools.rdf_ontology import *
 from smart_common.rdf_tools.util import bound_graph, URIRef
 
 # setup the json-ld serializer
+sys.path.append('./utils/rdflib-jsonld')
+
+sys.path.append(
+  os.path.join(os.path.dirname(os.path.abspath(__file__)), 'rdflib-jsonld')
+)
+
+
+import rdflib_jsonld
 from rdflib import plugin
 from rdflib.serializer import Serializer
 plugin.register('json-ld',
                 Serializer,
-                'wiki_apidocs.jsonld_serializer',
+                'rdflib_jsonld.jsonld_serializer',
                 'JsonLDSerializer')
 
 
@@ -35,8 +47,6 @@ if f != None:
 
 SP_STATMENT = "http://smartplatforms.org/terms#Statement"
 CONTEXT_URI = config['production_url']+'/reference/datamodel/contexts/smart_context.jsonld'
-
-
 
 # create smart_jsonld_context, copied from smart_sample_apps
 # could be in smart_common
@@ -67,6 +77,10 @@ for c in SMART_Class.store.values():
         added = add_term(p.uri)
         if p.multiple_cardinality:
             context[added]["@container"] = "@set"
+
+if DEBUG:
+    print "context:\n "
+    pprint.pprint(context)
 
 def strip_smart(s):
     return s.replace("http://smartplatforms.org", "")

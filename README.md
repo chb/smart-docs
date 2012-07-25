@@ -13,3 +13,4 @@ TODO
 ----
 - Add "edit this page" links to github
 - Fix the atom feed for the changelog
+- On data model page move table captions (urls) to top

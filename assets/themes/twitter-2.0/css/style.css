@@ -29,7 +29,7 @@ pre { white-space: pre !important; }
 /* code can be in sentences and not be bright red and in an box!! */
 code, pre {
   font-family: Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Inconsolata, "Lucida Console", Monaco, "courier new", courier;
-  padding: none !important;
+  padding: 0 0 0 0 !important;
   color: #666;
   font-size: 96% !important;
   border: none;

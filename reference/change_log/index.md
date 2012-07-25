@@ -8,7 +8,7 @@ includenav: smartnav.markdown
 
 
 <div class='simple_box'>
-  FIXME: Please refer to the logs and commits of each SMART repositories on
+  Please refer to the logs and commits of each SMART repositories on
   <a href='https://github.com/chb'>Github</a> as we update this!
 </div>
 

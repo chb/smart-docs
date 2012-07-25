@@ -252,8 +252,7 @@ def wiki_properties_for_type(t):
     properties_end()
     
 def wiki_api_for_type(t, calls_for_t):
-    print "\n### %s\n"%t.name
-    print "[#%s][]\n"%t.name
+    print "\n## %s\n"%t.name
 
     last_description = ""
     for call in calls_for_t:
@@ -261,11 +260,14 @@ def wiki_api_for_type(t, calls_for_t):
         if (str(call.description) != last_description):
             print str(call.description)
         
-        print " ", strip_smart(str(call.method)), str(call.path)
+        print "\n    ", strip_smart(str(call.method)), str(call.path)
         
         if (str(call.description) != last_description):
             print ""
             last_description = str(call.description)
+
+    print "\n[%s RDF](../data_model/#%s)"%(t.name, t.name.replace(' ', '_'))        
+
              
 main_types = []
 calls_to_document = copy.copy(api_calls)

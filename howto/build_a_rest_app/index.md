@@ -91,8 +91,8 @@ You'll also to need to URL-decode it:
 {% endhighlight  %}
 
 The field contains a complete OAuth Authorization header that includes a few
-extra fields, including notably smart\_record\_id, smart\_oauth\_token and
-smart\_oauth\_token\_secret. smart\_record\_id indicates the medical record ID
+extra fields, including notably smart_record_id, smart_oauth_token and
+smart_oauth_token_secret. smart_record_id indicates the medical record ID
 of the current context, while the OAuth token and secret are the credentials
 your app needs to make REST API calls back into the SMART EMR. Why, then, are
 they themselves delivered in OAuth authorization header format? So you can

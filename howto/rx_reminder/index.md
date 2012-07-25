@@ -71,7 +71,7 @@ in the HOWTO.
 {% endhighlight  %}
 
 If you're building your application from scratch without using the sample code,
-you'll want to define SMART\_SERVER\_OAUTH and SMART\_SERVER\_PARAMS:
+you'll want to define SMART_SERVER_OAUTH and SMART_SERVER_PARAMS:
 
 {% highlight python %}
   # Basic configuration:  the consumer key and secret we'll use

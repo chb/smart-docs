@@ -73,7 +73,9 @@ Playground app.
 
 ---
 
-<!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T REMOVE ME! -->
+<!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT REMOVE ME! -->
+
+
 
 # Container Calls
 
@@ -121,13 +123,13 @@ Get the ontology used by a SMART container
 
 ## User
 
-Get a single user by internal ID
-
-     GET /users/{user_id}
-
 Get users by name (or all users if blank)
 
      GET /users/search?given_name={given_name}&family_name={family_name}
+
+Get a single user by internal ID
+
+     GET /users/{user_id}
 
 
 [User RDF](../data_model/#User)
@@ -177,13 +179,13 @@ Get encounters for a patient
 
 ## Fulfillment
 
-Get all fulfillments for a patient
-
-     GET /records/{record_id}/fulfillments/
-
 Get fulfillments for a patient
 
      GET /records/{record_id}/fulfillments/{fulfillment_id}
+
+Get all fulfillments for a patient
+
+     GET /records/{record_id}/fulfillments/
 
 
 [Fulfillment RDF](../data_model/#Fulfillment)
@@ -203,13 +205,13 @@ Get all immunizations for a patient
 
 ## Lab Result
 
-Get all lab results for a patient
-
-     GET /records/{record_id}/lab_results/
-
 Get lab results for a patient
 
      GET /records/{record_id}/lab_results/{lab_result_id}
+
+Get all lab results for a patient
+
+     GET /records/{record_id}/lab_results/
 
 
 [Lab Result RDF](../data_model/#Lab_Result)
@@ -221,26 +223,26 @@ Get lab results for a patient
 
 ## Medication
 
-Get all medications for a patient
-
-     GET /records/{record_id}/medications/
-
 Get medication for a patient
 
      GET /records/{record_id}/medications/{medication_id}
+
+Get all medications for a patient
+
+     GET /records/{record_id}/medications/
 
 
 [Medication RDF](../data_model/#Medication)
 
 ## Problem
 
-Get all problems for a patient
-
-     GET /records/{record_id}/problems/
-
 Get problems for a patient
 
      GET /records/{record_id}/problems/{problem_id}
+
+Get all problems for a patient
+
+     GET /records/{record_id}/problems/
 
 
 [Problem RDF](../data_model/#Problem)

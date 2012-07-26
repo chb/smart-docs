@@ -16,23 +16,23 @@ with SMART patient record data. We'll build out several example SPARQL queries,
 but please feel free to add on new material as you discover useful tidbits!
 
 
-# Running Queries- Live in-browser, or in your own environment
+## Running Queries: Live In-browser or in Your Own Environment
 
 You can use the form below to try out queries right away. Please note that to
-use the live query tool, you'll need to include a FROM <graph> clause in your
+use the live query tool, you'll need to include a `FROM <graph>` clause in your
 query to supply data. If you're running these queries in your own environment,
 you'll run them in the context of a particular graph (e.g. Patient Smith's
-medication graph), rather than specifying FROM directly in the query.
+medication graph), rather than specifying `FROM` directly in the query.
 
-Or you could run these examples on your own, via
+Or you could run these examples on your own via:
 
-* the command line using [rasqal](http://librdf.org/rasqal)
+* The command line using [rasqal](http://librdf.org/rasqal)
 * Python, Perl, PHP, or Ruby using [librdf](http://librdf.org)
-* Java using [Jena](http://jena.sourceforge.net),  [Sesame](http://www.openrdf.org), or [mulgara](http://www.mulgara.org).
-* Javascript When possible, we'll also provide examples that will work with the
-* javascript library [rdfquery](http://code.google.com/p/rdfquery/), which is
-  automatically provided by the 
-  [smart-api-client.js](http://wiki.chip.org/smart-project/index.php/Developers_Do cumentation:_smart-api-client.js_Reference).
+* Java using [Jena](http://jena.sourceforge.net),
+  [Sesame](http://www.openrdf.org), or [Mulgara](http://www.mulgara.org)
+* Javascript - when possible, we'll also provide examples that will work with the
+  [rdfquery](http://code.google.com/p/rdfquery/) javascript library which is
+  automatically provided by the [smart-api-client.js](/libraries/javascript/).
 
 
 # The Examples
@@ -40,72 +40,77 @@ Or you could run these examples on your own, via
 ## Examining a Medication List
 
 Let's work with some medication data, the kind returned by a SMART API call to
-GET /records/{record_id}/medications/. To start off, let's write a query to find
+`GET /records/{record_id}/medications/`. To start off, let's write a query to find
 the name of each medication in the list:
-
 
 ### Find Medication Names
 
 <textarea id='q_med_names'></textarea>
-<button onclick='javascript:run_query($("#q_med_names"), "meds");'>Run Query on Sample Medications List</button>
+<button onclick='javascript:run_query($("#q_med_names"), "meds");'>
+  Run Query on Sample Medications List
+</button>
 
-Note the use of the "distinct" keyword: as in SQL, distinct will prune the list
+Note the use of the `distinct` keyword: as in SQL, distinct will prune the list
 for duplicates. So if the two medications in the patient record have the same
 name, this query will collapse them into one result.
 
-With rdfquery, we can achieve a similar result:
+With `rdfquery`, we can achieve a similar result:
 
 {% highlight javascript %}
-    SMART.MEDS_get().success(function(response) {
-         var fill_dates = response.graph
-                               .where("?m rdf:type sp:Medication")
-                               .where("?med sp:drugName ?medc")
-                               .where("?medc dcterms:title ?t");
-      });
+ SMART.MEDS_get().success(function(response) {
+      var fill_dates = response.graph
+          .where("?m rdf:type sp:Medication")
+          .where("?med sp:drugName ?medc")
+          .where("?medc dcterms:title ?t");
+   });
 {% endhighlight %}
 ### Find Medication Quantities + Frequencies
 
 <textarea id='q_med_quants'></textarea>
-<button onclick='javascript:run_query($("#q_med_quants"), "meds");'>Run Query on Sample Medications List</button>
+<button onclick='javascript:run_query($("#q_med_quants"), "meds");'>
+  Run Query on Sample Medications List
+</button>
 
 ### Find Medication Fulfillment Dates
 
 <textarea id='q_med_dates'></textarea>
-<button onclick='javascript:run_query($("#q_med_dates"), "meds");'>Run Query on Sample Medications List</button>
+<button onclick='javascript:run_query($("#q_med_dates"), "meds");'>
+  Run Query on Sample Medications List
+</button>
 
 {% highlight javascript %}
- SMART.MEDS_get().success(function(response) {
-     var fill_dates = response.graph
-                           .where("?m rdf:type sp:Medication")
-                           .where("?m sp:fulfillment ?fill")
-                           .where("?med sp:drugName ?medc")
-                           .where("?medc dcterms:title ?t")
-                           .where("?fill dcterms:date ?fill_date");
-   });
-   
+    SMART.MEDS_get().success(function(response) {
+      var fill_dates = response.graph
+          .where("?m rdf:type sp:Medication")
+          .where("?m sp:fulfillment ?fill")
+          .where("?med sp:drugName ?medc")
+          .where("?medc dcterms:title ?t")
+          .where("?fill dcterms:date ?fill_date");
+  });
 {% endhighlight  %}
 
 ### Find Medications Fulfilled Since January 2009
 
 <textarea id='q_med_since'></textarea>
-<button onclick='javascript:run_query($("#q_med_since"), "meds");'>Run Query on Sample Medications List</button>
+<button onclick='javascript:run_query($("#q_med_since"), "meds");'>
+  Run Query on Sample Medications List
+</button>
 
 
-Again a similar result with rdfquery
+Again a similar result with `rdfquery`
 
 {% highlight javascript %}
     SMART.MEDS_get().success(function(response) {
-         var fill_dates = response.graph
-                               .where("?m rdf:type sp:Medication")
-                               .where("?m sp:fulfillment ?fill")
-                               .where("?med sp:drugName ?medc")
-                               .where("?medc dcterms:title ?t")
-                               .where("?fill dcterms:date ?fill_date")
-                               .filter(function() {
-                                  return Date.parse(this.fill_date.value) >  Date.parse("2009-01-01T00:00:00Z");
-                                });
-       });
-       
+        var fill_dates = response.graph
+            .where("?m rdf:type sp:Medication")
+            .where("?m sp:fulfillment ?fill")
+            .where("?med sp:drugName ?medc")
+            .where("?medc dcterms:title ?t")
+            .where("?fill dcterms:date ?fill_date")
+            .filter(function() {
+                return Date.parse(this.fill_date.value) >  Date.parse("2009-01-01T00:00:00Z");
+             });
+    });
 {% endhighlight  %}
 
 ## Getting some Demographics
@@ -115,20 +120,21 @@ demographics
 
 ### Find Patient's Name
 
-
 <textarea id='q_demographics'></textarea>
-<button onclick='javascript:run_query($("#q_demographics"), "demographics");'>Run Query on Sample Demographics</button>
+<button onclick='javascript:run_query($("#q_demographics"), "demographics");'>
+  Run Query on Sample Demographics
+</button>
 
 With rdfquery, we can achieve a similar result: 
 
 {% highlight javascript %}
     SMART.DEMOGRAPHICS_get().success(function(response) {
-         var person = response.graph
-                               .where("?d rdf:type  sp:Demographics")
-                               .where("?d v:n  ?name")
-                               .where("?name v:given-name ?fn")
-                               .where("?name v:family-name ?ln");
-      });
+        var person = response.graph
+            .where("?d rdf:type  sp:Demographics")
+            .where("?d v:n  ?name")
+            .where("?name v:given-name ?fn")
+            .where("?name v:family-name ?ln");
+    });
 {% endhighlight  %}
 
 ## Getting some Problems
@@ -138,16 +144,18 @@ Here's a query that pulls out the name of each problem
 ### Find Patient's Problems
 
 <textarea id='q_problems'></textarea>
-<button onclick='javascript:run_query($("#q_problems"), "problems");'>Run Query on Sample Problem List</button>
+<button onclick='javascript:run_query($("#q_problems"), "problems");'>
+  Run Query on Sample Problem List
+</button>
 
 With rdfquery, we can achieve a similar result
 
 {% highlight javascript %}
     SMART.PROBLEMS_get().success(function(response) {
-         var person = response.graph
-                               .where("?pr rdf:type sp:Prblem")
-                               .where("?pr sp:problemName ?pn")
-                               .where("?pn dcterms:title ?p");
+        var person = response.graph
+            .where("?pr rdf:type sp:Prblem")
+            .where("?pr sp:problemName ?pn")
+            .where("?pn dcterms:title ?p");
       });
 {% endhighlight  %}
 
@@ -155,7 +163,9 @@ With rdfquery, we can achieve a similar result
 ### Finding Quantitative Labs
 
 <textarea id='q_labs'></textarea>
-<button onclick='javascript:run_query($("#q_labs"), "labs");'>Run Query on Sample Labs</button>
+<button onclick='javascript:run_query($("#q_labs"), "labs");'>
+  Run Query on Sample Labs
+</button>
 
 
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
@@ -178,13 +188,12 @@ With rdfquery, we can achieve a similar result
       f.remove();  
     }
 
-    f = $("<div class='response' style='border: 1px dashed black; width: 100%; overflow-x: hidden; overflow-y: auto; height: 10em;'></div>");
+    f = $("<div class='response' style='padding: 4px; border: 1px dashed black; width: 100%; overflow-x: hidden; overflow-y: auto; height: 10em;'></div>");
     qta.after(f);
     stores[store].execute(q, 
-    function(success, results){
-
-      f.html(resultsToTable(results));
-    });
+      function(success, results){
+        f.html(resultsToTable(results));
+      });
   };
 
   var resultsToTable = function(results){

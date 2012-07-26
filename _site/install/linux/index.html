@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Installing SMART on Ubuntu Linux</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Data Model + Querying</li>
+
+    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
+    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/app_mainfest">App Manifest</a></li>
+    <li><a href="/reference/change_log">Changelog</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentation (2010-08-26)</li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>Installing SMART on Ubuntu Linux <small></small></h1>
+      </div>
+
+      <div class="simple_box">
+  The SMART reference EMR documentation is rapidly evolving. If something in
+  this document looks strange, confusing, or wrong, please ask about it at <a
+  href='http://groups.google.com/group/smart-app-developers'>the SMART
+  Developer's Google Group</a>
+</div>
+
+<h1>Repositories</h1>
+
+<p>These instructions apply to each of three github repositories that you'll need
+in order to run the SMART Reference EMR in your own environment:</p>
+
+<ul>
+<li><a href="https://github.com/chb/smart_server.git">https://github.com/chb/smart_server.git</a></li>
+<li><a href="https://github.com/chb/smart_ui_server.git">https://github.com/chb/smart_ui_server.git</a></li>
+<li><a href="https://github.com/chb/smart_sample_apps.git">https://github.com/chb/smart_sample_apps.git</a></li>
+<li><a href="https://github.com/chb/smart_sample_patients.git">https://github.com/chb/smart_sample_patients.git</a></li>
+</ul>
+
+<h1>System Setup</h1>
+
+<ul>
+<li>Recent Linux installation (Kernel 2.6+).We recommend an up-to-date version of
+Ubuntu, and these instructions are written from that perspective.</li>
+<li>Note: These instructions have been updated for Ubuntu 11.10.</li>
+<li><p>Note: We recommend you do this by sudo'ing from a non-root user. If you
+would like to do this as root make sure you create at least one non-root user
+with <code>useradd -m {USER}</code> otherwise the default locale will not be set. This
+issue is most common on a new OS build.</p></li>
+<li><p>Update the apt-get manifests:</p>
+
+<pre><code>$ sudo apt-get update
+</code></pre></li>
+<li><p>Python 2.7 with package <code>psycopg2</code></p>
+
+<pre><code>$ sudo apt-get install python-psycopg2 python-m2crypto \
+    python-simplejson python-argparse python-setuptools python-pyparsing
+
+$ sudo easy_install -U &quot;rdflib&gt;=3.0.0&quot;  rdfextras
+</code></pre></li>
+<li><p>Django 1.3+</p>
+
+<pre><code>$ sudo apt-get install python-django
+</code></pre></li>
+<li><p>PostgreSQL 8.3+</p>
+
+<pre><code>$ sudo apt-get install postgresql
+</code></pre></li>
+<li><p>git</p>
+
+<pre><code>$ sudo apt-get install git
+</code></pre></li>
+</ul>
+
+<h1>Setup Database</h1>
+
+<p>You'll have the easiest time naming your database <code>smart</code></p>
+
+<ul>
+<li><p>There are two ways to authenticate to PostgreSQL: use your Unix credentials,
+or use a separate username and password. We strongly recommend the latter,
+and our instructions are tailored appropriately. If you know how to use
+PostgreSQL and want to use Unix-logins, go for it, just remember that when
+you use Apache, it will usually try to log in using its username, <code>www-data</code>.</p></li>
+<li><p>in <code>/etc/postgresql/9.1/main/pg_hba.conf</code>, find the line that reads:</p>
+
+<pre><code>local     all     all        peer
+</code></pre></li>
+</ul>
+
+<p>This should be the second uncommented line in your default config. Change
+<code>ident</code> to <code>md5</code>:</p>
+
+<pre><code>    local     all     all        md5
+</code></pre>
+
+<ul>
+<li><p>You will need to restart PostgreSQL:</p>
+
+<pre><code>$ sudo service postgresql restart
+</code></pre></li>
+<li><p>Create a PostgreSQL user for your SMART service, e.g. <code>smart</code> and setup a password</p>
+
+<pre><code>$ sudo su - postgres
+$ pg_dropcluster --stop 9.1 main
+$ pg_createcluster --start -e UTF-8 9.1 main
+$ createuser --superuser smart
+$ psql
+$ postgres=# \password smart
+$ postgres=# \q
+</code></pre></li>
+</ul>
+
+<h1>Install <code>openrdf-sesame</code> (and Tomcat)</h1>
+
+<ul>
+<li><p>get Tomcat and OpenRDF-Sesame:</p>
+
+<pre><code>$ sudo apt-get install tomcat7
+$ wget http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
+</code></pre></li>
+<li><p>install OpenRDF Sesame as a Tomcat web application</p>
+
+<pre><code>$ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
+$ sudo mkdir /usr/share/tomcat7/.aduna
+$ sudo chown tomcat7.tomcat7 /usr/share/tomcat7/.aduna/
+$ sudo cp -r openrdf-sesame-2.6.5/war/* /var/lib/tomcat7/webapps/
+</code></pre></li>
+<li><p>restart Tomcat (optional since autoDeploy is typically enabled in Tomcat by default)</p>
+
+<pre><code>$ sudo service tomcat7 restart
+</code></pre></li>
+<li><p>check that Tomcat and OpenRDF Sesame are running by hitting
+<a href="http://localhost:8080/openrdf-workbench/">http://localhost:8080/openrdf-workbench/</a>. You should see the main OpenRDF
+status page.</p></li>
+</ul>
+
+<p>The OpenRDF store doesn't support access control. You will probably want to
+limit access to just <code>localhost</code>. To limit servlet access to <code>localhost</code>, make two
+tomcat configuration changes:</p>
+
+<ul>
+<li><p>in <code>/var/lib/tomcat7/conf/context.xml</code> add within the <code>&lt;Context&gt;</code> element:</p>
+
+<pre><code>&lt;Valve className=&quot;org.apache.catalina.valves.RemoteHostValve&quot; allow=&quot;localhost&quot;/&gt;
+</code></pre></li>
+<li><p>and in <code>/var/lib/tomcat7/conf/server.xml</code> next to the other <code>&lt;Connector&gt;</code> elements:</p>
+
+<pre><code>&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; enableLookups=&quot;true&quot;&gt;
+</code></pre></li>
+</ul>
+
+<p>You'll need to restart Tomcat again if you make these changes</p>
+
+<h1>Automated approach: Download, Install, and Configure SMART Server Components</h1>
+
+<p>At this point you are ready to install the SMART server components. There are
+two ways to do this. You can either use the easy install script (described here)
+or skip this step and follow the manual setup steps. If you complete the
+installation via the automated script, there are no further steps that you need
+to do after running the script (your SMART server will be fully functional).</p>
+
+<pre><code>$ wget https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
+$ python smart_manager.py -a
+</code></pre>
+
+<p>(Note:  if you'd like to run the bleeding-edge SMART development branch, replace <code>master</code> with <code>dev</code> in the <code>wget</code>
+command above and pass the <code>-d</code> flag to <code>smart_manager.py</code>.  If you're unsure, you probably want to stick with the
+master branch!)</p>
+
+<h2>Usage examples for smart_manager.py</h2>
+
+<p>Kill and restart the development servers</p>
+
+<pre><code>$ python smart_manager.py -k -v -w
+</code></pre>
+
+<p>Reset the SMART server, regenerate sample data, and reload:</p>
+
+<pre><code>$ python smart_manager.py -r -p -l
+</code></pre>
+
+<h1>Manual steps: if you don't take the automated approach...</h1>
+
+<h2>1. Download, Install, and Configure SMART Backend Server</h2>
+
+<ul>
+<li><p>get the code</p>
+
+<p>$ git clone <a href="https://github.com/chb/smart_server.git">https://github.com/chb/smart_server.git</a>
+  $ cd smart_server
+  $ git submodule init
+  $ git submodule update</p></li>
+<li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update it:</p>
+
+<ul>
+<li>set <code>DATABASE_USER</code> to the username you chose, in this documentation
+<code>smart</code>, and set <code>DATABASE_PASSWORD</code> accordingly.</li>
+<li>set <code>APP_HOME</code> to the complete path to the location where you've
+installed <code>smart_server</code>, e.g. <code>/web/smart_server</code></li>
+<li>set <code>SITE_URL_PREFIX</code> to the URL where your server is running,
+including port number  e.g. <code>http://localhost:7000</code></li>
+<li>set <code>SMART_UI_SERVER_LOCATION</code> to the URL where your UI server will
+be running, including port number  e.g. <code>http://localhost:7001</code></li>
+</ul></li>
+<li><p>copy <code>bootstrap_helpers/application_list.json.default</code> to
+<code>bootstrap_helpers/application_list.json</code> and customize to include
+the apps you want.</p></li>
+<li><p>update the database and repository settings in <code>reset.sh</code> (if you
+changed the default DB and repository endpoints in <code>settings.py</code>)</p></li>
+<li><p>set things up (supplying the smart db password when prompted twice)</p>
+
+<pre><code>$ ./reset.sh
+</code></pre></li>
+</ul>
+
+<p>NOTE: On the first run of <code>reset.sh</code>, you will also see some 500s.
+  Don't worry about them.  When the reset process completes, you should see:</p>
+
+<pre><code>    ...
+    No fixtures found.
+</code></pre>
+
+<p>This is normal -- nothing has gone wrong.</p>
+
+<p>IMPORTANT: if you've enabled apps that are part of the sample apps below, you
+should <em>wait</em> to run <code>reset.sh</code> until you've got the sample apps server
+running. The SMART Reference EMR attempts to download the apps' manifest files,
+and if they're not available over HTTP, <code>reset.sh</code> won't complete successfully.
+If you mistakenly run <code>reset.sh</code> before setting up the SMART Sample Apps, don't
+worry, just set up the SMART Sample Apps server, and run <code>reset.sh</code> again.</p>
+
+<h2>2. Download, Install, and Configure SMART UI Server</h2>
+
+<ul>
+<li><p>get the code</p>
+
+<pre><code>$ git clone https://github.com/chb/smart_ui_server.git
+$ cd smart_ui_server
+$ git submodule init
+$ git submodule update
+</code></pre></li>
+<li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update:</p>
+
+<ul>
+<li>set <code>DATABASE_USER</code> to the username you chose, in this
+documentation <code>smart</code>, and set <code>DATABASE_PASSWORD</code>
+accordingly.</li>
+<li>set <code>SMART_UI_BASE</code> to the complete path to the location where
+you've installed <code>smart_ui_server</code>, e.g. <code>/web/smart_ui_server</code></li>
+<li>set <code>SMART_SERVER_LOCATION</code>, <code>CONSUMER_KEY</code>,
+<code>CONSUMER_SECRET</code> appropriately to match the SMART Server's
+location and chrome credentials. (Check your <code>bootstrap.py</code> within
+<code>smart_server</code> for those credentials. If you change them, you'll
+need to run <code>reset.sh</code> again on the SMART server. If you never
+changed <code>bootstrap.py</code>, then your <code>CONSUMER_KEY</code> and
+<code>CONSUMER_SECRET</code> are both <code>chrome</code>, and you don't need to
+change their value in the UI server default settings file.)</li>
+</ul></li>
+<li><p>set things up (supplying the smart db password when prompted twice)</p>
+
+<pre><code>$ ./reset.sh
+</code></pre></li>
+</ul>
+
+<h2>3. Download, Install, and Configure SMART Sample Apps</h2>
+
+<ul>
+<li><p>get the source code</p>
+
+<p>$ git clone <a href="https://github.com/chb/smart_sample_apps.git">https://github.com/chb/smart_sample_apps.git</a>
+   $ cd smart_sample_apps
+   $ git submodule init
+   $ git submodule update</p></li>
+<li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update:</p>
+
+<ul>
+<li>set <code>APP_HOME</code> to the complete path to the location where you've
+installed <code>smart_sample_apps</code>, e.g. <code>/web/smart_sample_apps</code></li>
+<li>set <code>SMART_SERVER_PARAMS</code> to point to the location of the SMART
+Server. If you are running the SMART server on <code>localhost:7000</code> as
+we suggest, there's no need to change anything.</li>
+</ul></li>
+</ul>
+
+<h2>4. Manual steps: Generate  and Load Sample Patient Records</h2>
+
+<ul>
+<li><p>get the source code and generate sample data</p>
+
+<pre><code>$ git clone https://github.com/chb/smart_sample_patients.git
+$ cd smart_sample_patients/bin
+$ python generate.py --write ../test-data/
+</code></pre></li>
+<li><p>Load into SMART EMR</p>
+
+<pre><code>$ cd /path/to/smart_server
+$ PYTHONPATH=.:.. DJANGO_SETTINGS_MODULE=settings /usr/bin/python \
+  load_tools/load_one_patient.py /path/to/smart_sample_patients/test-data/*
+</code></pre></li>
+</ul>
+
+<p>Expect this to take a few minutes.</p>
+
+<h2>5.Running the Development Servers</h2>
+
+<p>The Django development servers are easy to run at the prompt.</p>
+
+<p>The backend server can run on localhost in the configuration given above:</p>
+
+<pre><code>cd /path/to/smart_server/
+nohup python manage.py runconcurrentserver 7000 --noreload &gt; log.txt 2&gt;&amp;1 &amp;
+</code></pre>
+
+<p>The UI server, if you want it accessible from another machine, needs to specify
+a hostname or IP address. If you want port 80, you need to be root of course.
+The mask &quot;0.0.0.0&quot; will allow all incoming connections:</p>
+
+<pre><code>cd /path/to/smart_ui_server/
+nohup python manage.py runconcurrentserver 0.0.0.0:7001 --noreload &gt; log.txt 2&gt;&amp;1 &amp;
+</code></pre>
+
+<p>And finally, the Sample Apps:</p>
+
+<pre><code>cd /path/to/smart_sample_apps/
+nohup python manage.py runconcurrentserver 0.0.0.0:8001 --noreload &gt; log.txt 2&gt;&amp;1 &amp;
+</code></pre>
+
+<p><em>Note</em>: In the above examples the console output is suppressed. If you are having
+trouble with the server, you may want to redirect the output to the console or a
+log file.</p>
+
+<h2>The SMART EMR is now at: http://localhost:7001/login</h2>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

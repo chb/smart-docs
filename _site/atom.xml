@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>SMART API</title>
+ <link href="http://chb.github.com/smart-docs-testing/atom.xml" rel="self"/>
+ <link href="http://chb.github.com/smart-docs-testing"/>
+ <updated>2012-07-26T11:21:29-04:00</updated>
+ <id>http://chb.github.com/smart-docs-testing</id>
+ <author>
+   <name>SMART Platforms</name>
+   <email>info@smartplatforms.org</email>
+ </author>
+
+ 
+ 
+</feed>

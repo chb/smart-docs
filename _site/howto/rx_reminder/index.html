@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The RxReminder Sample App</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Data Model + Querying</li>
+
+    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
+    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/app_mainfest">App Manifest</a></li>
+    <li><a href="/reference/change_log">Changelog</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentation (2010-08-26)</li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>The RxReminder Sample App <small></small></h1>
+      </div>
+
+      <div id="toc"> </div>
+
+<h2>RxReminder: SMART REST in Action</h2>
+
+<p>You should read <a href="../build_a_rest_app">HOWTO Build a SMART App - REST API</a> Calls
+first.</p>
+
+<h2>Choosing the right tools</h2>
+
+<p>Since you can write a SMART REST app in any language using any toolkit, there's
+a lot of flexibility. In general, you'll want to look for a language with
+existing OAuth libraries to handle the details of signing requests to the SMART
+container. Here we'll illustrate the highlights with a simple python-based SMART
+REST app called <em>RxReminder. RxReminder</em> is written using the web.py HTTP
+Framework, but we won't delve into <a href="http://webpy.org/">web.py</a> here. All you
+need to understand is that web.py provides a simple mechanism to map python
+functions to URLs.</p>
+
+<p>Code snippets are provided below, but please see <a href="http://github.com/chb/smart_rx_reminder">the full source tree on
+github</a>.</p>
+
+<h2>App Structure</h2>
+
+<p>First, recall that every SMART UI app must serve: <code>index.html</code> which loads
+smart-api-client.js to provide the app's functionality.</p>
+
+<p>Just like the app in the HOWTO, we serve the index file as follows in webpy:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="n">urls</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;/smartapp/index.html,&#39;</span> <span class="n">RxReminder</span><span class="s">&#39;)</span>
+
+  <span class="k">class</span> <span class="nc">RxReminder</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># good stuff coming here</span>
+</code></pre>
+</div>
+
+<h2>Initializing the SMART API Client</h2>
+
+<p>Now we're getting to the fun part: handling requests for index.html. We'll be
+using the Python SMART API client libraries to interact with the SMART
+container. For authentication, we'll use the OAuth token and secret provided in
+a URL parameter that came along with the request for our index.html, just like
+in the HOWTO.</p>
+
+<div class="highlight"><pre><code class="python">   <span class="n">smart_oauth_header</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">oauth_header</span>
+       <span class="n">smart_oauth_header</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">smart_oauth_header</span><span class="p">)</span>
+
+       <span class="c"># Pull out OAuth params from the header</span>
+       <span class="n">oa_params</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">parse_header</span><span class="p">(</span><span class="n">smart_oauth_header</span><span class="p">)</span>
+       <span class="n">resource_tokens</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;oauth_token&#39;</span><span class="p">:</span>       <span class="n">oa_params</span><span class="p">[</span><span class="s">&#39;smart_oauth_token&#39;</span><span class="p">],</span>
+
+  <span class="s">&#39;oauth_token_secret&#39;</span><span class="p">:</span><span class="n">oa_params</span><span class="p">[</span><span class="s">&#39;smart_oauth_token_secret&#39;</span><span class="p">]}</span>
+
+       <span class="c"># instantiate the smart client</span>
+       <span class="n">client</span> <span class="o">=</span> <span class="n">SmartClient</span><span class="p">(</span><span class="n">SMART_SERVER_OAUTH</span><span class="p">[</span><span class="s">&#39;consumer_key&#39;</span><span class="p">],</span>
+                            <span class="n">SMART_SERVER_PARAMS</span><span class="p">,</span>
+                            <span class="n">SMART_SERVER_OAUTH</span><span class="p">,</span>
+                            <span class="n">resource_tokens</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>If you're building your application from scratch without using the sample code,
+you'll want to define SMART_SERVER_OAUTH and SMART_SERVER_PARAMS:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="c"># Basic configuration:  the consumer key and secret we&#39;ll use</span>
+  <span class="c"># to OAuth-sign requests.</span>
+  <span class="n">SMART_SERVER_OAUTH</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;consumer_key&#39;</span><span class="p">:</span> <span class="s">&#39;my-app@apps.smartplatforms.org&#39;</span><span class="p">,</span>
+                        <span class="s">&#39;consumer_secret&#39;</span><span class="p">:</span> <span class="s">&#39;smartapp-secret&#39;</span><span class="p">}</span>
+
+
+  <span class="c"># The SMART container we&#39;re planning to talk to</span>
+  <span class="n">SMART_SERVER_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s">&#39;api_base&#39;</span> <span class="p">:</span> <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<h2>Generating Reminders</h2>
+
+<p>Now that we've got access tokens, and initialized a client object, let's
+interact with some health data! <em>RxReminder</em> needs to get a list of medications
+due for refills. We'll accomplish this by finding the most recent fulfillment
+event for each medication. Then we'll look at how many days' supply of
+medication were dispensed to find out on what day the patient will run out.</p>
+
+<p>We use our SmartClient object called client to fetch a SMART Response object
+including a list of medications, via <code>records_X_medications_GET() (or, in more
+verbose form, client.get(&quot;/records/%s/medications/{record_id}&quot;)</code> SMART API call.</p>
+
+<p>Then we'll get fancy with RDF, running a SPARQL query to find a list of fills
+for each medication in meds.graph. Finally, we'll loop through the fills to find
+the most recent one, using the dispensed quantity to determine when the patient
+will run out of medication.</p>
+
+<div class="highlight"><pre><code class="python">    <span class="c"># Represent the list as an RDF graph</span>
+    <span class="n">meds</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">records_X_medications_GET</span><span class="p">()</span>
+
+    <span class="c"># Find a list of all fulfillments for each med.</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">        PREFIX dc:&lt;http://purl.org/dc/elements/1.1/&gt;</span>
+<span class="s">        PREFIX dcterms:&lt;http://purl.org/dc/terms/&gt;</span>
+<span class="s">        PREFIX sp:&lt;http://smartplatforms.org/terms#&gt;</span>
+<span class="s">        PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<span class="s">           SELECT  ?med ?name ?quant ?when</span>
+<span class="s">           WHERE {</span>
+<span class="s">                  ?med rdf:type sp:Medication .</span>
+<span class="s">                 ?med sp:drugName ?medc.</span>
+<span class="s">                  ?medc dcterms:title ?name.</span>
+<span class="s">                  ?med sp:fulfillment ?fill.</span>
+<span class="s">                  ?fill sp:dispenseDaysSupply ?quant.</span>
+<span class="s">                  ?fill dc:date ?when.</span>
+<span class="s">           }</span>
+<span class="s">        &quot;&quot;&quot;</span>
+    <span class="n">pills</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">SPARQLQuery</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">meds</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+
+    <span class="c"># Find the last fulfillment date for each medication</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">last_pill_dates</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">pill</span> <span class="ow">in</span> <span class="n">pills</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_pill_dates</span><span class="p">(</span><span class="o">*</span><span class="n">pill</span><span class="p">)</span>
+
+    <span class="c">#Print a formatted list</span>
+    <span class="k">return</span> <span class="n">header</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_last_dates</span><span class="p">()</span> <span class="o">+</span> <span class="n">footer</span>
+</code></pre>
+</div>
+
+<p>The details of finding the most recent prescription are in the update_pill_dates
+function. Please <a href="http://github.com/chb/smart_rx_reminder">check out the source on github</a>
+to see the whole picture!</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

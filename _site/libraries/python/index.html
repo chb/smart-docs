@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMART App Python Library</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Data Model + Querying</li>
+
+    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
+    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/app_mainfest">App Manifest</a></li>
+    <li><a href="/reference/change_log">Changelog</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentation (2010-08-26)</li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>SMART App Python Library <small></small></h1>
+      </div>
+
+      <div class='simple_box'>
+  This document describes the SMART Python Library, which you can use from a
+  Python application to make authenticated REST calls into a SMART container.
+
+  <br />
+
+  You probably want to read the [SMART REST HOWTO][] to understand when you
+  might want to use this library.
+</div>
+
+<div id="toc"> </div>
+
+<h2>Setting Up Your Environment</h2>
+
+<p>To use the SMART Python client library, you need, of course, to be running a
+Python app. The most common use case for using this library is implementing the
+web backend for your SMART App, using a toolkit such as
+<a href="http://webpy.org/">webpy</a> or <a href="http://djangoproject.com/">Django</a>.</p>
+
+<h2>Get the Code</h2>
+
+<p>The SMART client library is on Github:</p>
+
+<p>$ git clone <a href="https://github.com/chb/smart_client_python.git">https://github.com/chb/smart_client_python.git</a></p>
+
+<p>You will notice <code>generate_api.py</code> and <code>generate_readme.py</code> inside the newly formed
+directory <code>smart_client_python</code>. You do NOT need to run these. The API is
+pre-generated from the OWL specification. Unless you plan on changing the OWL
+specification (and it's very likely you don't want to do that), you won't need
+to run these utilities.</p>
+
+<p>Also, you'll need <code>rdflib</code>, a Pythonic RDF library:</p>
+
+<div class="highlight"><pre><code class="sh">  <span class="nv">$ </span>sudo apt-get install python-pyparsing
+  <span class="nv">$ </span>sudo easy_install -U <span class="s2">&quot;rdflib&gt;=3.0.0&quot;</span>
+  <span class="nv">$ </span>sudo easy_install rdfextras
+</code></pre>
+</div>
+
+<h2>Set your Python Path</h2>
+
+<p>You need to make sure that <code>smart_client_python</code> (which you can rename without any
+complication, e.g. to smart<em>client) is in your Python path when you run your
+application. The easiest way to do this is to git-clone/copy/symlink the
+directory into your application path. If you're using git to manage your
+repository, you may want to set up <code>smart_client_python</code> as a git submodule (but
+do this _only</em> if you understand git submodules well.)</p>
+
+<h2>Import the Right Modules</h2>
+
+<p>For starters, you'll need the main module:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="kn">from</span> <span class="nn">smart_client_python</span> <span class="kn">import</span> <span class="n">smart</span>
+</code></pre>
+</div>
+
+<p>You will probably also need the <code>oauth</code> and <code>util</code> modules:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="kn">from</span> <span class="nn">smart_client_python</span> <span class="kn">import</span> <span class="n">oauth</span>
+  <span class="kn">from</span> <span class="nn">smart_client_python.common</span> <span class="kn">import</span> <span class="n">util</span> <span class="k">as</span> <span class="n">smart_util</span>
+</code></pre>
+</div>
+
+<h2>Using the SMART Client</h2>
+
+<p>To make a SMART REST API call, you'll need to instantiate a <code>SmartClient</code> object,
+set its context, and choose the call you want to make.</p>
+
+<p>You'll need to instantiate a <code>SmartClient</code> object:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="n">client</span> <span class="o">=</span> <span class="n">SmartClient</span><span class="p">(</span><span class="n">APP_ID</span><span class="p">,</span>
+                       <span class="n">SMART_SERVER_PARAMS</span><span class="p">,</span>
+                       <span class="n">SMART_SERVER_OAUTH</span><span class="p">,</span>
+                       <span class="n">resource_tokens</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>In this call:</p>
+
+<ul>
+<li><p><code>APP_ID</code>: the application identifier, as assigned by the SMART Container. In the 
+case of our SMART Reference EMR, this is the same as the OAuth <code>consumer_key</code>,
+but not all SMART Containers will choose to identify apps by their OAuth
+consumer token.</p></li>
+<li><p><code>SMART_SERVER_PARAMS</code>: a Python dictionary containing at least <code>api_base</code>, the
+URL base to which SMART API REST calls are made, e.g.:</p></li>
+</ul>
+
+<div class="highlight"><pre><code class="python">    <span class="n">SMART_SERVER_PARAMS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;api_base&#39;</span> <span class="p">:</span> <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+<li>SMART_SERVER_OAUTH: a Python dictionary containing the OAuth consumer credentials:</li>
+</ul>
+
+<div class="highlight"><pre><code class="python">  <span class="sb">`SMART_SERVER_OAUTH`</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;consumer_key&#39;</span> <span class="p">:</span> <span class="s">&#39;smartapp123&#39;</span><span class="p">,</span> <span class="s">&#39;consumer_secret&#39;</span> <span class="p">:</span> <span class="s">&#39;X1Y2Z3...&#39;</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+<li><code>resource_tokens</code>: a Python dictionary containing the OAuth resource credentials:</li>
+</ul>
+
+<div class="highlight"><pre><code class="python">  <span class="n">resource_tokens</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;oauth_token&#39;</span> <span class="p">:</span> <span class="s">&#39;tok456&#39;</span><span class="p">,</span> <span class="s">&#39;oauth_token_secret&#39;</span> <span class="p">:</span> <span class="s">&#39;A7B4Z1...&#39;</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Once instantiated, a SMART client object can be used for as many API calls as
+needed. Of course, if you need to use different credentials, in particular a
+different set of resource tokens, you should instantiate a new <code>SmartClient</code>. If
+you know you won't be needing to access the API with existing credentials, you
+can use the <code>.update_token()</code> method on an existing <code>SmartClient</code>, but we recommend
+you use that sparingly.</p>
+
+<h3>SMART Client Context</h3>
+
+<p>The <code>SmartClient</code> object contains a little bit of additional context: the
+<code>record_id</code>. This can be set like any normal Python attribute:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="n">client</span><span class="o">.</span><span class="n">record_id</span> <span class="o">=</span> <span class="s">&#39;157&#39;</span>
+</code></pre>
+</div>
+
+<p>If you do not set up this context, you will have to provide the <code>record_id</code>
+parameter on every API call.</p>
+
+<h3>Where do I Get the Tokens and Context?</h3>
+
+<p>The consumer key and secret are defined once for your app when it is set up
+within the SMART Container. If you're developing against the SMART Reference EMR
+Sandbox, you'll want to use:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="p">{</span><span class="s">&#39;consumer_key&#39;</span><span class="p">:</span> <span class="s">&#39;my-app@apps.smartplatforms.org&#39;</span><span class="p">,</span> <span class="s">&#39;consumer_secret&#39;</span><span class="p">:</span> <span class="s">&#39;smartapp-secret&#39;</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p>To get the resource token and patient-record context, you need to understand how
+SMART Connect passes this information to your app via a URL parameter. See the
+<a href="(/howto/build_a_rest_app/)">SMART REST HOWTO</a>.</p>
+
+<h2>Making the Call</h2>
+
+<p>To get, say, the list of medications on a record, you can simply make the
+following call:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="n">medications</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">records_X_medications_GET</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p>Notice that the method signature follows the REST API signature:</p>
+
+<pre><code>GET /records/{record_id}/medications/
+</code></pre>
+
+<p>with the HTTP method appended at the end. The X's in the method signature are
+markers for expected parameters. <code>record_id</code> is automatically pulled from the
+<code>SmartClient</code> context, or it can be provided as a parameter like this:</p>
+
+<div class="highlight"><pre><code class="python">  <span class="n">medications</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">records_X_medications_GET</span><span class="p">(</span><span class="n">record_id</span> <span class="o">=</span> <span class="s">&#39;456&#39;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2>Working with the Results</h2>
+
+<p>The results of a SMART API call using the client library is an <code>SMARTResponse</code>
+object containing the RDF graph. For more on RDF graphs, please read our
+<a href="(/datamodel/intro_to_rdf)">Quick Intro to RDF and SPARQL</a>. At a high-level, the result is a
+dataset that can be manipulated and queried in a very flexible manner. You can
+use <code>rdflib</code> to do just that:</p>
+
+<p>For example, if we want the list of medication names</p>
+
+<div class="highlight"><pre><code class="python">  <span class="n">query</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">           PREFIX dcterms:&lt;http://purl.org/dc/terms/&gt;</span>
+<span class="s">           PREFIX sp:&lt;http://smartplatforms.org/terms#&gt;</span>
+<span class="s">           PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<span class="s">           SELECT ?drugname</span>
+<span class="s">           WHERE {</span>
+<span class="s">             ?med rdf:type sp:Medication .</span>
+<span class="s">             ?med sp:drugName ?drugname_code.</span>
+<span class="s">             ?drugname_code dcterms:title ?drugname.</span>
+<span class="s">           }</span>
+<span class="s">           &quot;&quot;&quot;</span>
+  <span class="n">med_names</span> <span class="o">=</span> <span class="n">medications</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2>API Reference</h2>
+
+<p>All REST API calls can be used by the SMART client library simply by mapping the
+REST URL signature to a Python method signature as described above for the
+medications use case. Check out our <a href="/reference/rest_api">API</a>. You can also use command</p>
+
+<div class="highlight"><pre><code class="sh">  <span class="nv">$ </span>python generate_readme.py
+</code></pre>
+</div>
+
+<p>to automatically generate the available methods in the client library.</p>
+
+<p>If you don't want to run that code yourself, check out this library' README on
+<a href="http://github.com/chb/smart_client_python">github</a>.</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

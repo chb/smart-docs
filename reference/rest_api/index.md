@@ -27,9 +27,6 @@ sample EMR might have the `URI`:
 
 [Changes to API + Payloads](../change_log/)
 
-[Atom Feed FIXME]
-
-
 # Overview
 
 The SMART API provides access to individual resources (medications, fulfillment
@@ -74,186 +71,200 @@ documentation below, as well as our client-side REST libraries and API
 Playground app.
 
 
+---
+
+<!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT REMOVE ME! -->
+
+
+
 # Container Calls
+
 
 ## App Manifest
 
-    GET /apps/{descriptor}/manifest
-
-Returns a JSON SMART UI app manifest for the app matching `{descriptor}`, or `404`.
-Note that `{descriptor}` can be an app ID like
-`"got-statins@apps.smartplatforms.org"` or an intent string like
-`"view_medications"`.
-
-    GET /apps/manifests/
-
 Returns a JSON list of all SMART UI app manifests installed on the container.
-FIXME LINK RDF Payload description
+
+     GET /apps/manifests/
+
+Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins@apps.smartplatforms.org" or an intent string like "view_medications".
+
+     GET /apps/{descriptor}/manifest
 
 
-## Capabilities
+[App Manifest RDF](../data_model/#App_Manifest)
 
-    GET /capabilities/
+## ContainerManifest
 
-Get capabilities for a container. FIXME LINK RDF Payload description
+Get manifest for a container
 
+     GET /manifest
+
+
+[ContainerManifest RDF](../data_model/#ContainerManifest)
 
 ## Demographics
 
-    GET /records/search?given_name={given_name}&family_name={family_name}&zipcode={zipcode}&birthday={birthday}&gender={gender}&medical_record_number={medical_record_number}
+Get an RDF graph of sp:Demographics elements for all patients that match the query.  Matching treats family_name and given_name as the *beginning* of a name.  For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Birthday is an ISO8601 string like "2008-03-21"; gender is "male" or "female".  Gender, birthday, zipcode, and medical_record_number must match exactly.
+	
 
-Get an RDF graph of `sp:Demographics` elements for all patients that match the
-query. Matching treats `family_name` and `given_name` as the *beginning* of a
-name. For instance `given_name='J'` matches `/^J/i` and thus matches `Josh`.
-Birthday is an `ISO8601` string like `2008-03-21`; gender is `male` or `female`.
-`gender`, `birthday`, `zipcode`, and `medical_record_number` must match exactly.
-FIXME LINK RDF Payload description
+     GET /records/search?given_name={given_name}&family_name={family_name}&zipcode={zipcode}&birthday={birthday}&gender={gender}&medical_record_number={medical_record_number}
 
+
+[Demographics RDF](../data_model/#Demographics)
 
 ## Ontology
 
-    GET /ontology
+Get the ontology used by a SMART container
 
-Get the ontology used by a SMART container. FIXME LINK RDF Payload description
+     GET /ontology
 
+
+[Ontology RDF](../data_model/#Ontology)
 
 ## User
 
-    GET /users/search?given_name={given_name}&family_name={family_name}
+Get users by name (or all users if blank)
 
-Get users by name (or all users if blank).
+     GET /users/search?given_name={given_name}&family_name={family_name}
 
-    GET /users/{user_id}
+Get a single user by internal ID
 
-Get a single user by internal ID.
+     GET /users/{user_id}
 
-FIXME LINK RDF Payload description
 
+[User RDF](../data_model/#User)
 
 # Record Calls
 
+
+## Alert
+
+
+[Alert RDF](../data_model/#Alert)
+
 ## Allergy
 
-    GET /records/{record_id}/allergies/
+Get all allergies for a patient
 
-Get all allergies for a patient.
+     GET /records/{record_id}/allergies/
 
-    GET /records/{record_id}/allergies/{allergy_id}
+Get allergies for a patient
 
-Get allergies for a patient.
+     GET /records/{record_id}/allergies/{allergy_id}
 
-FIXME LINK RDF Payload description
-  
-  
+
+[Allergy RDF](../data_model/#Allergy)
+
 ## Demographics
 
-    GET /records/{record_id}/demographics
+Get all demographics for a patient
 
-Get all demographics for a patient.
+     GET /records/{record_id}/demographics
 
-FIXME LINK RDF Payload description
 
+[Demographics RDF](../data_model/#Demographics)
 
 ## Encounter
 
-    GET /records/{record_id}/encounters/
+Get all encounters for a patient
 
-Get all encounters for a patient.
+     GET /records/{record_id}/encounters/
 
-GET /records/{record_id}/encounters/{encounter_id}
+Get encounters for a patient
 
-Get an encounter for a patient.
+     GET /records/{record_id}/encounters/{encounter_id}
 
-FIXME LINK RDF Payload description
 
+[Encounter RDF](../data_model/#Encounter)
 
 ## Fulfillment
 
-    GET /records/{record_id}/fulfillments/
+Get fulfillments for a patient
 
-Get all fulfillments for a patient.
+     GET /records/{record_id}/fulfillments/{fulfillment_id}
 
-    GET /records/{record_id}/fulfillments/{fulfillment_id}
+Get all fulfillments for a patient
 
-Get one fulfillment for a patient.
+     GET /records/{record_id}/fulfillments/
 
-FIXME LINK RDF Payload description
 
+[Fulfillment RDF](../data_model/#Fulfillment)
 
 ## Immunization
 
-FIXME LINK RDF Payload description
+Get one immunization for a patient
 
-    GET /records/{record_id}/immunizations/
+     GET /records/{record_id}/immunizations/{immunization_id}
 
-Get all immunizations for a patient.
+Get all immunizations for a patient
 
-    GET /records/{record_id}/immunizations/{immunization_id}
+     GET /records/{record_id}/immunizations/
 
-Get one immunization for a patient.
 
+[Immunization RDF](../data_model/#Immunization)
 
 ## Lab Result
 
-    GET /records/{record_id}/lab_results/
+Get lab results for a patient
 
-Get all lab results for a patient.
+     GET /records/{record_id}/lab_results/{lab_result_id}
 
-    GET /records/{record_id}/lab_results/{lab_result_id}
+Get all lab results for a patient
 
-Get one lab result for a patient.
+     GET /records/{record_id}/lab_results/
 
-FIXME LINK RDF Payload description
 
+[Lab Result RDF](../data_model/#Lab_Result)
 
 ## Medical Record
 
-FIXME LINK RDF Payload description
 
+[Medical Record RDF](../data_model/#Medical_Record)
 
 ## Medication
 
-    GET /records/{record_id}/medications/
+Get medication for a patient
 
-Get all medications for a patient.
+     GET /records/{record_id}/medications/{medication_id}
 
-    GET /records/{record_id}/medications/{medication_id}
+Get all medications for a patient
 
-Get medication for a patient.
+     GET /records/{record_id}/medications/
 
-FIXME LINK RDF Payload description
 
+[Medication RDF](../data_model/#Medication)
 
 ## Problem
 
-    GET /records/{record_id}/problems/
+Get problems for a patient
+
+     GET /records/{record_id}/problems/{problem_id}
 
 Get all problems for a patient
 
-    GET /records/{record_id}/problems/{problem_id}
+     GET /records/{record_id}/problems/
 
-Get one problem for a patient.
 
-FIXME LINK RDF Payload description
-
+[Problem RDF](../data_model/#Problem)
 
 ## User Preferences
 
-    GET /accounts/{user_id}/apps/{smart_app_id}/preferences
+Get user preferences for an app
 
-Get user preferences for an app.
+     GET /accounts/{user_id}/apps/{smart_app_id}/preferences
 
-FIXME LINK RDF Payload description
 
+[User Preferences RDF](../data_model/#User_Preferences)
 
 ## VitalSigns
 
-    GET /records/{record_id}/vital_signs/
-
 Get all vital signs for a patient
 
-    GET /records/{record_id}/vital_signs/{vital_signs_id}
+     GET /records/{record_id}/vital_signs/
 
-Get one vital sign for a patient
+Get vital signs for a patient
 
-FIXME LINK RDF Payload description
+     GET /records/{record_id}/vital_signs/{vital_signs_id}
+
+
+[VitalSigns RDF](../data_model/#VitalSigns)

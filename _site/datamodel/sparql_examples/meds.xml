@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns="http://smartplatforms.org/terms#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/RXNORM/308189">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/RxNorm_Semantic"/>
+	<title xmlns="http://purl.org/dc/terms/">Amoxicillin 80 MG/ML Oral Suspension</title>
+	<system>http://purl.bioontology.org/ontology/RXNORM/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">308189</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351188">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>7</value>
+	<unit>mL</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-api.smartplatforms.org/records/880378/medications/814cb1f2-b7cb-4d47-996d-87d719c73d89">
+	<startDate>2005-12-08</startDate>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Medication"/>
+	<belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/880378"/>
+	<instructions>7 mL bid x 10 days</instructions>
+	<drugName rdf:nodeID="node16rk1fgdvx351190"/>
+	<frequency rdf:nodeID="node16rk1fgdvx351189"/>
+	<quantity rdf:nodeID="node16rk1fgdvx351188"/>
+	<fulfillment rdf:resource="http://sandbox-api.smartplatforms.org/records/880378/fulfillments/12507e44-08d3-440f-9939-bec4d4dce7a3"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351189">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>2</value>
+	<unit>/d</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351190">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<title xmlns="http://purl.org/dc/terms/">Amoxicillin 80 MG/ML Oral Suspension</title>
+	<code rdf:resource="http://purl.bioontology.org/ontology/RXNORM/308189"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-api.smartplatforms.org/records/880378/fulfillments/12507e44-08d3-440f-9939-bec4d4dce7a3">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Fulfillment"/>
+	<belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/880378"/>
+	<date xmlns="http://purl.org/dc/terms/">2009-07-24</date>
+	<dispenseDaysSupply>10</dispenseDaysSupply>
+	<medication rdf:resource="http://sandbox-api.smartplatforms.org/records/880378/medications/814cb1f2-b7cb-4d47-996d-87d719c73d89"/>
+	<quantityDispensed rdf:nodeID="node16rk1fgdvx351387"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351387">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>300</value>
+	<unit>{tab}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-api.smartplatforms.org/records/880378/fulfillments/4bb6adb6-f273-49ca-a8a6-96ee37d55480">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Fulfillment"/>
+	<belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/880378"/>
+	<date xmlns="http://purl.org/dc/terms/">2009-07-31</date>
+	<dispenseDaysSupply>10</dispenseDaysSupply>
+	<medication rdf:resource="http://sandbox-api.smartplatforms.org/records/880378/medications/07b3b4a3-60ec-4771-87c1-3df2088ee549"/>
+	<quantityDispensed rdf:nodeID="node16rk1fgdvx351450"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351450">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>200</value>
+	<unit>{tab}</unit>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/RXNORM/617993">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/RxNorm_Semantic"/>
+	<title xmlns="http://purl.org/dc/terms/">Amoxicillin 120 MG/ML / clavulanate potassium 8.58 MG/ML Oral Suspension</title>
+	<system>http://purl.bioontology.org/ontology/RXNORM/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">617993</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351343">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<title xmlns="http://purl.org/dc/terms/">Amoxicillin 120 MG/ML / clavulanate potassium 8.58 MG/ML Oral Suspension</title>
+	<code rdf:resource="http://purl.bioontology.org/ontology/RXNORM/617993"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-api.smartplatforms.org/records/880378/medications/07b3b4a3-60ec-4771-87c1-3df2088ee549">
+	<startDate>2005-08-10</startDate>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Medication"/>
+	<belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/880378"/>
+	<instructions>5 mL bid x 10 days</instructions>
+	<drugName rdf:nodeID="node16rk1fgdvx351343"/>
+	<frequency rdf:nodeID="node16rk1fgdvx351344"/>
+	<quantity rdf:nodeID="node16rk1fgdvx351345"/>
+	<fulfillment rdf:resource="http://sandbox-api.smartplatforms.org/records/880378/fulfillments/4bb6adb6-f273-49ca-a8a6-96ee37d55480"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351344">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>2</value>
+	<unit>/d</unit>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16rk1fgdvx351345">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#ValueAndUnit"/>
+	<value>5</value>
+	<unit>mL</unit>
+</rdf:Description>
+
+</rdf:RDF>

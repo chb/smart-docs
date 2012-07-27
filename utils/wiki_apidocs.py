@@ -220,20 +220,21 @@ def wiki_properties_for_type(t):
             is_code = sp.Code in [p.uri for p in c.to_class.parents] and " code" or ""
             targetname = type_name_string(c.to_class)+ is_code
 
-            desc = "<a href='#%s'>%s</a>"%(targetname.replace(' ', '_'), targetname)
+            desc = "<span style='font-size: small'><a href='#%s'>%s</a>" % (targetname.replace(' ', '_'), targetname)
             further = filter(lambda x: isinstance(x.all_values_from, OWL_Restriction), c.restrictions)
             for f in further:
                 p = split_uri(str(f.all_values_from.on_property))
                 avf = f.all_values_from
                 if avf.has_value:
-                    desc += "where "+ p +   " has value: %s"%avf.has_value
+                    desc += " where "+ p + " has value: %s"%avf.has_value
                 else:
                     pc = avf.all_values_from
                     pc = type_name_string(pc)
                     desc += " where "+ p +   " comes from <a href='#%s'>%s</a>"%(pc,pc)
 
+            desc += '</span>\n<br><br>'
             if c.description:
-                desc += "\n" + c.description
+                desc += c.description
 
         elif type(c) is OWL_DataProperty:
             avf = filter(lambda x: x.all_values_from, c.restrictions)
@@ -252,8 +253,7 @@ def wiki_properties_for_type(t):
     properties_end()
     
 def wiki_api_for_type(t, calls_for_t):
-    print "\n### %s\n"%t.name
-    print "[#%s][]\n"%t.name
+    print "\n## %s\n"%t.name
 
     last_description = ""
     for call in calls_for_t:
@@ -261,11 +261,14 @@ def wiki_api_for_type(t, calls_for_t):
         if (str(call.description) != last_description):
             print str(call.description)
         
-        print " ", strip_smart(str(call.method)), str(call.path)
+        print "\n    ", strip_smart(str(call.method)), str(call.path)
         
         if (str(call.description) != last_description):
             print ""
             last_description = str(call.description)
+
+    print "\n[%s RDF](../data_model/#%s)"%(t.name, t.name.replace(' ', '_'))        
+
              
 main_types = []
 calls_to_document = copy.copy(api_calls)

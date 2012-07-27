@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns="http://smartplatforms.org/terms#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/162031009">
+	<title xmlns="http://purl.org/dc/terms/">Dyspepsia and other specified disorders of function of stomach</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">162031009</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/9f5a03de-d21c-47fc-8f21-731f2930db51">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-03-09</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7392"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7392">
+	<title xmlns="http://purl.org/dc/terms/">Dyspepsia and other specified disorders of function of stomach</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/162031009"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/38341003">
+	<title xmlns="http://purl.org/dc/terms/">Essential hypertension</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">38341003</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/045084cc-5834-4d81-88d3-071a02c9ce4f">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2006-04-10</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7752"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7752">
+	<title xmlns="http://purl.org/dc/terms/">Essential hypertension</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/38341003"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/34095006">
+	<title xmlns="http://purl.org/dc/terms/">Dehydration</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">34095006</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/0bc4b0cb-1ce0-48f8-8711-0545511cc9f6">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx6470"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx6470">
+	<title xmlns="http://purl.org/dc/terms/">Dehydration</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/34095006"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/301717006">
+	<title xmlns="http://purl.org/dc/terms/">Right upper quadrant pain</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">301717006</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/6957ed7b-c719-4b8f-a744-32b3e02d792e">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-03-25</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7754"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7754">
+	<title xmlns="http://purl.org/dc/terms/">Right upper quadrant pain</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/301717006"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/29857009">
+	<title xmlns="http://purl.org/dc/terms/">Chest pain</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">29857009</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/f918ee0f-a1c9-4461-bebd-1d5ad6fb86bc">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-11-20</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7436"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7436">
+	<title xmlns="http://purl.org/dc/terms/">Chest pain</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/29857009"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/21522001">
+	<title xmlns="http://purl.org/dc/terms/">Abdominal pain</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">21522001</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx6844">
+	<title xmlns="http://purl.org/dc/terms/">Abdominal pain</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/21522001"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/3011b9b6-4b6d-4042-98fc-9c616396745d">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-03-12</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx6844"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/14302001">
+	<title xmlns="http://purl.org/dc/terms/">Absence of menstruation</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">14302001</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/faf8dd6e-ca3b-4468-a3ff-809cc183c0cf">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7146"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7146">
+	<title xmlns="http://purl.org/dc/terms/">Absence of menstruation</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/14302001"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/59455009">
+	<title xmlns="http://purl.org/dc/terms/">Acidosis</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">59455009</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/8c91b6cf-be87-4671-95a0-1effe9e55f42">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx6595"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx6595">
+	<title xmlns="http://purl.org/dc/terms/">Acidosis</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/59455009"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/25374005">
+	<title xmlns="http://purl.org/dc/terms/">Other and unspecified noninfectious gastroenteritis and colitis</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">25374005</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/2b0b7fb8-efcb-4e29-8b05-cb18d2299de6">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7219"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7219">
+	<title xmlns="http://purl.org/dc/terms/">Other and unspecified noninfectious gastroenteritis and colitis</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/25374005"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/43339004">
+	<title xmlns="http://purl.org/dc/terms/">Hypokalemia</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">43339004</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/927eadeb-48cb-4b56-bcf8-ccd8f5198e38">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7814"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7814">
+	<title xmlns="http://purl.org/dc/terms/">Hypokalemia</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/43339004"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/44054006">
+	<title xmlns="http://purl.org/dc/terms/">Diabetes mellitus type 2</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">44054006</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/5e638763-622a-4f6e-8c5c-11917d5e6d83">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-03-12</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7621"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7621">
+	<title xmlns="http://purl.org/dc/terms/">Diabetes mellitus type 2</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/44054006"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/13200003">
+	<title xmlns="http://purl.org/dc/terms/">Peptic ulcer without hemorrhage, without perforation AND without obstruction</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">13200003</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/a9c3d70f-2f2c-4095-8305-49fbd9351a7f">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-03-09</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7740"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7740">
+	<title xmlns="http://purl.org/dc/terms/">Peptic ulcer without hemorrhage, without perforation AND without obstruction</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/13200003"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/235595009">
+	<title xmlns="http://purl.org/dc/terms/">Gastroesophageal reflux disease</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">235595009</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/8a9546e6-d7a6-426a-a70f-1b94aaa2eb7a">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7841"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7841">
+	<title xmlns="http://purl.org/dc/terms/">Gastroesophageal reflux disease</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/235595009"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/25064002">
+	<title xmlns="http://purl.org/dc/terms/">Headache</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">25064002</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/67f83d4d-b7a1-4211-8ee9-9da7b97d5633">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2006-04-10</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7338"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7338">
+	<title xmlns="http://purl.org/dc/terms/">Headache</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/25064002"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/267432004">
+	<title xmlns="http://purl.org/dc/terms/">Pure hypercholesterolemia</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">267432004</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/da610694-e2c3-4856-93ba-233738b309b8">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7347"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7347">
+	<title xmlns="http://purl.org/dc/terms/">Pure hypercholesterolemia</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/267432004"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/14760008">
+	<title xmlns="http://purl.org/dc/terms/">Constipation</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Code"/>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms/codes/SNOMED"/>
+	<system>http://purl.bioontology.org/ontology/SNOMEDCT/</system>
+	<identifier xmlns="http://purl.org/dc/terms/">14760008</identifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://sandbox-dev.smartplatforms.org:7000/records/1540505/problems/462a5479-25be-46e4-9c5f-ca0130273ccb">
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#Problem"/>
+	<belongsTo rdf:resource="http://sandbox-dev.smartplatforms.org:7000/records/1540505"/>
+	<startDate>2005-12-30</startDate>
+	<problemName rdf:nodeID="node16vp4mgimx7970"/>
+</rdf:Description>
+
+<rdf:Description rdf:nodeID="node16vp4mgimx7970">
+	<title xmlns="http://purl.org/dc/terms/">Constipation</title>
+	<rdf:type rdf:resource="http://smartplatforms.org/terms#CodedValue"/>
+	<code rdf:resource="http://purl.bioontology.org/ontology/SNOMEDCT/14760008"/>
+</rdf:Description>
+
+</rdf:RDF>

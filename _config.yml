@@ -8,7 +8,8 @@ exclude: [".rvmrc",
           "Rakefile",
           "changelog.md",
           "utils",
-          "smart_common"]
+          "smart_common",
+          "build_docs.py"]
 auto: true
 markdown: redcarpet
 redcarpet:

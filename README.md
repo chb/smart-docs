@@ -8,7 +8,6 @@ This is the SMART technical documentation.
 - Need help? Ask a question at <http://groups.google.com/group/smart-app-developers>
 - Found an error in these docs? Fork them on Github!
 
-
 TODO
 ----
 - Add "edit this page" links to github

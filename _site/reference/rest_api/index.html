@@ -153,7 +153,7 @@ Playground app.</p>
 
 <hr>
 
-<!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T REMOVE ME! -->
+<!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT REMOVE ME! -->
 
 <h1>Container Calls</h1>
 
@@ -200,14 +200,14 @@ Playground app.</p>
 
 <h2>User</h2>
 
-<p>Get a single user by internal ID</p>
-
-<pre><code> GET /users/{user_id}
-</code></pre>
-
 <p>Get users by name (or all users if blank)</p>
 
 <pre><code> GET /users/search?given_name={given_name}&amp;family_name={family_name}
+</code></pre>
+
+<p>Get a single user by internal ID</p>
+
+<pre><code> GET /users/{user_id}
 </code></pre>
 
 <p><a href="../data_model/#User">User RDF</a></p>
@@ -257,14 +257,14 @@ Playground app.</p>
 
 <h2>Fulfillment</h2>
 
-<p>Get all fulfillments for a patient</p>
-
-<pre><code> GET /records/{record_id}/fulfillments/
-</code></pre>
-
 <p>Get fulfillments for a patient</p>
 
 <pre><code> GET /records/{record_id}/fulfillments/{fulfillment_id}
+</code></pre>
+
+<p>Get all fulfillments for a patient</p>
+
+<pre><code> GET /records/{record_id}/fulfillments/
 </code></pre>
 
 <p><a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
@@ -285,14 +285,14 @@ Playground app.</p>
 
 <h2>Lab Result</h2>
 
-<p>Get all lab results for a patient</p>
-
-<pre><code> GET /records/{record_id}/lab_results/
-</code></pre>
-
 <p>Get lab results for a patient</p>
 
 <pre><code> GET /records/{record_id}/lab_results/{lab_result_id}
+</code></pre>
+
+<p>Get all lab results for a patient</p>
+
+<pre><code> GET /records/{record_id}/lab_results/
 </code></pre>
 
 <p><a href="../data_model/#Lab_Result">Lab Result RDF</a></p>
@@ -303,28 +303,28 @@ Playground app.</p>
 
 <h2>Medication</h2>
 
-<p>Get all medications for a patient</p>
-
-<pre><code> GET /records/{record_id}/medications/
-</code></pre>
-
 <p>Get medication for a patient</p>
 
 <pre><code> GET /records/{record_id}/medications/{medication_id}
+</code></pre>
+
+<p>Get all medications for a patient</p>
+
+<pre><code> GET /records/{record_id}/medications/
 </code></pre>
 
 <p><a href="../data_model/#Medication">Medication RDF</a></p>
 
 <h2>Problem</h2>
 
-<p>Get all problems for a patient</p>
-
-<pre><code> GET /records/{record_id}/problems/
-</code></pre>
-
 <p>Get problems for a patient</p>
 
 <pre><code> GET /records/{record_id}/problems/{problem_id}
+</code></pre>
+
+<p>Get all problems for a patient</p>
+
+<pre><code> GET /records/{record_id}/problems/
 </code></pre>
 
 <p><a href="../data_model/#Problem">Problem RDF</a></p>

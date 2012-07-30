@@ -27,3 +27,5 @@ http://chb.github.com/smart-docs-testing/reference/data_model/index.html
 http://chb.github.com/smart-docs-testing/reference/rest_api/index.html
 http://chb.github.com/smart-docs-testing/sitemap.txt
 http://chb.github.com/smart-docs-testing/tags.html
+http://chb.github.com/smart-docs-testing/updates/smart_0_4/app/index.html
+http://chb.github.com/smart-docs-testing/updates/smart_0_4/container/index.html

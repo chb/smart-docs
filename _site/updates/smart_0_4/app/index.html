@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMART 0.4 App Update Guide</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Data Model + Querying</li>
+
+    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
+    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/app_mainfest">App Manifest</a></li>
+    <li><a href="/reference/change_log">Changelog</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">SMART 0.4 Update Guides</li>
+    <li><a href="/updates/smart_0_4/app/">For Apps</a></li>
+    <li><a href="/updates/smart_0_4/container/">For Containers</a></li>
+
+    <li class="nav-header">Presentation (2010-08-26)</li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>SMART 0.4 App Update Guide <small></small></h1>
+      </div>
+
+      <div class='format_tabs_top'>
+  <ul class="nav nav-tabs" data-tabs="tabs">
+    <li style="margin-left: 0px;">Show examples in</li>
+    <li class="rdf_xml_li active"><a href="#rdf_xml" data-toggle="tab" data-target='.rdf_xml'>RDF/XML</a></li>
+    <li class="n_triples_li"><a href="#n_triples" data-toggle="tab" data-target='.n_triples'>N-Triples</a></li>
+    <li class="turtle_li"><a href="#turtle" data-toggle="tab" data-target='.turtle'>Turtle</a></li>
+    <li class="json_ld_li"><a href="#json_ld" data-toggle="tab" data-target='.json_ld'>JSON-LD</a></li>
+  </ul>
+</div>
+
+<div class='simple_box'>
+  This is highly preliminary, not a commitment or final version of any
+  particular API or data model. This is purely for internal collaboration and
+  preview purposes.
+</div>
+
+<div id="toc"></div>
+
+<h1>Overview</h1>
+
+<p>SMART 0.4 introduces numerous improvements, including more robust
+content-type and error handling. To take advantage of these features
+and stay compatible with the SMART API, you’ll need to use the 0.4
+client libraries in your app. This guide will help you make the
+transition.</p>
+
+<h1>SMART Response Object</h1>
+
+<p>Each API call you make through a SMART client library will return a
+SMART Response object, encapsulating a number of useful properties.
+Every SMART Response object is guaranteed to have at least the <code>body</code>
+and <code>contentType</code> properties.</p>
+
+<ol>
+<li><p><code>body</code>: A string representation of the call result (RDF-XML in the case of
+an RDF graph)</p></li>
+<li><p><code>contentType</code>: The MIME type of the response from the API call</p></li>
+</ol>
+
+<p>For calls that return RDF data (i.e. the calls that return medical record
+data), the SMART Response also includes:</p>
+
+<ol>
+<li><code>graph</code>: an in-memory graph object with the triples from body loaded and ready to query</li>
+</ol>
+
+<p>For calls that return JSON data (e.g <code>GET /capabilities</code> or <code>GET /manifests</code>),
+the SMART Response also includes:</p>
+
+<ol>
+<li><code>json</code>: a parsed JSON object representation of <code>body</code></li>
+</ol>
+
+<p>The basic idea is you can always get at the raw data by accessing the body
+property.  But the client libraries will help you by automatically parsing RDF
+or JSON data and making these readily available.</p>
+
+<h1>SMART Connect Apps (JavaScript API)</h1>
+
+<p>Since each API call returns a SMART Response object, you’ll need to update your
+client code to access the graph property for calls that return RDF data.  At
+the same time, we’ve separated out the logic for handling successful responses
+from errors (more details below).  So the basic template to follow in updating
+your old code is:</p>
+
+<ul>
+<li><p>(Wrong) Old Way</p>
+
+<p>SMART.PROBLEMS_get(function(problems) {
+  var graph = problems;
+  // processing here…
+});</p></li>
+<li><p>(Correct) New Way</p>
+
+<p>SMART.PROBLEMS_get().success(function(problems) {
+  var graph = problems.graph;
+  // processing here…
+});</p></li>
+</ul>
+
+<h2>Understanding Error Handling in SMART Connect</h2>
+
+<p>The API call methods in SMART Connect have been updated to support jQuery-style
+callback handlers. You can now register two separate callbacks:  one for
+successful API calls (required) and an optional handler that will be triggered
+in the event of an error.  The basic pattern looks like this:</p>
+
+<pre><code>SMART.MEDICATIONS_get().success(callback_ok).error(callback_err);
+</code></pre>
+
+<p>Where <code>callback_ok</code> and <code>callback_err</code> are your callback functions.
+<code>callback_ok</code> will be called with a SMART response object as argument when the
+call succeeds. <code>callback_err</code> will be called with a SMART error object in the
+event of a failure.</p>
+
+<p>The SMART error object has the following properties:</p>
+
+<ol>
+<li><code>status</code>: The status code of the error</li>
+<li><code>message</code>: An object containing details about the error
+
+<ol>
+<li><code>contentType</code>: The MIME type of the error message descriptor</li>
+<li><code>data</code>: The error message description</li>
+</ol></li>
+</ol>
+
+<p>Putting all of this together we get the following code example:</p>
+
+<pre><code>SMART.PROBLEMS_get()
+     .success(function(problems) {
+       var graph = problems.graph;
+        // processing here…
+     })
+     .error(function(e) {
+       var status = e.status,
+           message = e.message;
+       // display error
+     });
+</code></pre>
+
+<h2>No More Global jQuery Object</h2>
+
+<p>The SMART connect client no longer exposes its internal jQuery (aka $) object
+in the global JavaScript namespace. Therefore when using the new client, your
+SMART connect apps will not have jQuery automatically available.  If you do
+want to access SMART Connect’s internal jQuery object, it’s available via
+<code>SMART.jQuery</code> or <code>SMART.$</code> </p>
+
+<h1>SMART REST Apps: Python Library</h1>
+
+<p>Since each API call returns a SMART Response object, you’ll need to
+update your client code as follows:</p>
+
+<ul>
+<li><p>(Wrong) Old Way</p>
+
+<p>medications = client.records_X_medications_GET()</p></li>
+<li><p>(Correct) New Way</p>
+
+<p>medications = client.records_X_medications_GET().graph</p></li>
+</ul>
+
+<p>As you can see, all you need to do is fetch the graph property from the
+response object.</p>
+
+<h1>SMART REST Apps: Java Library</h1>
+
+<p>We haven’t yet updated the SMART Java client library to provide a SMART
+Response object with each API response.  Please stay tuned for an
+updated -- in the meantime, existing Java apps should continue to work.</p>
+
+<h1>Update any code URIs</h1>
+
+<p>For consistency, we’ve aligned our RXNORM, LOINC, and NDFRT, and SNOMED
+CT URIs to the BioPortal namespace.  So if you’ve got an app that relies
+on specific code URIs, you'll want to update them:</p>
+
+<ul>
+<li>SNOMED CT 
+
+<ul>
+<li>Old: <a href="http://www.ihtsdo.org/snomed-ct/concepts/">http://www.ihtsdo.org/snomed-ct/concepts/</a></li>
+<li>New: <a href="http://purl.bioontology.org/ontology/SNOMEDCT/">http://purl.bioontology.org/ontology/SNOMEDCT/</a></li>
+</ul></li>
+<li>RXNORM
+
+<ul>
+<li>Old: <a href="http://rxnav.nlm.nih.gov/REST/rxcui/">http://rxnav.nlm.nih.gov/REST/rxcui/</a></li>
+<li>New: <a href="http://purl.bioontology.org/ontology/RXNORM/">http://purl.bioontology.org/ontology/RXNORM/</a></li>
+</ul></li>
+<li>LOINC
+
+<ul>
+<li>Old: <a href="http://loinc.org/codes/">http://loinc.org/codes/</a></li>
+<li>New: <a href="http://purl.bioontology.org/ontology/LNC/">http://purl.bioontology.org/ontology/LNC/</a></li>
+</ul></li>
+<li>NDFRT
+
+<ul>
+<li>Old: <a href="http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&id=">http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=</a></li>
+<li>New: <a href="http://purl.bioontology.org/ontology/NDFRT/">http://purl.bioontology.org/ontology/NDFRT/</a></li>
+</ul></li>
+</ul>
+
+<p>One advantage of using the BioPortal namespaces is that these code are
+“dereferencable” -- meaning that you can paste a code URI directly into
+your browser’s URL bar to learn more about the concept.  For example:
+<a href="http://purl.bioontology.org/ontology/RXNORM/892650">http://purl.bioontology.org/ontology/RXNORM/892650</a> </p>
+
+<h1>Updating Your SMART App Manifest File</h1>
+
+<p>We’ve simplified the SMART Manifest format by eliminating <code>intents</code> and
+<code>base_url</code> fields.  URLs for your app’s <code>index</code> and <code>icon</code> are now
+expressed directly, without interpolation.  Here’s an example of how to
+update your manifest:</p>
+
+<ul>
+<li><p>Old Way (wrong)</p>
+
+<p>{
+  &quot;name&quot; : &quot;My App&quot;,
+  &quot;description&quot; : &quot;A cool SMART app&quot;,
+  ...
+  &quot;intents&quot;: [&quot;view_medications&quot;]    ← delete this
+  &quot;base_url&quot; : &quot;http://myserver:8001&quot;, ← delete this
+  &quot;index&quot; :  &quot;{base_url}/smartapp/index.html&quot;,
+  &quot;icon&quot; :  &quot;{base_url}/smartapp/icon.png&quot;
+}</p></li>
+<li><p>New Way (correct)</p>
+
+<p>{
+  &quot;name&quot; : &quot;My App&quot;,
+  &quot;description&quot; : &quot;A cool SMART app&quot;,
+  ...
+  &quot;index&quot; :  &quot;http://myserver:8001/smartapp/index.html&quot;,
+  &quot;icon&quot; :  &quot;http://myserver:8001/smartapp/icon.png&quot;
+} </p></li>
+</ul>
+
+<p>There are now two optional declarators in the manifest files:</p>
+
+<ol>
+<li><code>smart_version</code> indicates the version of the SMART API your app was
+written for</li>
+<li><code>requires</code> describes the data types your app relies on</li>
+</ol>
+
+<p>Here is an example of a complete manifest with these optional declarators:</p>
+
+<pre><code>{
+  &quot;name&quot; : &quot;My App&quot;,
+  &quot;description&quot; : &quot;A cool SMART app&quot;,
+  &quot;author&quot; : &quot;demo&quot;,
+  &quot;id&quot; : &quot;demo@apps.smartplatforms.org&quot;,
+  &quot;version&quot; : &quot;.1a&quot;,
+  &quot;mode&quot; : &quot;ui&quot;,
+  &quot;scope&quot; : &quot;record&quot;,
+  &quot;index&quot; :  &quot;http://myserver:8001/smartapp/index.html&quot;,
+  &quot;icon&quot; :  &quot;http://myserver:8001/smartapp/icon.png&quot;,
+  &quot;smart_version&quot;: &quot;0.4&quot;,
+  &quot;requires&quot; : {
+          &quot;http://smartplatforms.org/terms#Demographics&quot;: {
+            &quot;methods&quot;: [&quot;GET&quot;]
+          },
+          &quot;http://smartplatforms.org/terms#VitalSigns&quot;: {
+            &quot;methods&quot;: [&quot;GET&quot;]
+          }
+  }
+}
+</code></pre>
+
+<h1>New APIs and Calls</h1>
+
+<h2>Capabilities</h2>
+
+<p>The SMART 0.4 container exposes a JSON description of API calls that it
+understands at the <code>/capabilities/</code> path. For example, our development
+sandbox’s capabilities can be obtained from the following URL:
+<a href="http://sandbox-dev.smartplatforms.org:7000/capabilities/">http://sandbox-dev.smartplatforms.org:7000/capabilities/</a></p>
+
+<h2>Version Number</h2>
+
+<p>The version number of the SMART API that the container implements can
+now be obtained from the <code>/version</code> url. Here is the version number URL
+for the development sandbox:
+<a href="http://sandbox-dev.smartplatforms.org:7000/version">http://sandbox-dev.smartplatforms.org:7000/version</a></p>
+
+<h2>Preferences API</h2>
+
+<p>The new preferences API provides a way for your app to store data within
+the SMART container automatically scoped on per user and app basis. The
+data can be stored in any format that makes sense to the app. In the
+SMART Connect client, you can now call the <code>PREFERENCES_get</code>,
+<code>PREFERENCES_put</code>, and <code>PREFERENCES_delete</code> methods. For the put methods
+you will have to provide a MIME content type for the data that you are
+storing within the container. The equivalent calls in the SMART python
+client are:</p>
+
+<ul>
+<li><code>accounts_x_apps_x_preferences_GET</code></li>
+<li><code>accounts_x_apps_x_preferences_PUT</code></li>
+<li><code>accounts_x_apps_x_preferences_DELETE</code></li>
+</ul>
+
+<h2>Immunizations Datatype and API</h2>
+
+<p>You can now obtain the patient’s immunization records via the new
+<code>IMMUNIZATIONS_get</code> (SMART Connect client) or
+<code>records_x_immunizations_GET</code> (SMART Python client) calls. See
+<a href="http://dev.smartplatforms.org/reference/data_model/#Immunization">http://dev.smartplatforms.org/reference/data_model/#Immunization</a></p>
+
+<h1>Testing Your Updated App</h1>
+
+<p>We will update the public sandbox <a href="http://sandbox.smartplatfoms.org">http://sandbox.smartplatfoms.org</a> to
+run the new reference container on 4/24/2012. Until then, you are
+welcome to test against our development sandbox hosted at the following
+<a href="http://sandbox-dev.smartplatforms.org">http://sandbox-dev.smartplatforms.org</a></p>
+
+<p>Please keep in mind that the development sandbox is only suitable for
+development and testing if you want to be on the cutting edge of the
+SMART platform. Most developers should stick to the production sandbox,
+because it offers better stability.</p>
+
+<p>Also please keep in mind that the accounts on the development sandbox
+get purged often, so don’t be surprised if you need to re-register your
+account once in a while.</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

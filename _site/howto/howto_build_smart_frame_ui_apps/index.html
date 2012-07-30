@@ -67,6 +67,10 @@
     <li><a href="/install/linux">Ubuntu Linux</a></li>
     <li><a href="/install/os_x">OS X</a></li>
 
+    <li class="nav-header">SMART 0.4 Update Guides</li>
+    <li><a href="/updates/smart_0_4/app/">For Apps</a></li>
+    <li><a href="/updates/smart_0_4/container/">For Containers</a></li>
+
     <li class="nav-header">Presentation (2010-08-26)</li>
     <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
     <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
@@ -103,9 +107,9 @@ apps to display side-by-side:</p>
 <h2>What can Frame UI Apps do?</h2>
 
 <ul>
-  <li>Present an HTML5 user-interface in-browser</li>
-  <li>Obtain a list of apps that are installed in this container</li>
-  <li>Launch multiple other UI Apps, incorporating them, for example, in a tiled grid </li>
+<li>Present an HTML5 user-interface in-browser</li>
+<li>Obtain a list of apps that are installed in this container</li>
+<li>Launch multiple other UI Apps, incorporating them, for example, in a tiled grid</li>
 </ul>
 
 <h2>Declaring a Frame UI App</h2>
@@ -126,9 +130,9 @@ they <em>are</em> apps and they can also <em>run</em> apps. To make this work, F
 apps need to include three javascript libraries:</p>
 
 <ul>
-  <li>`smart-api-client.js` to act as an app</li>
-  <li>`smart-api-container.js` to launch other apps</li>
-  <li>`smart-frame-ui.js` glue between the two libraries above</li>
+<li><code>smart-api-client.js</code> to act as an app</li>
+<li><code>smart-api-container.js</code> to launch other apps</li>
+<li><code>smart-frame-ui.js</code> glue between the two libraries above</li>
 </ul>
 
 <h2>Example Frame UI App</h2>
@@ -156,7 +160,7 @@ to display:</p>
 </code></pre>
 </div>
 
-<p>This code fetches a list of manifests from the container <code>SMART.MANIFESTS\_get</code>,
+<p>This code fetches a list of manifests from the container <code>SMART.MANIFESTS_get</code>,
 loops through them, and displays an icon for each app available. It then
 attaches a click handler to each icon: when clicked, we call
 SMART_HOST.launch_app to initiate the launch of this new app. We pass in the
@@ -167,7 +171,7 @@ user and record.</p>
 
 <p>When a user clicks on an app icon and SMART_HOST.launch_app is called, the
 SMART libraries take care of most details of the app launch process. But the
-SMART libraries expect a little bit of \&quot;help\&quot; (in the form of a helper
+SMART libraries expect a little bit of &quot;help&quot; (in the form of a helper
 function) to determine which IFRAME element to use in positioning the
 newly-launched app. Since our Frame UI app will perform a pretty simple layout,
 this doesn't take much. We'll assume that three IFRAMES are available on the

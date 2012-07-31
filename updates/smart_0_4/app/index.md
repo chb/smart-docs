@@ -5,8 +5,6 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
-{% include example_format_tabs_top.html %}
-
 <div class='simple_box'>
   This is highly preliminary, not a commitment or final version of any
   particular API or data model. This is purely for internal collaboration and

@@ -6,6 +6,7 @@ http://chb.github.com/smart-docs-testing/datamodel/deferred/index.html
 http://chb.github.com/smart-docs-testing/datamodel/intro_to_rdf/index.html
 http://chb.github.com/smart-docs-testing/datamodel/smart_data/index.html
 http://chb.github.com/smart-docs-testing/datamodel/sparql_examples/index.html
+http://chb.github.com/smart-docs-testing/downloads/index.html
 http://chb.github.com/smart-docs-testing/howto/background_and_helper_apps/index.html
 http://chb.github.com/smart-docs-testing/howto/build_a_rest_app/index.html
 http://chb.github.com/smart-docs-testing/howto/build_a_smart_app/index.html

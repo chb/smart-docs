@@ -32,8 +32,9 @@ hood.
 
 ## Mapping jQuery.ajax handlers to Deferred Object handlers
 
-`.complete()`     `.success()`     `.error()`
-`.then() or .always()`     `.done.()`     `.fail()`
+- `.complete()` is analogous to `.then() or .always()`
+- `.success()` is analogous to `.done()`
+- `.error()` is analogous to `.fail()`
 
 ## A Real-World Example
 

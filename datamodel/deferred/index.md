@@ -5,8 +5,6 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
-<div id="toc"> </div>
-
 When using the SMART Javascript API you frequently want to make multiple
 requests for data (for instance to get both demographics and labs for a lab
 viewer app) and then do something with the result of both calls. In pure

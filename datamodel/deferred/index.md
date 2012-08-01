@@ -42,7 +42,7 @@ hood.
 App](https://github.com/chb/smart_sample_apps/blob/master/static/framework/cardi
 o_risk_viz/load_data.js) requires both demographics (gender and age) and also
 lab results (hsCRP, cholesterol, and HDL values) to compute a risk score. This
-requires two calls to the SMART Connect API
+requires two calls to the SMART Connect API:
 [DEMOGRAPHICS_get](http://wiki.chip.org/smart-project/index.php/Developers_Docum
 entation:_SMART_App_Javascript_Libraries#SMART.DEMOGRAPHICS_get) and
 [LAB_RESULTS_get](http://wiki.chip.org/smart-project/index.php/Developers_Docume

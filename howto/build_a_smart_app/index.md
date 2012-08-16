@@ -245,9 +245,9 @@ them.
 
 <ul>
     <li>learn more about SMART Connect with <a
-        href="/smart-docs-testing/howto/got_statins">GotStatins</a></li>
+        href="/howto/got_statins">GotStatins</a></li>
     <li>build a more powerful SMART App, learn <a
-        href="/smart-docs-testing/howto/build_a_rest_app">HOWTO Build a SMART App - REST API Calls</a></li>
+        href="/howto/build_a_rest_app">HOWTO Build a SMART App - REST API Calls</a></li>
     <li>build SMART Apps that work while the user is offline: <a
-        href="/smart-docs-testing/howto/background_and_helper_apps">HOWTO Build SMART Background and Helper Apps</a></li>
+        href="/howto/background_and_helper_apps">HOWTO Build SMART Background and Helper Apps</a></li>
 </ul>

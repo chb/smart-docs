@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The SMART JSON-LD API</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Data Model + Querying</li>
+
+    <li><a href="/datamodel/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
+    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/app_manifest">App Manifest</a></li>
+    <li><a href="/reference/change_log">Changelog</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">SMART 0.4 Update Guides</li>
+
+    <li><a href="/updates/smart_0_4/app/">For Apps</a></li>
+    <li><a href="/updates/smart_0_4/container/">For Containers</a></li>
+
+    <li class="nav-header">Presentation (2010-08-26)</li>
+
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+
+    <li class="nav-header">Downloads</li>
+    <li><a href="/downloads/">Download Source + VM</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>The SMART JSON-LD API <small></small></h1>
+      </div>
+
+      <div id="toc"></div>
+
+<div class='simple_box'>
+  This is a new API in the SMART v0.5 release. It is stable enough for
+  use, however it is likely that minor elements of the API may change in
+  future releases of the SMART API.
+</div>
+
+<p>The SMART JSON-LD API provides an additional interface to the SMART datamodel
+based on Javascript objects in addition to the RDF/XML and the SPARQL
+interface. SMART's RDF-based interface will remain available for use as well.</p>
+
+<h1>What is JSON?</h1>
+
+<p><a href="http://json.org">JSON</a> is the highly popular lightweight data serialization and
+interchange format based on a simplified subset of Javascript objects.  It's a
+natural fit for representing data for SMART Connect apps. All JSON objects are
+valid Javascript objects so all Javascript tools and libraries &mdash;
+including tools already built into most browsers &mdash; can be used to examine
+and manipulate them. We'll see examples of this below.</p>
+
+<h1>What is JSON-LD?</h1>
+
+<p><a href="http://en.wikipedia.org/wiki/Linked_data">Linked Data</a> is the idea that to be truly useful data should be
+described in 1) standardized formats and 2) should be linked to other
+data via identifiers that 3) could be &quot;fetched&quot; to find data that contains
+further links to be fetched <em>ad infinitum</em>. In essence, a &quot;web of data&quot;.
+<a href="http://json-ld.org">JSON-LD</a> is a leading standard to represent linked data in JSON.</p>
+
+<p>As a SMART app developer, you don't have to be concerned with creating
+JSON-LD objects or even querying for them, since the SMART JavaScript
+client library will provide you with JSON-LD objects automatically
+each time you make usual API calls like <code>get_MEDICATIONS()</code>.</p>
+
+<h1>A SMART JSON-LD Object</h1>
+
+<p>Here is a simplified example of the SMART <code>MEDICATIONS_get</code> API call
+returning a JSON-LD Object as used by the SMART Diabetes Monograph app:</p>
+
+<div class="highlight"><pre><code class="javascript">    <span class="c1">// Define a callback for the SMART.MEDICATIONS_get() API call</span>
+    <span class="nx">SMART</span><span class="p">.</span><span class="nx">MEDICATIONS_get</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span>
+
+      <span class="c1">// All the JSON-LD data is in &quot;r.objects&quot;. Here we select</span>
+      <span class="c1">// the list of medications and iterate over them</span>
+      <span class="nx">_</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">of_type</span><span class="p">.</span><span class="nx">Medication</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">){</span>
+
+        <span class="c1">// Each medication (m) has a startDate, drugName, and</span>
+        <span class="c1">// instructions as required by the SMART datamodel. We</span>
+        <span class="c1">// push a new array object on to the existing pt.meds_arr array</span>
+        <span class="nx">pt</span><span class="p">.</span><span class="nx">meds_arr</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span>
+          <span class="k">new</span> <span class="nx">XDate</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">startDate</span><span class="p">).</span><span class="nx">valueOf</span><span class="p">(),</span>
+          <span class="nx">m</span><span class="p">.</span><span class="nx">drugName</span><span class="p">.</span><span class="nx">dcterms__title</span><span class="p">,</span>
+          <span class="nx">m</span><span class="p">.</span><span class="nx">instructions</span>
+        <span class="p">])</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+</code></pre>
+</div>
+
+<p>Looking into the first object in the <code>r.objects.of_type.Medication</code> array in a
+browser's developer tools (such as Chrome's Developer Tools or Firebug) you can
+see that it is a standard JSON object filled with the patient's data according
+to the SMART data model for a <a href="http://dev.smartplatforms.org/reference/data_model/#Medication">medication</a>.</p>
+
+<div class="highlight"><pre><code class="javascript">    <span class="c1">// simplified to show only relevant properties</span>
+    <span class="nx">r</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;objects&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;of_type&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;Medication&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;drugName&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;dcterms__identifier&quot;</span><span class="o">:</span> <span class="s2">&quot;200345&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;dcterms__title&quot;</span><span class="o">:</span> <span class="s2">&quot;Simvastatin 80 MG Oral Tablet&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;system&quot;</span><span class="o">:</span> <span class="s2">&quot;http://purl.bioontology.org/ontology/RXNORM/&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;dcterms__title&quot;</span><span class="o">:</span> <span class="s2">&quot;Simvastatin 80 MG Oral Tablet&quot;</span>
+              <span class="p">},</span>
+              <span class="s2">&quot;instructions&quot;</span><span class="o">:</span> <span class="s2">&quot;1 qhs&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2008-01-05&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h2>The SMART Convention for Property Names</h2>
+
+<p>There is a strict correspondence between the <a href="http://dev.smartplatforms.org/reference/data_model/">SMART datamodel</a> and the
+naming of the properties of SMART JSON-LD objects. In the example above,
+<code>drugName</code> is defined as containing a <code>Coded Value</code> where the <code>code</code>
+property is constrained to come from <code>RxNorm_Semantic</code>. (<code>RxNorm_Semantic</code>
+is furthed defined in the SMART datamodel.) <code>Coded Values</code> have two required
+properties: <code>title</code> (defined by <a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a> i.e. a the
+<code>title</code> term from the Dublin Core namespace) and a <code>code</code> object from the SMART
+namespace.</p>
+
+<p>In SMART we namespace property names using a simple convention: first our
+SMART-specific &quot;short&quot; name of the namespace (e.g. <code>dcterms</code>
+for the Dublin Core Terms namepsace), then <em>two</em> underscore characters,
+then the property name itself. Properties in the SMART namespace are
+represented directly, without underscores.  In other words, any property
+without a namespace is in the SMART namespace (<code>http://smartplatforms.org/terms#</code>).</p>
+
+<p>The <a href="http://dev.smartplatforms.org/reference/data_model/#Code">code</a> object is defined by the SMART datamodel as having three
+required properties:</p>
+
+<ol>
+<li>an <code>identifier</code> defined by <a href="http://purl.org/dc/terms/identifier">http://purl.org/dc/terms/identifier</a></li>
+<li>a <code>title</code> defined as above</li>
+<li>a <code>system</code> defined by SMART to be a literal URI reference to the
+coding system that defines the <code>identifier</code>. In this case the
+<code>system</code> is a URI for the RXNORM drug vocabulary.</li>
+</ol>
+
+<h1>A Complete Example: Got Statins? with JSON-LD</h1>
+
+<p>Here is a rewrite of the <a href="/howto/got_statins">Got Statins?</a> app using the SMART JSON-LD API
+improvements from the original RDF/XML and SPARQL version are noted in
+the comments.</p>
+
+<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Got Statins?<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">style=</span><span class="s">&quot;font-family: Arial, sans-serif;&quot;</span><span class="nt">&gt;</span>Got Statins?<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;TheAnswer&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-client.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nx">SMART</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">SMART</span><span class="p">.</span><span class="nx">MEDICATIONS_get</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+
+          <span class="c1">// The (old) SPARQL query for getting the medlist</span>
+          <span class="c1">// var medlist = meds.graph</span>
+          <span class="c1">//                   .where(&quot;?m rdf:type sp:Medication&quot;)</span>
+          <span class="c1">//                   .where(&quot;?m sp:drugName ?dn&quot;)</span>
+          <span class="c1">//                   .where(&quot;?dn dcterms:title ?drugname&quot;);</span>
+
+          <span class="c1">// The JSON-LD property lookup for getting the medlist</span>
+          <span class="kd">var</span> <span class="nx">medlist</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">Medication</span><span class="p">;</span>
+
+          <span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">medlist</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The (old) &quot;drugname&quot; access</span>
+            <span class="c1">// if (is_a_statin(medlist[i].drugname.value))</span>
+
+            <span class="c1">// The new property access</span>
+            <span class="c1">// Note how the names come directly from the datamodel</span>
+            <span class="c1">// and no &quot;.value&quot; required anymore!</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">is_a_statin</span><span class="p">(</span><span class="nx">medlist</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">drugName</span><span class="p">.</span><span class="nx">dcterms__title</span><span class="p">))</span> <span class="p">{</span> <span class="nx">answer</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="p">}</span>
+          <span class="p">}</span>
+
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;TheAnswer&quot;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">answer</span> <span class="o">?</span> <span class="s2">&quot;Yes.&quot;</span> <span class="o">:</span> <span class="s2">&quot;No.&quot;</span><span class="p">;</span>
+
+        <span class="p">});</span>
+
+          <span class="kd">var</span> <span class="nx">is_a_statin</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">drug</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/statin/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Advicor/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Altoprev/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Caduet/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Crestor/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Lescol/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Lipitor/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Mevacor/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Pravachol/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Simcor/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Vytorin/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">drug</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Zocor/i</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+          <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<h1>Learning More</h1>
+
+<p>SMART's JSON-LD API gives you as a web developer an natural, familiar,
+and interactively discoverable interface to SMART patient data. You can
+start using this API in your apps today. For examples of this API in use
+see the code (in <code>main.js</code>) for the SMART <a href="https://github.com/chb/smart_sample_apps/tree/master/static/framework/dm_monograph/js/main.js">Diabetes Monograph app</a>.</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33617191-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

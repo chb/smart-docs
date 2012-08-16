@@ -43,6 +43,7 @@
 
     <li class="nav-header">Data Model + Querying</li>
 
+    <li><a href="/datamodel/intro_to_jsonld">Intro to the JSON-LD API</a></li>
     <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
     <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
     <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
@@ -100,29 +101,35 @@
 
 <div id="toc"></div>
 
-<p>The calls below are all written with respect to the base URL /. But any given
-SMART container will place all API calls its own base URL, e.g.
-<code>http://sample_smart_emr.com/smart-base/</code></p>
+<p>The calls below are all written with respect to the base URL /. But any
+given SMART container will place all API calls its own base URL, e.g.</p>
+
+<pre><code>http://sample_smart_emr.com/smart-base/
+</code></pre>
 
 <p>Any individual item that can be retrieved via <code>GET</code> should have a
-<em>fully-dereferenceable</em> <code>URI</code>. To continue the example above, a medication in our
-sample EMR might have the <code>URI</code>:
-<code>http://sample_smart_emr.com/smart-base/records/123456/medications/664373</code></p>
+<em>fully-dereferenceable</em> <code>URI</code>. To continue the example above, a
+medication in our sample EMR might have the <code>URI</code>:</p>
+
+<pre><code>http://sample_smart_emr.com/smart-base/records/123456/medications/664373
+</code></pre>
 
 <h1>Changelog</h1>
 
-<p><a href="../change_log/">Changes to API + Payloads</a></p>
+<p>See here for all of the <a href="../change_log/">changes to the API and payloads</a></p>
 
 <h1>Overview</h1>
 
 <p>The SMART API provides access to individual resources (medications, fulfillment
-events, prescription events, problems, etc.) and groups of these resources.</p>
+events, prescription events, problems, etc.) and groups of these resources in a
+<a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> API.</p>
 
-<h2>Read-only API</h2>
+<h2>SMART is a Read-only API</h2>
 
-<p>Please note that for the time being, the SMART API remains read-only. We are
-excited about continuing to define our read/write API &mdash; but we want make our
-early APIs as easy as possible for EMR and PHR vendors to expose.</p>
+<p>Please note that for the time being, the SMART API remains read-only. We
+are excited about continuing to define our read/write API &mdash; but we
+want make our early APIs as easy as possible for EMR and PHR vendors to
+expose.</p>
 
 <h2>REST Design Principles</h2>
 
@@ -144,22 +151,53 @@ resources every time it is called; in other words, <code>POST</code> is not idem
 <li><code>PUT</code> to add a single resource tagged with an <code>external_id</code>.</li>
 </ul>
 
-<p>When a resource is <code>PUT</code>, it replaces any existing resource with the same
-<code>external_id</code>. In other words, <code>PUT</code> is idempotent. When <code>PUT</code>ting a resource
-such as a medication that may contain child resources (e.g. fulfillment events),
-these child nodes must not be included in the graph. Rather, they must be
-separately attached with another API call once the parent medication is <code>PUT</code>
-and has received an internal SMART id. So, <code>PUT</code>ting a medication with two
-fulfillments actually takes three API calls: one for the medication, and one for
-each (child) fulfillment event.</p></li>
+<p>When a resource is <code>PUT</code>, it replaces any existing resource with the
+same <code>external_id</code>. In other words, <code>PUT</code> is idempotent. When <code>PUT</code>ting
+a resource such as a medication that may contain child resources (e.g.
+fulfillment events), these child nodes must not be included in the
+graph. Rather, they must be separately attached with another API call
+once the parent medication is <code>PUT</code> and has received an internal SMART
+id. So, <code>PUT</code>ting a medication with two fulfillments actually takes
+three API calls: one for the medication, and one for each (child)
+fulfillment event.</p></li>
 </ul>
 
 <h1>OWL Ontology File</h1>
 
-<p>The API calls listed below, as well as the RDF/XML payloads, are also defined in
-a machine-readable OWL file. The OWL file has been used to generate the
-documentation below, as well as our client-side REST libraries and API
-Playground app.</p>
+<p>The API calls listed below, as well as the RDF/XML payloads, are also
+defined in a machine-readable OWL file. The OWL file has been used to
+generate the documentation below, as well as our client-side REST
+libraries and API Playground app.</p>
+
+<h1>SMART REST API Reference</h1>
+
+<p>Each <code>GET</code> call in the SMART REST API is listed below and grouped by the
+&quot;scope&quot; / access control category the SMART container applies to the
+call. The SMART container implements this access control using the OAuth
+tokens passed in with each API request as described in the <a href="/howto/build_a_rest_app/">build a REST
+App howto</a> and the <a href="/howto/rx_reminder/">RxReminder app</a>.</p>
+
+<p>Currently there are three &quot;scopes&quot; / access control categories:</p>
+
+<ol>
+<li><p><code>Container</code> calls can be made by anyone against the container.
+Examples of this type of call are fetching the container's manifest
+and fetching the container's ontology.</p></li>
+<li><p><code>Record</code> calls are scoped to a (app, user, record) tuple e.g. calls
+to fetch a patient's medical record data. An example would be getting
+the medications in a patient's record. The OAuth credentials for
+the app (e.g. the <code>consumer_key</code> and <code>consumer_secret</code>) and
+previously fetched OAuth credentials from the server including the
+<code>smart_record_id</code> </p></li>
+<li><p><code>User</code> calls are scoped to a (app, user) tuple and are used for
+setting a user's preferences. Note: this implies that any app can
+read any other app's preferences. The OAuth credentials for the
+app (e.g. the <code>consumer_key</code> and <code>consumer_secret</code>) are required.</p></li>
+</ol>
+
+<hr>
+
+<hr>
 
 <hr>
 
@@ -169,56 +207,56 @@ Playground app.</p>
 
 <h2>App Manifest</h2>
 
+<pre><code> GET /apps/manifests/ 
+</code></pre>
+
 <p>Returns a JSON list of all SMART UI app manifests installed on the container.</p>
 
-<pre><code> GET /apps/manifests/
+<pre><code> GET /apps/{descriptor}/manifest 
 </code></pre>
 
-<p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;<a href="mailto:got-statins@apps.smartplatforms.org">got-statins@apps.smartplatforms.org</a>&quot; or an intent string like &quot;view_medications&quot;.</p>
-
-<pre><code> GET /apps/{descriptor}/manifest
-</code></pre>
+<p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins</p>
 
 <p><a href="../data_model/#App_Manifest">App Manifest RDF</a></p>
 
 <h2>ContainerManifest</h2>
 
-<p>Get manifest for a container</p>
-
-<pre><code> GET /manifest
+<pre><code> GET /manifest 
 </code></pre>
+
+<p>Get manifest for a container</p>
 
 <p><a href="../data_model/#ContainerManifest">ContainerManifest RDF</a></p>
 
 <h2>Demographics</h2>
 
-<p>Get an RDF graph of sp:Demographics elements for all patients that match the query.  Matching treats family_name and given_name as the <em>beginning</em> of a name.  For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Birthday is an ISO8601 string like &quot;2008-03-21&quot;; gender is &quot;male&quot; or &quot;female&quot;.  Gender, birthday, zipcode, and medical_record_number must match exactly.</p>
-
-<pre><code> GET /records/search?given_name={given_name}&amp;family_name={family_name}&amp;zipcode={zipcode}&amp;birthday={birthday}&amp;gender={gender}&amp;medical_record_number={medical_record_number}
+<pre><code> GET /records/search 
 </code></pre>
+
+<p>Get an RDF graph of sp:Demographics elements for all patients that match the query.  Matching treats family_name and given_name as the <em>beginning</em> of a name.  For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Birthday is an ISO8601 string like &quot;2008-03-21&quot;; gender is &quot;male&quot; or &quot;female&quot;.  Gender, birthday, zipcode, and medical_record_number must match exactly.</p>
 
 <p><a href="../data_model/#Demographics">Demographics RDF</a></p>
 
 <h2>Ontology</h2>
 
-<p>Get the ontology used by a SMART container</p>
-
-<pre><code> GET /ontology
+<pre><code> GET /ontology 
 </code></pre>
+
+<p>Get the ontology used by a SMART container</p>
 
 <p><a href="../data_model/#Ontology">Ontology RDF</a></p>
 
 <h2>User</h2>
 
+<pre><code> GET /users/{user_id} 
+</code></pre>
+
+<p>Get a single user by ID</p>
+
+<pre><code> GET /users/search 
+</code></pre>
+
 <p>Get users by name (or all users if blank)</p>
-
-<pre><code> GET /users/search?given_name={given_name}&amp;family_name={family_name}
-</code></pre>
-
-<p>Get a single user by internal ID</p>
-
-<pre><code> GET /users/{user_id}
-</code></pre>
 
 <p><a href="../data_model/#User">User RDF</a></p>
 
@@ -226,141 +264,200 @@ Playground app.</p>
 
 <h2>Alert</h2>
 
+<pre><code> GET /records/{record_id}/alerts/{alert_id} 
+</code></pre>
+
+<p>Get one Alert for a patient</p>
+
+<pre><code> GET /records/{record_id}/alerts/ 
+</code></pre>
+
+<p>Get all Alerts for a patient</p>
+
 <p><a href="../data_model/#Alert">Alert RDF</a></p>
 
 <h2>Allergy</h2>
 
-<p>Get all allergies for a patient</p>
-
-<pre><code> GET /records/{record_id}/allergies/
+<pre><code> GET /records/{record_id}/allergies/ 
 </code></pre>
 
-<p>Get allergies for a patient</p>
+<p>Get all Allergies and Allergy Exclusions for a patient</p>
 
-<pre><code> GET /records/{record_id}/allergies/{allergy_id}
+<pre><code> GET /records/{record_id}/allergies/{allergy_id} 
 </code></pre>
+
+<p>Get one Allergy for a patient</p>
 
 <p><a href="../data_model/#Allergy">Allergy RDF</a></p>
 
+<h2>Clinical Note</h2>
+
+<pre><code> GET /records/{record_id}/clinical_notes/{clinical_note_id} 
+</code></pre>
+
+<p>Get one Clinical Note for a patient</p>
+
+<pre><code> GET /records/{record_id}/clinical_notes/ 
+</code></pre>
+
+<p>Get all Clinical Notes for a patient</p>
+
+<p><a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
+
 <h2>Demographics</h2>
 
-<p>Get all demographics for a patient</p>
-
-<pre><code> GET /records/{record_id}/demographics
+<pre><code> GET /records/{record_id}/demographics 
 </code></pre>
+
+<p>Get Demographics for a patient</p>
 
 <p><a href="../data_model/#Demographics">Demographics RDF</a></p>
 
 <h2>Encounter</h2>
 
-<p>Get all encounters for a patient</p>
-
-<pre><code> GET /records/{record_id}/encounters/
+<pre><code> GET /records/{record_id}/encounters/{encounter_id} 
 </code></pre>
 
-<p>Get encounters for a patient</p>
+<p>Get one Encounter for a patient</p>
 
-<pre><code> GET /records/{record_id}/encounters/{encounter_id}
+<pre><code> GET /records/{record_id}/encounters/ 
 </code></pre>
+
+<p>Get all Encounters for a patient</p>
 
 <p><a href="../data_model/#Encounter">Encounter RDF</a></p>
 
 <h2>Fulfillment</h2>
 
-<p>Get fulfillments for a patient</p>
-
-<pre><code> GET /records/{record_id}/fulfillments/{fulfillment_id}
+<pre><code> GET /records/{record_id}/fulfillments/{fulfillment_id} 
 </code></pre>
 
-<p>Get all fulfillments for a patient</p>
+<p>Get one Fulfillment for a patient</p>
 
-<pre><code> GET /records/{record_id}/fulfillments/
+<pre><code> GET /records/{record_id}/fulfillments/ 
 </code></pre>
+
+<p>Get all Fulfillments for a patient</p>
 
 <p><a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
 
 <h2>Immunization</h2>
 
-<p>Get one immunization for a patient</p>
-
-<pre><code> GET /records/{record_id}/immunizations/{immunization_id}
+<pre><code> GET /records/{record_id}/immunizations/{immunization_id} 
 </code></pre>
 
-<p>Get all immunizations for a patient</p>
+<p>Get one Immunization for a patient</p>
 
-<pre><code> GET /records/{record_id}/immunizations/
+<pre><code> GET /records/{record_id}/immunizations/ 
 </code></pre>
+
+<p>Get all Immunizations for a patient</p>
 
 <p><a href="../data_model/#Immunization">Immunization RDF</a></p>
 
+<h2>Lab Panel</h2>
+
+<pre><code> GET /records/{record_id}/lab_panels/ 
+</code></pre>
+
+<p>Get all Lab Panels for a patient</p>
+
+<pre><code> GET /records/{record_id}/lab_panels/ 
+</code></pre>
+
+<p>Get one Lab Panel for a patient</p>
+
+<p><a href="../data_model/#Lab_Panel">Lab Panel RDF</a></p>
+
 <h2>Lab Result</h2>
 
-<p>Get lab results for a patient</p>
-
-<pre><code> GET /records/{record_id}/lab_results/{lab_result_id}
+<pre><code> GET /records/{record_id}/lab_results/ 
 </code></pre>
 
-<p>Get all lab results for a patient</p>
+<p>Get all Lab Results for a patient</p>
 
-<pre><code> GET /records/{record_id}/lab_results/
+<pre><code> GET /records/{record_id}/lab_results/{lab_result_id} 
 </code></pre>
+
+<p>Get one Lab Result for a patient</p>
 
 <p><a href="../data_model/#Lab_Result">Lab Result RDF</a></p>
 
-<h2>Medical Record</h2>
-
-<p><a href="../data_model/#Medical_Record">Medical Record RDF</a></p>
-
 <h2>Medication</h2>
 
-<p>Get medication for a patient</p>
-
-<pre><code> GET /records/{record_id}/medications/{medication_id}
+<pre><code> GET /records/{record_id}/medications/ 
 </code></pre>
 
-<p>Get all medications for a patient</p>
+<p>Get all Medications for a patient</p>
 
-<pre><code> GET /records/{record_id}/medications/
+<pre><code> GET /records/{record_id}/medications/{medication_id} 
 </code></pre>
+
+<p>Get one Medication for a patient</p>
 
 <p><a href="../data_model/#Medication">Medication RDF</a></p>
 
 <h2>Problem</h2>
 
-<p>Get problems for a patient</p>
-
-<pre><code> GET /records/{record_id}/problems/{problem_id}
+<pre><code> GET /records/{record_id}/problems/ 
 </code></pre>
 
-<p>Get all problems for a patient</p>
+<p>Get all Problems for a patient</p>
 
-<pre><code> GET /records/{record_id}/problems/
+<pre><code> GET /records/{record_id}/problems/{problem_id} 
 </code></pre>
+
+<p>Get one Problem for a patient</p>
 
 <p><a href="../data_model/#Problem">Problem RDF</a></p>
 
+<h2>Procedure</h2>
+
+<pre><code> GET /records/{record_id}/procedures/{procedure_id} 
+</code></pre>
+
+<p>Get one Procedure for a patient</p>
+
+<pre><code> GET /records/{record_id}/procedures/ 
+</code></pre>
+
+<p>Get all Procedures for a patient</p>
+
+<p><a href="../data_model/#Procedure">Procedure RDF</a></p>
+
+<h2>Social History</h2>
+
+<pre><code> GET /records/{record_id}/social_history 
+</code></pre>
+
+<p>Get Social History for a patient</p>
+
+<p><a href="../data_model/#Social_History">Social History RDF</a></p>
+
+<h2>Vital Sign Set</h2>
+
+<pre><code> GET /records/{record_id}/vital_sign_sets/ 
+</code></pre>
+
+<p>Get all Vital Sign Sets for a patient</p>
+
+<pre><code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
+</code></pre>
+
+<p>Get one Vital Sign Set for a patient</p>
+
+<p><a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
+
+<h1>User Calls</h1>
+
 <h2>User Preferences</h2>
+
+<pre><code> GET /users/{user_id}/apps/{smart_app_id}/preferences 
+</code></pre>
 
 <p>Get user preferences for an app</p>
 
-<pre><code> GET /accounts/{user_id}/apps/{smart_app_id}/preferences
-</code></pre>
-
 <p><a href="../data_model/#User_Preferences">User Preferences RDF</a></p>
-
-<h2>VitalSigns</h2>
-
-<p>Get all vital signs for a patient</p>
-
-<pre><code> GET /records/{record_id}/vital_signs/
-</code></pre>
-
-<p>Get vital signs for a patient</p>
-
-<pre><code> GET /records/{record_id}/vital_signs/{vital_signs_id}
-</code></pre>
-
-<p><a href="../data_model/#VitalSigns">VitalSigns RDF</a></p>
 
 
     </div>

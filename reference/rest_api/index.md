@@ -14,30 +14,36 @@ includenav: smartnav.markdown
 <div id="toc"></div>
 
 
-The calls below are all written with respect to the base URL /. But any given
-SMART container will place all API calls its own base URL, e.g.
-`http://sample_smart_emr.com/smart-base/`
+The calls below are all written with respect to the base URL /. But any
+given SMART container will place all API calls its own base URL, e.g.
+
+    http://sample_smart_emr.com/smart-base/
 
 Any individual item that can be retrieved via `GET` should have a
-_fully-dereferenceable_ `URI`. To continue the example above, a medication in our
-sample EMR might have the `URI`:
-`http://sample_smart_emr.com/smart-base/records/123456/medications/664373`
+_fully-dereferenceable_ `URI`. To continue the example above, a
+medication in our sample EMR might have the `URI`:
+
+    http://sample_smart_emr.com/smart-base/records/123456/medications/664373
+
 
 # Changelog
 
-[Changes to API + Payloads](../change_log/)
+See here for all of the [changes to the API and payloads](../change_log/)
+
 
 # Overview
 
 The SMART API provides access to individual resources (medications, fulfillment
-events, prescription events, problems, etc.) and groups of these resources.
+events, prescription events, problems, etc.) and groups of these resources in a
+[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API.
 
 
-## Read-only API
+## SMART is a Read-only API
 
-Please note that for the time being, the SMART API remains read-only. We are
-excited about continuing to define our read/write API &mdash; but we want make our
-early APIs as easy as possible for EMR and PHR vendors to expose.
+Please note that for the time being, the SMART API remains read-only. We
+are excited about continuing to define our read/write API &mdash; but we
+want make our early APIs as easy as possible for EMR and PHR vendors to
+expose.
 
 
 ## REST Design Principles
@@ -53,24 +59,56 @@ In general you can interact with a:
   * `DELETE` to remove a single resource
   * `PUT` to add a single resource tagged with an `external_id`.
 
-    When a resource is `PUT`, it replaces any existing resource with the same
-    `external_id`. In other words, `PUT` is idempotent. When `PUT`ting a resource
-    such as a medication that may contain child resources (e.g. fulfillment events),
-    these child nodes must not be included in the graph. Rather, they must be
-    separately attached with another API call once the parent medication is `PUT`
-    and has received an internal SMART id. So, `PUT`ting a medication with two
-    fulfillments actually takes three API calls: one for the medication, and one for
-    each (child) fulfillment event.
+    When a resource is `PUT`, it replaces any existing resource with the
+    same `external_id`. In other words, `PUT` is idempotent. When `PUT`ting
+    a resource such as a medication that may contain child resources (e.g.
+    fulfillment events), these child nodes must not be included in the
+    graph. Rather, they must be separately attached with another API call
+    once the parent medication is `PUT` and has received an internal SMART
+    id. So, `PUT`ting a medication with two fulfillments actually takes
+    three API calls: one for the medication, and one for each (child)
+    fulfillment event.
 
 
 # OWL Ontology File
 
-The API calls listed below, as well as the RDF/XML payloads, are also defined in
-a machine-readable OWL file. The OWL file has been used to generate the
-documentation below, as well as our client-side REST libraries and API
-Playground app.
+The API calls listed below, as well as the RDF/XML payloads, are also
+defined in a machine-readable OWL file. The OWL file has been used to
+generate the documentation below, as well as our client-side REST
+libraries and API Playground app.
 
 
+# SMART REST API Reference
+
+Each `GET` call in the SMART REST API is listed below and grouped by the
+"scope" / access control category the SMART container applies to the
+call. The SMART container implements this access control using the OAuth
+tokens passed in with each API request as described in the [build a REST
+App howto][] and the [RxReminder app][].
+
+[build a REST app howto]: /howto/build_a_rest_app/
+[RxReminder app]:         /howto/rx_reminder/
+
+Currently there are three "scopes" / access control categories:
+
+1. `Container` calls can be made by anyone against the container.
+   Examples of this type of call are fetching the container's manifest
+   and fetching the container's ontology.
+
+2. `Record` calls are scoped to a (app, user, record) tuple e.g. calls
+   to fetch a patient's medical record data. An example would be getting
+   the medications in a patient's record. The OAuth credentials for
+   the app (e.g. the `consumer_key` and `consumer_secret`) and
+   previously fetched OAuth credentials from the server including the
+   `smart_record_id` 
+
+3. `User` calls are scoped to a (app, user) tuple and are used for
+   setting a user's preferences. Note: this implies that any app can
+   read any other app's preferences. The OAuth credentials for the
+   app (e.g. the `consumer_key` and `consumer_secret`) are required.
+
+---
+---
 ---
 
 <!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT REMOVE ME! -->
@@ -79,192 +117,246 @@ Playground app.
 
 # Container Calls
 
-
 ## App Manifest
+
+     GET /apps/manifests/ 
 
 Returns a JSON list of all SMART UI app manifests installed on the container.
 
-     GET /apps/manifests/
+     GET /apps/{descriptor}/manifest 
 
-Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins@apps.smartplatforms.org" or an intent string like "view_medications".
-
-     GET /apps/{descriptor}/manifest
-
+Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins
 
 [App Manifest RDF](../data_model/#App_Manifest)
 
+
 ## ContainerManifest
+
+     GET /manifest 
 
 Get manifest for a container
 
-     GET /manifest
-
-
 [ContainerManifest RDF](../data_model/#ContainerManifest)
 
+
 ## Demographics
+
+     GET /records/search 
 
 Get an RDF graph of sp:Demographics elements for all patients that match the query.  Matching treats family_name and given_name as the *beginning* of a name.  For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Birthday is an ISO8601 string like "2008-03-21"; gender is "male" or "female".  Gender, birthday, zipcode, and medical_record_number must match exactly.
 	
 
-     GET /records/search?given_name={given_name}&family_name={family_name}&zipcode={zipcode}&birthday={birthday}&gender={gender}&medical_record_number={medical_record_number}
-
-
 [Demographics RDF](../data_model/#Demographics)
+
 
 ## Ontology
 
+     GET /ontology 
+
 Get the ontology used by a SMART container
-
-     GET /ontology
-
 
 [Ontology RDF](../data_model/#Ontology)
 
+
 ## User
+
+     GET /users/{user_id} 
+
+Get a single user by ID
+
+     GET /users/search 
 
 Get users by name (or all users if blank)
 
-     GET /users/search?given_name={given_name}&family_name={family_name}
-
-Get a single user by internal ID
-
-     GET /users/{user_id}
-
-
 [User RDF](../data_model/#User)
+
+
 
 # Record Calls
 
-
 ## Alert
 
+     GET /records/{record_id}/alerts/{alert_id} 
+
+Get one Alert for a patient
+
+     GET /records/{record_id}/alerts/ 
+
+Get all Alerts for a patient
 
 [Alert RDF](../data_model/#Alert)
 
+
 ## Allergy
 
-Get all allergies for a patient
+     GET /records/{record_id}/allergies/ 
 
-     GET /records/{record_id}/allergies/
+Get all Allergies and Allergy Exclusions for a patient
 
-Get allergies for a patient
+     GET /records/{record_id}/allergies/{allergy_id} 
 
-     GET /records/{record_id}/allergies/{allergy_id}
-
+Get one Allergy for a patient
 
 [Allergy RDF](../data_model/#Allergy)
 
+
+## Clinical Note
+
+     GET /records/{record_id}/clinical_notes/{clinical_note_id} 
+
+Get one Clinical Note for a patient
+
+     GET /records/{record_id}/clinical_notes/ 
+
+Get all Clinical Notes for a patient
+
+[Clinical Note RDF](../data_model/#Clinical_Note)
+
+
 ## Demographics
 
-Get all demographics for a patient
+     GET /records/{record_id}/demographics 
 
-     GET /records/{record_id}/demographics
-
+Get Demographics for a patient
 
 [Demographics RDF](../data_model/#Demographics)
 
+
 ## Encounter
 
-Get all encounters for a patient
+     GET /records/{record_id}/encounters/{encounter_id} 
 
-     GET /records/{record_id}/encounters/
+Get one Encounter for a patient
 
-Get encounters for a patient
+     GET /records/{record_id}/encounters/ 
 
-     GET /records/{record_id}/encounters/{encounter_id}
-
+Get all Encounters for a patient
 
 [Encounter RDF](../data_model/#Encounter)
 
+
 ## Fulfillment
 
-Get fulfillments for a patient
+     GET /records/{record_id}/fulfillments/{fulfillment_id} 
 
-     GET /records/{record_id}/fulfillments/{fulfillment_id}
+Get one Fulfillment for a patient
 
-Get all fulfillments for a patient
+     GET /records/{record_id}/fulfillments/ 
 
-     GET /records/{record_id}/fulfillments/
-
+Get all Fulfillments for a patient
 
 [Fulfillment RDF](../data_model/#Fulfillment)
 
+
 ## Immunization
 
-Get one immunization for a patient
+     GET /records/{record_id}/immunizations/{immunization_id} 
 
-     GET /records/{record_id}/immunizations/{immunization_id}
+Get one Immunization for a patient
 
-Get all immunizations for a patient
+     GET /records/{record_id}/immunizations/ 
 
-     GET /records/{record_id}/immunizations/
-
+Get all Immunizations for a patient
 
 [Immunization RDF](../data_model/#Immunization)
 
+
+## Lab Panel
+
+     GET /records/{record_id}/lab_panels/ 
+
+Get all Lab Panels for a patient
+
+     GET /records/{record_id}/lab_panels/ 
+
+Get one Lab Panel for a patient
+
+[Lab Panel RDF](../data_model/#Lab_Panel)
+
+
 ## Lab Result
 
-Get lab results for a patient
+     GET /records/{record_id}/lab_results/ 
 
-     GET /records/{record_id}/lab_results/{lab_result_id}
+Get all Lab Results for a patient
 
-Get all lab results for a patient
+     GET /records/{record_id}/lab_results/{lab_result_id} 
 
-     GET /records/{record_id}/lab_results/
-
+Get one Lab Result for a patient
 
 [Lab Result RDF](../data_model/#Lab_Result)
 
-## Medical Record
-
-
-[Medical Record RDF](../data_model/#Medical_Record)
 
 ## Medication
 
-Get medication for a patient
+     GET /records/{record_id}/medications/ 
 
-     GET /records/{record_id}/medications/{medication_id}
+Get all Medications for a patient
 
-Get all medications for a patient
+     GET /records/{record_id}/medications/{medication_id} 
 
-     GET /records/{record_id}/medications/
-
+Get one Medication for a patient
 
 [Medication RDF](../data_model/#Medication)
 
+
 ## Problem
 
-Get problems for a patient
+     GET /records/{record_id}/problems/ 
 
-     GET /records/{record_id}/problems/{problem_id}
+Get all Problems for a patient
 
-Get all problems for a patient
+     GET /records/{record_id}/problems/{problem_id} 
 
-     GET /records/{record_id}/problems/
-
+Get one Problem for a patient
 
 [Problem RDF](../data_model/#Problem)
 
+
+## Procedure
+
+     GET /records/{record_id}/procedures/{procedure_id} 
+
+Get one Procedure for a patient
+
+     GET /records/{record_id}/procedures/ 
+
+Get all Procedures for a patient
+
+[Procedure RDF](../data_model/#Procedure)
+
+
+## Social History
+
+     GET /records/{record_id}/social_history 
+
+Get Social History for a patient
+
+[Social History RDF](../data_model/#Social_History)
+
+
+## Vital Sign Set
+
+     GET /records/{record_id}/vital_sign_sets/ 
+
+Get all Vital Sign Sets for a patient
+
+     GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
+
+Get one Vital Sign Set for a patient
+
+[Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
+
+
+
+# User Calls
+
 ## User Preferences
+
+     GET /users/{user_id}/apps/{smart_app_id}/preferences 
 
 Get user preferences for an app
 
-     GET /accounts/{user_id}/apps/{smart_app_id}/preferences
-
-
 [User Preferences RDF](../data_model/#User_Preferences)
 
-## VitalSigns
 
-Get all vital signs for a patient
-
-     GET /records/{record_id}/vital_signs/
-
-Get vital signs for a patient
-
-     GET /records/{record_id}/vital_signs/{vital_signs_id}
-
-
-[VitalSigns RDF](../data_model/#VitalSigns)

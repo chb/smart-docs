@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Introduction to the SMART JSON-LD API
+title: The SMART JSON-LD API
 includenav: smartnav.markdown
 ---
 
@@ -21,31 +21,31 @@ interface. SMART's RDF-based interface will remain available for use as well.
 
 # What is JSON?
 
-[JSON] is the highly popular lightweight data serialization and
+[JSON][foo] is the highly popular lightweight data serialization and
 interchange format based on a simplified subset of Javascript objects.  It's a
 natural fit for representing data for SMART Connect apps. All JSON objects are
 valid Javascript objects so all Javascript tools and libraries &mdash;
 including tools already built into most browsers &mdash; can be used to examine
 and manipulate them. We'll see examples of this below.
 
-[JSON](http://json.org)
+[foo]: http://json.org
 
 
 # What is JSON-LD?
 
-[Linked Data] is the idea that to be truly useful data should be
+[Linked Data][] is the idea that to be truly useful data should be
 described in 1) standardized formats and 2) should be linked to other
 data via identifiers that 3) could be "fetched" to find data that contains
 further links to be fetched _ad infinitum_. In essence, a "web of data".
-[JSON-LD] is a leading standard to represent linked data in JSON.
+[JSON-LD][] is a leading standard to represent linked data in JSON.
 
 As a SMART app developer, you don't have to be concerned with creating
 JSON-LD objects or even querying for them, since the SMART JavaScript
 client library will provide you with JSON-LD objects automatically
 each time you make usual API calls like `get_MEDICATIONS()`.
 
-[Linked Data](http://en.wikipedia.org/wiki/Linked_data)
-[JSON-LD](http://json-ld.org)
+[Linked Data]: http://en.wikipedia.org/wiki/Linked_data
+[JSON-LD]:     http://json-ld.org
 
 
 # A SMART JSON-LD Object
@@ -76,9 +76,9 @@ returning a JSON-LD Object as used by the SMART Diabetes Monograph app:
 Looking into the first object in the `r.objects.of_type.Medication` array in a
 browser's developer tools (such as Chrome's Developer Tools or Firebug) you can
 see that it is a standard JSON object filled with the patient's data according
-to the [SMART data model] for a medication.
+to the SMART data model for a [medication][].
 
-[SMART data model](http://dev.smartplatforms.org/reference/data_model/#Medication)
+[medication]: http://dev.smartplatforms.org/reference/data_model/#Medication
 
 {% highlight javascript %}
     // simplified to show only relevant properties
@@ -106,7 +106,7 @@ to the [SMART data model] for a medication.
 
 ## The SMART Convention for Property Names
 
-There is a strict correspondence between the [SMART datamodel] and the
+There is a strict correspondence between the [SMART datamodel][] and the
 naming of the properties of SMART JSON-LD objects. In the example above,
 `drugName` is defined as containing a `Coded Value` where the `code`
 property is constrained to come from `RxNorm_Semantic`. (`RxNorm_Semantic`
@@ -115,7 +115,7 @@ properties: `title` (defined by http://purl.org/dc/terms/title i.e. a the
 `title` term from the Dublin Core namespace) and a `code` object from the SMART
 namespace.
 
-[SMART datamodel](http://dev.smartplatforms.org/reference/data_model/)
+[SMART datamodel]: http://dev.smartplatforms.org/reference/data_model/
 
 In SMART we namespace property names using a simple convention: first our
 SMART-specific "short" name of the namespace (e.g. `dcterms`
@@ -124,7 +124,7 @@ then the property name itself. Properties in the SMART namespace are
 represented directly, without underscores.  In other words, any property
 without a namespace is in the SMART namespace (`http://smartplatforms.org/terms#`).
 
-The [code] object is defined by the SMART datamodel as having three
+The [code][] object is defined by the SMART datamodel as having three
 required properties:
 
 1. an `identifier` defined by <http://purl.org/dc/terms/identifier>
@@ -133,12 +133,12 @@ required properties:
    coding system that defines the `identifier`. In this case the
    `system` is a URI for the RXNORM drug vocabulary.
 
-[code](http://dev.smartplatforms.org/reference/data_model/#Code)
+[code]: http://dev.smartplatforms.org/reference/data_model/#Code
 
 
 # A Complete Example: Got Statins? with JSON-LD
 
-Here is a rewrite of the [Got Statins?] app using the SMART JSON-LD API
+Here is a rewrite of the [Got Statins?][] app using the SMART JSON-LD API
 improvements from the original RDF/XML and SPARQL version are noted in
 the comments.
 
@@ -201,8 +201,9 @@ the comments.
     </script>
   </body>
 </html>
+{% endhighlight %}
 
-[Got Statins?](/howto/got_statins)
+[Got Statins?]: /howto/got_statins
 
 
 # Learning More
@@ -210,6 +211,6 @@ the comments.
 SMART's JSON-LD API gives you as a web developer an natural, familiar,
 and interactively discoverable interface to SMART patient data. You can
 start using this API in your apps today. For examples of this API in use
-see the code (in `main.js`) for the SMART [Diabetes Monograph app].
+see the code (in `main.js`) for the SMART [Diabetes Monograph app][].
 
-[Diabetes Monograph app](https://github.com/chb/smart_sample_apps/tree/master/static/framework/diabetes_monograph)
+[Diabetes Monograph app]: https://github.com/chb/smart_sample_apps/tree/master/static/framework/dm_monograph/js/main.js

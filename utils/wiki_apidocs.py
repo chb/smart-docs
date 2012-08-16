@@ -1,7 +1,7 @@
 # Generate SMART wiki api docs for use with our Jekyll-based docs site
 
 # how to run:
-# (from top of smart-docs-testing repo)
+# (from top of smart-docs repo)
 # $ export PYTHONPATH=.:..
 # $ python utils/wiki_apidocs.py payload > payload
 # $ python utils/wiki_apidocs.py api > api
@@ -189,23 +189,23 @@ def type_name_string(t):
     return split_uri(str(t.uri))
 
 def split_uri(t):
-    try: 
+    try:
         return str(t).rsplit("#",1)[1]
     except:
-        try: 
+        try:
             return str(t).rsplit("/",1)[1]
-        except: 
+        except:
             return ""
-    
+
 def wiki_payload_for_type(t):
-    type_start(t)    
+    type_start(t)
     wiki_properties_for_type(t)
 
 cardinalities  = {"0 - 1": "Optional: 0 or 1", 
                   "0 - Many": "Optional: 0 or more", 
                   "1": "Required: exactly 1", 
                   "1 - Many": "Required: 1 or more"}
-    
+
 def wiki_properties_for_type(t):
     if len(t.object_properties) + len(t.data_properties) == 0:
         return
@@ -243,7 +243,7 @@ def wiki_properties_for_type(t):
               d = "<a href='"+str(u)+"'>"+m.normalizeUri(u)+'</a>'
             else: d =  "<a href='"+str(rdfs.Literal)+"'>"+m.normalizeUri(rdfs.Literal)+'</a>'
             desc += " "+ d
-            
+
         cardinality = cardinalities[c.cardinality_string]
         required_p = False
         if c.cardinality_string[0] == '1':
@@ -251,35 +251,35 @@ def wiki_properties_for_type(t):
 
         properties_row(name, c.uri, cardinality, desc, required_p)
     properties_end()
-    
+
 def wiki_api_for_type(t, calls_for_t):
-    print "\n## %s\n"%t.name
+    print "## %s" % t.name
 
     last_description = ""
     for call in calls_for_t:
-        if (str(call.method) != "GET"): continue # Document only the GET calls for now!
+        if (str(call.http_method) != "GET"): continue # Document only the GET calls for now!
+
+        print "\n    ", strip_smart(str(call.http_method)), str(call.path), '\n'
+
         if (str(call.description) != last_description):
             print str(call.description)
-        
-        print "\n    ", strip_smart(str(call.method)), str(call.path)
-        
+
         if (str(call.description) != last_description):
-            print ""
             last_description = str(call.description)
 
-    print "\n[%s RDF](../data_model/#%s)"%(t.name, t.name.replace(' ', '_'))        
+    print "\n[%s RDF](../data_model/#%s)\n\n"%(t.name, t.name.replace(' ', '_'))
 
-             
+
 main_types = []
 calls_to_document = copy.copy(api_calls)
-            
+
 for t in api_types:
     if t.is_statement or len(t.calls) > 0:
         main_types.append(t)
     elif (sp.Component in [x.uri for x in t.parents]):
         main_types.append(t)
 
-def type_sort_order(x): 
+def type_sort_order(x):
     if x.is_statement or len(x.calls) > 0:
         is_record = filter(lambda x: "record" in x, [c.category for c in x.calls])
         if len(is_record) > 0 or len(x.calls) == 0:
@@ -291,11 +291,12 @@ def type_sort_order(x):
         return "Component"
 
 def call_category(x):
-    return x.category.split("_")[0].capitalize()
+    #return x.category.split("_")[0].capitalize()
+    return str(x.category)
 
 def call_sort_order(x):
-    m = {"GET" : 10, "POST":20,"PUT":30,"DELETE":40}    
-    ret =  m[x.method]
+    m = {"GET" : 10, "POST":20,"PUT":30,"DELETE":40}
+    ret =  m[x.http_method]
     if ("items" in x.category): ret -= 1
     ret = call_category(x) + str(x.target) + str(ret)
     return ret
@@ -312,14 +313,13 @@ if __name__=="__main__":
                 wiki_batch_start(current_batch+" Types") # e.g. "Record Items" or "Container Items"
             wiki_payload_for_type(t)
 
-            
     if "api" in sys.argv:
         current_batch = None
         processed = []
         for t in calls_to_document: 
             if call_category(t) != current_batch:
                 current_batch = call_category(t)
-                wiki_batch_start(current_batch+" Calls")
+                wiki_batch_start(current_batch.capitalize()+" Calls")
             if (t in processed): continue
 
             target = SMART_Class[t.target]

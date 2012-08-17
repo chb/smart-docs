@@ -213,6 +213,6 @@ If you don't want to run that code yourself, check out this library' README on
 
 
 
-[SMART REST HOWTO]: (/howto/build_a_rest_app/)
-[rdf intro]: (/datamodel/intro_to_rdf)
+[SMART REST HOWTO]: /howto/build_a_rest_app/
+[rdf intro]: /datamodel/intro_to_rdf
 [API]: /reference/rest_api

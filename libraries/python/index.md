@@ -144,6 +144,9 @@ Sandbox, you'll want to use:
   {'consumer_key': 'my-app@apps.smartplatforms.org', 'consumer_secret': 'smartapp-secret'}
 {% endhighlight  %}
 
+See the warning about setting a strong `consumer_secret`
+[here](/howto/build_a_rest_app)
+
 To get the resource token and patient-record context, you need to understand how
 SMART Connect passes this information to your app via a URL parameter. See the
 [SMART REST HOWTO][].

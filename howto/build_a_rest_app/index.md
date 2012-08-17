@@ -67,6 +67,28 @@ here. At a high-level, your app can simply look for a URL parameter called
 `oauth_header` set by the SMART JavaScript client library. In this value, you
 will find the OAuth token and secret you need.
 
+## Change Your App's OAuth Consumer Secret in Production (Important!)
+
+Each SMART container your app runs against must first "install" your app
+by inserting your app's manifest into it's database. This data includes
+your app's OAuth `consumer-secret` which is the shared secret between
+your app and the container that __ALL SECURITY__ of your app's
+communication with the server relies on and is a basic requirement of
+OAuth-signed REST API calls.
+
+<div id='consumer_secret_warning' class='red_box'>
+  If this secret is revealed to or guessed by a 3rd party, the security of
+  your app and the container has been breached! Using the default secret
+  ("smartapp-secret") while in development is acceptable, but:
+  <br />
+  <br />
+  <strong><em>You MUST change the <code>consumer-secret</code> in PRODUCTION!</em></strong>
+</div>
+
+This secret is provisioned when your app is loaded into the smart
+container with the following command:
+
+    manage.py load_app <manifest-location> <secret>
 
 ## Passing Tokens via URL Parameter
 

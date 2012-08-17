@@ -199,6 +199,9 @@ consumer token + secret, as well as the base URL for the SMART Container. A good
 approach is to define these parameters in your servlet's <code>web.xml</code> (with the
 consumer token and secret set to our pre-defined &quot;My App&quot; values):</p>
 
+<p>(but be sure to heed the warning about using the consumer_secret in
+production <a href="/howto/build_a_rest_app/#consumer_secret_warning">here</a>)</p>
+
 <div class="highlight"><pre><code class="xml">    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
     <span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
              <span class="na">xmlns:xsi=</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema-instance&#39;</span>

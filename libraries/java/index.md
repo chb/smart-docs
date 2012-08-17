@@ -114,6 +114,9 @@ consumer token + secret, as well as the base URL for the SMART Container. A good
 approach is to define these parameters in your servlet's `web.xml` (with the
 consumer token and secret set to our pre-defined "My App" values):
 
+(but be sure to heed the warning about using the consumer_secret in
+production [here](/howto/build_a_rest_app/#consumer_secret_warning))
+
 {% highlight xml %}
 
     <?xml version="1.0" encoding="UTF-8"?>

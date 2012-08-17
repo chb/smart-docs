@@ -35,7 +35,12 @@ through all the SMART Container's medical records.
 
 The first thing you need is, of course, a SmartClient instance to make REST API
 calls against the SMART container. If you don't have that library running yet,
-check out the SMART Python Client. Then
+check out the SMART Python Client. 
+
+Make sure you understand the warning about setting a strong `consumer_secret`
+in production [here](/howto/build_a_rest_app/#consumer_secret_warning)
+
+Then:
 
 {% highlight python %}
     smart_client = smart.SmartClient(

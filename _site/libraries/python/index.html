@@ -230,9 +230,12 @@ Sandbox, you'll want to use:</p>
 </code></pre>
 </div>
 
+<p>See the warning about setting a strong <code>consumer_secret</code>
+<a href="/howto/build_a_rest_app">here</a></p>
+
 <p>To get the resource token and patient-record context, you need to understand how
 SMART Connect passes this information to your app via a URL parameter. See the
-<a href="(/howto/build_a_rest_app/)">SMART REST HOWTO</a>.</p>
+<a href="/howto/build_a_rest_app/">SMART REST HOWTO</a>.</p>
 
 <h2>Making the Call</h2>
 
@@ -260,7 +263,7 @@ markers for expected parameters. <code>record_id</code> is automatically pulled 
 
 <p>The results of a SMART API call using the client library is an <code>SMARTResponse</code>
 object containing the RDF graph. For more on RDF graphs, please read our
-<a href="(/datamodel/intro_to_rdf)">Quick Intro to RDF and SPARQL</a>. At a high-level, the result is a
+<a href="/datamodel/intro_to_rdf">Quick Intro to RDF and SPARQL</a>. At a high-level, the result is a
 dataset that can be manipulated and queried in a very flexible manner. You can
 use <code>rdflib</code> to do just that:</p>
 

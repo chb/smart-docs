@@ -95,14 +95,14 @@
 
       <div id="toc"></div>
 
-<h2>What is <code>smart-api-client.js</code>?</h2>
+<h1>What is <code>smart-api-client.js</code>?</h1>
 
 <p>Every SMART UI app includes an <code>index.html</code> page that loads the
 <code>smart-api-client.js</code> Javascript library to provide the app's functionality.
 This page describes the functionality that including <code>smart-api-client.js</code>
 provides.</p>
 
-<h2>Including <code>smart-api-client.js</code></h2>
+<h1>Including <code>smart-api-client.js</code></h1>
 
 <p>You include this file in every additional page of your app, e.g. via the HTML <code>&lt;script&gt;</code> tag:</p>
 
@@ -114,7 +114,7 @@ provides.</p>
 called <code>SMART</code>, which can be used to interact with the SMART container via the
 calls described below.</p>
 
-<h2>Interacting with the SMART Container via Javascript</h2>
+<h1>Interacting with the SMART Container via Javascript</h1>
 
 <p>Inside your <code>index.html</code> file, you'll need to be sure the SMART library has
 finished loading before you can use it. Just put your code inside a call to
@@ -149,9 +149,47 @@ REST authentication tokens, which you can access with:</p>
 <li><code>SMART.credentials.oauth_header</code></li>
 </ul>
 
-<h2>Notifications To and From the SMART Container</h2>
+<h1>Calling another app: a hint of inter-application workflow</h1>
 
-<h3>Subscribe to Notifications from the SMART Container</h3>
+<p>SMART 0.5 introduces a primitive to support in-browser inter-application
+workflow: one app can <code>call</code> another, passing along some launch data and
+receiving a response when the called app finishes.  The basic flow looks like
+this:</p>
+
+<h2>In the call<em>ing</em> app:</h2>
+
+<p>To start, you'll need a copy of the manifest for the app you want to call.
+Then you call it with <code>SMART.call_app</code>, passing along the manifest and any
+launch data you'd like the called app to receive:</p>
+
+<div class="highlight"><pre><code class="javascript"> <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_manifest</span><span class="p">({</span>
+   <span class="nx">descriptor</span><span class="o">:</span><span class="s2">&quot;app-to-call@apps.smartplatforms.org&quot;</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">json</span><span class="p">;</span>
+   <span class="nx">SMART</span><span class="p">.</span><span class="nx">call_app</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="p">{</span><span class="cm">/*launch data*/</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Returned from call:&quot;</span> <span class="p">);</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+   <span class="p">});</span>
+ <span class="p">});</span>
+</code></pre>
+</div>
+
+<h2>In the call<em>ed</em> app:</h2>
+
+<p>The called app launches just like any SMART app.  If your apps expects any
+custom data at launch time, these should be available in: <code>SMART.ready_data</code></p>
+
+<p>When you're app is thruogh, you can call <code>SMART.complete</code>, passing in any return data to be provided for the calling app.</p>
+
+<div class="highlight"><pre><code class="javascript">   <span class="nx">SMART</span><span class="p">.</span><span class="nx">complete</span><span class="p">({</span> 
+     <span class="cm">/* return data...*/</span>
+   <span class="p">});</span>
+</code></pre>
+</div>
+
+<h1>Notifications To and From the SMART Container</h1>
+
+<h2>Subscribe to Notifications from the SMART Container</h2>
 
 <p>A container will notify an app when important events occur. Today the SMART API
 defines three Container-to-app notifications that your app can subscribe to:</p>
@@ -171,7 +209,7 @@ defines three Container-to-app notifications that your app can subscribe to:</p>
 </code></pre>
 </div>
 
-<h3>Send Notifications to the SMART Container</h3>
+<h2>Send Notifications to the SMART Container</h2>
 
 <p>Your app can also send notifications to the container. Today the SMART API
 defines only a single App-to-Container notification, which allows an app to
@@ -184,7 +222,7 @@ request additional screen real estate when there's something big to display:</p>
 <p>Please keep in mind that these app-&gt;container and container--&gt;app notifications
 are &quot;fire and forget&quot;; they don't provide a callback mechanism.</p>
 
-<h2>Making API Calls</h2>
+<h1>Making API Calls</h1>
 
 <p>You can also use the SMART javascript object to make any <a href="/reference/rest_api">API</a> by calling its
 <code>api_call</code> method, which takes two parameters:</p>
@@ -221,7 +259,7 @@ calling:</p>
 </code></pre>
 </div>
 
-<h2>Convenience Wrappers Around Common API Calls</h2>
+<h1>Convenience Wrappers Around Common API Calls</h1>
 
 <p>But you shouldn't need to use the raw <code>.api_call</code> method very often, because the
 SMART javascript object also provides convenience wrappers around common API
@@ -229,47 +267,9 @@ calls. The functions below all take a callback function of one argument: the RDF
 graph that holds the response data, parsed from raw RDF/XML via
 <a href="http://code.google.com/p/rdfquery/">rdfquery</a>.</p>
 
-<h3>SMART.ALLERGIES_get</h3>
+<h2>TODO:  Add auto-generated SMART Connect API docs here.</h2>
 
-<p>GETs all allergies from the in-context record</p>
-
-<h3>SMART.DEMOGRAPHICS_get</h3>
-
-<p>GETs all demographics from the in-context record</p>
-
-<h3>SMART.FULFILLMENTS_get</h3>
-
-<p>GETs the fulfillments from the in-context record</p>
-
-<h3>SMART.LAB_RESULTS_get</h3>
-
-<p>GETs all labs from the in-context record</p>
-
-<h3>SMART.MANIFESTS_get</h3>
-
-<p>GETs all SMART App manifests for apps installed in this container</p>
-
-<h3>SMART.MANIFEST_get</h3>
-
-<p>GETs a sing SMART App manifest</p>
-
-<h3>GETs a sing SMART App manifest</h3>
-
-<p>GETs all medications from the in-context record</p>
-
-<h3>SMART.NOTES_get</h3>
-
-<p>GETs all notes from the in-context record</p>
-
-<h3>SMART.PROBLEMS_get</h3>
-
-<p>GETs all problems from the in-context record</p>
-
-<h3>SMART.VITAL_SIGNS_get</h3>
-
-<p>GETs all problems from the in-context record</p>
-
-<h2>A Quick Example</h2>
+<h1>A Quick Example</h1>
 
 <div class="highlight"><pre><code class="javascript">  <span class="nx">SMART</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">SMART</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">full_name</span><span class="p">);</span>

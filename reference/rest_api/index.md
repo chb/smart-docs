@@ -81,7 +81,7 @@ libraries and API Playground app.
 # SMART REST API Reference
 
 Each `GET` call in the SMART REST API is listed below and grouped by the
-"scope" / access control category the SMART container applies to the
+"scope" or "access control category" the SMART container applies to the
 call. The SMART container implements this access control using the OAuth
 tokens passed in with each API request as described in the [build a REST
 App howto][] and the [RxReminder app][].
@@ -89,23 +89,28 @@ App howto][] and the [RxReminder app][].
 [build a REST app howto]: /howto/build_a_rest_app/
 [RxReminder app]:         /howto/rx_reminder/
 
-Currently there are three "scopes" / access control categories:
+Currently there are three "scopes" or access control categories:
 
 1. `Container` calls can be made by anyone against the container.
    Examples of this type of call are fetching the container's manifest
-   and fetching the container's ontology.
+   and fetching the container's ontology.  These calls need not
+   be OAuth-signed (though it is not incorrect to sign them).
 
 2. `Record` calls are scoped to a (app, user, record) tuple e.g. calls
    to fetch a patient's medical record data. An example would be getting
    the medications in a patient's record. The OAuth credentials for
    the app (e.g. the `consumer_key` and `consumer_secret`) and
    previously fetched OAuth credentials from the server including the
-   `smart_record_id` 
+   `smart_record_id` These calls must be signed as "3-legged" 
+   OAuth requests, meaning they are signed with a combination of
+   the app's consumer token + access token.
 
 3. `User` calls are scoped to a (app, user) tuple and are used for
-   setting a user's preferences. Note: this implies that any app can
-   read any other app's preferences. The OAuth credentials for the
-   app (e.g. the `consumer_key` and `consumer_secret`) are required.
+   setting a user's preferences _for that app only_. (Future versions
+   of the SMART API may allow an app to read another's preferences or
+   add a "global" set of user preferences. These calls are also
+   signed as "3-legged" OAuth calls, using an app's consumer token +
+   access token.
 
 ---
 ---

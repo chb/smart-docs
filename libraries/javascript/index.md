@@ -18,7 +18,8 @@ provides.
 
 # Including `smart-api-client.js`
 
-You include this file in every additional page of your app, e.g. via the HTML `<script>` tag:
+You include this file in every additional page of your app, e.g. via the
+HTML `<script>` tag:
 
 {% highlight html %}
  <script src="http://sandbox-dev.smartplatforms.org:8001/framework/smart/scripts/smart-api-client.js"></script>
@@ -28,14 +29,15 @@ Once this script loads, your app will have access to a javascript variable
 called `SMART`, which can be used to interact with the SMART container via the
 calls described below.
 
-# Interacting with the SMART Container via Javascript
+
+# Interacting With the SMART Container via Javascript
 
 Inside your `index.html` file, you'll need to be sure the SMART library has
 finished loading before you can use it. Just put your code inside a call to
 `SMART.ready()` as shown below. Then you're all set to try out the features
 below!
 
-The javascript SMART object contains some helpful context describing the
+The Javascript SMART object contains some helpful context describing the
 current SMART container user and patient record:
 
 * `SMART.user` contains {id, full_name}
@@ -57,14 +59,15 @@ Or you can get the complete SMART OAuth header for your app with:
 
 * `SMART.credentials.oauth_header`
 
-# Calling another app: a hint of inter-application workflow
+
+# Calling Another App: A Hint of Inter-Application Workflow
 
 SMART 0.5 introduces a primitive to support in-browser inter-application
 workflow: one app can `call` another, passing along some launch data and
 receiving a response when the called app finishes.  The basic flow looks like
 this:
 
-## In the call*ing* app:
+## In the Call_ing_ App
 
 To start, you'll need a copy of the manifest for the app you want to call.
 Then you call it with `SMART.call_app`, passing along the manifest and any
@@ -82,12 +85,13 @@ launch data you'd like the called app to receive:
  });
 {% endhighlight %}
 
-## In the call*ed* app:
+## In the Call_ed_ App
 
 The called app launches just like any SMART app.  If your apps expects any
 custom data at launch time, these should be available in: `SMART.ready_data`
 
-When you're app is thruogh, you can call `SMART.complete`, passing in any return data to be provided for the calling app.
+When you're app is thruogh, you can call `SMART.complete`, passing in
+any return data to be provided for the calling app.
 
 {% highlight javascript %}
    SMART.complete({ 
@@ -95,9 +99,10 @@ When you're app is thruogh, you can call `SMART.complete`, passing in any return
    });
 {% endhighlight %}
 
+
 # Notifications To and From the SMART Container
 
-## Subscribe to Notifications from the SMART Container
+## Subscribe to Notifications From the SMART Container
 
 A container will notify an app when important events occur. Today the SMART API
 defines three Container-to-app notifications that your app can subscribe to:
@@ -115,7 +120,7 @@ Your app can use the `on` directive to take action when a notification arrives:
   });
 {% endhighlight  %}
 
-## Send Notifications to the SMART Container
+## Send Notifications To the SMART Container
 
 Your app can also send notifications to the container. Today the SMART API
 defines only a single App-to-Container notification, which allows an app to
@@ -158,37 +163,29 @@ calling:
     function(response) { alert('data received: ' + response.body); });
 {% endhighlight  %}
 
+
 # Convenience Wrappers Around Common API Calls
 
-But you shouldn't need to use the raw `.api_call` method very often, because the
-SMART javascript object also provides convenience wrappers around common API
-calls. The functions below all take a callback function of one argument: the RDF
-graph that holds the response data, parsed from raw RDF/XML via
+But you shouldn't need to use the raw `.api_call` method very often,
+because the SMART javascript object also provides convenience wrappers
+around common API calls. The functions below all take a callback
+function of one argument: the RDF graph that holds the response data,
+parsed from raw RDF/XML via
 [rdfquery](http://code.google.com/p/rdfquery/).
 
-## TODO:  Add auto-generated SMART Connect API docs here.
+# Understanding Error Handling in SMART Connect
 
-# A Quick Example
-
-{% highlight javascript %}
-  SMART.ready(function() {
-    alert("Hello, " + SMART.user.full_name);
-  });
-{% endhighlight  %}
-
-## Understanding Error Handling in SMART Connect
-
-The API call methods in SMART Connect support jQuery-style
-callback handlers. You can register two separate callbacks:  one for
-successful API calls (required) and an optional handler that will be triggered
-in the event of an error.  The basic pattern looks like this:
+The API call methods in SMART Connect support jQuery-style callback
+handlers. You can register two separate callbacks:  one for successful
+API calls (required) and an optional handler that will be triggered in
+the event of an error.  The basic pattern looks like this:
 
     SMART.get_medications().success(callback_ok).error(callback_err);
 
 Where `callback_ok` and `callback_err` are your callback functions.
-`callback_ok` will be called with a SMART response object as argument when the
-call succeeds. `callback_err` will be called with a SMART error object in the
-event of a failure.
+`callback_ok` will be called with a SMART response object as argument
+when the call succeeds. `callback_err` will be called with a SMART error
+object in the event of a failure.
 
 The SMART error object has the following properties:
 
@@ -203,7 +200,7 @@ Putting all of this together we get the following code example:
     SMART.get_problems()
          .success(function(problems) {
            var graph = problems.graph;
-            // processing here…
+            // processing here?
          })
          .error(function(e) {
            var status = e.status,
@@ -214,3 +211,335 @@ Putting all of this together we get the following code example:
 
 
 [API]: /reference/rest_api
+
+# A Quick Example
+
+{% highlight javascript %}
+  SMART.ready(function() {
+    alert("Hello, " + SMART.user.full_name);
+  });
+{% endhighlight  %}
+
+
+---
+---
+---
+
+<!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT OR REMOVE ME! -->
+
+
+
+## `delete_user_preferences` call
+
+- `delete_user_preferences`
+  - method: DELETE
+  - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
+
+
+## `get_alert` call
+
+- `get_alert`
+  - method: GET
+  - path: `/records/{record_id}/alerts/{alert_id}`
+
+
+## `get_alerts` call
+
+- `get_alerts`
+  - method: GET
+  - path: `/records/{record_id}/alerts/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_allergies` call
+
+- `get_allergies`
+  - method: GET
+  - path: `/records/{record_id}/allergies/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_allergy` call
+
+- `get_allergy`
+  - method: GET
+  - path: `/records/{record_id}/allergies/{allergy_id}`
+
+
+## `get_app_manifest` call
+
+- `get_app_manifest`
+  - method: GET
+  - path: `/apps/{descriptor}/manifest`
+
+
+## `get_app_manifests` call
+
+- `get_app_manifests`
+  - method: GET
+  - path: `/apps/manifests/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_clinical_note` call
+
+- `get_clinical_note`
+  - method: GET
+  - path: `/records/{record_id}/clinical_notes/{clinical_note_id}`
+
+
+## `get_clinical_notes` call
+
+- `get_clinical_notes`
+  - method: GET
+  - path: `/records/{record_id}/clinical_notes/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_container_manifest` call
+
+- `get_container_manifest`
+  - method: GET
+  - path: `/manifest`
+
+
+## `get_demographics` call
+
+- `get_demographics`
+  - method: GET
+  - path: `/records/{record_id}/demographics`
+
+
+## `get_encounter` call
+
+- `get_encounter`
+  - method: GET
+  - path: `/records/{record_id}/encounters/{encounter_id}`
+
+
+## `get_encounters` call
+
+- `get_encounters`
+  - method: GET
+  - path: `/records/{record_id}/encounters/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_fulfillment` call
+
+- `get_fulfillment`
+  - method: GET
+  - path: `/records/{record_id}/fulfillments/{fulfillment_id}`
+
+
+## `get_fulfillments` call
+
+- `get_fulfillments`
+  - method: GET
+  - path: `/records/{record_id}/fulfillments/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_immunization` call
+
+- `get_immunization`
+  - method: GET
+  - path: `/records/{record_id}/immunizations/{immunization_id}`
+
+
+## `get_immunizations` call
+
+- `get_immunizations`
+  - method: GET
+  - path: `/records/{record_id}/immunizations/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_lab_panel` call
+
+- `get_lab_panel`
+  - method: GET
+  - path: `/records/{record_id}/lab_panels/`
+
+
+## `get_lab_panels` call
+
+- `get_lab_panels`
+  - method: GET
+  - path: `/records/{record_id}/lab_panels/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_lab_result` call
+
+- `get_lab_result`
+  - method: GET
+  - path: `/records/{record_id}/lab_results/{lab_result_id}`
+
+
+## `get_lab_results` call
+
+- `get_lab_results`
+  - method: GET
+  - path: `/records/{record_id}/lab_results/`
+  - optional query parameters: 
+        "loinc": null, 
+        "date_from": null, 
+        "limit": null, 
+        "offset": null
+
+
+## `get_medication` call
+
+- `get_medication`
+  - method: GET
+  - path: `/records/{record_id}/medications/{medication_id}`
+
+
+## `get_medications` call
+
+- `get_medications`
+  - method: GET
+  - path: `/records/{record_id}/medications/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_ontology` call
+
+- `get_ontology`
+  - method: GET
+  - path: `/ontology`
+
+
+## `get_problem` call
+
+- `get_problem`
+  - method: GET
+  - path: `/records/{record_id}/problems/{problem_id}`
+
+
+## `get_problems` call
+
+- `get_problems`
+  - method: GET
+  - path: `/records/{record_id}/problems/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_procedure` call
+
+- `get_procedure`
+  - method: GET
+  - path: `/records/{record_id}/procedures/{procedure_id}`
+
+
+## `get_procedures` call
+
+- `get_procedures`
+  - method: GET
+  - path: `/records/{record_id}/procedures/`
+  - optional query parameters: 
+        "limit": null, 
+        "offset": null
+
+
+## `get_social_history` call
+
+- `get_social_history`
+  - method: GET
+  - path: `/records/{record_id}/social_history`
+
+
+## `get_user` call
+
+- `get_user`
+  - method: GET
+  - path: `/users/{user_id}`
+
+
+## `get_user_preferences` call
+
+- `get_user_preferences`
+  - method: GET
+  - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
+
+
+## `get_vital_sign_set` call
+
+- `get_vital_sign_set`
+  - method: GET
+  - path: `/records/{record_id}/vital_sign_sets/{vital_sign_set_id}`
+
+
+## `get_vital_sign_sets` call
+
+- `get_vital_sign_sets`
+  - method: GET
+  - path: `/records/{record_id}/vital_sign_sets/`
+  - optional query parameters: 
+        "encounterType": null, 
+        "limit": null, 
+        "offset": null
+
+
+## `post_alert` call
+
+- `post_alert`
+  - method: POST
+  - path: `/records/{record_id}/alerts/`
+
+
+## `put_user_preferences` call
+
+- `put_user_preferences`
+  - method: PUT
+  - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
+
+
+## `search_records` call
+
+- `search_records`
+  - method: GET
+  - path: `/records/search`
+  - optional query parameters: 
+        "family_name": null, 
+        "gender": null, 
+        "app_id": null, 
+        "birthday": null, 
+        "limit": null, 
+        "given_name": null, 
+        "offset": null, 
+        "medical_record_number": null
+
+
+## `search_users` call
+
+- `search_users`
+  - method: GET
+  - path: `/users/search`
+  - optional query parameters: 
+        "family_name": null, 
+        "limit": null, 
+        "given_name": null, 
+        "offset": null
+

@@ -7,8 +7,9 @@ import tempfile
 MARKER = "GENERATED DOCS INSERTED BELOW THIS LINE"
 
 params_and_filesnames = [
-    ('api',     './reference/rest_api/index.md'),
-    ('payload', './reference/data_model/index.md')
+    ('api',       './reference/rest_api/index.md'),
+    ('payload',   './reference/data_model/index.md'),
+    ('js_client', './libraries/javascript/index.md')
 ]
 
 if __name__ == "__main__":
@@ -42,6 +43,3 @@ if __name__ == "__main__":
             temp.flush()
             os.rename(temp.name, filename)
             temp.close()
-
-
-

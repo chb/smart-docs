@@ -14,6 +14,7 @@ import sys
 import yaml
 import pprint
 import os
+import json
 
 # setup the ontology
 from smart_common.rdf_tools.rdf_ontology import *
@@ -34,7 +35,6 @@ plugin.register('json-ld',
                 Serializer,
                 'rdflib_jsonld.jsonld_serializer',
                 'JsonLDSerializer')
-
 
 f = None
 try:
@@ -326,3 +326,44 @@ if __name__=="__main__":
             calls_for_t = filter(lambda x: call_category(x)==current_batch, sorted(target.calls))
             processed.extend(calls_for_t)
             wiki_api_for_type(target, calls_for_t)
+
+    if "js_client" in sys.argv:
+        def build_doc_chunk(call):
+            queryParams = {}
+            if call.cardinality == "multiple":
+                queryParams['limit']  = None
+                queryParams['offset'] = None
+
+            for p in call.parameters + call.filters:
+                queryParams[p.client_parameter_name] = None
+
+            out = """
+## `%(call_name)s` call
+
+- `%(call_name)s`
+  - method: %(method)s
+  - path: `%(path)s`""" % {
+    'call_name':   str(call.client_method_name),
+    'method':      str(call.http_method),
+    'path':        str(call.path)
+}
+
+            if queryParams:
+                qp_string = json.dumps(queryParams, indent=8) \
+                                .replace('{', '') \
+                                .replace('}','') \
+                                .rstrip()
+                out = out + """
+  - optional query parameters: %(queryParams)s""" % {
+          'queryParams': qp_string
+          }
+
+            return out
+
+        methods = {}
+        for r in api_calls:
+            methods[r.client_method_name] = build_doc_chunk(r)
+
+        for m in sorted(methods.keys()):
+            print methods[m]
+            print

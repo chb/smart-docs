@@ -176,5 +176,41 @@ graph that holds the response data, parsed from raw RDF/XML via
   });
 {% endhighlight  %}
 
+## Understanding Error Handling in SMART Connect
+
+The API call methods in SMART Connect support jQuery-style
+callback handlers. You can register two separate callbacks:  one for
+successful API calls (required) and an optional handler that will be triggered
+in the event of an error.  The basic pattern looks like this:
+
+    SMART.get_medications().success(callback_ok).error(callback_err);
+
+Where `callback_ok` and `callback_err` are your callback functions.
+`callback_ok` will be called with a SMART response object as argument when the
+call succeeds. `callback_err` will be called with a SMART error object in the
+event of a failure.
+
+The SMART error object has the following properties:
+
+1. `status`: The status code of the error
+2. `message`: An object containing details about the error
+   1. `contentType`: The MIME type of the error message descriptor
+   2. `data`: The error message description
+
+Putting all of this together we get the following code example:
+
+{% highlight javascript %}
+    SMART.get_problems()
+         .success(function(problems) {
+           var graph = problems.graph;
+            // processing here…
+         })
+         .error(function(e) {
+           var status = e.status,
+               message = e.message;
+           // display error
+         });
+{% endhighlight  %}
+
 
 [API]: /reference/rest_api

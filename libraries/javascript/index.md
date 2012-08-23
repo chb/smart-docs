@@ -238,22 +238,6 @@ Putting all of this together we get the following code example:
 - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
 
 
-## `get_alert`
-
-- method: GET
-- path: `/records/{record_id}/alerts/{alert_id}`
-
-
-## `get_alerts`
-
-- method: GET
-- path: `/records/{record_id}/alerts/`
-  - optional query parameters (with defaults):
-      <br><pre><code>
-        "limit": null, 
-        "offset": null</code></pre>
-
-
 ## `get_allergies`
 
 - method: GET
@@ -480,15 +464,11 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/vital_sign_sets/`
   - optional query parameters (with defaults):
       <br><pre><code>
-        "encounterType": null, 
+        "encounter_type": null, 
+        "date_from": null, 
+        "date_to": null, 
         "limit": null, 
         "offset": null</code></pre>
-
-
-## `post_alert`
-
-- method: POST
-- path: `/records/{record_id}/alerts/`
 
 
 ## `put_user_preferences`
@@ -507,10 +487,10 @@ Putting all of this together we get the following code example:
         "gender": null, 
         "app_id": null, 
         "birthday": null, 
-        "limit": null, 
+        "medical_record_number": null, 
         "given_name": null, 
         "offset": null, 
-        "medical_record_number": null</code></pre>
+        "limit": null</code></pre>
 
 
 ## `search_users`

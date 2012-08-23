@@ -1,11 +1,7 @@
+#
 # Generate SMART wiki api docs for use with our Jekyll-based docs site
-
-# how to run:
-# (from top of smart-docs repo)
-# $ export PYTHONPATH=.:..
-# $ python utils/wiki_apidocs.py payload > payload
-# $ python utils/wiki_apidocs.py api > api
-# (copy payload document into static api document at the appropriate section)
+#
+# Use the build_docs script to regenerate all the docs or run manually
 
 DEBUG = False
 
@@ -15,6 +11,8 @@ import yaml
 import pprint
 import os
 import json
+
+sys.path.append('..')
 
 # setup the ontology
 from smart_common.rdf_tools.rdf_ontology import *

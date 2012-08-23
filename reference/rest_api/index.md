@@ -124,13 +124,13 @@ Currently there are three "scopes" or access control categories:
 
 ## App Manifest
 
-     GET /apps/manifests/ 
-
-Returns a JSON list of all SMART UI app manifests installed on the container.
-
      GET /apps/{descriptor}/manifest 
 
 Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins
+
+     GET /apps/manifests/ 
+
+Returns a JSON list of all SMART UI app manifests installed on the container.
 
 [App Manifest RDF](../data_model/#App_Manifest)
 
@@ -165,13 +165,13 @@ Get the ontology used by a SMART container
 
 ## User
 
-     GET /users/{user_id} 
-
-Get a single user by ID
-
      GET /users/search 
 
 Get users by name (or all users if blank)
+
+     GET /users/{user_id} 
+
+Get a single user by ID
 
 [User RDF](../data_model/#User)
 
@@ -181,26 +181,26 @@ Get users by name (or all users if blank)
 
 ## Alert
 
-     GET /records/{record_id}/alerts/{alert_id} 
-
-Get one Alert for a patient
-
      GET /records/{record_id}/alerts/ 
 
 Get all Alerts for a patient
+
+     GET /records/{record_id}/alerts/{alert_id} 
+
+Get one Alert for a patient
 
 [Alert RDF](../data_model/#Alert)
 
 
 ## Allergy
 
-     GET /records/{record_id}/allergies/ 
-
-Get all Allergies and Allergy Exclusions for a patient
-
      GET /records/{record_id}/allergies/{allergy_id} 
 
 Get one Allergy for a patient
+
+     GET /records/{record_id}/allergies/ 
+
+Get all Allergies and Allergy Exclusions for a patient
 
 [Allergy RDF](../data_model/#Allergy)
 
@@ -242,13 +242,13 @@ Get all Encounters for a patient
 
 ## Fulfillment
 
-     GET /records/{record_id}/fulfillments/{fulfillment_id} 
-
-Get one Fulfillment for a patient
-
      GET /records/{record_id}/fulfillments/ 
 
 Get all Fulfillments for a patient
+
+     GET /records/{record_id}/fulfillments/{fulfillment_id} 
+
+Get one Fulfillment for a patient
 
 [Fulfillment RDF](../data_model/#Fulfillment)
 
@@ -270,50 +270,50 @@ Get all Immunizations for a patient
 
      GET /records/{record_id}/lab_panels/ 
 
-Get all Lab Panels for a patient
+Get one Lab Panel for a patient
 
      GET /records/{record_id}/lab_panels/ 
 
-Get one Lab Panel for a patient
+Get all Lab Panels for a patient
 
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 
 ## Lab Result
 
-     GET /records/{record_id}/lab_results/ 
-
-Get all Lab Results for a patient
-
      GET /records/{record_id}/lab_results/{lab_result_id} 
 
 Get one Lab Result for a patient
+
+     GET /records/{record_id}/lab_results/ 
+
+Get all Lab Results for a patient
 
 [Lab Result RDF](../data_model/#Lab_Result)
 
 
 ## Medication
 
-     GET /records/{record_id}/medications/ 
-
-Get all Medications for a patient
-
      GET /records/{record_id}/medications/{medication_id} 
 
 Get one Medication for a patient
+
+     GET /records/{record_id}/medications/ 
+
+Get all Medications for a patient
 
 [Medication RDF](../data_model/#Medication)
 
 
 ## Problem
 
-     GET /records/{record_id}/problems/ 
-
-Get all Problems for a patient
-
      GET /records/{record_id}/problems/{problem_id} 
 
 Get one Problem for a patient
+
+     GET /records/{record_id}/problems/ 
+
+Get all Problems for a patient
 
 [Problem RDF](../data_model/#Problem)
 
@@ -342,13 +342,13 @@ Get Social History for a patient
 
 ## Vital Sign Set
 
-     GET /records/{record_id}/vital_sign_sets/ 
-
-Get all Vital Sign Sets for a patient
-
      GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
 
 Get one Vital Sign Set for a patient
+
+     GET /records/{record_id}/vital_sign_sets/ 
+
+Get all Vital Sign Sets for a patient
 
 [Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
 

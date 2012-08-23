@@ -225,303 +225,284 @@ Putting all of this together we get the following code example:
 ---
 ---
 
+# API Reference
+
+
 <!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT OR REMOVE ME! -->
 
 
 
-## `delete_user_preferences` call
+## `delete_user_preferences`
 
-- `delete_user_preferences`
-  - method: DELETE
-  - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
-
-
-## `get_alert` call
-
-- `get_alert`
-  - method: GET
-  - path: `/records/{record_id}/alerts/{alert_id}`
+- method: DELETE
+- path: `/users/{user_id}/apps/{smart_app_id}/preferences`
 
 
-## `get_alerts` call
+## `get_alert`
 
-- `get_alerts`
-  - method: GET
-  - path: `/records/{record_id}/alerts/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/alerts/{alert_id}`
+
+
+## `get_alerts`
+
+- method: GET
+- path: `/records/{record_id}/alerts/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_allergies` call
+## `get_allergies`
 
-- `get_allergies`
-  - method: GET
-  - path: `/records/{record_id}/allergies/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/allergies/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_allergy` call
+## `get_allergy`
 
-- `get_allergy`
-  - method: GET
-  - path: `/records/{record_id}/allergies/{allergy_id}`
-
-
-## `get_app_manifest` call
-
-- `get_app_manifest`
-  - method: GET
-  - path: `/apps/{descriptor}/manifest`
+- method: GET
+- path: `/records/{record_id}/allergies/{allergy_id}`
 
 
-## `get_app_manifests` call
+## `get_app_manifest`
 
-- `get_app_manifests`
-  - method: GET
-  - path: `/apps/manifests/`
-  - optional query parameters: 
+- method: GET
+- path: `/apps/{descriptor}/manifest`
+
+
+## `get_app_manifests`
+
+- method: GET
+- path: `/apps/manifests/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_clinical_note` call
+## `get_clinical_note`
 
-- `get_clinical_note`
-  - method: GET
-  - path: `/records/{record_id}/clinical_notes/{clinical_note_id}`
+- method: GET
+- path: `/records/{record_id}/clinical_notes/{clinical_note_id}`
 
 
-## `get_clinical_notes` call
+## `get_clinical_notes`
 
-- `get_clinical_notes`
-  - method: GET
-  - path: `/records/{record_id}/clinical_notes/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/clinical_notes/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_container_manifest` call
+## `get_container_manifest`
 
-- `get_container_manifest`
-  - method: GET
-  - path: `/manifest`
-
-
-## `get_demographics` call
-
-- `get_demographics`
-  - method: GET
-  - path: `/records/{record_id}/demographics`
+- method: GET
+- path: `/manifest`
 
 
-## `get_encounter` call
+## `get_demographics`
 
-- `get_encounter`
-  - method: GET
-  - path: `/records/{record_id}/encounters/{encounter_id}`
+- method: GET
+- path: `/records/{record_id}/demographics`
 
 
-## `get_encounters` call
+## `get_encounter`
 
-- `get_encounters`
-  - method: GET
-  - path: `/records/{record_id}/encounters/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/encounters/{encounter_id}`
+
+
+## `get_encounters`
+
+- method: GET
+- path: `/records/{record_id}/encounters/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_fulfillment` call
+## `get_fulfillment`
 
-- `get_fulfillment`
-  - method: GET
-  - path: `/records/{record_id}/fulfillments/{fulfillment_id}`
+- method: GET
+- path: `/records/{record_id}/fulfillments/{fulfillment_id}`
 
 
-## `get_fulfillments` call
+## `get_fulfillments`
 
-- `get_fulfillments`
-  - method: GET
-  - path: `/records/{record_id}/fulfillments/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/fulfillments/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_immunization` call
+## `get_immunization`
 
-- `get_immunization`
-  - method: GET
-  - path: `/records/{record_id}/immunizations/{immunization_id}`
+- method: GET
+- path: `/records/{record_id}/immunizations/{immunization_id}`
 
 
-## `get_immunizations` call
+## `get_immunizations`
 
-- `get_immunizations`
-  - method: GET
-  - path: `/records/{record_id}/immunizations/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/immunizations/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_lab_panel` call
+## `get_lab_panel`
 
-- `get_lab_panel`
-  - method: GET
-  - path: `/records/{record_id}/lab_panels/`
+- method: GET
+- path: `/records/{record_id}/lab_panels/`
 
 
-## `get_lab_panels` call
+## `get_lab_panels`
 
-- `get_lab_panels`
-  - method: GET
-  - path: `/records/{record_id}/lab_panels/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/lab_panels/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_lab_result` call
+## `get_lab_result`
 
-- `get_lab_result`
-  - method: GET
-  - path: `/records/{record_id}/lab_results/{lab_result_id}`
+- method: GET
+- path: `/records/{record_id}/lab_results/{lab_result_id}`
 
 
-## `get_lab_results` call
+## `get_lab_results`
 
-- `get_lab_results`
-  - method: GET
-  - path: `/records/{record_id}/lab_results/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/lab_results/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "loinc": null, 
         "date_from": null, 
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_medication` call
+## `get_medication`
 
-- `get_medication`
-  - method: GET
-  - path: `/records/{record_id}/medications/{medication_id}`
+- method: GET
+- path: `/records/{record_id}/medications/{medication_id}`
 
 
-## `get_medications` call
+## `get_medications`
 
-- `get_medications`
-  - method: GET
-  - path: `/records/{record_id}/medications/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/medications/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_ontology` call
+## `get_ontology`
 
-- `get_ontology`
-  - method: GET
-  - path: `/ontology`
-
-
-## `get_problem` call
-
-- `get_problem`
-  - method: GET
-  - path: `/records/{record_id}/problems/{problem_id}`
+- method: GET
+- path: `/ontology`
 
 
-## `get_problems` call
+## `get_problem`
 
-- `get_problems`
-  - method: GET
-  - path: `/records/{record_id}/problems/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/problems/{problem_id}`
+
+
+## `get_problems`
+
+- method: GET
+- path: `/records/{record_id}/problems/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_procedure` call
+## `get_procedure`
 
-- `get_procedure`
-  - method: GET
-  - path: `/records/{record_id}/procedures/{procedure_id}`
+- method: GET
+- path: `/records/{record_id}/procedures/{procedure_id}`
 
 
-## `get_procedures` call
+## `get_procedures`
 
-- `get_procedures`
-  - method: GET
-  - path: `/records/{record_id}/procedures/`
-  - optional query parameters: 
+- method: GET
+- path: `/records/{record_id}/procedures/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `get_social_history` call
+## `get_social_history`
 
-- `get_social_history`
-  - method: GET
-  - path: `/records/{record_id}/social_history`
-
-
-## `get_user` call
-
-- `get_user`
-  - method: GET
-  - path: `/users/{user_id}`
+- method: GET
+- path: `/records/{record_id}/social_history`
 
 
-## `get_user_preferences` call
+## `get_user`
 
-- `get_user_preferences`
-  - method: GET
-  - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
-
-
-## `get_vital_sign_set` call
-
-- `get_vital_sign_set`
-  - method: GET
-  - path: `/records/{record_id}/vital_sign_sets/{vital_sign_set_id}`
+- method: GET
+- path: `/users/{user_id}`
 
 
-## `get_vital_sign_sets` call
+## `get_user_preferences`
 
-- `get_vital_sign_sets`
-  - method: GET
-  - path: `/records/{record_id}/vital_sign_sets/`
-  - optional query parameters: 
+- method: GET
+- path: `/users/{user_id}/apps/{smart_app_id}/preferences`
+
+
+## `get_vital_sign_set`
+
+- method: GET
+- path: `/records/{record_id}/vital_sign_sets/{vital_sign_set_id}`
+
+
+## `get_vital_sign_sets`
+
+- method: GET
+- path: `/records/{record_id}/vital_sign_sets/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "encounterType": null, 
         "limit": null, 
-        "offset": null
+        "offset": null</code></pre>
 
 
-## `post_alert` call
+## `post_alert`
 
-- `post_alert`
-  - method: POST
-  - path: `/records/{record_id}/alerts/`
-
-
-## `put_user_preferences` call
-
-- `put_user_preferences`
-  - method: PUT
-  - path: `/users/{user_id}/apps/{smart_app_id}/preferences`
+- method: POST
+- path: `/records/{record_id}/alerts/`
 
 
-## `search_records` call
+## `put_user_preferences`
 
-- `search_records`
-  - method: GET
-  - path: `/records/search`
-  - optional query parameters: 
+- method: PUT
+- path: `/users/{user_id}/apps/{smart_app_id}/preferences`
+
+
+## `search_records`
+
+- method: GET
+- path: `/records/search`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "family_name": null, 
         "gender": null, 
         "app_id": null, 
@@ -529,17 +510,17 @@ Putting all of this together we get the following code example:
         "limit": null, 
         "given_name": null, 
         "offset": null, 
-        "medical_record_number": null
+        "medical_record_number": null</code></pre>
 
 
-## `search_users` call
+## `search_users`
 
-- `search_users`
-  - method: GET
-  - path: `/users/search`
-  - optional query parameters: 
+- method: GET
+- path: `/users/search`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "family_name": null, 
         "limit": null, 
         "given_name": null, 
-        "offset": null
+        "offset": null</code></pre>
 

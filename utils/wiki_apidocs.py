@@ -338,11 +338,10 @@ if __name__=="__main__":
                 queryParams[p.client_parameter_name] = None
 
             out = """
-## `%(call_name)s` call
+## `%(call_name)s`
 
-- `%(call_name)s`
-  - method: %(method)s
-  - path: `%(path)s`""" % {
+- method: %(method)s
+- path: `%(path)s`""" % {
     'call_name':   str(call.client_method_name),
     'method':      str(call.http_method),
     'path':        str(call.path)
@@ -354,7 +353,8 @@ if __name__=="__main__":
                                 .replace('}','') \
                                 .rstrip()
                 out = out + """
-  - optional query parameters: %(queryParams)s""" % {
+  - optional query parameters (with defaults):
+      <br><pre><code>%(queryParams)s</code></pre>""" % {
           'queryParams': qp_string
           }
 

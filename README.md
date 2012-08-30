@@ -4,13 +4,19 @@ SMART Documentation
 
 This is the SMART technical documentation, hosted at <http://dev.smartplatforms.org>
 
-* See <http://smartplatforms.org> for high-level project info and news
-* Need help? Ask a question at <http://groups.google.com/group/smart-app-developers>
-* Found an error in these docs? FIXME: Fork them on Github!
+- See <http://smartplatforms.org> for high-level project info and news
+- Need help? Ask a question at <http://groups.google.com/group/smart-app-developers>
+- Found an error in these docs? FIXME: Fork them on Github!
+
+TODO
+----
+- Add "edit this page" links to github
+- Fix the atom feed for the changelog
+- On data model page move table captions (urls) to top
 
 
-How To Generate These Docs
---------------------------
+Installing Jekyll and Friends
+-----------------------------
 
 First, you'll need the [Jekyll](https://github.com/mojombo/jekyll)
 static site generator installed. The installation instructions are
@@ -43,8 +49,9 @@ will force regeneration of the site (and turn off auto-regeneration) and
 start the local webserver.
 
 
-TODO
-----
-- Add "edit this page" links to github
-- Fix the atom feed for the changelog
-- On data model page move table captions (urls) to top
+Generating the API and Datamodel Docs
+-------------------------------------
+
+Run the `build_docs.py` script at the top of the repository to
+re-generate the API and datamodel documentation from the SMART ontology
+included via submodule in the `smart_common` directory.

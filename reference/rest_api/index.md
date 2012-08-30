@@ -165,13 +165,13 @@ Get the ontology used by a SMART container
 
 ## User
 
-     GET /users/{user_id} 
-
-Get a single user by ID
-
      GET /users/search 
 
 Get users by name (or all users if blank)
+
+     GET /users/{user_id} 
+
+Get a single user by ID
 
 [User RDF](../data_model/#User)
 
@@ -194,13 +194,13 @@ Get one Allergy for a patient
 
 ## Clinical Note
 
-     GET /records/{record_id}/clinical_notes/ 
-
-Get all Clinical Notes for a patient
-
      GET /records/{record_id}/clinical_notes/{clinical_note_id} 
 
 Get one Clinical Note for a patient
+
+     GET /records/{record_id}/clinical_notes/ 
+
+Get all Clinical Notes for a patient
 
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
@@ -257,63 +257,63 @@ Get all Immunizations for a patient
 
      GET /records/{record_id}/lab_panels/ 
 
-Get all Lab Panels for a patient
+Get one Lab Panel for a patient
 
      GET /records/{record_id}/lab_panels/ 
 
-Get one Lab Panel for a patient
+Get all Lab Panels for a patient
 
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 
 ## Lab Result
 
-     GET /records/{record_id}/lab_results/ 
-
-Get all Lab Results for a patient
-
      GET /records/{record_id}/lab_results/{lab_result_id} 
 
 Get one Lab Result for a patient
+
+     GET /records/{record_id}/lab_results/ 
+
+Get all Lab Results for a patient
 
 [Lab Result RDF](../data_model/#Lab_Result)
 
 
 ## Medication
 
-     GET /records/{record_id}/medications/ 
-
-Get all Medications for a patient
-
      GET /records/{record_id}/medications/{medication_id} 
 
 Get one Medication for a patient
+
+     GET /records/{record_id}/medications/ 
+
+Get all Medications for a patient
 
 [Medication RDF](../data_model/#Medication)
 
 
 ## Problem
 
-     GET /records/{record_id}/problems/{problem_id} 
-
-Get one Problem for a patient
-
      GET /records/{record_id}/problems/ 
 
 Get all Problems for a patient
+
+     GET /records/{record_id}/problems/{problem_id} 
+
+Get one Problem for a patient
 
 [Problem RDF](../data_model/#Problem)
 
 
 ## Procedure
 
-     GET /records/{record_id}/procedures/ 
-
-Get all Procedures for a patient
-
      GET /records/{record_id}/procedures/{procedure_id} 
 
 Get one Procedure for a patient
+
+     GET /records/{record_id}/procedures/ 
+
+Get all Procedures for a patient
 
 [Procedure RDF](../data_model/#Procedure)
 

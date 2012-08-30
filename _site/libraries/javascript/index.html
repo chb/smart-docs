@@ -337,27 +337,6 @@ object in the event of a failure.</p>
 <li>path: <code>/users/{user_id}/apps/{smart_app_id}/preferences</code></li>
 </ul>
 
-<h2><code>get_alert</code></h2>
-
-<ul>
-<li>method: GET</li>
-<li>path: <code>/records/{record_id}/alerts/{alert_id}</code></li>
-</ul>
-
-<h2><code>get_alerts</code></h2>
-
-<ul>
-<li>method: GET</li>
-<li>path: <code>/records/{record_id}/alerts/</code>
-
-<ul>
-<li>optional query parameters (with defaults):
-<br><pre><code>
-&quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
-</ul></li>
-</ul>
-
 <h2><code>get_allergies</code></h2>
 
 <ul>
@@ -649,17 +628,12 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;encounterType&quot;: null, 
+&quot;encounter_type&quot;: null, 
+&quot;date_from&quot;: null, 
+&quot;date_to&quot;: null, 
 &quot;limit&quot;: null, 
 &quot;offset&quot;: null</code></pre></li>
 </ul></li>
-</ul>
-
-<h2><code>post_alert</code></h2>
-
-<ul>
-<li>method: POST</li>
-<li>path: <code>/records/{record_id}/alerts/</code></li>
 </ul>
 
 <h2><code>put_user_preferences</code></h2>

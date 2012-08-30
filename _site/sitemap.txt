@@ -26,8 +26,10 @@ http://dev.smartplatforms.org/pages.html
 http://dev.smartplatforms.org/reference/app_manifest/index.html
 http://dev.smartplatforms.org/reference/change_log/index.html
 http://dev.smartplatforms.org/reference/data_model/index.html
+http://dev.smartplatforms.org/reference/filters/index.html
 http://dev.smartplatforms.org/reference/rest_api/index.html
 http://dev.smartplatforms.org/sitemap.txt
 http://dev.smartplatforms.org/tags.html
 http://dev.smartplatforms.org/updates/smart_0_4/app/index.html
 http://dev.smartplatforms.org/updates/smart_0_4/container/index.html
+http://dev.smartplatforms.org/updates/smart_0_5/index.html

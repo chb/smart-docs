@@ -12,6 +12,7 @@ import pprint
 import os
 import json
 
+sys.path.append('.')
 sys.path.append('..')
 
 # setup the ontology

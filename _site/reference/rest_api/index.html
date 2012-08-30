@@ -212,15 +212,15 @@ access token.</p></li>
 
 <h2>App Manifest</h2>
 
-<pre><code> GET /apps/{descriptor}/manifest 
-</code></pre>
-
-<p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins</p>
-
 <pre><code> GET /apps/manifests/ 
 </code></pre>
 
 <p>Returns a JSON list of all SMART UI app manifests installed on the container.</p>
+
+<pre><code> GET /apps/{descriptor}/manifest 
+</code></pre>
+
+<p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins</p>
 
 <p><a href="../data_model/#App_Manifest">App Manifest RDF</a></p>
 
@@ -267,31 +267,17 @@ access token.</p></li>
 
 <h1>Record Calls</h1>
 
-<h2>Alert</h2>
-
-<pre><code> GET /records/{record_id}/alerts/ 
-</code></pre>
-
-<p>Get all Alerts for a patient</p>
-
-<pre><code> GET /records/{record_id}/alerts/{alert_id} 
-</code></pre>
-
-<p>Get one Alert for a patient</p>
-
-<p><a href="../data_model/#Alert">Alert RDF</a></p>
-
 <h2>Allergy</h2>
-
-<pre><code> GET /records/{record_id}/allergies/{allergy_id} 
-</code></pre>
-
-<p>Get one Allergy for a patient</p>
 
 <pre><code> GET /records/{record_id}/allergies/ 
 </code></pre>
 
 <p>Get all Allergies and Allergy Exclusions for a patient</p>
+
+<pre><code> GET /records/{record_id}/allergies/{allergy_id} 
+</code></pre>
+
+<p>Get one Allergy for a patient</p>
 
 <p><a href="../data_model/#Allergy">Allergy RDF</a></p>
 
@@ -334,15 +320,15 @@ access token.</p></li>
 
 <h2>Fulfillment</h2>
 
-<pre><code> GET /records/{record_id}/fulfillments/ 
-</code></pre>
-
-<p>Get all Fulfillments for a patient</p>
-
 <pre><code> GET /records/{record_id}/fulfillments/{fulfillment_id} 
 </code></pre>
 
 <p>Get one Fulfillment for a patient</p>
+
+<pre><code> GET /records/{record_id}/fulfillments/ 
+</code></pre>
+
+<p>Get all Fulfillments for a patient</p>
 
 <p><a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
 
@@ -404,15 +390,15 @@ access token.</p></li>
 
 <h2>Problem</h2>
 
-<pre><code> GET /records/{record_id}/problems/{problem_id} 
-</code></pre>
-
-<p>Get one Problem for a patient</p>
-
 <pre><code> GET /records/{record_id}/problems/ 
 </code></pre>
 
 <p>Get all Problems for a patient</p>
+
+<pre><code> GET /records/{record_id}/problems/{problem_id} 
+</code></pre>
+
+<p>Get one Problem for a patient</p>
 
 <p><a href="../data_model/#Problem">Problem RDF</a></p>
 
@@ -441,15 +427,15 @@ access token.</p></li>
 
 <h2>Vital Sign Set</h2>
 
-<pre><code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
-</code></pre>
-
-<p>Get one Vital Sign Set for a patient</p>
-
 <pre><code> GET /records/{record_id}/vital_sign_sets/ 
 </code></pre>
 
 <p>Get all Vital Sign Sets for a patient</p>
+
+<pre><code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
+</code></pre>
+
+<p>Get one Vital Sign Set for a patient</p>
 
 <p><a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
 

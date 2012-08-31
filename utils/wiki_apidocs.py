@@ -5,34 +5,26 @@
 
 DEBUG = False
 
-import copy
 import sys
+sys.path.append('.')
+
+import copy
 import yaml
 import pprint
 import os
 import json
-
-sys.path.append('.')
-sys.path.append('..')
 
 # setup the ontology
 from smart_common.rdf_tools.rdf_ontology import *
 from smart_common.rdf_tools.util import bound_graph, URIRef
 
 # setup the json-ld serializer
-sys.path.append('./utils/rdflib-jsonld')
-
-sys.path.append(
-  os.path.join(os.path.dirname(os.path.abspath(__file__)), 'rdflib-jsonld')
-)
-
-
-import rdflib_jsonld
+import rdflib_jsonld_serializer
 from rdflib import plugin
 from rdflib.serializer import Serializer
 plugin.register('json-ld',
                 Serializer,
-                'rdflib_jsonld.jsonld_serializer',
+                'rdflib_jsonld_serializer.jsonld_serializer',
                 'JsonLDSerializer')
 
 f = None

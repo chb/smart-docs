@@ -129,14 +129,14 @@ determined by the JavaScript context.
 
 ## Asynchronous Calls
 
-Let's load the patient's medications using SMART.MEDICATIONS\_get(). The most
+Let's load the patient's medications using SMART.get_medications(). The most
 important thing you need to know about all SMART JavaScript APIs is that they
 are asynchronous: you won't get the meds as a result of the
-SMART.MEDICATIONS\_get() call. Instead, you need to specify callback functions
+SMART.get_medications() call. Instead, you need to specify callback functions
 that will be invoked when the results are ready:
 
 {% highlight javascript %}
-    SMART.MEDICATIONS_get().success(function(meds) {
+    SMART.get_medications().success(function(meds) {
       // do something with those meds
     }).error(function(err) {
       // handle the error
@@ -219,7 +219,7 @@ append to it with the name of each drug in our iteration:
      <script>
        SMART.ready(function(){
          document.getElementById('name').innerHTML = SMART.record.full_name;
-         SMART.MEDICATIONS_get().success(function(meds) {
+         SMART.get_medications().success(function(meds) {
            var med_names = meds.graph
              .where("?medication rdf:type sp:Medication")
              .where("?medication sp:drugName ?drug_name_code")

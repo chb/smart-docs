@@ -487,10 +487,10 @@ Putting all of this together we get the following code example:
         "gender": null, 
         "app_id": null, 
         "birthday": null, 
-        "limit": null, 
+        "medical_record_number": null, 
         "given_name": null, 
         "offset": null, 
-        "medical_record_number": null</code></pre>
+        "limit": null</code></pre>
 
 
 ## `search_users`

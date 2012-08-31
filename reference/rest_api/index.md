@@ -165,13 +165,13 @@ Get the ontology used by a SMART container
 
 ## User
 
-     GET /users/search 
-
-Get users by name (or all users if blank)
-
      GET /users/{user_id} 
 
 Get a single user by ID
+
+     GET /users/search 
+
+Get users by name (or all users if blank)
 
 [User RDF](../data_model/#User)
 
@@ -194,13 +194,13 @@ Get one Allergy for a patient
 
 ## Clinical Note
 
-     GET /records/{record_id}/clinical_notes/{clinical_note_id} 
-
-Get one Clinical Note for a patient
-
      GET /records/{record_id}/clinical_notes/ 
 
 Get all Clinical Notes for a patient
+
+     GET /records/{record_id}/clinical_notes/{clinical_note_id} 
+
+Get one Clinical Note for a patient
 
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
@@ -216,26 +216,26 @@ Get Demographics for a patient
 
 ## Encounter
 
-     GET /records/{record_id}/encounters/{encounter_id} 
-
-Get one Encounter for a patient
-
      GET /records/{record_id}/encounters/ 
 
 Get all Encounters for a patient
+
+     GET /records/{record_id}/encounters/{encounter_id} 
+
+Get one Encounter for a patient
 
 [Encounter RDF](../data_model/#Encounter)
 
 
 ## Fulfillment
 
-     GET /records/{record_id}/fulfillments/{fulfillment_id} 
-
-Get one Fulfillment for a patient
-
      GET /records/{record_id}/fulfillments/ 
 
 Get all Fulfillments for a patient
+
+     GET /records/{record_id}/fulfillments/{fulfillment_id} 
+
+Get one Fulfillment for a patient
 
 [Fulfillment RDF](../data_model/#Fulfillment)
 
@@ -257,37 +257,37 @@ Get all Immunizations for a patient
 
      GET /records/{record_id}/lab_panels/ 
 
-Get one Lab Panel for a patient
+Get all Lab Panels for a patient
 
      GET /records/{record_id}/lab_panels/ 
 
-Get all Lab Panels for a patient
+Get one Lab Panel for a patient
 
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 
 ## Lab Result
 
-     GET /records/{record_id}/lab_results/{lab_result_id} 
-
-Get one Lab Result for a patient
-
      GET /records/{record_id}/lab_results/ 
 
 Get all Lab Results for a patient
+
+     GET /records/{record_id}/lab_results/{lab_result_id} 
+
+Get one Lab Result for a patient
 
 [Lab Result RDF](../data_model/#Lab_Result)
 
 
 ## Medication
 
-     GET /records/{record_id}/medications/{medication_id} 
-
-Get one Medication for a patient
-
      GET /records/{record_id}/medications/ 
 
 Get all Medications for a patient
+
+     GET /records/{record_id}/medications/{medication_id} 
+
+Get one Medication for a patient
 
 [Medication RDF](../data_model/#Medication)
 
@@ -329,13 +329,13 @@ Get Social History for a patient
 
 ## Vital Sign Set
 
-     GET /records/{record_id}/vital_sign_sets/ 
-
-Get all Vital Sign Sets for a patient
-
      GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
 
 Get one Vital Sign Set for a patient
+
+     GET /records/{record_id}/vital_sign_sets/ 
+
+Get all Vital Sign Sets for a patient
 
 [Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
 

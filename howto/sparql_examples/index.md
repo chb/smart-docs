@@ -57,7 +57,7 @@ name, this query will collapse them into one result.
 With `rdfquery`, we can achieve a similar result:
 
 {% highlight javascript %}
- SMART.MEDS_get().success(function(response) {
+ SMART.get_medications().success(function(response) {
       var fill_dates = response.graph
           .where("?m rdf:type sp:Medication")
           .where("?med sp:drugName ?medc")
@@ -79,7 +79,7 @@ With `rdfquery`, we can achieve a similar result:
 </button>
 
 {% highlight javascript %}
-    SMART.MEDS_get().success(function(response) {
+    SMART.get_medications().success(function(response) {
       var fill_dates = response.graph
           .where("?m rdf:type sp:Medication")
           .where("?m sp:fulfillment ?fill")
@@ -100,7 +100,7 @@ With `rdfquery`, we can achieve a similar result:
 Again a similar result with `rdfquery`
 
 {% highlight javascript %}
-    SMART.MEDS_get().success(function(response) {
+    SMART.get_medications().success(function(response) {
         var fill_dates = response.graph
             .where("?m rdf:type sp:Medication")
             .where("?m sp:fulfillment ?fill")
@@ -128,7 +128,7 @@ demographics
 With rdfquery, we can achieve a similar result: 
 
 {% highlight javascript %}
-    SMART.DEMOGRAPHICS_get().success(function(response) {
+    SMART.get_demographics().success(function(response) {
         var person = response.graph
             .where("?d rdf:type  sp:Demographics")
             .where("?d v:n  ?name")
@@ -151,9 +151,9 @@ Here's a query that pulls out the name of each problem
 With rdfquery, we can achieve a similar result
 
 {% highlight javascript %}
-    SMART.PROBLEMS_get().success(function(response) {
+    SMART.get_problems().success(function(response) {
         var person = response.graph
-            .where("?pr rdf:type sp:Prblem")
+            .where("?pr rdf:type sp:Problem")
             .where("?pr sp:problemName ?pn")
             .where("?pn dcterms:title ?p");
       });

@@ -6,7 +6,7 @@ includenav: smartnav.markdown
 
 {% include JB/setup %}
 
-# Download the SMART Source Code
+## Download the SMART Source Code
 
 The SMART code is available under an
 [Apache 2.0](https://github.com/chb/smart_server/blob/master/LICENSE) license.
@@ -20,7 +20,7 @@ code for the:
 - ... and much more!
 
 
-# SMART Server VMWare Virtual Machine
+## SMART Server VMWare Virtual Machine
 
 We also offer a ready-to-go SMART server deployment packaged as a
 generic Ubuntu 11.10 server virtual machine. The default username and
@@ -29,4 +29,4 @@ instructions to set up the smart-vm host substitution on your local
 machine. You can then try out the SMART reference server by pointing
 your browser at <http://smart-vm:7001>
 
-[Download the SMART VMWare Virtual Machine (API version 0.4)](http://media.smartplatforms.org/smart-vm-0.4.zip)
+[Download the SMART VMWare Virtual Machine (API version 0.5)](http://media.smartplatforms.org/smart-vm-0.5.zip)

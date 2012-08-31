@@ -50,12 +50,12 @@ each time you make usual API calls like `get_MEDICATIONS()`.
 
 # A SMART JSON-LD Object
 
-Here is a simplified example of the SMART `MEDICATIONS_get` API call
+Here is a simplified example of the SMART `get_medications` API call
 returning a JSON-LD Object as used by the SMART Diabetes Monograph app:
 
 {% highlight javascript %}
-    // Define a callback for the SMART.MEDICATIONS_get() API call
-    SMART.MEDICATIONS_get().then(function(r){
+    // Define a callback for the SMART.get_medications() API call
+    SMART.get_medications().then(function(r){
 
       // All the JSON-LD data is in "r.objects". Here we select
       // the list of medications and iterate over them
@@ -155,7 +155,7 @@ the comments.
     <script src="http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-client.js"></script>
     <script>
       SMART.ready(function(){
-        SMART.MEDICATIONS_get().success(function(r) {
+        SMART.get_medications().success(function(r) {
 
           // The (old) SPARQL query for getting the medlist
           // var medlist = meds.graph

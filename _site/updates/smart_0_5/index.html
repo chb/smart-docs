@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>SMART 0.5 App + Container Update Guide</title>
+    <title>SMART 0.5 Update Guide (Apps + Containers)</title>
     
     <meta name="author" content="SMART Platforms">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -37,17 +37,17 @@
     <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
     <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
     <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
-    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
     <li><a href="/howto/got_statins">Got Statins? App</a></li>
     <li><a href="/howto/rx_reminder">RxReminder App</a></li>
 
-    <li class="nav-header">Data Model + Querying</li>
+    <li class="nav-header">Using SMART Data</li>
 
-    <li><a href="/datamodel/intro_to_jsonld">Intro to the JSON-LD API</a></li>
-    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
-    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
-    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
-    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/howto/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/howto/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/howto/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/smart_data">SMART Data: Best Practices</a></li>
 
     <li class="nav-header">Reference</li>
 
@@ -64,20 +64,19 @@
     <li><a href="/libraries/dotnet">.NET</a></li>
     <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
 
+    <li class="nav-header">SMART 0.5 Update Guide</li>
+
+    <li><a href="/updates/smart_0.5/">Update Guide</a></li>
+
     <li class="nav-header">Reference EMR Installation</li>
 
     <li><a href="/install/linux">Ubuntu Linux</a></li>
     <li><a href="/install/os_x">OS X</a></li>
 
-    <li class="nav-header">SMART 0.4 Update Guides</li>
+    <li class="nav-header">Presentations</li>
 
-    <li><a href="/updates/smart_0_4/app/">For Apps</a></li>
-    <li><a href="/updates/smart_0_4/container/">For Containers</a></li>
-
-    <li class="nav-header">Presentation (2010-08-26)</li>
-
-    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
-    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture (2010-08)</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance (2010-08)</a></li>
     <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
 
     <li class="nav-header">Downloads</li>
@@ -90,138 +89,172 @@
 
     <div class="span8" id="jekyll-page-content">
       <div class="page-header">
-        <h1>SMART 0.5 App + Container Update Guide <small></small></h1>
+        <h1>SMART 0.5 Update Guide (Apps + Containers) <small></small></h1>
       </div>
 
-      <div class='simple_box'>
-  This is highly preliminary, not a commitment or final version of any
-  particular API or data model. This is purely for internal collaboration and
-  preview purposes.
+      <div id="toc"></div>
+# What's new in SMART 0.5
+
+## New and Improved Data Models
+
+SMART 0.5 adds support for three new clinical statement types:
+
+* [Clinical Notes](/reference/data_model#Clinical_Note)
+* [Procedures](/reference/data_model#Procedure) 
+* [Social History](/reference/data_model#Social_History) (currently tracks smoking status)
+
+We've also updated the models in SMART 0.5 with more consistent naming and date
+handling, as well as specific improvements described below.
+    
+For a full description of the SMART 0.5 data models, visit our [Data Model Page](/reference/data_model)
+
+## New and Improved Sample Apps
+
+* The _API Verifier_ app has been updated to support SMART 0.5 container
+  validation. Also the API Verifier is now able to validate SMART
+  app manifests.
+
+* The _Blood Pressure Centiles_ app has been updated to provide progressive
+  loading capabilities (both manual and automated) in a configurable way.The
+  app takes advantage of the new pagination capabilty of the SMART 0.5 (see
+  below).
+
+* Last but not least, we introduce the _Diabetes Monograph_, which presents
+  an at-a-glance, integrated dashboard focused on diabetes management
+  and risk assessment.
+
+## Filtering and Paginating API Results
+
+SMART 0.5 introduces filters to narrow down queries, as well as a mechanism to
+fetch results in pages rather than all at once.  For example, a SMART app can
+search for lab results that match a particular LOINC code, or vital signs
+recorded with a given date range.  To request the first 10 lab results that
+have LOINC code of `29571-7` or `38478-4` and occurred between January 1, 2010
+and December 31, 2012, you can apply filters like:
+
+
+<div class="highlight"><pre><code class="html">GET /records/1234567/lab_results/?loinc=29571-7|38478-4<span class="err">&amp;</span>date_from=2010-01-01<span class="err">&amp;</span>date_to=2012-12-31<span class="err">&amp;</span>limit=10<span class="err">&amp;</span>offset=0
+</code></pre>
 </div>
 
-<div id="toc"></div>
+<p>Your app will only receive clinical statements matching the supplied filters.
+An attached <code>ResponseSummary</code> object describes the result set.</p>
 
-<h1>What's new in SMART 0.5</h1>
+<p>For further information, review our <a href="/reference/filters">Filtering API</a>.</p>
 
-<h2>Filtering and Pagination Capabilities</h2>
+<h2>Improved JavaScript Library: Working with SMART Data as JSON-LD</h2>
 
-<p>The SMART API GET calls that return multiple medical data objects (i.e.
-have &quot;multiple&quot; cardinality) now support parameters for restricting the
-result set based on filters and pagination. A SMART application can use
-these to request from the server, for instance, the first 10 lab results
-that have LOINC code of <code>29571-7</code> or <code>38478-4</code> and have occured between
-January 1, 2010 and December 31, 2012.</p>
+<p>The SMART Connect JavaScript library now presents SMART dat in two forms, for
+your convenience:  an RDF graph interface (as before), and a new JSON Linked
+Data interface.  JSON-LD provides a convenient way for Web apps to interact
+with SMART RDF data as simple, familiar JSON structures.  </p>
 
-<p>The REST call path for such a call will be:</p>
-
-<p><code>/records/1234567/lab_results/?loinc=29571-7|38478-4&amp;date_from=2010-01-01&amp;date_to=2012-12-31&amp;limit=10&amp;offset=0</code></p>
-
-<p>The RDF that the app receives from the server in reponse to this request
-contains only the results matching the filters. Also, the RDF contains a
-<code>ResponseSummary</code> object describing the result set.</p>
-
-<p>For further information please see <a href="http://dev.smartplatforms.org/reference/filters">http://dev.smartplatforms.org/reference/filters</a></p>
-
-<h2>New Data Models and Consistency Improvements</h2>
-
-<p>SMART 0.5 adds support for API calls and data models for procedures,
-clinical notes, and smoking history. We have also improved the existing
-data models in a a number of ways:</p>
-
-<ul>
-<li>More consistent date handling</li>
-<li>More consistent model and API call names</li>
-<li>More consistent call categories (record, user, container) and cardinalities
- (single, multiple) describing the the context of the call and the
- type of the result set</li>
-</ul>
-
-<p>For further information please see <a href="http://dev.smartplatforms.org/reference/data_model/">http://dev.smartplatforms.org/reference/data_model/</a></p>
-
-<h2>JSON-LD Payloads in the SMART Connect Client Library</h2>
-
-<p>The SMART Connect JavaScript library now comes with built-in JSON-LD
-payload transcoding that can be used as an alternative to the RDF graph.</p>
-
-<p>See <a href="/datamodel/intro_to_jsonld/">the introduction to JSON-LD</a> for details.</p>
+<p>See our <a href="/howto/intro_to_jsonld/">Introduction to JSON-LD</a> for details.</p>
 
 <h2>Container Manifest API</h2>
 
-<p>The SMART Container no longer exposes the <code>/version</code> and <code>/capabilities</code> API
-calls. Instead, there is now a unified <code>/manifest</code> call that exposes an 
-all-in-one JSON descriptor of the container. To see an example of what
-it looks like, please visit: <a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a></p>
+<p>We've consolidated the the <code>/version</code> and <code>/capabilities</code> API calls at a common
+<code>/manifest</code> endpoint.  To learn about a container, apps can simply
+<code>GET/manifest</code> to obtain a JSON descripton of its capabilities.</p>
 
-<h2>New and Improved Sample Apps</h2>
+<p>For an example, see: <a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a></p>
 
-<ul>
-<li><p>The <em>API Verifier</em> app has been updated to support SMART 0.5 container
- validation. Also the API Verifier is now able to validate SMART
- app manifests.</p></li>
-<li><p>The <em>Blood Pressure Centiles</em> app has been updated to provide progressive
- loading capabilities (both manual and authomated) that are configurable
- by the person hosting the app. The app takes advantage of the new
- pagination capabilty of the SMART 0.5 containers.</p></li>
-<li><p>Last but not least, we have added a new app to our sample apps collection
- called <em>Diabetes Monograph</em>. It is an exciting app that allow clinicians
- to analyze their patient's records with respect to the diabetes disease.</p></li>
-</ul>
-
-<h1>How to Update Your SMART Apps to SMART 0.5</h1>
+<h1>HOWTO:  Update Your SMART Apps to SMART 0.5</h1>
 
 <h2>Updating Your API Call Names</h2>
 
 <p>Both the SMART Connect (JavaScript) and SMART Python clients have been updated
 to support a new common naming convention for the API call convenience methods.
 In order to use these libraries, you will have to update the names of the API
-call methods that you use in your apps. For example, in a SMART Connect app,
-if you use a call like <code>SMART.PROBLEMS_get()</code>, you will need to change it to
+call methods that you use in your apps. For example, in a SMART Connect app, if
+you use a call like <code>SMART.PROBLEMS_get()</code>, you will need to change it to
 <code>SMART.get_problems()</code>. Similarly, in a SMART REST app, you will have to change
-<code>smart_client.records_X_problems_GET()</code> to <code>smart_client.get_problems()</code>. Please
-note that the vital signs model (and the related call) have been renamed to
-Vital Sign Sets for consistency with the remaining API cals. For a complete
-list of the convenience method names in the SMART 0.5 clients, please see
-<a href="http://dev.smartplatforms.org/libraries/javascript/">http://dev.smartplatforms.org/libraries/javascript/</a></p>
+<code>SMART.records_X_problems_GET()</code> to <code>SMART.get_problems()</code>.</p>
 
-<h2>Taking Advantage of the New SMART 0.5 API Features</h2>
+<p>(The SMART Java client isn't yet ready for SMART 0.5; it's on our <a href="https://github.com/chb/smart_project_management/issues?milestone=7&page=1&sort=updated&state=open">todo
+list</a>!)</p>
 
-<p>You may want to consider trying out the JSON-LD payload format provided by the 
-SMART Connect client as an alternative to the RDF graph payload, if you are 
-more comfortable working with a hierarchical object model without having to
-write SPARQL queries.</p>
+<p>For a complete list of the convenience method names in the SMART 0.5 clients,
+please see our <a href="/reference/rest_api/">REST API documentation</a>.</p>
 
-<p>Also, you can take advantage of the new clinical notes, procedures, and smoking
-history data models, as well as the filtering and pagination call parameters.
+<h2>Adjust For a Few Data Model Changes</h2>
+
+<p>There have been a few changes and simplifications to the existing SMART data
+models that may require you to change your code:</p>
+
+<ol>
+<li><p><code>LabResult</code> elements now simply have a <code>dcterms:date</code> property indicating
+the clinically effective time of the measurement.  No more hunting through
+attributions to figure out dates!  </p></li>
+<li><p><code>Vital Signs</code> elements been renamed to <code>Vital Sign Set</code> for clarity (since
+each <code>Vital Sign Set</code> contains a set of results that were recorded together).</p></li>
+<li><p><code>Vital Signs</code> elements may now include head circumference measurements
+(<code>headCircumference</code>), measured in <code>cm</code>.</p></li>
+<li><p><code>Allergy</code> elements now support three types of allergens:  medications
+(<code>drugAllergen</code>), medication classes (<code>drugClassAllergen</code>) and other
+(<code>otherAllergen</code>). </p></li>
+</ol>
+
+<h2>Take Advantage of New SMART 0.5 Features</h2>
+
+<p>First off, take advantage of the new clinical notes, procedures, and smoking
+history data models as well as the filtering and pagination call parameters.
 Here is how you can execute a SMART API call with filters via the Python and 
-JavaScript clients:</p>
+JavaScript clients.</p>
 
-<p>JavaScript: <code>SMART.get_lab_results({loinc: &quot;29571-7|38478-4&quot;, limit: 10})</code>
-Python: <code>smart_cient.get_lab_results(loinc = &quot;29571-7|38478-4&quot;, limit = 10)</code></p>
+<h3>Python example:</h3>
 
-<h1>How to Update Your Container to SMART 0.5</h1>
+<div class="highlight"><pre><code class="python"><span class="n">labs</span> <span class="o">=</span> <span class="n">SMART</span><span class="o">.</span><span class="n">get_lab_results</span><span class="p">(</span><span class="n">loinc</span> <span class="o">=</span> <span class="s">&quot;29571-7|38478-4&quot;</span><span class="p">,</span> <span class="n">limit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">labs</span>
+</code></pre>
+</div>
 
-<h2>Update the Existing API Calls and Their Output</h2>
+<h3>JavaScript example:</h3>
 
-<p>One change from SMART 0.4 to 0.5 is that the Vital Signs model is now called
-Vital Sign Sets. In order to upgrade, you will need to rename the
-<code>sp:VitalSigns</code> objects in your RDF to <code>sp:VitalSignSets</code>. Also make sure that
-your container handles the <code>/records/12345/vital_sign_sets</code> call paths. You will
-also need to update the date predicates in your RDF output to match the updated
-specifications [we need more text here]</p>
+<div class="highlight"><pre><code class="javascript"><span class="nx">SMART</span><span class="p">.</span><span class="nx">get_lab_results</span><span class="p">({</span>
+  <span class="nx">loinc</span><span class="o">:</span> <span class="s2">&quot;29571-7|38478-4&quot;</span><span class="p">,</span> 
+  <span class="nx">limit</span><span class="o">:</span> <span class="mi">10</span>
+  <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span>
+<span class="p">}).</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">of_type</span><span class="p">.</span><span class="nx">LabResult</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
 
-<h2>Implement the new API call and deprecate the ones that are no longer needed</h2>
+<p>If you're writing a SMART Connect app, you should check out the JSON-LD
+interface we now supply with each API response.  This interface provides an
+intuitive alternative to <code>rdfquery</code> by letting your build SMART Connect apps
+without SPARQL queries.</p>
 
-<p>The <code>/version</code>, <code>/capabilities</code>, and <code>/records/12345/alerts</code> calls are no longer
-part of the SMART standard. Please disable these in your container. Implement the
-new <code>/manifest</code> container manifest call based on the example from
-<a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a>. Also implement the clinical notes,
-procedures, and smoking history APIs and data models as described in
-<a href="http://dev.smartplatforms.org/reference/data_model/">http://dev.smartplatforms.org/reference/data_model/</a></p>
+<h1>HOWTO:  Update Your Container to SMART 0.5</h1>
+
+<h2>Implement data model updates</h2>
+
+<p>SMART 0.5 Containers should implmenet the small data model changes described
+above (&quot;Adjust For a few Data Model Changes&quot;).  These include updated date
+predicates for labs, and a renamed <code>VitalSignSet</code> data type.</p>
+
+<h2>Implement new API call and deprecate the ones that are no longer needed</h2>
+
+<p>The <code>/version</code> and  <code>/capabilities</code> calls have been removed from the SMART 0.5
+specification.  Instead, please implement the new <code>/manifest</code> container
+manifest call based on the example from
+<a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a>.</p>
+
+<p>New clinical models (clinical notes, procedures, and social history) can be
+exposed according to our update <a href="/reference/data_model">data models</a>. </p>
 
 <h2>Implement the Filtering and Pagination Parameters in Your API Request Handlers</h2>
 
-<p>Please see <a href="http://dev.smartplatforms.org/reference/filters">http://dev.smartplatforms.org/reference/filters</a> for details about
-the new filtering and pagination capabilties expected by a SMART 0.5 container.</p>
+<p>Please see our <a href="/reference/filters">Filtering API</a> page for details about the
+new filtering and pagination capabilties introduced in SMART 0.5.</p>
+
+<h2>Implement authorization policies</h2>
+
+<p>SMART 0.5 makes authorization policies more explicit by assigning each API
+endpoint to one of three groups (public access; uesr-restricted access; or
+app-restricted access).  For full details, see our <a href="/reference/rest_api">REST API
+Page</a>.</p>
 
 <h2>Test With the API Verifier</h2>
 

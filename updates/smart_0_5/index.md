@@ -1,144 +1,171 @@
 ---
 layout: page
-title: SMART 0.5 App + Container Update Guide
+title: SMART 0.5 Update Guide (Apps + Containers)
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
-<div class='simple_box'>
-  This is highly preliminary, not a commitment or final version of any
-  particular API or data model. This is purely for internal collaboration and
-  preview purposes.
-</div>
-
-
 <div id="toc"></div>
-
-
 # What's new in SMART 0.5
 
-## Filtering and Pagination Capabilities
+## New and Improved Data Models
 
-The SMART API GET calls that return multiple medical data objects (i.e.
-have "multiple" cardinality) now support parameters for restricting the
-result set based on filters and pagination. A SMART application can use
-these to request from the server, for instance, the first 10 lab results
-that have LOINC code of `29571-7` or `38478-4` and have occured between
-January 1, 2010 and December 31, 2012.
+SMART 0.5 adds support for three new clinical statement types:
 
-The REST call path for such a call will be:
+* [Clinical Notes](/reference/data_model#Clinical_Note)
+* [Procedures](/reference/data_model#Procedure) 
+* [Social History](/reference/data_model#Social_History) (currently tracks smoking status)
 
-`/records/1234567/lab_results/?loinc=29571-7|38478-4&date_from=2010-01-01&date_to=2012-12-31&limit=10&offset=0`
+We've also updated the models in SMART 0.5 with more consistent naming and date
+handling, as well as specific improvements described below.
+    
+For a full description of the SMART 0.5 data models, visit our [Data Model Page](/reference/data_model)
 
-The RDF that the app receives from the server in reponse to this request
-contains only the results matching the filters. Also, the RDF contains a
-`ResponseSummary` object describing the result set.
+## New and Improved Sample Apps
 
-For further information please see <http://dev.smartplatforms.org/reference/filters>
+* The _API Verifier_ app has been updated to support SMART 0.5 container
+  validation. Also the API Verifier is now able to validate SMART
+  app manifests.
+
+* The _Blood Pressure Centiles_ app has been updated to provide progressive
+  loading capabilities (both manual and automated) in a configurable way.The
+  app takes advantage of the new pagination capabilty of the SMART 0.5 (see
+  below).
+
+* Last but not least, we introduce the _Diabetes Monograph_, which presents
+  an at-a-glance, integrated dashboard focused on diabetes management
+  and risk assessment.
+
+## Filtering and Paginating API Results
+
+SMART 0.5 introduces filters to narrow down queries, as well as a mechanism to
+fetch results in pages rather than all at once.  For example, a SMART app can
+search for lab results that match a particular LOINC code, or vital signs
+recorded with a given date range.  To request the first 10 lab results that
+have LOINC code of `29571-7` or `38478-4` and occurred between January 1, 2010
+and December 31, 2012, you can apply filters like:
+
+{% highlight html %}
+GET /records/1234567/lab_results/?loinc=29571-7|38478-4&date_from=2010-01-01&date_to=2012-12-31&limit=10&offset=0
+{% endhighlight %}
+
+Your app will only receive clinical statements matching the supplied filters.
+An attached `ResponseSummary` object describes the result set.
+
+For further information, review our [Filtering API](/reference/filters).
 
 
-## New Data Models and Consistency Improvements
+## Improved JavaScript Library: Working with SMART Data as JSON-LD
 
-SMART 0.5 adds support for API calls and data models for procedures,
-clinical notes, and smoking history. We have also improved the existing
-data models in a a number of ways:
+The SMART Connect JavaScript library now presents SMART dat in two forms, for
+your convenience:  an RDF graph interface (as before), and a new JSON Linked
+Data interface.  JSON-LD provides a convenient way for Web apps to interact
+with SMART RDF data as simple, familiar JSON structures.  
 
-   * More consistent date handling
-   * More consistent model and API call names
-   * More consistent call categories (record, user, container) and cardinalities
-     (single, multiple) describing the the context of the call and the
-     type of the result set
-     
-For further information please see <http://dev.smartplatforms.org/reference/data_model/>
-
-
-## JSON-LD Payloads in the SMART Connect Client Library
-
-The SMART Connect JavaScript library now comes with built-in JSON-LD
-payload transcoding that can be used as an alternative to the RDF graph.
-
-See [the introduction to JSON-LD](/datamodel/intro_to_jsonld/) for details.
+See our [Introduction to JSON-LD](/howto/intro_to_jsonld/) for details.
 
 ## Container Manifest API
 
-The SMART Container no longer exposes the `/version` and `/capabilities` API
-calls. Instead, there is now a unified `/manifest` call that exposes an 
-all-in-one JSON descriptor of the container. To see an example of what
-it looks like, please visit: <http://sandbox-api.smartplatforms.org/manifest>
+We've consolidated the the `/version` and `/capabilities` API calls at a common
+`/manifest` endpoint.  To learn about a container, apps can simply
+`GET/manifest` to obtain a JSON descripton of its capabilities.
 
-
-## New and Improved Sample Apps
-   * The _API Verifier_ app has been updated to support SMART 0.5 container
-     validation. Also the API Verifier is now able to validate SMART
-     app manifests.
+For an example, see: <http://sandbox-api.smartplatforms.org/manifest>
      
-   * The _Blood Pressure Centiles_ app has been updated to provide progressive
-     loading capabilities (both manual and authomated) that are configurable
-     by the person hosting the app. The app takes advantage of the new
-     pagination capabilty of the SMART 0.5 containers.
-     
-   * Last but not least, we have added a new app to our sample apps collection
-     called _Diabetes Monograph_. It is an exciting app that allow clinicians
-     to analyze their patient's records with respect to the diabetes disease.
-
-     
-# How to Update Your SMART Apps to SMART 0.5
-
+# HOWTO:  Update Your SMART Apps to SMART 0.5
 ## Updating Your API Call Names
-
 Both the SMART Connect (JavaScript) and SMART Python clients have been updated
 to support a new common naming convention for the API call convenience methods.
 In order to use these libraries, you will have to update the names of the API
-call methods that you use in your apps. For example, in a SMART Connect app,
-if you use a call like `SMART.PROBLEMS_get()`, you will need to change it to
+call methods that you use in your apps. For example, in a SMART Connect app, if
+you use a call like `SMART.PROBLEMS_get()`, you will need to change it to
 `SMART.get_problems()`. Similarly, in a SMART REST app, you will have to change
-`smart_client.records_X_problems_GET()` to `smart_client.get_problems()`. Please
-note that the vital signs model (and the related call) have been renamed to
-Vital Sign Sets for consistency with the remaining API cals. For a complete
-list of the convenience method names in the SMART 0.5 clients, please see
-<http://dev.smartplatforms.org/libraries/javascript/>
+`SMART.records_X_problems_GET()` to `SMART.get_problems()`.
+
+(The SMART Java client isn't yet ready for SMART 0.5; it's on our [todo
+list](https://github.com/chb/smart_project_management/issues?milestone=7&page=1&sort=updated&state=open)!)
+
+For a complete list of the convenience method names in the SMART 0.5 clients,
+please see our [REST API documentation](/reference/rest_api/).
+
+## Adjust For a Few Data Model Changes
+
+There have been a few changes and simplifications to the existing SMART data
+models that may require you to change your code:
+
+1. `LabResult` elements now simply have a `dcterms:date` property indicating
+the clinically effective time of the measurement.  No more hunting through
+attributions to figure out dates!  
+
+2. `Vital Signs` elements been renamed to `Vital Sign Set` for clarity (since
+each `Vital Sign Set` contains a set of results that were recorded together).
+
+3. `Vital Signs` elements may now include head circumference measurements
+(`headCircumference`), measured in `cm`.
+
+4. `Allergy` elements now support three types of allergens:  medications
+(`drugAllergen`), medication classes (`drugClassAllergen`) and other
+(`otherAllergen`). 
 
 
-## Taking Advantage of the New SMART 0.5 API Features
+## Take Advantage of New SMART 0.5 Features
 
-You may want to consider trying out the JSON-LD payload format provided by the 
-SMART Connect client as an alternative to the RDF graph payload, if you are 
-more comfortable working with a hierarchical object model without having to
-write SPARQL queries.
-
-Also, you can take advantage of the new clinical notes, procedures, and smoking
-history data models, as well as the filtering and pagination call parameters.
+First off, take advantage of the new clinical notes, procedures, and smoking
+history data models as well as the filtering and pagination call parameters.
 Here is how you can execute a SMART API call with filters via the Python and 
-JavaScript clients:
+JavaScript clients.
 
-JavaScript: `SMART.get_lab_results({loinc: "29571-7|38478-4", limit: 10})`
-Python: `smart_cient.get_lab_results(loinc = "29571-7|38478-4", limit = 10)`
+### Python example:
+{% highlight python %}
+labs = SMART.get_lab_results(loinc = "29571-7|38478-4", limit = 10)
+print labs
+{% endhighlight %}
 
+### JavaScript example: 
+{% highlight javascript %}
+SMART.get_lab_results({
+  loinc: "29571-7|38478-4", 
+  limit: 10
+  offset: 0
+}).success(function(r){
+  console.log(r.objects.of_type.LabResult);
+});
+{% endhighlight %}
 
-# How to Update Your Container to SMART 0.5
+If you're writing a SMART Connect app, you should check out the JSON-LD
+interface we now supply with each API response.  This interface provides an
+intuitive alternative to `rdfquery` by letting your build SMART Connect apps
+without SPARQL queries.
 
-## Update the Existing API Calls and Their Output
+# HOWTO:  Update Your Container to SMART 0.5
 
-One change from SMART 0.4 to 0.5 is that the Vital Signs model is now called
-Vital Sign Sets. In order to upgrade, you will need to rename the
-`sp:VitalSigns` objects in your RDF to `sp:VitalSignSets`. Also make sure that
-your container handles the `/records/12345/vital_sign_sets` call paths. You will
-also need to update the date predicates in your RDF output to match the updated
-specifications [we need more text here]
+## Implement data model updates
 
-## Implement the new API call and deprecate the ones that are no longer needed
+SMART 0.5 Containers should implmenet the small data model changes described
+above ("Adjust For a few Data Model Changes").  These include updated date
+predicates for labs, and a renamed `VitalSignSet` data type.
 
-The `/version`, `/capabilities`, and `/records/12345/alerts` calls are no longer
-part of the SMART standard. Please disable these in your container. Implement the
-new `/manifest` container manifest call based on the example from
-<http://sandbox-api.smartplatforms.org/manifest>. Also implement the clinical notes,
-procedures, and smoking history APIs and data models as described in
-<http://dev.smartplatforms.org/reference/data_model/>
+## Implement new API call and deprecate the ones that are no longer needed
+
+The `/version` and  `/capabilities` calls have been removed from the SMART 0.5
+specification.  Instead, please implement the new `/manifest` container
+manifest call based on the example from
+<http://sandbox-api.smartplatforms.org/manifest>.
+
+New clinical models (clinical notes, procedures, and social history) can be
+exposed according to our update [data models](/reference/data_model). 
 
 ## Implement the Filtering and Pagination Parameters in Your API Request Handlers
 
-Please see <http://dev.smartplatforms.org/reference/filters> for details about
-the new filtering and pagination capabilties expected by a SMART 0.5 container.
+Please see our [Filtering API] (/reference/filters) page for details about the
+new filtering and pagination capabilties introduced in SMART 0.5.
+
+## Implement authorization policies
+
+SMART 0.5 makes authorization policies more explicit by assigning each API
+endpoint to one of three groups (public access; uesr-restricted access; or
+app-restricted access).  For full details, see our [REST API
+Page](/reference/rest_api).
 
 ## Test With the API Verifier
 
@@ -146,3 +173,5 @@ Run the API Verifier app to validate your SMART 0.5 container. The API Verifier
 does not yet test the filtering and pagination readiness of your container and some
 other features of the SMART 0.5 standard. However, it will do a reasonable job
 at checking the RDF and JSON output of your API calls.
+
+

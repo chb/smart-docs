@@ -37,17 +37,17 @@
     <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
     <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
     <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
-    <li><a href="/howto/howto_build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
     <li><a href="/howto/got_statins">Got Statins? App</a></li>
     <li><a href="/howto/rx_reminder">RxReminder App</a></li>
 
-    <li class="nav-header">Data Model + Querying</li>
+    <li class="nav-header">Using SMART Data</li>
 
-    <li><a href="/datamodel/intro_to_jsonld">Intro to the JSON-LD API</a></li>
-    <li><a href="/datamodel/intro_to_rdf">Intro to RDF and SPARQL</a></li>
-    <li><a href="/datamodel/sparql_examples">SPARQL Examples for SMART</a></li>
-    <li><a href="/datamodel/smart_data">SMART Data: Best Practices</a></li>
-    <li><a href="/datamodel/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/howto/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/howto/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/howto/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/smart_data">SMART Data: Best Practices</a></li>
 
     <li class="nav-header">Reference</li>
 
@@ -64,20 +64,19 @@
     <li><a href="/libraries/dotnet">.NET</a></li>
     <li><a href="/libraries/container_javascript">Conatiner-side Javascript</a></li>
 
+    <li class="nav-header">SMART 0.5 Update Guide</li>
+
+    <li><a href="/updates/smart_0.5/">Update Guide</a></li>
+
     <li class="nav-header">Reference EMR Installation</li>
 
     <li><a href="/install/linux">Ubuntu Linux</a></li>
     <li><a href="/install/os_x">OS X</a></li>
 
-    <li class="nav-header">SMART 0.4 Update Guides</li>
+    <li class="nav-header">Presentations</li>
 
-    <li><a href="/updates/smart_0_4/app/">For Apps</a></li>
-    <li><a href="/updates/smart_0_4/container/">For Containers</a></li>
-
-    <li class="nav-header">Presentation (2010-08-26)</li>
-
-    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture</a></li>
-    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture (2010-08)</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance (2010-08)</a></li>
     <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
 
     <li class="nav-header">Downloads</li>
@@ -213,13 +212,13 @@ determined by the JavaScript context.</p>
 
 <h2>Asynchronous Calls</h2>
 
-<p>Let's load the patient's medications using SMART.MEDICATIONS_get(). The most
+<p>Let's load the patient's medications using SMART.get_medications(). The most
 important thing you need to know about all SMART JavaScript APIs is that they
 are asynchronous: you won't get the meds as a result of the
-SMART.MEDICATIONS_get() call. Instead, you need to specify callback functions
+SMART.get_medications() call. Instead, you need to specify callback functions
 that will be invoked when the results are ready:</p>
 
-<div class="highlight"><pre><code class="javascript">    <span class="nx">SMART</span><span class="p">.</span><span class="nx">MEDICATIONS_get</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="javascript">    <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_medications</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// do something with those meds</span>
     <span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// handle the error</span>
@@ -300,7 +299,7 @@ append to it with the name of each drug in our iteration:</p>
      <span class="nt">&lt;script&gt;</span>
        <span class="nx">SMART</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">SMART</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">full_name</span><span class="p">;</span>
-         <span class="nx">SMART</span><span class="p">.</span><span class="nx">MEDICATIONS_get</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_medications</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
            <span class="kd">var</span> <span class="nx">med_names</span> <span class="o">=</span> <span class="nx">meds</span><span class="p">.</span><span class="nx">graph</span>
              <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medication rdf:type sp:Medication&quot;</span><span class="p">)</span>
              <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medication sp:drugName ?drug_name_code&quot;</span><span class="p">)</span>

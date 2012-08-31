@@ -96,7 +96,7 @@ event for each medication. Then we'll look at how many days' supply of
 medication were dispensed to find out on what day the patient will run out.
 
 We use our SmartClient object called client to fetch a SMART Response object
-including a list of medications, via `records_X_medications_GET() (or, in more
+including a list of medications, via `get_medications() (or, in more
 verbose form, client.get("/records/%s/medications/{record_id}")` SMART API call.
 
 Then we'll get fancy with RDF, running a SPARQL query to find a list of fills
@@ -107,7 +107,7 @@ will run out of medication.
 
 {% highlight python %}
     # Represent the list as an RDF graph
-    meds = client.records_X_medications_GET()
+    meds = client.get_medications()
 
     # Find a list of all fulfillments for each med.
     q = """

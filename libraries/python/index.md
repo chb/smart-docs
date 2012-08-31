@@ -158,19 +158,16 @@ To get, say, the list of medications on a record, you can simply make the
 following call:
 
 {% highlight python %}
-  medications = client.records_X_medications_GET()
+  medications = client.get_medications()
 {% endhighlight  %}
 
-Notice that the method signature follows the REST API signature:
+Notice that the method signature follows the definitions on our [REST API Page](/reference/rest_api).
 
-    GET /records/{record_id}/medications/
-
-with the HTTP method appended at the end. The X's in the method signature are
-markers for expected parameters. `record_id` is automatically pulled from the
+API call parameters like `record_id` are automatically pulled from the
 `SmartClient` context, or it can be provided as a parameter like this:
 
 {% highlight python %}
-  medications = client.records_X_medications_GET(record_id = '456')
+  medications = client.get_medications(record_id = '456')
 {% endhighlight  %}
 
 ## Working with the Results

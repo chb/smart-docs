@@ -183,7 +183,7 @@ With our smart_client instance ready to go, loaded with the right credentials,
 we can start making API calls. Let's get the medication list:
 
 {% highlight javascript %}
-    medications = smart_client.records_X_medications_GET(record_id = record_id)
+    medications = smart_client.get_medications(record_id = record_id)
 {% endhighlight  %}
 
 Just like in the first SMART App we built, the result is an SMARTResponse object

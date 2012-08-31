@@ -66,7 +66,7 @@ to display:
 ### Displaying a "carousel" of available apps:
 
 {% highlight javascript %}
-  SMART.MANIFESTS_get(function(response) {
+  SMART.get_manifests(function(response) {
              manifests = response.json;
              carousel.html("");
 
@@ -81,10 +81,10 @@ to display:
        });
 {% endhighlight  %}
 
-This code fetches a list of manifests from the container `SMART.MANIFESTS_get`,
+This code fetches a list of manifests from the container `SMART.get_manifests`,
 loops through them, and displays an icon for each app available. It then
 attaches a click handler to each icon: when clicked, we call
-SMART\_HOST.launch\_app to initiate the launch of this new app. We pass in the
+SMART_HOST.launch_app to initiate the launch of this new app. We pass in the
 app's manifests `m` and our current context `SMART.context`, which specifies the
 user and record.
 

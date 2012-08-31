@@ -43,10 +43,10 @@ App](https://github.com/chb/smart_sample_apps/blob/master/static/framework/cardi
 o_risk_viz/load_data.js) requires both demographics (gender and age) and also
 lab results (hsCRP, cholesterol, and HDL values) to compute a risk score. This
 requires two calls to the SMART Connect API:
-[DEMOGRAPHICS_get](http://wiki.chip.org/smart-project/index.php/Developers_Docum
-entation:_SMART_App_Javascript_Libraries#SMART.DEMOGRAPHICS_get) and
-[LAB_RESULTS_get](http://wiki.chip.org/smart-project/index.php/Developers_Docume
-ntation:_SMART_App_Javascript_Libraries#SMART.DEMOGRAPHICS_get).
+[get_demographcis](http://wiki.chip.org/smart-project/index.php/Developers_Docum
+entation:_SMART_App_Javascript_Libraries#SMART.get_demographics) and
+[get_lab_results](http://wiki.chip.org/smart-project/index.php/Developers_Docume
+ntation:_SMART_App_Javascript_Libraries#SMART.get_lab_results).
 
 In the code below each of these calls is wrapped in a function that is
 registered with $.when. Once all the registered functions signal they have now
@@ -77,7 +77,7 @@ the code attached to the `.fail()` handler would be executed.
           var dfd = $.Deferred();
     
           // do the SMART Connect Call and execute the associated callback
-          SMART.DEMOGRAPHICS_get().success(function(demos) {
+          SMART.get_demographics().success(function(demos) {
     
             // extend the global object "p" with the returned data
             $.extend(p, demos.graph.prefix('foaf', 'http://xmlns.com/foaf/0.1/')
@@ -102,7 +102,7 @@ the code attached to the `.fail()` handler would be executed.
       var get_labs = function() {
           var dfd = $.Deferred();
     
-          SMART.LAB_RESULTS_get().success(function(labs){
+          SMART.get_lab_results().success(function(labs){
               labs.graph.where("?l rdf:type sp:LabResult")
                   .where("?l sp:labName ?ln")
                   .where("?ln sp:code <http://loinc.org/codes/30522-7>")
@@ -140,7 +140,7 @@ a more compact (but equivalent) syntax:
  var get_demographics = function() {
   // using the shorter $.Deferred(fn).promise() signature
   return $.Deferred(function(dfd){
-    SMART.DEMOGRAPHICS_get().success(function(demos) {
+    SMART.get_demographics().success(function(demos) {
     $.extend(p, demos.graph.prefix('foaf', 'http://xmlns.com/foaf/0.1/')
                      .prefix('v', 'http://www.w3.org/2006/vcard/ns#')
                      .prefix('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')

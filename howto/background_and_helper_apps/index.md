@@ -92,7 +92,7 @@ and print them to the screen:
 
 {% highlight python %}
   for record_id in smart_client.loop_over_records():
-    medications = smart_client.records_X_medications_GET(record_id = record_id)
+    medications = smart_client.get_medications(record_id = record_id)
     med_names = medications.graph.query(QUERY)
     print "%s: %s" % (record_id, ", ".join([str(m) for m in med_names]))
 {% endhighlight %}

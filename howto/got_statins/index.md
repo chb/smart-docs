@@ -35,7 +35,7 @@ loaded).
 And now we can fetch some data from the patient record: 
 
 {% highlight javascript %}
-  SMART.MEDICATIONS_get().success(function(meds) { ... });
+  SMART.get_medications().success(function(meds) { ... });
 {% endhighlight  %}
 
 As you may remember from the HOWTO, meds is a SMART Response object that
@@ -78,7 +78,7 @@ Here's how it all comes together:
 
   SMART.ready(function(){
 
-      SMART.MEDICATIONS_get().success(function(meds) {
+      SMART.get_medications().success(function(meds) {
 
           var medlist = meds.graph
           .where("?m rdf:type sp:Medication")

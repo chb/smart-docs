@@ -53,6 +53,7 @@
 
     <li><a href="/reference/data_model">Data Model</a></li>
     <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/filters">Query Filters</a></li>
     <li><a href="/reference/app_manifest">App Manifest</a></li>
 
     <li class="nav-header">Client Libraries</li>
@@ -94,41 +95,61 @@
       </div>
 
       <div class='simple_box'>
-  This is a new API in the SMART v0.5 release. It is stable enough for
-  use, however it is likely that minor elements of the API may change in
-  future releases of the SMART API.
+  This is a new API feature in the SMART v0.5 release. It is stable enough for
+  use, however it is likely that minor elements of the API may change over time.
 </div>
 
 <div id="toc"></div>
 
-<h1>Basic filters on &quot;fetch all&quot; calls</h1>
+<h1>Query filters on &quot;fetch all&quot; calls</h1>
 
 <p>The SMART 0.5 API introduces a basic filtering capability to narrow down result
 sets.  For API calls that return SMART Clinical Statements (e.g. <code>GET
 /records/xxx/lab_results</code>), you can attach filters as URL parameters.</p>
 
-<p>Our initial focus is on high-volume data like lab results and vital signs.
-Here's a quick rundown on what's supported:</p>
+<p>Our initial focus is to support the highest-volume data:
+lab results and vital sign sets.</p>
 
-<p><code>GET /records/xxx/lab_results/</code>:
- * <code>date_from</code>: earliest result to fetch.  e.g. <code>date_from=2000-05-01</code>
- * <code>date_to</code>: latest result to fetch.  e.g. <code>date_to=2012-01-01</code>.
- * <code>loinc</code>: pipe-separated LOINC codes.  e.g. <code>loinc=29571-7|38478-4</code></p>
+<p>Here's how filtering works.</p>
 
-<p><code>GET /records/xxx/vital_sign_sets</code>:
- * <code>date_from</code>: earliest result to fetch.  e.g. <code>date_from=2000-05-01</code>
- * <code>date_to</code>: latest result to fetch.  e.g. <code>date_to=2012-01-01</code>.
- * <code>encounter_type</code>: pipe-separated encounter types.  e.g. <code>encounter_type=ambulatory</code></p>
+<h2>Filtering Lab Results</h2>
 
-<h1>Paginated results</h1>
+<p>Parameters for <code>GET /records/xxx/lab_results/</code>:</p>
+
+<ul>
+<li><p><code>date_from</code>: earliest result to fetch.  e.g. <code>date_from=2000-05-01</code></p></li>
+<li><p><code>date_to</code>: latest result to fetch.  e.g. <code>date_to=2012-01-01</code></p></li>
+<li><p><code>loinc</code>: pipe-separated LOINC codes.  e.g. <code>loinc=29571-7|38478-4</code></p></li>
+</ul>
+
+<h2>Filtering Vital Sign Sets</h2>
+
+<p>Parameters for <code>GET /records/xxx/vital_sign_sets</code>:</p>
+
+<ul>
+<li><p><code>date_from</code>: earliest result to fetch.  e.g. <code>date_from=2000-05-01</code></p></li>
+<li><p><code>date_to</code>: latest result to fetch.  e.g. <code>date_to=2012-01-01</code></p></li>
+<li><p><code>encounter_type</code>: pipe-separated encounter types.  e.g. <code>encounter_type=ambulatory</code></p></li>
+</ul>
+
+<h1>Paginating results</h1>
 
 <p>Along with the filters described above, each &quot;fetch all&quot; call can now return
 paginated results. Just attach <code>limit=</code> and <code>offset=</code> parameters to a query.
-For instance, to fetch the first page of twenty results, you could add
-<code>limit=20&amp;offset=0</code>.</p>
+For instance, to fetch the first page of twenty results, you could add:</p>
 
-<p>Currently, only a default sort order is supported.  The default sort order is
-the <code>dcterms:date</code> (or <code>sp:startDate</code>) of a clinical statement.</p>
+<pre><code>limit=20&amp;offset=0
+</code></pre>
+
+<p>The default behavior of any call is to return all results, if no limit
+is supplied in the request.</p>
+
+<h1>Sorting Results</h1>
+
+<p>When paginating results, a default sort order is applied.  This default presents
+results sorted by date, i.e using the <code>dcterms:date</code> or <code>sp:startDate</code> property.</p>
+
+<p>A future API release is expected to support custom sort orders.</p>
 
 <h1>Response Summary</h1>
 

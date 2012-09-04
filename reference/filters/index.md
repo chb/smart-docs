@@ -5,46 +5,63 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 <div class='simple_box'>
-  This is a new API in the SMART v0.5 release. It is stable enough for
-  use, however it is likely that minor elements of the API may change in
-  future releases of the SMART API.
+  This is a new API feature in the SMART v0.5 release. It is stable enough for
+  use, however it is likely that minor elements of the API may change over time.
 </div>
 
 <div id="toc"></div>
 
-# Basic filters on "fetch all" calls
+# Query filters on "fetch all" calls
 The SMART 0.5 API introduces a basic filtering capability to narrow down result
 sets.  For API calls that return SMART Clinical Statements (e.g. `GET
 /records/xxx/lab_results`), you can attach filters as URL parameters.
 
-Our initial focus is on high-volume data like lab results and vital signs.
-Here's a quick rundown on what's supported:
+Our initial focus is to support the highest-volume data:
+lab results and vital sign sets.
 
-`GET /records/xxx/lab_results/`:
- * `date_from`: earliest result to fetch.  e.g. `date_from=2000-05-01`
- * `date_to`: latest result to fetch.  e.g. `date_to=2012-01-01`.
- * `loinc`: pipe-separated LOINC codes.  e.g. `loinc=29571-7|38478-4`
+Here's how filtering works.
 
-`GET /records/xxx/vital_sign_sets`:
- * `date_from`: earliest result to fetch.  e.g. `date_from=2000-05-01`
- * `date_to`: latest result to fetch.  e.g. `date_to=2012-01-01`.
- * `encounter_type`: pipe-separated encounter types.  e.g. `encounter_type=ambulatory`
+##  Filtering Lab Results
+Parameters for `GET /records/xxx/lab_results/`:
 
-# Paginated results
+* `date_from`: earliest result to fetch.  e.g. `date_from=2000-05-01`
+
+* `date_to`: latest result to fetch.  e.g. `date_to=2012-01-01`
+
+* `loinc`: pipe-separated LOINC codes.  e.g. `loinc=29571-7|38478-4`
+
+## Filtering Vital Sign Sets
+Parameters for `GET /records/xxx/vital_sign_sets`:
+
+* `date_from`: earliest result to fetch.  e.g. `date_from=2000-05-01`
+
+* `date_to`: latest result to fetch.  e.g. `date_to=2012-01-01`
+
+* `encounter_type`: pipe-separated encounter types.  e.g. `encounter_type=ambulatory`
+
+# Paginating results
 
 Along with the filters described above, each "fetch all" call can now return
 paginated results. Just attach `limit=` and `offset=` parameters to a query.
-For instance, to fetch the first page of twenty results, you could add
-`limit=20&offset=0`.
+For instance, to fetch the first page of twenty results, you could add:
 
-Currently, only a default sort order is supported.  The default sort order is
-the `dcterms:date` (or `sp:startDate`) of a clinical statement.
+```
+limit=20&offset=0
+```
+
+The default behavior of any call is to return all results, if no limit
+is supplied in the request.
+
+# Sorting Results
+When paginating results, a default sort order is applied.  This default presents
+results sorted by date, i.e using the `dcterms:date` or `sp:startDate` property.
+
+A future API release is expected to support custom sort orders.
 
 # Response Summary
 To complement the filtering and pagination API, each query response includes a
 `spapi:ResponseSummary`.  The response summary provides a `nextPageURL` as well
 as a `resultOrder` to simplify traversal of results in client code.
-
 
 ```
 [] a spapi:ResponseSummary; 

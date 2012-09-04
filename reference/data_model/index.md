@@ -314,67 +314,67 @@ For instance, below are two allergies: first, an allergy to the entire class of 
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#allergicReaction> _:_1cb2adb3-3a22-425d-9b57-86f63ca71bf8 .
-<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#category> _:_16f3f31c-64e8-4593-b567-713da116cfaa .
-<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#severity> _:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 .
-<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#drugClassAllergen> _:_b7c3441f-d152-464f-8c38-cc802c595023 .
+_:_818823a1-b0f3-4c4d-9be7-f566de7df9c4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_818823a1-b0f3-4c4d-9be7-f566de7df9c4 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> .
+_:_818823a1-b0f3-4c4d-9be7-f566de7df9c4 <http://purl.org/dc/terms/title> "Severe" .
+_:_bb48444a-f8bf-47b9-aec1-940543c94eb8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_bb48444a-f8bf-47b9-aec1-940543c94eb8 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> .
+_:_bb48444a-f8bf-47b9-aec1-940543c94eb8 <http://purl.org/dc/terms/title> "Anaphylaxis" .
+_:_864ff8a1-4bf1-4990-a933-80dc4b3a1455 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_864ff8a1-4bf1-4990-a933-80dc4b3a1455 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> .
+_:_864ff8a1-4bf1-4990-a933-80dc4b3a1455 <http://purl.org/dc/terms/title> "Anaphylaxis" .
+_:_a314d975-711b-4cbc-b847-cbe9ea65755a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Allergy> .
+_:_a314d975-711b-4cbc-b847-cbe9ea65755a <http://smartplatforms.org/terms#category> _:_e81f0291-3801-4951-8821-3aac1093e793 .
+_:_a314d975-711b-4cbc-b847-cbe9ea65755a <http://smartplatforms.org/terms#severity> _:_959dd2c2-d772-4099-ad92-cb386d7eea3f .
+_:_a314d975-711b-4cbc-b847-cbe9ea65755a <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:_a314d975-711b-4cbc-b847-cbe9ea65755a <http://smartplatforms.org/terms#allergicReaction> _:_bb48444a-f8bf-47b9-aec1-940543c94eb8 .
+_:_a314d975-711b-4cbc-b847-cbe9ea65755a <http://smartplatforms.org/terms#drugAllergen> _:_663201e6-b6b9-43f9-9b54-ecc965e0b905 .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://purl.org/dc/terms/identifier> "N0000175503" .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/NDFRT> .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://purl.org/dc/terms/title> "Sulfonamide Antibacterial" .
+<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/NDFRT/" .
 <http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Allergy> .
-_:_98435ff0-909e-4ce0-9c0d-e988f6f9ba03 <http://purl.org/dc/terms/title> "Anaphylaxis" .
-_:_98435ff0-909e-4ce0-9c0d-e988f6f9ba03 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> .
-_:_98435ff0-909e-4ce0-9c0d-e988f6f9ba03 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://purl.org/dc/terms/title> "Drug allergy" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergyCategory> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://purl.org/dc/terms/identifier> "416098002" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://purl.org/dc/terms/title> "Severe" .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#drugClassAllergen> _:_677d61d1-d2e2-40b5-9690-32b9877f6aeb .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#category> _:_cfdafb4f-4b6a-4fb8-828f-99db95904096 .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#severity> _:_818823a1-b0f3-4c4d-9be7-f566de7df9c4 .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252> <http://smartplatforms.org/terms#allergicReaction> _:_864ff8a1-4bf1-4990-a933-80dc4b3a1455 .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://purl.org/dc/terms/identifier> "24484000" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergySeverity> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://purl.org/dc/terms/identifier> "24484000" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://purl.org/dc/terms/title> "Severe" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-_:_f52df4eb-3413-4b4b-a8f7-d28735a87717 <http://purl.org/dc/terms/title> "Drug allergy" .
-_:_f52df4eb-3413-4b4b-a8f7-d28735a87717 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> .
-_:_f52df4eb-3413-4b4b-a8f7-d28735a87717 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_1cb2adb3-3a22-425d-9b57-86f63ca71bf8 <http://purl.org/dc/terms/title> "Anaphylaxis" .
-_:_1cb2adb3-3a22-425d-9b57-86f63ca71bf8 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> .
-_:_1cb2adb3-3a22-425d-9b57-86f63ca71bf8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://purl.org/dc/terms/title> "Sulfonamide Antibacterial" .
-<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/NDFRT> .
-<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://purl.org/dc/terms/identifier> "N0000175503" .
-<http://purl.bioontology.org/ontology/NDFRT/N0000175503> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/NDFRT/" .
-<http://purl.bioontology.org/ontology/RXNORM/2231> <http://purl.org/dc/terms/title> "Cephalexin" .
-<http://purl.bioontology.org/ontology/RXNORM/2231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/RXNORM/2231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/RxNorm_Ingredient> .
-<http://purl.bioontology.org/ontology/RXNORM/2231> <http://purl.org/dc/terms/identifier> "2231" .
-<http://purl.bioontology.org/ontology/RXNORM/2231> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/RXNORM/" .
-_:_b7c3441f-d152-464f-8c38-cc802c595023 <http://purl.org/dc/terms/title> "Sulfonamide Antibacterial" .
-_:_b7c3441f-d152-464f-8c38-cc802c595023 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/NDFRT/N0000175503> .
-_:_b7c3441f-d152-464f-8c38-cc802c595023 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_16f3f31c-64e8-4593-b567-713da116cfaa <http://purl.org/dc/terms/title> "Drug allergy" .
-_:_16f3f31c-64e8-4593-b567-713da116cfaa <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> .
-_:_16f3f31c-64e8-4593-b567-713da116cfaa <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_4a182660-2c18-4f00-bd32-0dd522ac3aa8 <http://purl.org/dc/terms/title> "Cephalexin" .
-_:_4a182660-2c18-4f00-bd32-0dd522ac3aa8 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/RXNORM/2231> .
-_:_4a182660-2c18-4f00-bd32-0dd522ac3aa8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_c35e3106-dc10-4418-94b6-82a599af0ea4 <http://smartplatforms.org/terms#allergicReaction> _:_98435ff0-909e-4ce0-9c0d-e988f6f9ba03 .
-_:_c35e3106-dc10-4418-94b6-82a599af0ea4 <http://smartplatforms.org/terms#category> _:_f52df4eb-3413-4b4b-a8f7-d28735a87717 .
-_:_c35e3106-dc10-4418-94b6-82a599af0ea4 <http://smartplatforms.org/terms#severity> _:_3b3a3376-c71c-446a-afd3-3d3f77b0e385 .
-_:_c35e3106-dc10-4418-94b6-82a599af0ea4 <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-_:_c35e3106-dc10-4418-94b6-82a599af0ea4 <http://smartplatforms.org/terms#drugAllergen> _:_4a182660-2c18-4f00-bd32-0dd522ac3aa8 .
-_:_c35e3106-dc10-4418-94b6-82a599af0ea4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Allergy> .
-_:_3b3a3376-c71c-446a-afd3-3d3f77b0e385 <http://purl.org/dc/terms/title> "Severe" .
-_:_3b3a3376-c71c-446a-afd3-3d3f77b0e385 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> .
-_:_3b3a3376-c71c-446a-afd3-3d3f77b0e385 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://purl.org/dc/terms/title> "Anaphylaxis" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://purl.org/dc/terms/identifier> "39579001" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/SNOMED> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://purl.org/dc/terms/identifier> "39579001" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://purl.org/dc/terms/title> "Anaphylaxis" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/39579001> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-_:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 <http://purl.org/dc/terms/title> "Severe" .
-_:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> .
-_:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://purl.org/dc/terms/identifier> "2231" .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/RxNorm_Ingredient> .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://purl.org/dc/terms/title> "Cephalexin" .
+<http://purl.bioontology.org/ontology/RXNORM/2231> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/RXNORM/" .
+_:_663201e6-b6b9-43f9-9b54-ecc965e0b905 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_663201e6-b6b9-43f9-9b54-ecc965e0b905 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/RXNORM/2231> .
+_:_663201e6-b6b9-43f9-9b54-ecc965e0b905 <http://purl.org/dc/terms/title> "Cephalexin" .
+_:_cfdafb4f-4b6a-4fb8-828f-99db95904096 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_cfdafb4f-4b6a-4fb8-828f-99db95904096 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> .
+_:_cfdafb4f-4b6a-4fb8-828f-99db95904096 <http://purl.org/dc/terms/title> "Drug allergy" .
+_:_959dd2c2-d772-4099-ad92-cb386d7eea3f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_959dd2c2-d772-4099-ad92-cb386d7eea3f <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/24484000> .
+_:_959dd2c2-d772-4099-ad92-cb386d7eea3f <http://purl.org/dc/terms/title> "Severe" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://purl.org/dc/terms/identifier> "416098002" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergyCategory> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://purl.org/dc/terms/title> "Drug allergy" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/416098002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+_:_e81f0291-3801-4951-8821-3aac1093e793 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_e81f0291-3801-4951-8821-3aac1093e793 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/416098002> .
+_:_e81f0291-3801-4951-8821-3aac1093e793 <http://purl.org/dc/terms/title> "Drug allergy" .
+_:_677d61d1-d2e2-40b5-9690-32b9877f6aeb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_677d61d1-d2e2-40b5-9690-32b9877f6aeb <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/NDFRT/N0000175503> .
+_:_677d61d1-d2e2-40b5-9690-32b9877f6aeb <http://purl.org/dc/terms/title> "Sulfonamide Antibacterial" .
 
 
 {% endhighlight %}</div>
@@ -452,16 +452,6 @@ _:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 <http://www.w3.org/1999/02/22-rdf-syntax
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/39579001",
-      "@type": [
-        "Code",
-        "spcode__SNOMED"
-      ],
-      "dcterms__identifier": "39579001",
-      "dcterms__title": "Anaphylaxis",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
-    },
-    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252",
       "@type": "Allergy",
       "allergicReaction": {
@@ -497,26 +487,6 @@ _:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 <http://www.w3.org/1999/02/22-rdf-syntax
       }
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/NDFRT/N0000175503",
-      "@type": [
-        "spcode__NDFRT",
-        "Code"
-      ],
-      "dcterms__identifier": "N0000175503",
-      "dcterms__title": "Sulfonamide Antibacterial",
-      "system": "http://purl.bioontology.org/ontology/NDFRT/"
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/416098002",
-      "@type": [
-        "spcode__AllergyCategory",
-        "Code"
-      ],
-      "dcterms__identifier": "416098002",
-      "dcterms__title": "Drug allergy",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
-    },
-    {
       "@id": "http://purl.bioontology.org/ontology/RXNORM/2231",
       "@type": [
         "Code",
@@ -525,6 +495,36 @@ _:_aa2ad73d-0f72-4110-b5a3-66255a33cc68 <http://www.w3.org/1999/02/22-rdf-syntax
       "dcterms__identifier": "2231",
       "dcterms__title": "Cephalexin",
       "system": "http://purl.bioontology.org/ontology/RXNORM/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/39579001",
+      "@type": [
+        "Code",
+        "spcode__SNOMED"
+      ],
+      "dcterms__identifier": "39579001",
+      "dcterms__title": "Anaphylaxis",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/NDFRT/N0000175503",
+      "@type": [
+        "Code",
+        "spcode__NDFRT"
+      ],
+      "dcterms__identifier": "N0000175503",
+      "dcterms__title": "Sulfonamide Antibacterial",
+      "system": "http://purl.bioontology.org/ontology/NDFRT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/416098002",
+      "@type": [
+        "Code",
+        "spcode__AllergyCategory"
+      ],
+      "dcterms__identifier": "416098002",
+      "dcterms__title": "Drug allergy",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
     },
     {
       "@type": "Allergy",
@@ -744,16 +744,16 @@ While it might seem inelegant to expose explicit AllergyExclusion statements, th
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_7a41109d-4cd3-4221-bd0d-79db49a1d75e <http://purl.org/dc/terms/title> "No known allergies" .
-_:_7a41109d-4cd3-4221-bd0d-79db49a1d75e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_7a41109d-4cd3-4221-bd0d-79db49a1d75e <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> .
-<http://sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#AllergyExclusion> .
-<http://sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235> <http://smartplatforms.org/terms#allergyExclusionName> _:_7a41109d-4cd3-4221-bd0d-79db49a1d75e .
+_:_b8b8678e-4798-47d6-8483-4ebadd58c549 <http://purl.org/dc/terms/title> "No known allergies" .
+_:_b8b8678e-4798-47d6-8483-4ebadd58c549 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_b8b8678e-4798-47d6-8483-4ebadd58c549 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235> <http://smartplatforms.org/terms#allergyExclusionName> _:_b8b8678e-4798-47d6-8483-4ebadd58c549 .
 <http://sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#AllergyExclusion> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://purl.org/dc/terms/identifier> "160244002" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://purl.org/dc/terms/title> "No known allergies" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/AllergyExclusion> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://purl.org/dc/terms/identifier> "160244002" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/160244002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
 
 
@@ -784,6 +784,16 @@ _:_7a41109d-4cd3-4221-bd0d-79db49a1d75e <http://smartplatforms.org/terms#code> <
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/160244002",
+      "@type": [
+        "Code",
+        "spcode__AllergyExclusion"
+      ],
+      "dcterms__identifier": "160244002",
+      "dcterms__title": "No known allergies",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235",
       "@type": "AllergyExclusion",
       "allergyExclusionName": {
@@ -796,16 +806,6 @@ _:_7a41109d-4cd3-4221-bd0d-79db49a1d75e <http://smartplatforms.org/terms#code> <
       "belongsTo": {
         "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
       }
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/160244002",
-      "@type": [
-        "Code",
-        "spcode__AllergyExclusion"
-      ],
-      "dcterms__identifier": "160244002",
-      "dcterms__title": "No known allergies",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
     }
   ]
 }
@@ -904,20 +904,20 @@ The formatted data, in turn, comprises a MIME type and either supply the value i
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_3a8b62ab-3161-4c1b-acd5-b26704831b07 <http://www.w3.org/1999/02/22-rdf-syntax-ns#resoruce> "http://purl.org/NET/mediatypes/text/html" .
-_:_8b16bcc4-6af3-488e-9b8a-01abaf7b2f88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
-_:_8b16bcc4-6af3-488e-9b8a-01abaf7b2f88 <http://www.w3.org/2006/vcard/ns#n> _:_d641001c-53fc-4017-b149-e9bacbabe0d0 .
-_:_d641001c-53fc-4017-b149-e9bacbabe0d0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
-_:_d641001c-53fc-4017-b149-e9bacbabe0d0 <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
-_:_d641001c-53fc-4017-b149-e9bacbabe0d0 <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
+_:_583cc11b-6fc2-40d4-880a-ade1c7a6a83c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
+_:_583cc11b-6fc2-40d4-880a-ade1c7a6a83c <http://www.w3.org/2006/vcard/ns#n> _:_ed79b514-a28d-485c-b1ec-e56a24eb25ee .
 <http://url.of.raw.note/content> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#DocumentWithFormat> .
-<http://url.of.raw.note/content> <http://purl.org/dc/terms/format> _:_3a8b62ab-3161-4c1b-acd5-b26704831b07 .
-<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://purl.org/dc/terms/hasFormat> <http://url.of.raw.note/content> .
-<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://purl.org/dc/terms/date> "2012-05-17" .
-<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ClinicalNote> .
-<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://smartplatforms.org/terms#provider> _:_8b16bcc4-6af3-488e-9b8a-01abaf7b2f88 .
-<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://url.of.raw.note/content> <http://purl.org/dc/terms/format> _:_4e6c5003-a24a-4be4-afaf-b0a315aa3d0c .
 <http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://purl.org/dc/terms/title> "Cardiology clinic follow-up" .
+<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://purl.org/dc/terms/date> "2012-05-17" .
+<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://smartplatforms.org/terms#provider> _:_583cc11b-6fc2-40d4-880a-ade1c7a6a83c .
+<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://purl.org/dc/terms/hasFormat> <http://url.of.raw.note/content> .
+<http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ClinicalNote> .
+_:_4e6c5003-a24a-4be4-afaf-b0a315aa3d0c <http://www.w3.org/1999/02/22-rdf-syntax-ns#resoruce> "http://purl.org/NET/mediatypes/text/html" .
+_:_ed79b514-a28d-485c-b1ec-e56a24eb25ee <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
+_:_ed79b514-a28d-485c-b1ec-e56a24eb25ee <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
+_:_ed79b514-a28d-485c-b1ec-e56a24eb25ee <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
 
 
 {% endhighlight %}</div>
@@ -961,14 +961,16 @@ _:_d641001c-53fc-4017-b149-e9bacbabe0d0 <http://www.w3.org/2006/vcard/ns#given-n
         }
       ],
       "dcterms__title": "Cardiology clinic follow-up",
-      "provider": {
-        "@type": "Provider",
-        "vcard__n": {
-          "@type": "vcard__Name",
-          "vcard__family_name": "Mandel",
-          "vcard__given_name": "Joshua"
+      "provider": [
+        {
+          "@type": "Provider",
+          "vcard__n": {
+            "@type": "vcard__Name",
+            "vcard__family_name": "Mandel",
+            "vcard__given_name": "Joshua"
+          }
         }
-      }
+      ]
     },
     {
       "@id": "http://url.of.raw.note/content",
@@ -1134,40 +1136,40 @@ In RDF/XML, patient Bob Odenkirk looks like this:
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_c19795b4-0a0f-4aac-b1c1-ec6c4eb0d923 <http://www.w3.org/2006/vcard/ns#given-name> "Bob" .
-_:_c19795b4-0a0f-4aac-b1c1-ec6c4eb0d923 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
-_:_c19795b4-0a0f-4aac-b1c1-ec6c4eb0d923 <http://www.w3.org/2006/vcard/ns#family-name> "Odenkirk" .
-_:_c19795b4-0a0f-4aac-b1c1-ec6c4eb0d923 <http://www.w3.org/2006/vcard/ns#additional-name> "J" .
-_:_b5696c09-1dc4-4b5d-b066-b3e26fd16300 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "800-555-1212" .
-_:_b5696c09-1dc4-4b5d-b066-b3e26fd16300 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Home> .
-_:_b5696c09-1dc4-4b5d-b066-b3e26fd16300 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Pref> .
-_:_b5696c09-1dc4-4b5d-b066-b3e26fd16300 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Tel> .
-_:_945277e4-01aa-482b-8bfb-b82fbd69ef74 <http://purl.org/dc/terms/title> "My Hospital Record 2304575" .
-_:_945277e4-01aa-482b-8bfb-b82fbd69ef74 <http://smartplatforms.org/terms#system> "My Hospital Record" .
-_:_945277e4-01aa-482b-8bfb-b82fbd69ef74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-_:_945277e4-01aa-482b-8bfb-b82fbd69ef74 <http://purl.org/dc/terms/identifier> "2304575" .
-_:_c47faf59-fcd3-426e-b878-dcab0b9e032b <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "800-555-1515" .
-_:_c47faf59-fcd3-426e-b878-dcab0b9e032b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Tel> .
-_:_c47faf59-fcd3-426e-b878-dcab0b9e032b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Cell> .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/2006/vcard/ns#country> "USA" .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/2006/vcard/ns#locality> "Wonderland" .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/2006/vcard/ns#street-address> "15 Main St" .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/2006/vcard/ns#extended-address> "Apt 2" .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/2006/vcard/ns#region> "OZ" .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/2006/vcard/ns#postal-code> "54321" .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Home> .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Pref> .
-_:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
+_:_ff7123af-879c-4a02-b725-09e9d4574deb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+_:_ff7123af-879c-4a02-b725-09e9d4574deb <http://purl.org/dc/terms/identifier> "2304575" .
+_:_ff7123af-879c-4a02-b725-09e9d4574deb <http://smartplatforms.org/terms#system> "My Hospital Record" .
+_:_ff7123af-879c-4a02-b725-09e9d4574deb <http://purl.org/dc/terms/title> "My Hospital Record 2304575" .
+_:_199ed968-773a-4956-97c7-6a319eb720d7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Home> .
+_:_199ed968-773a-4956-97c7-6a319eb720d7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Tel> .
+_:_199ed968-773a-4956-97c7-6a319eb720d7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Pref> .
+_:_199ed968-773a-4956-97c7-6a319eb720d7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "800-555-1212" .
+_:_a4710d51-9258-40c9-9bed-453d3c2cfb8a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Cell> .
+_:_a4710d51-9258-40c9-9bed-453d3c2cfb8a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Tel> .
+_:_a4710d51-9258-40c9-9bed-453d3c2cfb8a <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "800-555-1515" .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/2006/vcard/ns#country> "USA" .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Home> .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Pref> .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/2006/vcard/ns#postal-code> "54321" .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/2006/vcard/ns#locality> "Wonderland" .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/2006/vcard/ns#region> "OZ" .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/2006/vcard/ns#extended-address> "Apt 2" .
+_:_fde41cf1-2731-4191-84a8-c5c6b286177e <http://www.w3.org/2006/vcard/ns#street-address> "15 Main St" .
+_:_45941def-ad4e-4871-9e7a-7743e2888b2b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
+_:_45941def-ad4e-4871-9e7a-7743e2888b2b <http://www.w3.org/2006/vcard/ns#given-name> "Bob" .
+_:_45941def-ad4e-4871-9e7a-7743e2888b2b <http://www.w3.org/2006/vcard/ns#family-name> "Odenkirk" .
+_:_45941def-ad4e-4871-9e7a-7743e2888b2b <http://www.w3.org/2006/vcard/ns#additional-name> "J" .
 <http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#bday> "1959-12-25" .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://smartplatforms.org/terms#medicalRecordNumber> _:_945277e4-01aa-482b-8bfb-b82fbd69ef74 .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#n> _:_c19795b4-0a0f-4aac-b1c1-ec6c4eb0d923 .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#email> "bob.odenkirk@example.com" .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#adr> _:_f68a17ce-2623-46f4-8b2d-fe126822c90b .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#n> _:_45941def-ad4e-4871-9e7a-7743e2888b2b .
 <http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Demographics> .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#tel> _:_199ed968-773a-4956-97c7-6a319eb720d7 .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#tel> _:_a4710d51-9258-40c9-9bed-453d3c2cfb8a .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://smartplatforms.org/terms#medicalRecordNumber> _:_ff7123af-879c-4a02-b725-09e9d4574deb .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#email> "bob.odenkirk@example.com" .
 <http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://xmlns.com/foaf/0.1/gender> "male" .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#tel> _:_c47faf59-fcd3-426e-b878-dcab0b9e032b .
-<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#tel> _:_b5696c09-1dc4-4b5d-b066-b3e26fd16300 .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/demographics> <http://www.w3.org/2006/vcard/ns#adr> _:_fde41cf1-2731-4191-84a8-c5c6b286177e .
 
 
 {% endhighlight %}</div>
@@ -1232,9 +1234,9 @@ _:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/1999/02/22-rdf-syntax
   "vcard__adr": [
     {
       "@type": [
+        "vcard__Address",
         "vcard__Home",
-        "vcard__Pref",
-        "vcard__Address"
+        "vcard__Pref"
       ],
       "http://www.w3.org/2006/vcard/ns#country": "USA",
       "vcard__extended_address": "Apt 2",
@@ -1259,18 +1261,18 @@ _:_f68a17ce-2623-46f4-8b2d-fe126822c90b <http://www.w3.org/1999/02/22-rdf-syntax
   "vcard__tel": [
     {
       "@type": [
+        "vcard__Home",
         "vcard__Tel",
-        "vcard__Cell"
+        "vcard__Pref"
       ],
-      "rdf__value": "800-555-1515"
+      "rdf__value": "800-555-1212"
     },
     {
       "@type": [
-        "vcard__Home",
-        "vcard__Pref",
+        "vcard__Cell",
         "vcard__Tel"
       ],
-      "rdf__value": "800-555-1212"
+      "rdf__value": "800-555-1515"
     }
   ]
 }
@@ -1501,19 +1503,19 @@ A person's (administrative) gender.  This should consist of the string "male" or
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
+<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#startDate> "2010-05-12T04:00:00Z" .
+<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#endDate> "2010-05-12T04:20:00Z" .
+<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#encounterType> _:_30dfd1da-77d3-4a0a-98e0-6bd7b1758147 .
+<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Encounter> .
+<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:_30dfd1da-77d3-4a0a-98e0-6bd7b1758147 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> .
+_:_30dfd1da-77d3-4a0a-98e0-6bd7b1758147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_30dfd1da-77d3-4a0a-98e0-6bd7b1758147 <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/EncounterType#" .
 <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/EncounterType> .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/EncounterType#" .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/title> "Ambulatory encounter" .
 <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/identifier> "ambulatory" .
-_:_031b5ad3-967e-4bde-9a94-072ee049a262 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_031b5ad3-967e-4bde-9a94-072ee049a262 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> .
-_:_031b5ad3-967e-4bde-9a94-072ee049a262 <http://purl.org/dc/terms/title> "Ambulatory encounter" .
-<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Encounter> .
-<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#startDate> "2010-05-12T04:00:00Z" .
-<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#endDate> "2010-05-12T04:20:00Z" .
-<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#encounterType> _:_031b5ad3-967e-4bde-9a94-072ee049a262 .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/title> "Ambulatory encounter" .
 
 
 {% endhighlight %}</div>
@@ -1545,16 +1547,6 @@ _:_031b5ad3-967e-4bde-9a94-072ee049a262 <http://purl.org/dc/terms/title> "Ambula
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
-      "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory",
-      "@type": [
-        "Code",
-        "spcode__EncounterType"
-      ],
-      "dcterms__identifier": "ambulatory",
-      "dcterms__title": "Ambulatory encounter",
-      "system": "http://smartplatforms.org/terms/codes/EncounterType#"
-    },
-    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352",
       "@type": "Encounter",
       "belongsTo": {
@@ -1569,6 +1561,16 @@ _:_031b5ad3-967e-4bde-9a94-072ee049a262 <http://purl.org/dc/terms/title> "Ambula
       },
       "endDate": "2010-05-12T04:20:00Z",
       "startDate": "2010-05-12T04:00:00Z"
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory",
+      "@type": [
+        "Code",
+        "spcode__EncounterType"
+      ],
+      "dcterms__identifier": "ambulatory",
+      "dcterms__title": "Ambulatory encounter",
+      "system": "http://smartplatforms.org/terms/codes/EncounterType#"
     }
   ]
 }
@@ -1743,34 +1745,34 @@ Date when encounter began, as an ISO-8601 string <a href='http://www.w3.org/2001
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_366ac938-664a-4268-9ec5-b22045e73701 <http://www.w3.org/2006/vcard/ns#adr> _:_36caca8a-64fe-47b5-8e68-8049656677c5 .
-_:_366ac938-664a-4268-9ec5-b22045e73701 <http://smartplatforms.org/terms#ncpdpId> "5235235" .
-_:_366ac938-664a-4268-9ec5-b22045e73701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Pharmacy> .
-_:_366ac938-664a-4268-9ec5-b22045e73701 <http://www.w3.org/2006/vcard/ns#organization-name> "CVS #588" .
-_:_23ae2122-cde7-42d9-b152-f44249ef5805 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
-_:_23ae2122-cde7-42d9-b152-f44249ef5805 <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
-_:_23ae2122-cde7-42d9-b152-f44249ef5805 <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
-_:_b31d7719-26ae-454a-b85e-3f4debc0fb39 <http://smartplatforms.org/terms#value> "60" .
-_:_b31d7719-26ae-454a-b85e-3f4debc0fb39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_b31d7719-26ae-454a-b85e-3f4debc0fb39 <http://smartplatforms.org/terms#unit> "{tablet}" .
-_:_36caca8a-64fe-47b5-8e68-8049656677c5 <http://www.w3.org/2006/vcard/ns#country-name> "Australia" .
-_:_36caca8a-64fe-47b5-8e68-8049656677c5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
-_:_36caca8a-64fe-47b5-8e68-8049656677c5 <http://www.w3.org/2006/vcard/ns#locality> "WonderCity" .
-_:_36caca8a-64fe-47b5-8e68-8049656677c5 <http://www.w3.org/2006/vcard/ns#street-address> "111 Lake Drive" .
-_:_36caca8a-64fe-47b5-8e68-8049656677c5 <http://www.w3.org/2006/vcard/ns#postal-code> "5555" .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Fulfillment> .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#dispenseDaysSupply> "30" .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#quantityDispensed> _:_b31d7719-26ae-454a-b85e-3f4debc0fb39 .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#pharmacy> _:_366ac938-664a-4268-9ec5-b22045e73701 .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#medication> <http://sandbox-api.smartplatforms.org/records/2169591/medications/123> .
-<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#provider> _:_45932e5a-cab0-47b9-b02f-8788147ff6d5 .
 <http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#pbm> "T00000000001011" .
-_:_45932e5a-cab0-47b9-b02f-8788147ff6d5 <http://smartplatforms.org/terms#npiNumber> "5235235" .
-_:_45932e5a-cab0-47b9-b02f-8788147ff6d5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
-_:_45932e5a-cab0-47b9-b02f-8788147ff6d5 <http://www.w3.org/2006/vcard/ns#n> _:_23ae2122-cde7-42d9-b152-f44249ef5805 .
-_:_45932e5a-cab0-47b9-b02f-8788147ff6d5 <http://smartplatforms.org/terms#deaNumber> "325555555" .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#provider> _:_98ce8801-93cd-4b13-92f7-94ee89db48e6 .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#pharmacy> _:_e3f3ad1e-54e4-4d6d-b818-029ef01b0bcd .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#medication> <http://sandbox-api.smartplatforms.org/records/2169591/medications/123> .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Fulfillment> .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#dispenseDaysSupply> "30" .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#quantityDispensed> _:_290bc344-d152-4a11-b6d2-decbf97f8fb4 .
+<http://sandbox-api.smartplatforms.org/records/2169591/fulfillments/63221> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+_:_c3afce16-bf4d-44c5-88e0-7b02bcc133a1 <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
+_:_c3afce16-bf4d-44c5-88e0-7b02bcc133a1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
+_:_c3afce16-bf4d-44c5-88e0-7b02bcc133a1 <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
+_:_98ce8801-93cd-4b13-92f7-94ee89db48e6 <http://smartplatforms.org/terms#npiNumber> "5235235" .
+_:_98ce8801-93cd-4b13-92f7-94ee89db48e6 <http://smartplatforms.org/terms#deaNumber> "325555555" .
+_:_98ce8801-93cd-4b13-92f7-94ee89db48e6 <http://www.w3.org/2006/vcard/ns#n> _:_c3afce16-bf4d-44c5-88e0-7b02bcc133a1 .
+_:_98ce8801-93cd-4b13-92f7-94ee89db48e6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
+_:_e3f3ad1e-54e4-4d6d-b818-029ef01b0bcd <http://www.w3.org/2006/vcard/ns#adr> _:_4a40d1a3-d2bf-4fb5-ac37-687611cf79e4 .
+_:_e3f3ad1e-54e4-4d6d-b818-029ef01b0bcd <http://www.w3.org/2006/vcard/ns#organization-name> "CVS #588" .
+_:_e3f3ad1e-54e4-4d6d-b818-029ef01b0bcd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Pharmacy> .
+_:_e3f3ad1e-54e4-4d6d-b818-029ef01b0bcd <http://smartplatforms.org/terms#ncpdpId> "5235235" .
+_:_290bc344-d152-4a11-b6d2-decbf97f8fb4 <http://smartplatforms.org/terms#value> "60" .
+_:_290bc344-d152-4a11-b6d2-decbf97f8fb4 <http://smartplatforms.org/terms#unit> "{tablet}" .
+_:_290bc344-d152-4a11-b6d2-decbf97f8fb4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_4a40d1a3-d2bf-4fb5-ac37-687611cf79e4 <http://www.w3.org/2006/vcard/ns#locality> "WonderCity" .
+_:_4a40d1a3-d2bf-4fb5-ac37-687611cf79e4 <http://www.w3.org/2006/vcard/ns#street-address> "111 Lake Drive" .
+_:_4a40d1a3-d2bf-4fb5-ac37-687611cf79e4 <http://www.w3.org/2006/vcard/ns#postal-code> "5555" .
+_:_4a40d1a3-d2bf-4fb5-ac37-687611cf79e4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
+_:_4a40d1a3-d2bf-4fb5-ac37-687611cf79e4 <http://www.w3.org/2006/vcard/ns#country-name> "Australia" .
 
 
 {% endhighlight %}</div>
@@ -1835,16 +1837,18 @@ _:_45932e5a-cab0-47b9-b02f-8788147ff6d5 <http://smartplatforms.org/terms#deaNumb
     ],
     "vcard__organization_name": "CVS #588"
   },
-  "provider": {
-    "@type": "Provider",
-    "deaNumber": "325555555",
-    "npiNumber": "5235235",
-    "vcard__n": {
-      "@type": "vcard__Name",
-      "vcard__family_name": "Mandel",
-      "vcard__given_name": "Joshua"
+  "provider": [
+    {
+      "@type": "Provider",
+      "deaNumber": "325555555",
+      "npiNumber": "5235235",
+      "vcard__n": {
+        "@type": "vcard__Name",
+        "vcard__family_name": "Mandel",
+        "vcard__given_name": "Joshua"
+      }
     }
-  },
+  ],
   "quantityDispensed": {
     "@type": "ValueAndUnit",
     "unit": "{tablet}",
@@ -2078,45 +2082,45 @@ Explicit record of an immunization given or not given to the patient.
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_abfa6f15-e981-47c0-b12b-07b396eefc63 <http://purl.org/dc/terms/title> "typhoid, oral" .
-_:_abfa6f15-e981-47c0-b12b-07b396eefc63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_abfa6f15-e981-47c0-b12b-07b396eefc63 <http://smartplatforms.org/terms#code> <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> .
-<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://purl.org/dc/terms/identifier> "notAdministered" .
+_:_6b436d66-3e10-43b9-b68f-4a8db8efa8dd <http://smartplatforms.org/terms#code> <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> .
+_:_6b436d66-3e10-43b9-b68f-4a8db8efa8dd <http://purl.org/dc/terms/title> "TYPHOID" .
+_:_6b436d66-3e10-43b9-b68f-4a8db8efa8dd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#productClass> _:_6b436d66-3e10-43b9-b68f-4a8db8efa8dd .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Immunization> .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#refusalReason> _:_b590e9bd-bda4-4f1a-9150-ff267a5febfb .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#administrationStatus> _:_dae29666-7c83-41ee-a8a0-4b411f863076 .
+<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#productName> _:_1b06b0a4-1e57-4131-916d-deecdfbedcb6 .
 <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://purl.org/dc/terms/title> "Not Administered" .
 <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus> .
 <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://purl.org/dc/terms/identifier> "notAdministered" .
 <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#" .
-_:_9bee996f-c5ba-47fc-bca4-f0c4fe7e662b <http://purl.org/dc/terms/title> "Not Administered" .
-_:_9bee996f-c5ba-47fc-bca4-f0c4fe7e662b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_9bee996f-c5ba-47fc-bca4-f0c4fe7e662b <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> .
-<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://purl.org/dc/terms/identifier> "allergy" .
+_:_b590e9bd-bda4-4f1a-9150-ff267a5febfb <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> .
+_:_b590e9bd-bda4-4f1a-9150-ff267a5febfb <http://purl.org/dc/terms/title> "Allergy to vaccine/vaccine components, or allergy to eggs" .
+_:_b590e9bd-bda4-4f1a-9150-ff267a5febfb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://purl.org/dc/terms/title> "typhoid, oral" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationProduct> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://purl.org/dc/terms/identifier> "25" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://smartplatforms.org/terms#system> "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
+_:_dae29666-7c83-41ee-a8a0-4b411f863076 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered> .
+_:_dae29666-7c83-41ee-a8a0-4b411f863076 <http://purl.org/dc/terms/title> "Not Administered" .
+_:_dae29666-7c83-41ee-a8a0-4b411f863076 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_1b06b0a4-1e57-4131-916d-deecdfbedcb6 <http://smartplatforms.org/terms#code> <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> .
+_:_1b06b0a4-1e57-4131-916d-deecdfbedcb6 <http://purl.org/dc/terms/title> "typhoid, oral" .
+_:_1b06b0a4-1e57-4131-916d-deecdfbedcb6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://purl.org/dc/terms/title> "TYPHOID" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationClass> .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://purl.org/dc/terms/identifier> "TYPHOID" .
+<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://smartplatforms.org/terms#system> "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
 <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://purl.org/dc/terms/title> "Allergy to vaccine/vaccine components, or allergy to eggs" .
 <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason> .
+<http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://purl.org/dc/terms/identifier> "allergy" .
 <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#" .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#administrationStatus> _:_9bee996f-c5ba-47fc-bca4-f0c4fe7e662b .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Immunization> .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#productClass> _:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#productName> _:_abfa6f15-e981-47c0-b12b-07b396eefc63 .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
-<http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972> <http://smartplatforms.org/terms#refusalReason> _:_2e7b97b7-54b0-4fb4-ac63-f23e1eb16d27 .
-_:_2e7b97b7-54b0-4fb4-ac63-f23e1eb16d27 <http://purl.org/dc/terms/title> "Allergy to vaccine/vaccine components, or allergy to eggs" .
-_:_2e7b97b7-54b0-4fb4-ac63-f23e1eb16d27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_2e7b97b7-54b0-4fb4-ac63-f23e1eb16d27 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy> .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://purl.org/dc/terms/identifier> "TYPHOID" .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://purl.org/dc/terms/title> "TYPHOID" .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationClass> .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> <http://smartplatforms.org/terms#system> "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
-_:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e <http://purl.org/dc/terms/title> "TYPHOID" .
-_:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e <http://smartplatforms.org/terms#code> <http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID> .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://purl.org/dc/terms/identifier> "25" .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://purl.org/dc/terms/title> "typhoid, oral" .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/ImmunizationProduct> .
-<http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25> <http://smartplatforms.org/terms#system> "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#" .
 
 
 {% endhighlight %}</div>
@@ -2174,6 +2178,16 @@ _:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e <http://smartplatforms.org/terms#code> <
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
+      "@id": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy",
+      "@type": [
+        "Code",
+        "spcode__ImmunizationRefusalReason"
+      ],
+      "dcterms__identifier": "allergy",
+      "dcterms__title": "Allergy to vaccine/vaccine components, or allergy to eggs",
+      "system": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#"
+    },
+    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/immunizations/418972",
       "@type": "Immunization",
       "administrationStatus": {
@@ -2212,16 +2226,6 @@ _:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e <http://smartplatforms.org/terms#code> <
       }
     },
     {
-      "@id": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy",
-      "@type": [
-        "Code",
-        "spcode__ImmunizationRefusalReason"
-      ],
-      "dcterms__identifier": "allergy",
-      "dcterms__title": "Allergy to vaccine/vaccine components, or allergy to eggs",
-      "system": "http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#"
-    },
-    {
       "@id": "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#notAdministered",
       "@type": [
         "spcode__ImmunizationAdministrationStatus",
@@ -2232,23 +2236,23 @@ _:_73ae8f7d-4bfd-45d7-ac2e-8b768f47970e <http://smartplatforms.org/terms#code> <
       "system": "http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#"
     },
     {
-      "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25",
-      "@type": [
-        "Code",
-        "spcode__ImmunizationProduct"
-      ],
-      "dcterms__identifier": "25",
-      "dcterms__title": "typhoid, oral",
-      "system": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#"
-    },
-    {
       "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#TYPHOID",
       "@type": [
-        "spcode__ImmunizationClass",
-        "Code"
+        "Code",
+        "spcode__ImmunizationClass"
       ],
       "dcterms__identifier": "TYPHOID",
       "dcterms__title": "TYPHOID",
+      "system": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#"
+    },
+    {
+      "@id": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#25",
+      "@type": [
+        "spcode__ImmunizationProduct",
+        "Code"
+      ],
+      "dcterms__identifier": "25",
+      "dcterms__title": "typhoid, oral",
       "system": "http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#"
     }
   ]
@@ -2578,69 +2582,69 @@ In RDF/XML, a serum sodium result looks like this:
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_e8adc80c-610e-4de0-aa7e-f34fae6e628d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_e8adc80c-610e-4de0-aa7e-f34fae6e628d <http://purl.org/dc/terms/title> "Final results: complete and verified" .
-_:_e8adc80c-610e-4de0-aa7e-f34fae6e628d <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/LabStatus#final> .
-<http://purl.bioontology.org/ontology/LNC/2951-2> <http://purl.org/dc/terms/identifier> "2951-2" .
+_:_74eba42e-53c2-46c0-814b-8bf828ac2813 <http://smartplatforms.org/terms#value> "140" .
+_:_74eba42e-53c2-46c0-814b-8bf828ac2813 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_74eba42e-53c2-46c0-814b-8bf828ac2813 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:_384c8ded-6e2e-4258-a08a-27b4f04dce72 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/2951-2> .
+_:_384c8ded-6e2e-4258-a08a-27b4f04dce72 <http://purl.org/dc/terms/title> "Serum sodium" .
+_:_384c8ded-6e2e-4258-a08a-27b4f04dce72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_384c8ded-6e2e-4258-a08a-27b4f04dce72 <http://smartplatforms.org/terms#provenance> _:_ee761662-d9d4-4a7a-9c25-f0d88ef61aa2 .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://purl.org/dc/terms/title> "Normal" .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LabResultInterpretation> .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://purl.org/dc/terms/identifier> "normal" .
+<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/LabResultInterpretation#" .
+_:_ee761662-d9d4-4a7a-9c25-f0d88ef61aa2 <http://purl.org/dc/terms/title> "Random blood sodium level" .
+_:_ee761662-d9d4-4a7a-9c25-f0d88ef61aa2 <http://smartplatforms.org/terms#translationFidelity> <http://smartplatforms.org/terms/codes/TranslationFidelity#verified> .
+_:_ee761662-d9d4-4a7a-9c25-f0d88ef61aa2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodeProvenance> .
+_:_ee761662-d9d4-4a7a-9c25-f0d88ef61aa2 <http://smartplatforms.org/terms#sourceCode> <http://my.local.coding.system/01234> .
+_:_c0f4c432-7908-4959-8b9a-ce10227a224e <http://smartplatforms.org/terms#value> "145" .
+_:_c0f4c432-7908-4959-8b9a-ce10227a224e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_c0f4c432-7908-4959-8b9a-ce10227a224e <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:_8bcb4f11-9f79-4e58-9d91-26d76ce7d954 <http://smartplatforms.org/terms#maximum> _:_250b7a5a-ce3c-44c0-b129-c4489c0e21f7 .
+_:_8bcb4f11-9f79-4e58-9d91-26d76ce7d954 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueRange> .
+_:_8bcb4f11-9f79-4e58-9d91-26d76ce7d954 <http://smartplatforms.org/terms#minimum> _:_93d3a897-34ba-4576-b87e-521363d868b4 .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://purl.org/dc/terms/title> "Serum sodium" .
 <http://purl.bioontology.org/ontology/LNC/2951-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/LNC/2951-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LOINC> .
-<http://purl.bioontology.org/ontology/LNC/2951-2> <http://purl.org/dc/terms/title> "Serum sodium" .
+<http://purl.bioontology.org/ontology/LNC/2951-2> <http://purl.org/dc/terms/identifier> "2951-2" .
 <http://purl.bioontology.org/ontology/LNC/2951-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-_:_6aeac845-0390-4083-bc7c-b18ae7b4002c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_6aeac845-0390-4083-bc7c-b18ae7b4002c <http://smartplatforms.org/terms#unit> "mEq/L" .
-_:_6aeac845-0390-4083-bc7c-b18ae7b4002c <http://smartplatforms.org/terms#value> "145" .
-_:_d771d0b8-b415-472f-a818-885e4c62fffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_d771d0b8-b415-472f-a818-885e4c62fffa <http://smartplatforms.org/terms#unit> "mEq/L" .
-_:_d771d0b8-b415-472f-a818-885e4c62fffa <http://smartplatforms.org/terms#value> "135" .
-_:_674bedac-9a6e-4013-a4f9-2e73dedcc3b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_674bedac-9a6e-4013-a4f9-2e73dedcc3b3 <http://smartplatforms.org/terms#unit> "mEq/L" .
-_:_674bedac-9a6e-4013-a4f9-2e73dedcc3b3 <http://smartplatforms.org/terms#value> "140" .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#notes> "Blood sample appears to have hemolyzed" .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#LabResult> .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#labStatus> _:_e8adc80c-610e-4de0-aa7e-f34fae6e628d .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#abnormalInterpretation> _:_5ae6a759-df4e-4f57-a2fc-daa5abb89623 .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#accessionNumber> "AC09205823577" .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#quantitativeResult> _:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#labName> _:_02727d86-23c2-40cd-886b-2078f023b282 .
-<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://purl.org/dc/terms/date> "2010-12-27T17:00:00" .
-_:_5ae6a759-df4e-4f57-a2fc-daa5abb89623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_5ae6a759-df4e-4f57-a2fc-daa5abb89623 <http://purl.org/dc/terms/title> "Normal" .
-_:_5ae6a759-df4e-4f57-a2fc-daa5abb89623 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> .
-_:_02727d86-23c2-40cd-886b-2078f023b282 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_02727d86-23c2-40cd-886b-2078f023b282 <http://purl.org/dc/terms/title> "Serum sodium" .
-_:_02727d86-23c2-40cd-886b-2078f023b282 <http://smartplatforms.org/terms#provenance> _:_da4d1285-5cca-4e4c-a246-ac620169b163 .
-_:_02727d86-23c2-40cd-886b-2078f023b282 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/2951-2> .
-<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://purl.org/dc/terms/identifier> "normal" .
-<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LabResultInterpretation> .
-<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://purl.org/dc/terms/title> "Normal" .
-<http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/LabResultInterpretation#" .
-_:_4f28135a-5f25-400f-88df-69ae0d997239 <http://smartplatforms.org/terms#maximum> _:_5b8681bb-16ae-49d5-9abb-9307e37b88f0 .
-_:_4f28135a-5f25-400f-88df-69ae0d997239 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueRange> .
-_:_4f28135a-5f25-400f-88df-69ae0d997239 <http://smartplatforms.org/terms#minimum> _:_6bdbb45f-4037-4706-a450-ca3185e4a932 .
-_:_da4d1285-5cca-4e4c-a246-ac620169b163 <http://purl.org/dc/terms/title> "Random blood sodium level" .
-_:_da4d1285-5cca-4e4c-a246-ac620169b163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodeProvenance> .
-_:_da4d1285-5cca-4e4c-a246-ac620169b163 <http://smartplatforms.org/terms#sourceCode> <http://my.local.coding.system/01234> .
-_:_da4d1285-5cca-4e4c-a246-ac620169b163 <http://smartplatforms.org/terms#translationFidelity> <http://smartplatforms.org/terms/codes/TranslationFidelity#verified> .
-_:_5b8681bb-16ae-49d5-9abb-9307e37b88f0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_5b8681bb-16ae-49d5-9abb-9307e37b88f0 <http://smartplatforms.org/terms#unit> "mEq/L" .
-_:_5b8681bb-16ae-49d5-9abb-9307e37b88f0 <http://smartplatforms.org/terms#value> "155" .
-_:_5fee1068-c9b4-4b29-b9de-11e67d21d221 <http://smartplatforms.org/terms#maximum> _:_6aeac845-0390-4083-bc7c-b18ae7b4002c .
-_:_5fee1068-c9b4-4b29-b9de-11e67d21d221 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueRange> .
-_:_5fee1068-c9b4-4b29-b9de-11e67d21d221 <http://smartplatforms.org/terms#minimum> _:_d771d0b8-b415-472f-a818-885e4c62fffa .
-<http://smartplatforms.org/terms/codes/LabStatus#final> <http://purl.org/dc/terms/identifier> "final" .
+_:_6dfed0b0-5d6e-4c27-bdf2-2b8c6f95b89a <http://smartplatforms.org/terms#normalRange> _:_679ae8ef-48e4-4bff-aab0-13270058ff6a .
+_:_6dfed0b0-5d6e-4c27-bdf2-2b8c6f95b89a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#QuantitativeResult> .
+_:_6dfed0b0-5d6e-4c27-bdf2-2b8c6f95b89a <http://smartplatforms.org/terms#nonCriticalRange> _:_8bcb4f11-9f79-4e58-9d91-26d76ce7d954 .
+_:_6dfed0b0-5d6e-4c27-bdf2-2b8c6f95b89a <http://smartplatforms.org/terms#valueAndUnit> _:_74eba42e-53c2-46c0-814b-8bf828ac2813 .
+_:_250b7a5a-ce3c-44c0-b129-c4489c0e21f7 <http://smartplatforms.org/terms#value> "155" .
+_:_250b7a5a-ce3c-44c0-b129-c4489c0e21f7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_250b7a5a-ce3c-44c0-b129-c4489c0e21f7 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:_812a6e54-af49-458b-a353-7d0e3528cef4 <http://smartplatforms.org/terms#value> "135" .
+_:_812a6e54-af49-458b-a353-7d0e3528cef4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_812a6e54-af49-458b-a353-7d0e3528cef4 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:_30837ccb-92e0-4d75-a118-4bcb38aab36c <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/LabStatus#final> .
+_:_30837ccb-92e0-4d75-a118-4bcb38aab36c <http://purl.org/dc/terms/title> "Final results: complete and verified" .
+_:_30837ccb-92e0-4d75-a118-4bcb38aab36c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://purl.org/dc/terms/title> "Final" .
 <http://smartplatforms.org/terms/codes/LabStatus#final> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://smartplatforms.org/terms/codes/LabStatus#final> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/LabResultStatus> .
-<http://smartplatforms.org/terms/codes/LabStatus#final> <http://purl.org/dc/terms/title> "Final" .
+<http://smartplatforms.org/terms/codes/LabStatus#final> <http://purl.org/dc/terms/identifier> "final" .
 <http://smartplatforms.org/terms/codes/LabStatus#final> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/LabStatus#" .
-_:_6bdbb45f-4037-4706-a450-ca3185e4a932 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_6bdbb45f-4037-4706-a450-ca3185e4a932 <http://smartplatforms.org/terms#unit> "mEq/L" .
-_:_6bdbb45f-4037-4706-a450-ca3185e4a932 <http://smartplatforms.org/terms#value> "120" .
-_:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad <http://smartplatforms.org/terms#normalRange> _:_5fee1068-c9b4-4b29-b9de-11e67d21d221 .
-_:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad <http://smartplatforms.org/terms#nonCriticalRange> _:_4f28135a-5f25-400f-88df-69ae0d997239 .
-_:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#QuantitativeResult> .
-_:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad <http://smartplatforms.org/terms#valueAndUnit> _:_674bedac-9a6e-4013-a4f9-2e73dedcc3b3 .
+_:_93d3a897-34ba-4576-b87e-521363d868b4 <http://smartplatforms.org/terms#value> "120" .
+_:_93d3a897-34ba-4576-b87e-521363d868b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_93d3a897-34ba-4576-b87e-521363d868b4 <http://smartplatforms.org/terms#unit> "mEq/L" .
+_:_6bfe8a29-bc02-48c7-95ff-fb2761648918 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/LabResultInterpretation#normal> .
+_:_6bfe8a29-bc02-48c7-95ff-fb2761648918 <http://purl.org/dc/terms/title> "Normal" .
+_:_6bfe8a29-bc02-48c7-95ff-fb2761648918 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://purl.org/dc/terms/date> "2010-12-27T17:00:00" .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#abnormalInterpretation> _:_6bfe8a29-bc02-48c7-95ff-fb2761648918 .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#accessionNumber> "AC09205823577" .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#quantitativeResult> _:_6dfed0b0-5d6e-4c27-bdf2-2b8c6f95b89a .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#LabResult> .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#labName> _:_384c8ded-6e2e-4258-a08a-27b4f04dce72 .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#notes> "Blood sample appears to have hemolyzed" .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724> <http://smartplatforms.org/terms#labStatus> _:_30837ccb-92e0-4d75-a118-4bcb38aab36c .
+_:_679ae8ef-48e4-4bff-aab0-13270058ff6a <http://smartplatforms.org/terms#maximum> _:_c0f4c432-7908-4959-8b9a-ce10227a224e .
+_:_679ae8ef-48e4-4bff-aab0-13270058ff6a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueRange> .
+_:_679ae8ef-48e4-4bff-aab0-13270058ff6a <http://smartplatforms.org/terms#minimum> _:_812a6e54-af49-458b-a353-7d0e3528cef4 .
 
 
 {% endhighlight %}</div>
@@ -2712,26 +2716,6 @@ _:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad <http://smartplatforms.org/terms#valueAn
 {
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
-    {
-      "@id": "http://smartplatforms.org/terms/codes/LabResultInterpretation#normal",
-      "@type": [
-        "Code",
-        "spcode__LabResultInterpretation"
-      ],
-      "dcterms__identifier": "normal",
-      "dcterms__title": "Normal",
-      "system": "http://smartplatforms.org/terms/codes/LabResultInterpretation#"
-    },
-    {
-      "@id": "http://smartplatforms.org/terms/codes/LabStatus#final",
-      "@type": [
-        "Code",
-        "spcode__LabResultStatus"
-      ],
-      "dcterms__identifier": "final",
-      "dcterms__title": "Final",
-      "system": "http://smartplatforms.org/terms/codes/LabStatus#"
-    },
     {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724",
       "@type": "LabResult",
@@ -2808,6 +2792,26 @@ _:_5e48baaf-f5cf-492e-9fd0-a0553b1e74ad <http://smartplatforms.org/terms#valueAn
           "value": "140"
         }
       }
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/LabResultInterpretation#normal",
+      "@type": [
+        "spcode__LabResultInterpretation",
+        "Code"
+      ],
+      "dcterms__identifier": "normal",
+      "dcterms__title": "Normal",
+      "system": "http://smartplatforms.org/terms/codes/LabResultInterpretation#"
+    },
+    {
+      "@id": "http://smartplatforms.org/terms/codes/LabStatus#final",
+      "@type": [
+        "Code",
+        "spcode__LabResultStatus"
+      ],
+      "dcterms__identifier": "final",
+      "dcterms__title": "Final",
+      "system": "http://smartplatforms.org/terms/codes/LabStatus#"
     },
     {
       "@id": "http://purl.bioontology.org/ontology/LNC/2951-2",
@@ -3037,28 +3041,28 @@ In RDF/XML notation, a patient on oral amitriptyline 50 mg tablets might provide
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
+_:_b2fd5a3a-782d-475e-a616-8ab36bbcdde1 <http://smartplatforms.org/terms#unit> "/d" .
+_:_b2fd5a3a-782d-475e-a616-8ab36bbcdde1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_b2fd5a3a-782d-475e-a616-8ab36bbcdde1 <http://smartplatforms.org/terms#value> "2" .
+_:_93974c79-958f-48f3-bd54-f535c5afb621 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/RXNORM/856845> .
+_:_93974c79-958f-48f3-bd54-f535c5afb621 <http://purl.org/dc/terms/title> "AMITRIPTYLINE HCL 50 MG TAB" .
+_:_93974c79-958f-48f3-bd54-f535c5afb621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_e7d3591b-e9cc-4f17-b728-21f1c5118658 <http://smartplatforms.org/terms#unit> "{tablet}" .
+_:_e7d3591b-e9cc-4f17-b728-21f1c5118658 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
+_:_e7d3591b-e9cc-4f17-b728-21f1c5118658 <http://smartplatforms.org/terms#value> "2" .
 <http://purl.bioontology.org/ontology/RXNORM/856845> <http://purl.org/dc/terms/identifier> "856845" .
-<http://purl.bioontology.org/ontology/RXNORM/856845> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/RXNORM/856845> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/RxNorm_Semantic> .
 <http://purl.bioontology.org/ontology/RXNORM/856845> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/RXNORM/" .
 <http://purl.bioontology.org/ontology/RXNORM/856845> <http://purl.org/dc/terms/title> "AMITRIPTYLINE HCL 50 MG TAB" .
-_:_ca1208c3-161e-4122-8e01-5af2e7393edc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_ca1208c3-161e-4122-8e01-5af2e7393edc <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/RXNORM/856845> .
-_:_ca1208c3-161e-4122-8e01-5af2e7393edc <http://purl.org/dc/terms/title> "AMITRIPTYLINE HCL 50 MG TAB" .
-_:_b5e1db6a-a3e3-4e2f-a5ec-eac664acf298 <http://smartplatforms.org/terms#unit> "{tablet}" .
-_:_b5e1db6a-a3e3-4e2f-a5ec-eac664acf298 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_b5e1db6a-a3e3-4e2f-a5ec-eac664acf298 <http://smartplatforms.org/terms#value> "2" .
-_:_41505729-6d5f-42dd-a301-ffde9af9af67 <http://smartplatforms.org/terms#unit> "/d" .
-_:_41505729-6d5f-42dd-a301-ffde9af9af67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#ValueAndUnit> .
-_:_41505729-6d5f-42dd-a301-ffde9af9af67 <http://smartplatforms.org/terms#value> "2" .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/RXNORM/856845> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/RxNorm_Semantic> .
+<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#quantity> _:_e7d3591b-e9cc-4f17-b728-21f1c5118658 .
+<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#startDate> "2007-03-14" .
+<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#drugName> _:_93974c79-958f-48f3-bd54-f535c5afb621 .
+<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#frequency> _:_b2fd5a3a-782d-475e-a616-8ab36bbcdde1 .
 <http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#instructions> "Take two tablets twice daily as needed for pain" .
 <http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#endDate> "2007-08-14" .
 <http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Medication> .
-<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#drugName> _:_ca1208c3-161e-4122-8e01-5af2e7393edc .
-<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#startDate> "2007-03-14" .
-<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#quantity> _:_b5e1db6a-a3e3-4e2f-a5ec-eac664acf298 .
-<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/medications/123> <http://smartplatforms.org/terms#frequency> _:_41505729-6d5f-42dd-a301-ffde9af9af67 .
 
 
 {% endhighlight %}</div>
@@ -3369,19 +3373,19 @@ belongsTo
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
+<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#endDate> "2007-08-01" .
+<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#problemName> _:_7dd377f4-3de1-40db-8497-a3d0ca64d531 .
+<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#startDate> "2007-06-12" .
+<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Problem> .
+_:_7dd377f4-3de1-40db-8497-a3d0ca64d531 <http://purl.org/dc/terms/title> "Backache (finding)" .
+_:_7dd377f4-3de1-40db-8497-a3d0ca64d531 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/161891005> .
+_:_7dd377f4-3de1-40db-8497-a3d0ca64d531 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://purl.org/dc/terms/title> "Backache (finding)" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://purl.org/dc/terms/identifier> "161891005" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/SNOMED> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://purl.org/dc/terms/title> "Backache (finding)" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/161891005> <http://purl.org/dc/terms/identifier> "161891005" .
-<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#endDate> "2007-08-01" .
-<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Problem> .
-<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#startDate> "2007-06-12" .
-<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/problems/961237> <http://smartplatforms.org/terms#problemName> _:_1edc7225-ede4-467e-80a6-67ebe16babdc .
-_:_1edc7225-ede4-467e-80a6-67ebe16babdc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_1edc7225-ede4-467e-80a6-67ebe16babdc <http://purl.org/dc/terms/title> "Backache (finding)" .
-_:_1edc7225-ede4-467e-80a6-67ebe16babdc <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/161891005> .
 
 
 {% endhighlight %}</div>
@@ -3413,6 +3417,16 @@ _:_1edc7225-ede4-467e-80a6-67ebe16babdc <http://smartplatforms.org/terms#code> <
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/161891005",
+      "@type": [
+        "Code",
+        "spcode__SNOMED"
+      ],
+      "dcterms__identifier": "161891005",
+      "dcterms__title": "Backache (finding)",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/problems/961237",
       "@type": "Problem",
       "belongsTo": {
@@ -3427,16 +3441,6 @@ _:_1edc7225-ede4-467e-80a6-67ebe16babdc <http://smartplatforms.org/terms#code> <
         "dcterms__title": "Backache (finding)"
       },
       "startDate": "2007-06-12"
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/161891005",
-      "@type": [
-        "Code",
-        "spcode__SNOMED"
-      ],
-      "dcterms__identifier": "161891005",
-      "dcterms__title": "Backache (finding)",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
     }
   ]
 }
@@ -3460,6 +3464,22 @@ belongsTo
 <br />
 <span style='font-size: small'><a href='#Medical_Record'>Medical Record</a></span>
 <br><br>The medical record URI to which a clinical statement belongs.  Each clinical statement points back to its medical record so that it can be treated in isolation.
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+encounters
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or more</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#encounters</span>
+<br />
+<span style='font-size: small'><a href='#Encounter'>Encounter</a></span>
+<br><br>Encounters at which this problem has been observed.
 </td>
 </tr>
 
@@ -3506,6 +3526,22 @@ problemName
 <br />
 <span style='font-size: small'><a href='#Coded_Value'>Coded Value</a> where code comes from <a href='#SNOMED'>SNOMED</a></span>
 <br><br>SNOMED-CT Concept for the problem
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+'>
+
+
+problemStatus
+<br />
+<span style='font-size: small; font-weight: normal'>Optional: 0 or 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#problemStatus</span>
+<br />
+<span style='font-size: small'><a href='#Coded_Value'>Coded Value</a> where code comes from <a href='#ProblemStatus'>ProblemStatus</a></span>
+<br><br>Status of this problem, using a SNOMED code for Active, Inactive, or Resolved.
 </td>
 </tr>
 
@@ -3584,24 +3620,24 @@ The SMART Procedure model describes a procedure that has been performed on a pat
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/Procedure> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://purl.org/dc/terms/identifier> "80146002" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://purl.org/dc/terms/title> "Appendectomy" .
-<http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Procedure> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://purl.org/dc/terms/identifier> "80146002" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/Procedure> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/80146002> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+_:_2dcafb2f-78f1-4e97-b98f-2313658bfa2d <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
+_:_2dcafb2f-78f1-4e97-b98f-2313658bfa2d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
+_:_2dcafb2f-78f1-4e97-b98f-2313658bfa2d <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
+_:_9200506e-b97f-4c40-92d5-db3e1c385e04 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/80146002> .
+_:_9200506e-b97f-4c40-92d5-db3e1c385e04 <http://purl.org/dc/terms/title> "" .
+_:_9200506e-b97f-4c40-92d5-db3e1c385e04 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_2577fe19-a4bf-4206-af94-2db29c24638c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
+_:_2577fe19-a4bf-4206-af94-2db29c24638c <http://www.w3.org/2006/vcard/ns#n> _:_2dcafb2f-78f1-4e97-b98f-2313658bfa2d .
 <http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://smartplatforms.org/terms#procedureName> _:_298221e0-07b4-4bef-a5e4-47f6f6e03297 .
-<http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://smartplatforms.org/terms#provider> _:_d0f562f9-3000-4232-a9ed-e64c523c4334 .
+<http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Procedure> .
+<http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://smartplatforms.org/terms#procedureName> _:_9200506e-b97f-4c40-92d5-db3e1c385e04 .
 <http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://purl.org/dc/terms/date> "2011-02-15" .
-_:_d0f562f9-3000-4232-a9ed-e64c523c4334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Provider> .
-_:_d0f562f9-3000-4232-a9ed-e64c523c4334 <http://www.w3.org/2006/vcard/ns#n> _:_9d48047e-8871-4e58-9491-e29169fa1afb .
-_:_9d48047e-8871-4e58-9491-e29169fa1afb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Name> .
-_:_9d48047e-8871-4e58-9491-e29169fa1afb <http://www.w3.org/2006/vcard/ns#family-name> "Mandel" .
-_:_9d48047e-8871-4e58-9491-e29169fa1afb <http://www.w3.org/2006/vcard/ns#given-name> "Joshua" .
-_:_298221e0-07b4-4bef-a5e4-47f6f6e03297 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_298221e0-07b4-4bef-a5e4-47f6f6e03297 <http://purl.org/dc/terms/title> "" .
-_:_298221e0-07b4-4bef-a5e4-47f6f6e03297 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/80146002> .
+<http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235> <http://smartplatforms.org/terms#provider> _:_2577fe19-a4bf-4206-af94-2db29c24638c .
 
 
 {% endhighlight %}</div>
@@ -3637,16 +3673,6 @@ _:_298221e0-07b4-4bef-a5e4-47f6f6e03297 <http://smartplatforms.org/terms#code> <
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/80146002",
-      "@type": [
-        "Code",
-        "spcode__Procedure"
-      ],
-      "dcterms__identifier": "80146002",
-      "dcterms__title": "Appendectomy",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
-    },
-    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235",
       "@type": "Procedure",
       "belongsTo": {
@@ -3660,14 +3686,26 @@ _:_298221e0-07b4-4bef-a5e4-47f6f6e03297 <http://smartplatforms.org/terms#code> <
         },
         "dcterms__title": ""
       },
-      "provider": {
-        "@type": "Provider",
-        "vcard__n": {
-          "@type": "vcard__Name",
-          "vcard__family_name": "Mandel",
-          "vcard__given_name": "Joshua"
+      "provider": [
+        {
+          "@type": "Provider",
+          "vcard__n": {
+            "@type": "vcard__Name",
+            "vcard__family_name": "Mandel",
+            "vcard__given_name": "Joshua"
+          }
         }
-      }
+      ]
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/80146002",
+      "@type": [
+        "spcode__Procedure",
+        "Code"
+      ],
+      "dcterms__identifier": "80146002",
+      "dcterms__title": "Appendectomy",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
     }
   ]
 }
@@ -3846,17 +3884,17 @@ The SMART Social History model describes smoking status accoring to Meaningful U
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-<http://sandbox-api.smartplatforms.org/records/2169591/social_history> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-<http://sandbox-api.smartplatforms.org/records/2169591/social_history> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#SocialHistory> .
-<http://sandbox-api.smartplatforms.org/records/2169591/social_history> <http://smartplatforms.org/terms#smokingStatus> _:_e55f0370-f3ed-4784-a49e-c1320bf12a0a .
-<http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://purl.org/dc/terms/title> "Former smoker" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://purl.org/dc/terms/identifier> "8517006" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://purl.org/dc/terms/title> "Former smoker" .
 <http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/SNOMEDCT/8517006> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/SmokingStatus> .
-_:_e55f0370-f3ed-4784-a49e-c1320bf12a0a <http://purl.org/dc/terms/title> "Former smoker)" .
-_:_e55f0370-f3ed-4784-a49e-c1320bf12a0a <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/8517006> .
-_:_e55f0370-f3ed-4784-a49e-c1320bf12a0a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+<http://sandbox-api.smartplatforms.org/records/2169591/social_history> <http://smartplatforms.org/terms#smokingStatus> _:_b23dd26e-bbb5-41ce-aa6a-639d7efef0e6 .
+<http://sandbox-api.smartplatforms.org/records/2169591/social_history> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/social_history> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#SocialHistory> .
+_:_b23dd26e-bbb5-41ce-aa6a-639d7efef0e6 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/8517006> .
+_:_b23dd26e-bbb5-41ce-aa6a-639d7efef0e6 <http://purl.org/dc/terms/title> "Former smoker)" .
+_:_b23dd26e-bbb5-41ce-aa6a-639d7efef0e6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
 
 
 {% endhighlight %}</div>
@@ -3886,6 +3924,16 @@ _:_e55f0370-f3ed-4784-a49e-c1320bf12a0a <http://www.w3.org/1999/02/22-rdf-syntax
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/8517006",
+      "@type": [
+        "Code",
+        "spcode__SmokingStatus"
+      ],
+      "dcterms__identifier": "8517006",
+      "dcterms__title": "Former smoker",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
       "@id": "http://sandbox-api.smartplatforms.org/records/2169591/social_history",
       "@type": "SocialHistory",
       "belongsTo": {
@@ -3898,16 +3946,6 @@ _:_e55f0370-f3ed-4784-a49e-c1320bf12a0a <http://www.w3.org/1999/02/22-rdf-syntax
         },
         "dcterms__title": "Former smoker)"
       }
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/8517006",
-      "@type": [
-        "Code",
-        "http://smartplatforms.org/terms/codes/SmokingStatus"
-      ],
-      "dcterms__identifier": "8517006",
-      "dcterms__title": "Former smoker",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
     }
   ]
 }
@@ -4237,173 +4275,173 @@ smokingStatus
 {% endhighlight %}</div>
 
 <div class='n_triples'>{% highlight xml %}
-_:_402e6bf9-f523-4499-8075-04d84d094bda <http://smartplatforms.org/terms#value> "1.80" .
-_:_402e6bf9-f523-4499-8075-04d84d094bda <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_402e6bf9-f523-4499-8075-04d84d094bda <http://smartplatforms.org/terms#unit> "m" .
-_:_402e6bf9-f523-4499-8075-04d84d094bda <http://smartplatforms.org/terms#vitalName> _:_e1ef9ed2-785b-4c1c-87a4-b3c6682ebd31 .
-_:_f7bddc11-4638-4511-8fae-fb39fedbbb7d <http://smartplatforms.org/terms#value> "70" .
-_:_f7bddc11-4638-4511-8fae-fb39fedbbb7d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_f7bddc11-4638-4511-8fae-fb39fedbbb7d <http://smartplatforms.org/terms#unit> "{beats}/min" .
-_:_f7bddc11-4638-4511-8fae-fb39fedbbb7d <http://smartplatforms.org/terms#vitalName> _:_a71140ab-1fd5-4a38-b5ca-4130922dd579 .
-<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/BloodPressureBodyPosition> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://purl.org/dc/terms/title> "Sitting" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://purl.org/dc/terms/identifier> "33586001" .
-_:_d423ada2-226c-413a-ac80-5ada25192226 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_d423ada2-226c-413a-ac80-5ada25192226 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/39156-5> .
-_:_d423ada2-226c-413a-ac80-5ada25192226 <http://purl.org/dc/terms/title> "Body mass index" .
-_:_c7f24092-dc4b-4636-b9cb-cc2fdf8f5d20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_c7f24092-dc4b-4636-b9cb-cc2fdf8f5d20 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/9279-1> .
-_:_c7f24092-dc4b-4636-b9cb-cc2fdf8f5d20 <http://purl.org/dc/terms/title> "Respiration rate" .
-_:_e3a08c84-61ed-4811-aa9f-44134176239a <http://smartplatforms.org/terms#value> "99" .
-_:_e3a08c84-61ed-4811-aa9f-44134176239a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_e3a08c84-61ed-4811-aa9f-44134176239a <http://smartplatforms.org/terms#unit> "%{HemoglobinSaturation}" .
-_:_e3a08c84-61ed-4811-aa9f-44134176239a <http://smartplatforms.org/terms#vitalName> _:_32d73ab7-72b9-4444-8641-cdb46240b8fd .
-_:_7940fe74-d078-4c09-bef1-a426a5e2940c <http://smartplatforms.org/terms#value> "16" .
-_:_7940fe74-d078-4c09-bef1-a426a5e2940c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_7940fe74-d078-4c09-bef1-a426a5e2940c <http://smartplatforms.org/terms#unit> "{breaths}/min" .
-_:_7940fe74-d078-4c09-bef1-a426a5e2940c <http://smartplatforms.org/terms#vitalName> _:_c7f24092-dc4b-4636-b9cb-cc2fdf8f5d20 .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#heartRate> _:_f7bddc11-4638-4511-8fae-fb39fedbbb7d .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#encounter> <http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#weight> _:_02927d72-466a-4ebb-baa9-3391a9b08ea1 .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#temperature> _:_176ac809-9e5c-430d-ab4a-eb41a09aa296 .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#respiratoryRate> _:_7940fe74-d078-4c09-bef1-a426a5e2940c .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#oxygenSaturation> _:_e3a08c84-61ed-4811-aa9f-44134176239a .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#headCircumference> _:_1205bd8c-8e79-4b62-8267-cfb739eb7703 .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#bodyMassIndex> _:_3acb70f4-683e-4198-8871-cf07c59695c6 .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSignSet> .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#height> _:_402e6bf9-f523-4499-8075-04d84d094bda .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#bloodPressure> _:_b3ecc5e5-6e06-429f-b04e-123624be4e3d .
-<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-_:_4ced841b-478f-469e-9474-49e81834f50f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_4ced841b-478f-469e-9474-49e81834f50f <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8480-6> .
-_:_4ced841b-478f-469e-9474-49e81834f50f <http://purl.org/dc/terms/title> "Intravascular systolic" .
-_:_2a99cbaf-217f-44ba-bf97-9381910a0dd9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_2a99cbaf-217f-44ba-bf97-9381910a0dd9 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> .
-_:_2a99cbaf-217f-44ba-bf97-9381910a0dd9 <http://purl.org/dc/terms/title> "Ambulatory encounter" .
-<http://purl.bioontology.org/ontology/LNC/8480-6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/8480-6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/8480-6> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/8480-6> <http://purl.org/dc/terms/title> "Intravascular systolic" .
-<http://purl.bioontology.org/ontology/LNC/8480-6> <http://purl.org/dc/terms/identifier> "8480-6" .
-_:_e1ef9ed2-785b-4c1c-87a4-b3c6682ebd31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_e1ef9ed2-785b-4c1c-87a4-b3c6682ebd31 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8302-2> .
-_:_e1ef9ed2-785b-4c1c-87a4-b3c6682ebd31 <http://purl.org/dc/terms/title> "Body height" .
-_:_a1234042-b821-423b-8ec0-64b75383e326 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_a1234042-b821-423b-8ec0-64b75383e326 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8310-5> .
-_:_a1234042-b821-423b-8ec0-64b75383e326 <http://purl.org/dc/terms/title> "Body temperature" .
-<http://purl.bioontology.org/ontology/LNC/8867-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/8867-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/8867-4> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/8867-4> <http://purl.org/dc/terms/title> "Heart rate" .
-<http://purl.bioontology.org/ontology/LNC/8867-4> <http://purl.org/dc/terms/identifier> "8867-4" .
-_:_32d73ab7-72b9-4444-8641-cdb46240b8fd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_32d73ab7-72b9-4444-8641-cdb46240b8fd <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/2710-2> .
-_:_32d73ab7-72b9-4444-8641-cdb46240b8fd <http://purl.org/dc/terms/title> "Oxygen saturation" .
-_:_d4a40fc6-b885-4c19-82bd-5eeb8a252163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_d4a40fc6-b885-4c19-82bd-5eeb8a252163 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/368209003> .
-_:_d4a40fc6-b885-4c19-82bd-5eeb8a252163 <http://purl.org/dc/terms/title> "Right arm" .
+_:_e1134aff-52be-4400-ab98-24c8b0367ec5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_e1134aff-52be-4400-ab98-24c8b0367ec5 <http://purl.org/dc/terms/title> "Head circumference" .
+_:_e1134aff-52be-4400-ab98-24c8b0367ec5 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8287-5> .
+_:_f6b7a350-0263-490d-8e53-5838fcc177a3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_f6b7a350-0263-490d-8e53-5838fcc177a3 <http://purl.org/dc/terms/title> "Sitting" .
+_:_f6b7a350-0263-490d-8e53-5838fcc177a3 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/33586001> .
 <http://purl.bioontology.org/ontology/LNC/8287-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/LNC/8287-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/8287-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
 <http://purl.bioontology.org/ontology/LNC/8287-5> <http://purl.org/dc/terms/title> "Head circumference" .
 <http://purl.bioontology.org/ontology/LNC/8287-5> <http://purl.org/dc/terms/identifier> "8287-5" .
-_:_1205bd8c-8e79-4b62-8267-cfb739eb7703 <http://smartplatforms.org/terms#value> "70" .
-_:_1205bd8c-8e79-4b62-8267-cfb739eb7703 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_1205bd8c-8e79-4b62-8267-cfb739eb7703 <http://smartplatforms.org/terms#unit> "{beats}/min" .
-_:_1205bd8c-8e79-4b62-8267-cfb739eb7703 <http://smartplatforms.org/terms#vitalName> _:_a7fd41b4-23c4-49f6-8664-1e4e023025ec .
-_:_a71140ab-1fd5-4a38-b5ca-4130922dd579 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_a71140ab-1fd5-4a38-b5ca-4130922dd579 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8867-4> .
-_:_a71140ab-1fd5-4a38-b5ca-4130922dd579 <http://purl.org/dc/terms/title> "Heart rate" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/BloodPressureBodySite> .
-<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://purl.org/dc/terms/title> "Right arm" .
-<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://purl.org/dc/terms/identifier> "368209003" .
-<http://purl.bioontology.org/ontology/LNC/3141-9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/3141-9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/3141-9> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/3141-9> <http://purl.org/dc/terms/title> "Body weight" .
-<http://purl.bioontology.org/ontology/LNC/3141-9> <http://purl.org/dc/terms/identifier> "3141-9" .
-_:_02927d72-466a-4ebb-baa9-3391a9b08ea1 <http://smartplatforms.org/terms#value> "70.8" .
-_:_02927d72-466a-4ebb-baa9-3391a9b08ea1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_02927d72-466a-4ebb-baa9-3391a9b08ea1 <http://smartplatforms.org/terms#unit> "kg" .
-_:_02927d72-466a-4ebb-baa9-3391a9b08ea1 <http://smartplatforms.org/terms#vitalName> _:_9766d2f0-08d0-4ea7-90cf-889089fe405f .
-_:_176ac809-9e5c-430d-ab4a-eb41a09aa296 <http://smartplatforms.org/terms#value> "37" .
-_:_176ac809-9e5c-430d-ab4a-eb41a09aa296 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_176ac809-9e5c-430d-ab4a-eb41a09aa296 <http://smartplatforms.org/terms#unit> "Cel" .
-_:_176ac809-9e5c-430d-ab4a-eb41a09aa296 <http://smartplatforms.org/terms#vitalName> _:_a1234042-b821-423b-8ec0-64b75383e326 .
-_:_3acb70f4-683e-4198-8871-cf07c59695c6 <http://smartplatforms.org/terms#value> "21.8" .
-_:_3acb70f4-683e-4198-8871-cf07c59695c6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_3acb70f4-683e-4198-8871-cf07c59695c6 <http://smartplatforms.org/terms#unit> "kg/m2" .
-_:_3acb70f4-683e-4198-8871-cf07c59695c6 <http://smartplatforms.org/terms#vitalName> _:_d423ada2-226c-413a-ac80-5ada25192226 .
-_:_b3ecc5e5-6e06-429f-b04e-123624be4e3d <http://smartplatforms.org/terms#systolic> _:_6b1cd8cd-b3a8-45d3-9546-7e70e72a67fc .
-_:_b3ecc5e5-6e06-429f-b04e-123624be4e3d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#BloodPressure> .
-_:_b3ecc5e5-6e06-429f-b04e-123624be4e3d <http://smartplatforms.org/terms#bodySite> _:_d4a40fc6-b885-4c19-82bd-5eeb8a252163 .
-_:_b3ecc5e5-6e06-429f-b04e-123624be4e3d <http://smartplatforms.org/terms#diastolic> _:_8911f6c7-8a4b-4631-a4b6-025746067177 .
-_:_b3ecc5e5-6e06-429f-b04e-123624be4e3d <http://smartplatforms.org/terms#bodyPosition> _:_2ad12a9d-e67c-4b6e-9240-3b2bc9e1ffee .
-<http://purl.bioontology.org/ontology/LNC/2710-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/2710-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/2710-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/2710-2> <http://purl.org/dc/terms/title> "Oxygen saturation" .
-<http://purl.bioontology.org/ontology/LNC/2710-2> <http://purl.org/dc/terms/identifier> "2710-2" .
-_:_a7fd41b4-23c4-49f6-8664-1e4e023025ec <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_a7fd41b4-23c4-49f6-8664-1e4e023025ec <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8287-5> .
-_:_a7fd41b4-23c4-49f6-8664-1e4e023025ec <http://purl.org/dc/terms/title> "Head circumference" .
-_:_6b1cd8cd-b3a8-45d3-9546-7e70e72a67fc <http://smartplatforms.org/terms#value> "132" .
-_:_6b1cd8cd-b3a8-45d3-9546-7e70e72a67fc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_6b1cd8cd-b3a8-45d3-9546-7e70e72a67fc <http://smartplatforms.org/terms#unit> "mm[Hg]" .
-_:_6b1cd8cd-b3a8-45d3-9546-7e70e72a67fc <http://smartplatforms.org/terms#vitalName> _:_4ced841b-478f-469e-9474-49e81834f50f .
+<http://purl.bioontology.org/ontology/LNC/8287-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+_:_1bc39df0-5b90-4945-836f-4e46eb1a6c9a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#BloodPressure> .
+_:_1bc39df0-5b90-4945-836f-4e46eb1a6c9a <http://smartplatforms.org/terms#bodySite> _:_d03e44b9-cf98-4253-85ae-ee5e415ec06c .
+_:_1bc39df0-5b90-4945-836f-4e46eb1a6c9a <http://smartplatforms.org/terms#systolic> _:_e7bd33fa-3927-4f78-a163-87cf849a9e9e .
+_:_1bc39df0-5b90-4945-836f-4e46eb1a6c9a <http://smartplatforms.org/terms#bodyPosition> _:_f6b7a350-0263-490d-8e53-5838fcc177a3 .
+_:_1bc39df0-5b90-4945-836f-4e46eb1a6c9a <http://smartplatforms.org/terms#diastolic> _:_adc0ef35-a9d2-4510-95c0-66fea5e8e558 .
+_:_83dc6e94-c70c-4e08-943f-4105cfb86168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_83dc6e94-c70c-4e08-943f-4105cfb86168 <http://purl.org/dc/terms/title> "Intravascular diastolic" .
+_:_83dc6e94-c70c-4e08-943f-4105cfb86168 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8462-4> .
 <http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Encounter> .
 <http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#endDate> "2010-05-12T04:20:00Z" .
-<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#encounterType> _:_2a99cbaf-217f-44ba-bf97-9381910a0dd9 .
+<http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#encounterType> _:_24164113-fbcf-4571-9d8f-35041632ace7 .
 <http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#startDate> "2010-05-12T04:00:00Z" .
 <http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
-_:_2ad12a9d-e67c-4b6e-9240-3b2bc9e1ffee <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_2ad12a9d-e67c-4b6e-9240-3b2bc9e1ffee <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/33586001> .
-_:_2ad12a9d-e67c-4b6e-9240-3b2bc9e1ffee <http://purl.org/dc/terms/title> "Sitting" .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/EncounterType> .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/EncounterType#" .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/title> "Ambulatory encounter" .
-<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/identifier> "ambulatory" .
-<http://purl.bioontology.org/ontology/LNC/8310-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/8310-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/8310-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/8310-5> <http://purl.org/dc/terms/title> "Body temperature" .
-<http://purl.bioontology.org/ontology/LNC/8310-5> <http://purl.org/dc/terms/identifier> "8310-5" .
-<http://purl.bioontology.org/ontology/LNC/8462-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/8462-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/8462-4> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/8462-4> <http://purl.org/dc/terms/title> "Intravascular diastolic" .
-<http://purl.bioontology.org/ontology/LNC/8462-4> <http://purl.org/dc/terms/identifier> "8462-4" .
+_:_5252e72c-a4ea-4f9c-a632-27f0daf497e1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_5252e72c-a4ea-4f9c-a632-27f0daf497e1 <http://smartplatforms.org/terms#vitalName> _:_d28ba6c8-fbfa-4445-9109-d6c90f29f61c .
+_:_5252e72c-a4ea-4f9c-a632-27f0daf497e1 <http://smartplatforms.org/terms#value> "21.8" .
+_:_5252e72c-a4ea-4f9c-a632-27f0daf497e1 <http://smartplatforms.org/terms#unit> "kg/m2" .
+_:_adc0ef35-a9d2-4510-95c0-66fea5e8e558 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_adc0ef35-a9d2-4510-95c0-66fea5e8e558 <http://smartplatforms.org/terms#vitalName> _:_83dc6e94-c70c-4e08-943f-4105cfb86168 .
+_:_adc0ef35-a9d2-4510-95c0-66fea5e8e558 <http://smartplatforms.org/terms#value> "82" .
+_:_adc0ef35-a9d2-4510-95c0-66fea5e8e558 <http://smartplatforms.org/terms#unit> "mm[Hg]" .
 <http://purl.bioontology.org/ontology/LNC/39156-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/LNC/39156-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/39156-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
 <http://purl.bioontology.org/ontology/LNC/39156-5> <http://purl.org/dc/terms/title> "Body mass index" .
 <http://purl.bioontology.org/ontology/LNC/39156-5> <http://purl.org/dc/terms/identifier> "39156-5" .
-_:_0e49dbc5-9fef-495d-8c91-104a0a9af6b6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_0e49dbc5-9fef-495d-8c91-104a0a9af6b6 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8462-4> .
-_:_0e49dbc5-9fef-495d-8c91-104a0a9af6b6 <http://purl.org/dc/terms/title> "Intravascular diastolic" .
-_:_8911f6c7-8a4b-4631-a4b6-025746067177 <http://smartplatforms.org/terms#value> "82" .
-_:_8911f6c7-8a4b-4631-a4b6-025746067177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
-_:_8911f6c7-8a4b-4631-a4b6-025746067177 <http://smartplatforms.org/terms#unit> "mm[Hg]" .
-_:_8911f6c7-8a4b-4631-a4b6-025746067177 <http://smartplatforms.org/terms#vitalName> _:_0e49dbc5-9fef-495d-8c91-104a0a9af6b6 .
-<http://purl.bioontology.org/ontology/LNC/9279-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
-<http://purl.bioontology.org/ontology/LNC/9279-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/9279-1> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
-<http://purl.bioontology.org/ontology/LNC/9279-1> <http://purl.org/dc/terms/title> "Respiration rate" .
-<http://purl.bioontology.org/ontology/LNC/9279-1> <http://purl.org/dc/terms/identifier> "9279-1" .
-_:_9766d2f0-08d0-4ea7-90cf-889089fe405f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
-_:_9766d2f0-08d0-4ea7-90cf-889089fe405f <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/3141-9> .
-_:_9766d2f0-08d0-4ea7-90cf-889089fe405f <http://purl.org/dc/terms/title> "Body weight" .
+<http://purl.bioontology.org/ontology/LNC/39156-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://purl.org/dc/terms/title> "Intravascular systolic" .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://purl.org/dc/terms/identifier> "8480-6" .
+<http://purl.bioontology.org/ontology/LNC/8480-6> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+_:_53a8abc6-c01e-4899-98b2-cd483877cbb1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_53a8abc6-c01e-4899-98b2-cd483877cbb1 <http://smartplatforms.org/terms#vitalName> _:_54cb3dce-6e36-4393-8801-2629005dee0c .
+_:_53a8abc6-c01e-4899-98b2-cd483877cbb1 <http://smartplatforms.org/terms#value> "37" .
+_:_53a8abc6-c01e-4899-98b2-cd483877cbb1 <http://smartplatforms.org/terms#unit> "Cel" .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#encounter> <http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352> .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#respiratoryRate> _:_e9c64aca-fde6-49fc-85d2-68f37e8ae50a .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#headCircumference> _:_1b43cfee-6a68-4650-94d2-4a98d42d3069 .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#belongsTo> <http://sandbox-api.smartplatforms.org/records/2169591> .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#height> _:_a58c9afd-11c6-499a-9a54-f7a334900a29 .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#heartRate> _:_2e484058-add6-4d5b-951a-dcf6bc68d476 .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://purl.org/dc/terms/date> "2010-05-12T04:00:00Z" .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#weight> _:_bb2e1572-f402-4304-bce3-2b6bee1d3836 .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#temperature> _:_53a8abc6-c01e-4899-98b2-cd483877cbb1 .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSignSet> .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#bloodPressure> _:_1bc39df0-5b90-4945-836f-4e46eb1a6c9a .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#oxygenSaturation> _:_afcf7e32-3a4e-4846-b77f-9e6fca9c73e9 .
+<http://sandbox-api.smartplatforms.org/records/2169591/vital_sign_sets/823523> <http://smartplatforms.org/terms#bodyMassIndex> _:_5252e72c-a4ea-4f9c-a632-27f0daf497e1 .
+_:_dca31039-a751-4a64-922f-46291bb8d59f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_dca31039-a751-4a64-922f-46291bb8d59f <http://purl.org/dc/terms/title> "Oxygen saturation" .
+_:_dca31039-a751-4a64-922f-46291bb8d59f <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/2710-2> .
+_:_7a2c842d-2bce-4b78-9711-d949c98c0475 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_7a2c842d-2bce-4b78-9711-d949c98c0475 <http://purl.org/dc/terms/title> "Body height" .
+_:_7a2c842d-2bce-4b78-9711-d949c98c0475 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8302-2> .
+_:_722cd8ae-2846-4032-a6a0-e0c5431c01b7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_722cd8ae-2846-4032-a6a0-e0c5431c01b7 <http://purl.org/dc/terms/title> "Respiration rate" .
+_:_722cd8ae-2846-4032-a6a0-e0c5431c01b7 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/9279-1> .
+_:_24164113-fbcf-4571-9d8f-35041632ace7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_24164113-fbcf-4571-9d8f-35041632ace7 <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+_:_24164113-fbcf-4571-9d8f-35041632ace7 <http://smartplatforms.org/terms#code> <http://smartplatforms.org/terms/codes/EncounterType#ambulatory> .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://purl.org/dc/terms/title> "Body weight" .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://purl.org/dc/terms/identifier> "3141-9" .
+<http://purl.bioontology.org/ontology/LNC/3141-9> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/BloodPressureBodySite> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://purl.org/dc/terms/title> "Right arm" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://purl.org/dc/terms/identifier> "368209003" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/368209003> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://purl.org/dc/terms/title> "Oxygen saturation" .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://purl.org/dc/terms/identifier> "2710-2" .
+<http://purl.bioontology.org/ontology/LNC/2710-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+_:_54cb3dce-6e36-4393-8801-2629005dee0c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_54cb3dce-6e36-4393-8801-2629005dee0c <http://purl.org/dc/terms/title> "Body temperature" .
+_:_54cb3dce-6e36-4393-8801-2629005dee0c <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8310-5> .
+_:_4ba91682-0473-486c-bf90-5c6c8fe6968a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_4ba91682-0473-486c-bf90-5c6c8fe6968a <http://purl.org/dc/terms/title> "Heart rate" .
+_:_4ba91682-0473-486c-bf90-5c6c8fe6968a <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8867-4> .
 <http://purl.bioontology.org/ontology/LNC/8302-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
 <http://purl.bioontology.org/ontology/LNC/8302-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
-<http://purl.bioontology.org/ontology/LNC/8302-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
 <http://purl.bioontology.org/ontology/LNC/8302-2> <http://purl.org/dc/terms/title> "Body height" .
 <http://purl.bioontology.org/ontology/LNC/8302-2> <http://purl.org/dc/terms/identifier> "8302-2" .
+<http://purl.bioontology.org/ontology/LNC/8302-2> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/BloodPressureBodyPosition> .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://purl.org/dc/terms/title> "Sitting" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://purl.org/dc/terms/identifier> "33586001" .
+<http://purl.bioontology.org/ontology/SNOMEDCT/33586001> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/SNOMEDCT/" .
+_:_d28ba6c8-fbfa-4445-9109-d6c90f29f61c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_d28ba6c8-fbfa-4445-9109-d6c90f29f61c <http://purl.org/dc/terms/title> "Body mass index" .
+_:_d28ba6c8-fbfa-4445-9109-d6c90f29f61c <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/39156-5> .
+_:_bb2e1572-f402-4304-bce3-2b6bee1d3836 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_bb2e1572-f402-4304-bce3-2b6bee1d3836 <http://smartplatforms.org/terms#vitalName> _:_81c56cbe-a28c-4e05-94ce-d2f853dbb7b4 .
+_:_bb2e1572-f402-4304-bce3-2b6bee1d3836 <http://smartplatforms.org/terms#value> "70.8" .
+_:_bb2e1572-f402-4304-bce3-2b6bee1d3836 <http://smartplatforms.org/terms#unit> "kg" .
+_:_81c56cbe-a28c-4e05-94ce-d2f853dbb7b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_81c56cbe-a28c-4e05-94ce-d2f853dbb7b4 <http://purl.org/dc/terms/title> "Body weight" .
+_:_81c56cbe-a28c-4e05-94ce-d2f853dbb7b4 <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/3141-9> .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://purl.org/dc/terms/title> "Body temperature" .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://purl.org/dc/terms/identifier> "8310-5" .
+<http://purl.bioontology.org/ontology/LNC/8310-5> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+_:_afcf7e32-3a4e-4846-b77f-9e6fca9c73e9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_afcf7e32-3a4e-4846-b77f-9e6fca9c73e9 <http://smartplatforms.org/terms#vitalName> _:_dca31039-a751-4a64-922f-46291bb8d59f .
+_:_afcf7e32-3a4e-4846-b77f-9e6fca9c73e9 <http://smartplatforms.org/terms#value> "99" .
+_:_afcf7e32-3a4e-4846-b77f-9e6fca9c73e9 <http://smartplatforms.org/terms#unit> "%{HemoglobinSaturation}" .
+_:_4cd7a6ba-7675-4026-afe3-ee3fb5449fec <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_4cd7a6ba-7675-4026-afe3-ee3fb5449fec <http://purl.org/dc/terms/title> "Intravascular systolic" .
+_:_4cd7a6ba-7675-4026-afe3-ee3fb5449fec <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/LNC/8480-6> .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://purl.org/dc/terms/title> "Respiration rate" .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://purl.org/dc/terms/identifier> "9279-1" .
+<http://purl.bioontology.org/ontology/LNC/9279-1> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+_:_e7bd33fa-3927-4f78-a163-87cf849a9e9e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_e7bd33fa-3927-4f78-a163-87cf849a9e9e <http://smartplatforms.org/terms#vitalName> _:_4cd7a6ba-7675-4026-afe3-ee3fb5449fec .
+_:_e7bd33fa-3927-4f78-a163-87cf849a9e9e <http://smartplatforms.org/terms#value> "132" .
+_:_e7bd33fa-3927-4f78-a163-87cf849a9e9e <http://smartplatforms.org/terms#unit> "mm[Hg]" .
+_:_d03e44b9-cf98-4253-85ae-ee5e415ec06c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#CodedValue> .
+_:_d03e44b9-cf98-4253-85ae-ee5e415ec06c <http://purl.org/dc/terms/title> "Right arm" .
+_:_d03e44b9-cf98-4253-85ae-ee5e415ec06c <http://smartplatforms.org/terms#code> <http://purl.bioontology.org/ontology/SNOMEDCT/368209003> .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://purl.org/dc/terms/title> "Intravascular diastolic" .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://purl.org/dc/terms/identifier> "8462-4" .
+<http://purl.bioontology.org/ontology/LNC/8462-4> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/EncounterType> .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/title> "Ambulatory encounter" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://purl.org/dc/terms/identifier> "ambulatory" .
+<http://smartplatforms.org/terms/codes/EncounterType#ambulatory> <http://smartplatforms.org/terms#system> "http://smartplatforms.org/terms/codes/EncounterType#" .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#Code> .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms/codes/VitalSign> .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://purl.org/dc/terms/title> "Heart rate" .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://purl.org/dc/terms/identifier> "8867-4" .
+<http://purl.bioontology.org/ontology/LNC/8867-4> <http://smartplatforms.org/terms#system> "http://purl.bioontology.org/ontology/LNC/" .
+_:_a58c9afd-11c6-499a-9a54-f7a334900a29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_a58c9afd-11c6-499a-9a54-f7a334900a29 <http://smartplatforms.org/terms#vitalName> _:_7a2c842d-2bce-4b78-9711-d949c98c0475 .
+_:_a58c9afd-11c6-499a-9a54-f7a334900a29 <http://smartplatforms.org/terms#value> "1.80" .
+_:_a58c9afd-11c6-499a-9a54-f7a334900a29 <http://smartplatforms.org/terms#unit> "m" .
+_:_2e484058-add6-4d5b-951a-dcf6bc68d476 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_2e484058-add6-4d5b-951a-dcf6bc68d476 <http://smartplatforms.org/terms#vitalName> _:_4ba91682-0473-486c-bf90-5c6c8fe6968a .
+_:_2e484058-add6-4d5b-951a-dcf6bc68d476 <http://smartplatforms.org/terms#value> "70" .
+_:_2e484058-add6-4d5b-951a-dcf6bc68d476 <http://smartplatforms.org/terms#unit> "{beats}/min" .
+_:_1b43cfee-6a68-4650-94d2-4a98d42d3069 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_1b43cfee-6a68-4650-94d2-4a98d42d3069 <http://smartplatforms.org/terms#vitalName> _:_e1134aff-52be-4400-ab98-24c8b0367ec5 .
+_:_1b43cfee-6a68-4650-94d2-4a98d42d3069 <http://smartplatforms.org/terms#value> "70" .
+_:_1b43cfee-6a68-4650-94d2-4a98d42d3069 <http://smartplatforms.org/terms#unit> "{beats}/min" .
+_:_e9c64aca-fde6-49fc-85d2-68f37e8ae50a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smartplatforms.org/terms#VitalSign> .
+_:_e9c64aca-fde6-49fc-85d2-68f37e8ae50a <http://smartplatforms.org/terms#vitalName> _:_722cd8ae-2846-4032-a6a0-e0c5431c01b7 .
+_:_e9c64aca-fde6-49fc-85d2-68f37e8ae50a <http://smartplatforms.org/terms#value> "16" .
+_:_e9c64aca-fde6-49fc-85d2-68f37e8ae50a <http://smartplatforms.org/terms#unit> "{breaths}/min" .
 
 
 {% endhighlight %}</div>
@@ -4579,63 +4617,59 @@ _:_9766d2f0-08d0-4ea7-90cf-889089fe405f <http://purl.org/dc/terms/title> "Body w
   "@context": "http://dev.smartplatforms.org/reference/datamodel/contexts/smart_context.jsonld",
   "@graph": [
     {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/33586001",
-      "@type": [
-        "spcode__BloodPressureBodyPosition",
-        "Code"
-      ],
-      "dcterms__identifier": "33586001",
-      "dcterms__title": "Sitting",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/368209003",
-      "@type": [
-        "Code",
-        "spcode__BloodPressureBodySite"
-      ],
-      "dcterms__identifier": "368209003",
-      "dcterms__title": "Right arm",
-      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/LNC/8310-5",
+      "@id": "http://purl.bioontology.org/ontology/LNC/8302-2",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "8310-5",
-      "dcterms__title": "Body temperature",
+      "dcterms__identifier": "8302-2",
+      "dcterms__title": "Body height",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/LNC/8287-5",
+      "@id": "http://purl.bioontology.org/ontology/LNC/39156-5",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "8287-5",
-      "dcterms__title": "Head circumference",
+      "dcterms__identifier": "39156-5",
+      "dcterms__title": "Body mass index",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/LNC/2710-2",
+      "@id": "http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352",
+      "@type": "Encounter",
+      "belongsTo": {
+        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
+      },
+      "encounterType": {
+        "@type": "CodedValue",
+        "code": {
+          "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory"
+        },
+        "dcterms__title": "Ambulatory encounter"
+      },
+      "endDate": "2010-05-12T04:20:00Z",
+      "startDate": "2010-05-12T04:00:00Z"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/9279-1",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "2710-2",
-      "dcterms__title": "Oxygen saturation",
+      "dcterms__identifier": "9279-1",
+      "dcterms__title": "Respiration rate",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/LNC/8867-4",
+      "@id": "http://purl.bioontology.org/ontology/LNC/3141-9",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "8867-4",
-      "dcterms__title": "Heart rate",
+      "dcterms__identifier": "3141-9",
+      "dcterms__title": "Body weight",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
@@ -4787,13 +4821,33 @@ _:_9766d2f0-08d0-4ea7-90cf-889089fe405f <http://purl.org/dc/terms/title> "Body w
       }
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/LNC/8462-4",
+      "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory",
+      "@type": [
+        "Code",
+        "spcode__EncounterType"
+      ],
+      "dcterms__identifier": "ambulatory",
+      "dcterms__title": "Ambulatory encounter",
+      "system": "http://smartplatforms.org/terms/codes/EncounterType#"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8867-4",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "8462-4",
-      "dcterms__title": "Intravascular diastolic",
+      "dcterms__identifier": "8867-4",
+      "dcterms__title": "Heart rate",
+      "system": "http://purl.bioontology.org/ontology/LNC/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/2710-2",
+      "@type": [
+        "Code",
+        "spcode__VitalSign"
+      ],
+      "dcterms__identifier": "2710-2",
+      "dcterms__title": "Oxygen saturation",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
@@ -4807,70 +4861,54 @@ _:_9766d2f0-08d0-4ea7-90cf-889089fe405f <http://purl.org/dc/terms/title> "Body w
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/LNC/3141-9",
+      "@id": "http://purl.bioontology.org/ontology/LNC/8462-4",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "3141-9",
-      "dcterms__title": "Body weight",
+      "dcterms__identifier": "8462-4",
+      "dcterms__title": "Intravascular diastolic",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
-      "@id": "http://purl.bioontology.org/ontology/LNC/39156-5",
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/33586001",
+      "@type": [
+        "Code",
+        "spcode__BloodPressureBodyPosition"
+      ],
+      "dcterms__identifier": "33586001",
+      "dcterms__title": "Sitting",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/SNOMEDCT/368209003",
+      "@type": [
+        "spcode__BloodPressureBodySite",
+        "Code"
+      ],
+      "dcterms__identifier": "368209003",
+      "dcterms__title": "Right arm",
+      "system": "http://purl.bioontology.org/ontology/SNOMEDCT/"
+    },
+    {
+      "@id": "http://purl.bioontology.org/ontology/LNC/8310-5",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "39156-5",
-      "dcterms__title": "Body mass index",
+      "dcterms__identifier": "8310-5",
+      "dcterms__title": "Body temperature",
       "system": "http://purl.bioontology.org/ontology/LNC/"
     },
     {
-      "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory",
-      "@type": [
-        "Code",
-        "spcode__EncounterType"
-      ],
-      "dcterms__identifier": "ambulatory",
-      "dcterms__title": "Ambulatory encounter",
-      "system": "http://smartplatforms.org/terms/codes/EncounterType#"
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/LNC/8302-2",
+      "@id": "http://purl.bioontology.org/ontology/LNC/8287-5",
       "@type": [
         "Code",
         "spcode__VitalSign"
       ],
-      "dcterms__identifier": "8302-2",
-      "dcterms__title": "Body height",
+      "dcterms__identifier": "8287-5",
+      "dcterms__title": "Head circumference",
       "system": "http://purl.bioontology.org/ontology/LNC/"
-    },
-    {
-      "@id": "http://purl.bioontology.org/ontology/LNC/9279-1",
-      "@type": [
-        "Code",
-        "spcode__VitalSign"
-      ],
-      "dcterms__identifier": "9279-1",
-      "dcterms__title": "Respiration rate",
-      "system": "http://purl.bioontology.org/ontology/LNC/"
-    },
-    {
-      "@id": "http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352",
-      "@type": "Encounter",
-      "belongsTo": {
-        "@id": "http://sandbox-api.smartplatforms.org/records/2169591"
-      },
-      "encounterType": {
-        "@type": "CodedValue",
-        "code": {
-          "@id": "http://smartplatforms.org/terms/codes/EncounterType#ambulatory"
-        },
-        "dcterms__title": "Ambulatory encounter"
-      },
-      "endDate": "2010-05-12T04:20:00Z",
-      "startDate": "2010-05-12T04:00:00Z"
     }
   ]
 }
@@ -8285,6 +8323,63 @@ system
 
 </table>
 
+## <span id='ProblemStatus_code'>`ProblemStatus code`</span>
+
+`ProblemStatus` is a subtype of and inherits properties from:
+[Code](#Code), [Component](#Component), [DataType](#DataType), [SNOMED](#SNOMED)
+
+
+
+<table class='table table-striped'>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ProblemStatus</caption>
+<tbody>
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+identifier
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/identifier</span>
+<br />
+ <a href='http://www.w3.org/2000/01/rdf-schema#Literal'>rdfs:Literal</a>
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+title
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://purl.org/dc/terms/title</span>
+<br />
+ <a href='http://www.w3.org/2000/01/rdf-schema#Literal'>rdfs:Literal</a>
+</td>
+</tr>
+
+<tr><td style='width: 30%;
+font-weight: bold'>
+
+
+system
+<br />
+<span style='font-size: small; font-weight: normal'>Required: exactly 1</span>
+</td>
+<td style='width: 70%'>
+<span style='font-size: small'>http://smartplatforms.org/terms#system</span>
+<br />
+ <a href='http://www.w3.org/2000/01/rdf-schema#Literal'>rdfs:Literal</a>
+</td>
+</tr>
+
+</table>
+
 ## <span id='Procedure_code'>`Procedure code`</span>
 
 `Procedure` is a subtype of and inherits properties from:
@@ -8741,7 +8836,7 @@ Constrained to one of:
 
 
 <table class='table table-striped'>
-<caption align='bottom' style='font-style: italic'>http://purl.org/dc/terms/title#SmokingStatus</caption>
+<caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/SmokingStatus</caption>
 <tbody>
 <tr><td style='width: 30%;
 font-weight: bold'>

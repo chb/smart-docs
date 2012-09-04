@@ -124,13 +124,13 @@ Currently there are three "scopes" or access control categories:
 
 ## App Manifest
 
-     GET /apps/manifests/ 
-
-Returns a JSON list of all SMART UI app manifests installed on the container.
-
      GET /apps/{descriptor}/manifest 
 
 Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins
+
+     GET /apps/manifests/ 
+
+Returns a JSON list of all SMART UI app manifests installed on the container.
 
 [App Manifest RDF](../data_model/#App_Manifest)
 
@@ -194,13 +194,13 @@ Get one Allergy for a patient
 
 ## Clinical Note
 
-     GET /records/{record_id}/clinical_notes/ 
-
-Get all Clinical Notes for a patient
-
      GET /records/{record_id}/clinical_notes/{clinical_note_id} 
 
 Get one Clinical Note for a patient
+
+     GET /records/{record_id}/clinical_notes/ 
+
+Get all Clinical Notes for a patient
 
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
@@ -268,13 +268,13 @@ Get one Lab Panel for a patient
 
 ## Lab Result
 
-     GET /records/{record_id}/lab_results/ 
-
-Get all Lab Results for a patient
-
      GET /records/{record_id}/lab_results/{lab_result_id} 
 
 Get one Lab Result for a patient
+
+     GET /records/{record_id}/lab_results/ 
+
+Get all Lab Results for a patient
 
 [Lab Result RDF](../data_model/#Lab_Result)
 
@@ -307,13 +307,13 @@ Get one Problem for a patient
 
 ## Procedure
 
-     GET /records/{record_id}/procedures/{procedure_id} 
-
-Get one Procedure for a patient
-
      GET /records/{record_id}/procedures/ 
 
 Get all Procedures for a patient
+
+     GET /records/{record_id}/procedures/{procedure_id} 
+
+Get one Procedure for a patient
 
 [Procedure RDF](../data_model/#Procedure)
 
@@ -329,13 +329,13 @@ Get Social History for a patient
 
 ## Vital Sign Set
 
-     GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
-
-Get one Vital Sign Set for a patient
-
      GET /records/{record_id}/vital_sign_sets/ 
 
 Get all Vital Sign Sets for a patient
+
+     GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
+
+Get one Vital Sign Set for a patient
 
 [Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
 

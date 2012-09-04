@@ -53,6 +53,7 @@
 
     <li><a href="/reference/data_model">Data Model</a></li>
     <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/filters">Query Filters</a></li>
     <li><a href="/reference/app_manifest">App Manifest</a></li>
 
     <li class="nav-header">Client Libraries</li>
@@ -212,15 +213,15 @@ access token.</p></li>
 
 <h2>App Manifest</h2>
 
-<pre><code> GET /apps/manifests/ 
-</code></pre>
-
-<p>Returns a JSON list of all SMART UI app manifests installed on the container.</p>
-
 <pre><code> GET /apps/{descriptor}/manifest 
 </code></pre>
 
 <p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins</p>
+
+<pre><code> GET /apps/manifests/ 
+</code></pre>
+
+<p>Returns a JSON list of all SMART UI app manifests installed on the container.</p>
 
 <p><a href="../data_model/#App_Manifest">App Manifest RDF</a></p>
 
@@ -283,15 +284,15 @@ access token.</p></li>
 
 <h2>Clinical Note</h2>
 
-<pre><code> GET /records/{record_id}/clinical_notes/ 
-</code></pre>
-
-<p>Get all Clinical Notes for a patient</p>
-
 <pre><code> GET /records/{record_id}/clinical_notes/{clinical_note_id} 
 </code></pre>
 
 <p>Get one Clinical Note for a patient</p>
+
+<pre><code> GET /records/{record_id}/clinical_notes/ 
+</code></pre>
+
+<p>Get all Clinical Notes for a patient</p>
 
 <p><a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
 
@@ -362,15 +363,15 @@ access token.</p></li>
 
 <h2>Lab Result</h2>
 
-<pre><code> GET /records/{record_id}/lab_results/ 
-</code></pre>
-
-<p>Get all Lab Results for a patient</p>
-
 <pre><code> GET /records/{record_id}/lab_results/{lab_result_id} 
 </code></pre>
 
 <p>Get one Lab Result for a patient</p>
+
+<pre><code> GET /records/{record_id}/lab_results/ 
+</code></pre>
+
+<p>Get all Lab Results for a patient</p>
 
 <p><a href="../data_model/#Lab_Result">Lab Result RDF</a></p>
 
@@ -404,15 +405,15 @@ access token.</p></li>
 
 <h2>Procedure</h2>
 
-<pre><code> GET /records/{record_id}/procedures/{procedure_id} 
-</code></pre>
-
-<p>Get one Procedure for a patient</p>
-
 <pre><code> GET /records/{record_id}/procedures/ 
 </code></pre>
 
 <p>Get all Procedures for a patient</p>
+
+<pre><code> GET /records/{record_id}/procedures/{procedure_id} 
+</code></pre>
+
+<p>Get one Procedure for a patient</p>
 
 <p><a href="../data_model/#Procedure">Procedure RDF</a></p>
 
@@ -427,15 +428,15 @@ access token.</p></li>
 
 <h2>Vital Sign Set</h2>
 
-<pre><code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
-</code></pre>
-
-<p>Get one Vital Sign Set for a patient</p>
-
 <pre><code> GET /records/{record_id}/vital_sign_sets/ 
 </code></pre>
 
 <p>Get all Vital Sign Sets for a patient</p>
+
+<pre><code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} 
+</code></pre>
+
+<p>Get one Vital Sign Set for a patient</p>
 
 <p><a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
 

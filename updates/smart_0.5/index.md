@@ -30,7 +30,7 @@ For a full description of the SMART 0.5 data models, visit our [Data Model Page]
 
 * The _Blood Pressure Centiles_ app has been updated to provide progressive
   loading capabilities (both manual and automated) in a configurable way.The
-  app takes advantage of the new pagination capabilty of the SMART 0.5 (see
+  app takes advantage of the new pagination capability of the SMART 0.5 (see
   below).
 
 * Last but not least, we introduce the _Diabetes Monograph_, which presents
@@ -58,7 +58,7 @@ For further information, review our [Filtering API](/reference/filters).
 
 ## Improved JavaScript Library: Working with SMART Data as JSON-LD
 
-The SMART Connect JavaScript library now presents SMART dat in two forms, for
+The SMART Connect JavaScript library now presents SMART data in two forms, for
 your convenience:  an RDF graph interface (as before), and a new JSON Linked
 Data interface.  JSON-LD provides a convenient way for Web apps to interact
 with SMART RDF data as simple, familiar JSON structures.  
@@ -67,9 +67,9 @@ See our [Introduction to JSON-LD](/howto/intro_to_jsonld/) for details.
 
 ## Container Manifest API
 
-We've consolidated the the `/version` and `/capabilities` API calls at a common
+We've consolidated the `/version` and `/capabilities` API calls at a common
 `/manifest` endpoint.  To learn about a container, apps can simply
-`GET/manifest` to obtain a JSON descripton of its capabilities.
+`GET/manifest` to obtain a JSON description of its capabilities.
 
 For an example, see: <http://sandbox-api.smartplatforms.org/manifest>
      
@@ -135,16 +135,16 @@ SMART.get_lab_results({
 
 If you're writing a SMART Connect app, you should check out the JSON-LD
 interface we now supply with each API response.  This interface provides an
-intuitive alternative to `rdfquery` by letting your build SMART Connect apps
+intuitive alternative to `rdfquery` by letting you build SMART Connect apps
 without SPARQL queries.
 
 # HOWTO:  Update Your Container to SMART 0.5
 
 ## Implement data model updates
 
-SMART 0.5 Containers should implmenet the small data model changes described
+SMART 0.5 Containers should implement the small data model changes described
 above ("Adjust For a few Data Model Changes").  These include updated date
-predicates for labs, and a renamed `VitalSignSet` data type.
+predicates for labs and a renamed `VitalSignSet` data type.
 
 ## Implement new API call and deprecate the ones that are no longer needed
 
@@ -154,18 +154,18 @@ manifest call based on the example from
 <http://sandbox-api.smartplatforms.org/manifest>.
 
 New clinical models (clinical notes, procedures, and social history) can be
-exposed according to our update [data models](/reference/data_model). 
+exposed according to our updated [data models](/reference/data_model). 
 
 ## Implement the Filtering and Pagination Parameters in Your API Request Handlers
 
 Please see our [Filtering API] (/reference/filters) page for details about the
-new filtering and pagination capabilties introduced in SMART 0.5.
+new filtering and pagination capabilities introduced in SMART 0.5.
 
 ## Implement authorization policies
 
 SMART 0.5 makes authorization policies more explicit by assigning each API
-endpoint to one of three groups (public access; uesr-restricted access; or
-app-restricted access).  For full details, see our [REST API
+endpoint to one of three groups (public access; user-restricted access;
+app-restricted access).  For full details see our [REST API
 Page](/reference/rest_api).
 
 ## Test With the API Verifier

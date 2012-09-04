@@ -6,6 +6,7 @@ includenav: smartnav.markdown
 {% include JB/setup %}
 
 <div id="toc"></div>
+
 # What's new in SMART 0.5
 
 ## New and Improved Data Models

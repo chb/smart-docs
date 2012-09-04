@@ -94,45 +94,47 @@
       </div>
 
       <div id="toc"></div>
-# What's new in SMART 0.5
 
-## New and Improved Data Models
+<h1>What's new in SMART 0.5</h1>
 
-SMART 0.5 adds support for three new clinical statement types:
+<h2>New and Improved Data Models</h2>
 
-* [Clinical Notes](/reference/data_model#Clinical_Note)
-* [Procedures](/reference/data_model#Procedure) 
-* [Social History](/reference/data_model#Social_History) (currently tracks smoking status)
+<p>SMART 0.5 adds support for three new clinical statement types:</p>
 
-We've also updated the models in SMART 0.5 with more consistent naming and date
-handling, as well as specific improvements described below.
-    
-For a full description of the SMART 0.5 data models, visit our [Data Model Page](/reference/data_model)
+<ul>
+<li><a href="/reference/data_model#Clinical_Note">Clinical Notes</a></li>
+<li><a href="/reference/data_model#Procedure">Procedures</a> </li>
+<li><a href="/reference/data_model#Social_History">Social History</a> (currently tracks smoking status)</li>
+</ul>
 
-## New and Improved Sample Apps
+<p>We've also updated the models in SMART 0.5 with more consistent naming and date
+handling, as well as specific improvements described below.</p>
 
-* The _API Verifier_ app has been updated to support SMART 0.5 container
-  validation. Also the API Verifier is now able to validate SMART
-  app manifests.
+<p>For a full description of the SMART 0.5 data models, visit our <a href="/reference/data_model">Data Model Page</a></p>
 
-* The _Blood Pressure Centiles_ app has been updated to provide progressive
-  loading capabilities (both manual and automated) in a configurable way.The
-  app takes advantage of the new pagination capabilty of the SMART 0.5 (see
-  below).
+<h2>New and Improved Sample Apps</h2>
 
-* Last but not least, we introduce the _Diabetes Monograph_, which presents
-  an at-a-glance, integrated dashboard focused on diabetes management
-  and risk assessment.
+<ul>
+<li><p>The <em>API Verifier</em> app has been updated to support SMART 0.5 container
+validation. Also the API Verifier is now able to validate SMART
+app manifests.</p></li>
+<li><p>The <em>Blood Pressure Centiles</em> app has been updated to provide progressive
+loading capabilities (both manual and automated) in a configurable way.The
+app takes advantage of the new pagination capabilty of the SMART 0.5 (see
+below).</p></li>
+<li><p>Last but not least, we introduce the <em>Diabetes Monograph</em>, which presents
+an at-a-glance, integrated dashboard focused on diabetes management
+and risk assessment.</p></li>
+</ul>
 
-## Filtering and Paginating API Results
+<h2>Filtering and Paginating API Results</h2>
 
-SMART 0.5 introduces filters to narrow down queries, as well as a mechanism to
+<p>SMART 0.5 introduces filters to narrow down queries, as well as a mechanism to
 fetch results in pages rather than all at once.  For example, a SMART app can
 search for lab results that match a particular LOINC code, or vital signs
 recorded with a given date range.  To request the first 10 lab results that
-have LOINC code of `29571-7` or `38478-4` and occurred between January 1, 2010
-and December 31, 2012, you can apply filters like:
-
+have LOINC code of <code>29571-7</code> or <code>38478-4</code> and occurred between January 1, 2010
+and December 31, 2012, you can apply filters like:</p>
 
 <div class="highlight"><pre><code class="html">GET /records/1234567/lab_results/?loinc=29571-7|38478-4<span class="err">&amp;</span>date_from=2010-01-01<span class="err">&amp;</span>date_to=2012-12-31<span class="err">&amp;</span>limit=10<span class="err">&amp;</span>offset=0
 </code></pre>

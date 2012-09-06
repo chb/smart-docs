@@ -261,7 +261,7 @@ def wiki_api_for_type(t, calls_for_t):
 
         print "<ul>"
         print "<li>URI:<code>", strip_smart(str(call.http_method)), str(call.path), "</code></li>"
-        print "<li>Client method name:", str(call.client_method_name), "</code></li>"
+        print "<li>Client method name:<code>", str(call.client_method_name), "</code></li>"
         print "</ul>"
 
         if (str(call.description) != last_description):

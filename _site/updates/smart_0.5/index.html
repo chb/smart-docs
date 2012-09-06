@@ -121,7 +121,7 @@ validation. Also the API Verifier is now able to validate SMART
 app manifests.</p></li>
 <li><p>The <em>Blood Pressure Centiles</em> app has been updated to provide progressive
 loading capabilities (both manual and automated) in a configurable way.The
-app takes advantage of the new pagination capabilty of the SMART 0.5 (see
+app takes advantage of the new pagination capability of the SMART 0.5 (see
 below).</p></li>
 <li><p>Last but not least, we introduce the <em>Diabetes Monograph</em>, which presents
 an at-a-glance, integrated dashboard focused on diabetes management
@@ -148,7 +148,7 @@ An attached <code>ResponseSummary</code> object describes the result set.</p>
 
 <h2>Improved JavaScript Library: Working with SMART Data as JSON-LD</h2>
 
-<p>The SMART Connect JavaScript library now presents SMART dat in two forms, for
+<p>The SMART Connect JavaScript library now presents SMART data in two forms, for
 your convenience:  an RDF graph interface (as before), and a new JSON Linked
 Data interface.  JSON-LD provides a convenient way for Web apps to interact
 with SMART RDF data as simple, familiar JSON structures.  </p>
@@ -157,9 +157,9 @@ with SMART RDF data as simple, familiar JSON structures.  </p>
 
 <h2>Container Manifest API</h2>
 
-<p>We've consolidated the the <code>/version</code> and <code>/capabilities</code> API calls at a common
+<p>We've consolidated the <code>/version</code> and <code>/capabilities</code> API calls at a common
 <code>/manifest</code> endpoint.  To learn about a container, apps can simply
-<code>GET/manifest</code> to obtain a JSON descripton of its capabilities.</p>
+<code>GET/manifest</code> to obtain a JSON description of its capabilities.</p>
 
 <p>For an example, see: <a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a></p>
 
@@ -227,16 +227,16 @@ JavaScript clients.</p>
 
 <p>If you're writing a SMART Connect app, you should check out the JSON-LD
 interface we now supply with each API response.  This interface provides an
-intuitive alternative to <code>rdfquery</code> by letting your build SMART Connect apps
+intuitive alternative to <code>rdfquery</code> by letting you build SMART Connect apps
 without SPARQL queries.</p>
 
 <h1>HOWTO:  Update Your Container to SMART 0.5</h1>
 
 <h2>Implement data model updates</h2>
 
-<p>SMART 0.5 Containers should implmenet the small data model changes described
+<p>SMART 0.5 Containers should implement the small data model changes described
 above (&quot;Adjust For a few Data Model Changes&quot;).  These include updated date
-predicates for labs, and a renamed <code>VitalSignSet</code> data type.</p>
+predicates for labs and a renamed <code>VitalSignSet</code> data type.</p>
 
 <h2>Implement new API call and deprecate the ones that are no longer needed</h2>
 
@@ -246,18 +246,18 @@ manifest call based on the example from
 <a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a>.</p>
 
 <p>New clinical models (clinical notes, procedures, and social history) can be
-exposed according to our update <a href="/reference/data_model">data models</a>. </p>
+exposed according to our updated <a href="/reference/data_model">data models</a>. </p>
 
 <h2>Implement the Filtering and Pagination Parameters in Your API Request Handlers</h2>
 
 <p>Please see our <a href="/reference/filters">Filtering API</a> page for details about the
-new filtering and pagination capabilties introduced in SMART 0.5.</p>
+new filtering and pagination capabilities introduced in SMART 0.5.</p>
 
 <h2>Implement authorization policies</h2>
 
 <p>SMART 0.5 makes authorization policies more explicit by assigning each API
-endpoint to one of three groups (public access; uesr-restricted access; or
-app-restricted access).  For full details, see our <a href="/reference/rest_api">REST API
+endpoint to one of three groups (public access; user-restricted access;
+app-restricted access).  For full details see our <a href="/reference/rest_api">REST API
 Page</a>.</p>
 
 <h2>Test With the API Verifier</h2>

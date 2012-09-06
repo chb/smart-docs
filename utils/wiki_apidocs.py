@@ -37,7 +37,7 @@ if f != None:
     config = yaml.load(f)
 
 SP_STATMENT = "http://smartplatforms.org/terms#Statement"
-CONTEXT_URI = config['production_url']+'/reference/datamodel/contexts/smart_context.jsonld'
+CONTEXT_URI = config['production_url']+'/reference/data_model/contexts/smart_context.jsonld'
 
 # create smart_jsonld_context, copied from smart_sample_apps
 # could be in smart_common

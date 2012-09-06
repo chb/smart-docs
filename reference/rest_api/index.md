@@ -124,15 +124,15 @@ Currently there are three "scopes" or access control categories:
 
 ## App Manifest
 <ul>
-<li>URI:<code> GET /apps/manifests/ </code></li>
-<li>Client method name: get_app_manifests </code></li>
-</ul>
-Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
-<ul>
 <li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
 <li>Client method name: get_app_manifest </code></li>
 </ul>
 Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins <br><br>
+<ul>
+<li>URI:<code> GET /apps/manifests/ </code></li>
+<li>Client method name: get_app_manifests </code></li>
+</ul>
+Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
 [App Manifest RDF](../data_model/#App_Manifest)
 
 
@@ -197,15 +197,15 @@ Get one Allergy for a patient <br><br>
 
 ## Clinical Note
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name: get_clinical_notes </code></li>
-</ul>
-Get all Clinical Notes for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
 <li>Client method name: get_clinical_note </code></li>
 </ul>
 Get one Clinical Note for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name: get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
 
@@ -220,15 +220,15 @@ Get Demographics for a patient <br><br>
 
 ## Encounter
 <ul>
-<li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
-<li>Client method name: get_encounter </code></li>
-</ul>
-Get one Encounter for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
 <li>Client method name: get_encounters </code></li>
 </ul>
 Get all Encounters for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
+<li>Client method name: get_encounter </code></li>
+</ul>
+Get one Encounter for a patient <br><br>
 [Encounter RDF](../data_model/#Encounter)
 
 
@@ -248,29 +248,29 @@ Get one Fulfillment for a patient <br><br>
 
 ## Immunization
 <ul>
-<li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
-<li>Client method name: get_immunizations </code></li>
-</ul>
-Get all Immunizations for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
 <li>Client method name: get_immunization </code></li>
 </ul>
 Get one Immunization for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
+<li>Client method name: get_immunizations </code></li>
+</ul>
+Get all Immunizations for a patient <br><br>
 [Immunization RDF](../data_model/#Immunization)
 
 
 ## Lab Panel
 <ul>
 <li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
-<li>Client method name: get_lab_panel </code></li>
-</ul>
-Get one Lab Panel for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
 <li>Client method name: get_lab_panels </code></li>
 </ul>
 Get all Lab Panels for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
+<li>Client method name: get_lab_panel </code></li>
+</ul>
+Get one Lab Panel for a patient <br><br>
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 
@@ -290,15 +290,15 @@ Get one Lab Result for a patient <br><br>
 
 ## Medication
 <ul>
-<li>URI:<code> GET /records/{record_id}/medications/{medication_id} </code></li>
-<li>Client method name: get_medication </code></li>
-</ul>
-Get one Medication for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/medications/ </code></li>
 <li>Client method name: get_medications </code></li>
 </ul>
 Get all Medications for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/medications/{medication_id} </code></li>
+<li>Client method name: get_medication </code></li>
+</ul>
+Get one Medication for a patient <br><br>
 [Medication RDF](../data_model/#Medication)
 
 
@@ -341,15 +341,15 @@ Get Social History for a patient <br><br>
 
 ## Vital Sign Set
 <ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
-<li>Client method name: get_vital_sign_set </code></li>
-</ul>
-Get one Vital Sign Set for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
 <li>Client method name: get_vital_sign_sets </code></li>
 </ul>
 Get all Vital Sign Sets for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
+<li>Client method name: get_vital_sign_set </code></li>
+</ul>
+Get one Vital Sign Set for a patient <br><br>
 [Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
 
 

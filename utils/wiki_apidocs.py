@@ -85,8 +85,8 @@ def type_start(t):
     example = t.example
     name_id = name.replace(' ', '_')
 
-    # add <span id='name'> to these <h2>'s for internal anchors
-    print "\n## <span id='%s'>`%s`</span>\n" % (name_id, name)
+    # manually add ids to the type <h2>s
+    print "\n<h2 id='%s'><code>%s</code></h2>\n" % (name_id, name)
 
     if len(t.parents) > 0:
         print "`%s` is a subtype of and inherits properties from:" % type_name_string(t)
@@ -118,9 +118,19 @@ def type_start(t):
 
         print """{% endhighlight %}\n"""
 
+
+    # can we process this example? if it exists, but we can't
+    # process it, then output it as is
+
     if example:
-        print "<div id='%s'>" % ( name_id+ "_examples")
-        print """
+        try:
+            ex_graph = parse_rdf(example)
+        except:
+            print "<div class='rdf_xml active'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%example
+            return
+        else:
+            print "<div id='%s'>" % (name_id+ "_examples")
+            print """
 <div class='format_tabs'>
   <ul class="nav nav-tabs" data-tabs="tabs">
     <li style="margin-left: 0px;">Show example in</li>
@@ -129,21 +139,14 @@ def type_start(t):
     <li class="">      <a href="" data-target="#%s_examples > div.turtle" data-toggle="tab">Turtle</a></li>
     <li class="">      <a href="" data-target="#%s_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
-</div>
-        """ % (name_id, name_id, name_id, name_id)
+</div>""" % (name_id, name_id, name_id, name_id)
 
-        print "<div class='rdf_xml active'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%example
-        try:
-            ex_graph = parse_rdf(example)
-        except:
-            return
-        print "<div class='n_triples'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='nt')
-        print "<div class='turtle'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='turtle')
+            print "<div class='rdf_xml active'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%example
+            print "<div class='n_triples'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='nt')
+            print "<div class='turtle'>{%% highlight xml %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='turtle')
+            print "<div class='json_ld'>{%% highlight javascript %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(format='json-ld', indent=2, context=context, context_uri=CONTEXT_URI)
+            print "</div>"
 
-        print "<div class='json_ld'>{%% highlight javascript %%}\n%s\n{%% endhighlight %%}</div>\n"%ex_graph.serialize(
-            format='json-ld', indent=2, context=context, context_uri=CONTEXT_URI
-        )
-        print "</div>"
 def properties_start(type):
     print """\n<table class='table table-striped'>\n<caption align='bottom' style='font-style: italic'>%s</caption>\n<tbody>""" % type
 
@@ -220,8 +223,14 @@ def wiki_properties_for_type(t):
                     desc += " where "+ p + " has value: %s"%avf.has_value
                 else:
                     pc = avf.all_values_from
-                    pc = type_name_string(pc)
-                    desc += " where "+ p +   " comes from <a href='#%s'>%s</a>"%(pc,pc)
+                    pc_str = type_name_string(pc)
+                    pc_id = pc_str
+
+                    if (sp.Code in [x.uri for x in pc.parents]):
+                        pc_code = pc_str+" code"
+                        pc_id = pc_code.replace(' ', '_')
+
+                    desc += " where " + p + " comes from <a href='#%s'>%s</a>" % (pc_id, pc_str)
 
             desc += '</span>\n<br><br>'
             if c.description:
@@ -250,15 +259,16 @@ def wiki_api_for_type(t, calls_for_t):
     for call in calls_for_t:
         if (str(call.http_method) != "GET"): continue # Document only the GET calls for now!
 
-        print "\n    ", strip_smart(str(call.http_method)), str(call.path), '\n'
+        print "<ul>"
+        print "<li>URI:<code>", strip_smart(str(call.http_method)), str(call.path), "</code></li>"
+        print "<li>Client method name:", str(call.client_method_name), "</code></li>"
+        print "</ul>"
 
         if (str(call.description) != last_description):
-            print str(call.description)
-
-        if (str(call.description) != last_description):
+            print str(call.description), "<br><br>"
             last_description = str(call.description)
 
-    print "\n[%s RDF](../data_model/#%s)\n\n"%(t.name, t.name.replace(' ', '_'))
+    print "[%s RDF](../data_model/#%s)\n\n"%(t.name, t.name.replace(' ', '_'))
 
 
 main_types = []

@@ -8,6 +8,7 @@ includenav: smartnav.markdown
 
 <div id="toc"> </div>
 
+<div class='simple_small_box'>{% include githublink %}</div>
 
 This document shows you how to build a more advanced SMART App with server-side
 logic and REST API Calls.

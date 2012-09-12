@@ -15,6 +15,8 @@ includenav: smartnav.markdown
     style="width: 100%; display: block; margin: 20px auto;">
 </a>
 
+<div class='simple_small_box'>{% include githublink %}</div>
+
 SMART v0.4 allows developers to build a kind of meta-app, or "Frame UI App" that
 can lay out multiple traditional UI Apps at the same time. For example, let's
 say you'd like to display a medication list app right alongside a medication

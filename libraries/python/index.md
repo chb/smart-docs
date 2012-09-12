@@ -6,16 +6,15 @@ includenav: smartnav.markdown
 {% include JB/setup %}
 
 <div class='simple_box'>
-  This document describes the SMART Python Library, which you can use from a
-  Python application to make authenticated REST calls into a SMART container.
-
-  <br />
-
-  You probably want to read the [SMART REST HOWTO][] to understand when you
-  might want to use this library.
+  <p>
+    This document describes the SMART Python Library, which you can use from a
+    Python application to make authenticated REST calls into a SMART container.
+  </p>
+  <p>
+    You probably want to read the <a href='/howto/build_a_rest_app/'>SMART REST HOWTO</a>to understand when you might want to use this library.
+  </p>
+    {% include githublink %}
 </div>
-
-<div id="toc"> </div>
 
 
 ## Setting Up Your Environment

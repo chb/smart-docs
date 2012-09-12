@@ -8,9 +8,11 @@ includenav: smartnav.markdown
 {% include example_format_tabs_top.html %}
 
 <div class='simple_box'>
-  This is highly preliminary, not a commitment or final version of any
+  <p>This is highly preliminary, not a commitment or final version of any
   particular API or data model. This is purely for internal collaboration and
-  preview purposes.
+  preview purposes.</p>
+
+  {% include githublink %}
 </div>
 
 

@@ -6,6 +6,8 @@ includenav: smartnav.markdown
 
 {% include JB/setup %}
 
+<div class='simple_small_box'>{% include githublink %}</div>
+
 This walks you through installing an *insecure SMART testing environment* on
 Mac OS X. We will be installing everything needed for SMART into the directory
 `/Library/SMART`, all the instructions assume that you are running a Terminal

@@ -7,10 +7,13 @@ includenav: smartnav.markdown
 {% include JB/setup %}
 
 <div class="simple_box">
+  <p>
   The SMART reference EMR documentation is rapidly evolving. If something in
   this document looks strange, confusing, or wrong, please ask about it at <a
   href='http://groups.google.com/group/smart-app-developers'>the SMART
   Developer's Google Group</a>
+  </p>
+  {% include githublink %}
 </div>
 
 

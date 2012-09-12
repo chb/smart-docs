@@ -5,8 +5,12 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 <div class='simple_box'>
-  This is a new API feature in the SMART v0.5 release. It is stable enough for
-  use, however it is likely that minor elements of the API may change over time.
+  <p>
+  This is a new API feature in the SMART v0.5 release. It is stable
+enough for use, however it is likely that minor elements of the API may
+change over time.
+  </p>
+  {% include githublink %}
 </div>
 
 <div id="toc"></div>

@@ -6,9 +6,10 @@ includenav: smartnav.markdown
 {% include JB/setup %}
 
 <div class="simple_box">
-  N.B. This is highly preliminary, not a commitment or final version of any
+  <p>N.B. This is highly preliminary, not a commitment or final version of any
   particular API or data model. This is purely for internal collaboration and
-  preview purposes.
+  preview purposes.</p>
+  {% include githublink %}
 </div>
 
 <div id="toc"></div>

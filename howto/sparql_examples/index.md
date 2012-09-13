@@ -8,21 +8,24 @@ includenav: smartnav.markdown
 
 <div id="toc"> </div>
 
-
 # SPARQL by Example
 
-This page provides a set of example queries to help you get started interacting
-with SMART patient record data. We'll build out several example SPARQL queries,
-but please feel free to add on new material as you discover useful tidbits!
+<div class='simple_small_box'>{% include githublink %}</div>
+
+This page provides a set of example queries to help you get started
+interacting with SMART patient record data. We'll build out several
+example SPARQL queries, but please feel free to add on new material as
+you discover useful tidbits!
 
 
 ## Running Queries: Live In-browser or in Your Own Environment
 
-You can use the form below to try out queries right away. Please note that to
-use the live query tool, you'll need to include a `FROM <graph>` clause in your
-query to supply data. If you're running these queries in your own environment,
-you'll run them in the context of a particular graph (e.g. Patient Smith's
-medication graph), rather than specifying `FROM` directly in the query.
+You can use the form below to try out queries right away. Please note
+that to use the live query tool, you'll need to include a `FROM <graph>`
+clause in your query to supply data. If you're running these queries in
+your own environment, you'll run them in the context of a particular
+graph (e.g. Patient Smith's medication graph), rather than specifying
+`FROM` directly in the query.
 
 Or you could run these examples on your own via:
 

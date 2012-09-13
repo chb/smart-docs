@@ -9,6 +9,8 @@ includenav: smartnav.markdown
 <div id="toc"> </div>
 
 
+<div class='simple_small_box'>{% include githublink %}</div>
+
 This document is a complete SMART-App-Building walk-through. You should first
 read the [Main Page](../../)
 

@@ -10,6 +10,8 @@ includenav: smartnav.markdown
 
 # Best Practices for Consuming SMART RDF Data
 
+<div class='simple_small_box'>{% include githublink %}</div>
+
 ## Treat SMART data payloads as RDF
 
 SMART Containers supply your app with medical record data in the form of an RDF

@@ -6,6 +6,7 @@ includenav: smartnav.markdown
 {% include JB/setup %}
 <div id="toc"></div>
 
+<div class='simple_small_box'>{% include githublink %}</div>
 
 # Introducing SMART Manifests
 

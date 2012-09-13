@@ -12,6 +12,8 @@ includenav: smartnav.markdown
        style="width: 100%; display: block; margin: 20px auto;">
 </a>
 
+<div class='simple_small_box'>{% include githublink %}</div>
+
 So far, we have talked about SMART apps that access medical record data on
 behalf of an active user of the EMR/PCHR/data-mining platform. What about apps
 that autonomously take action when no one is logged in? An app might want to

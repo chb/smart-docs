@@ -7,11 +7,15 @@ includenav: smartnav.markdown
 {% include JB/setup %}
 
 <div class='simple_box'>
-  This Guide is intended for software developers who want to write SMART apps
-  &mdash; and it's a work in progress! If you have any questions, please drop a
-  note in our <a
-  href="http://groups.google.com/group/smart-app-developers">SMART App
-  Developers Group</a>
+  <p>
+    This Guide is intended for software developers who want to write SMART apps
+    &mdash; and it's a work in progress! If you have any questions, please drop a
+    note in our <a
+    href="http://groups.google.com/group/smart-app-developers">SMART App
+    Developers Group</a>.
+  </p>
+
+  {% include githublink %}
 </div>
 
 

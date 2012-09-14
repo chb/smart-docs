@@ -6,10 +6,9 @@ includenav: smartnav.markdown
 
 {% include JB/setup %}
 
-<div id="toc"> </div>
-
-
 ## RxReminder: SMART REST in Action
+
+<div class='simple_small_box'>{% include githublink %}</div>
 
 You should read [HOWTO Build a SMART App - REST API](../build_a_rest_app) Calls
 first.

@@ -9,6 +9,8 @@ includenav: smartnav.markdown
 
 ## The "Got Statins?" App: SMART Connect in Action
 
+<div class='simple_small_box'>{% include githublink %}</div>
+
 If you haven't already, you should read [HOWTO Build a SMART App](../build_a_smart_app) first.
 
 Here, we build a complete SMART Connect app from pure HTML and Javascript.

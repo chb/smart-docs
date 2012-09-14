@@ -9,10 +9,14 @@ includenav: smartnav.markdown
 <div id="toc"></div>
 
 <div class='simple_box'>
+  <p>
   This is a new API in the SMART v0.5 release. It is stable enough for
   use, however it is likely that minor elements of the API may change in
   future releases of the SMART API.
+  </p>
+  {% include githublink %}
 </div>
+
 
 The SMART JSON-LD API provides an additional interface to the SMART datamodel
 based on Javascript objects in addition to the RDF/XML and the SPARQL

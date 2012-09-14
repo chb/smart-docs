@@ -108,15 +108,15 @@ Currently there are three "scopes" or access control categories:
 
 ## App Manifest
 <ul>
-<li>URI:<code> GET /apps/manifests/ </code></li>
-<li>Client method name:<code> get_app_manifests </code></li>
-</ul>
-Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
-<ul>
 <li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
 <li>Client method name:<code> get_app_manifest </code></li>
 </ul>
 Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins <br><br>
+<ul>
+<li>URI:<code> GET /apps/manifests/ </code></li>
+<li>Client method name:<code> get_app_manifests </code></li>
+</ul>
+Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
 [App Manifest RDF](../data_model/#App_Manifest)
 
 
@@ -218,29 +218,29 @@ Get all Encounters for a patient <br><br>
 
 ## Fulfillment
 <ul>
-<li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
-<li>Client method name:<code> get_fulfillment </code></li>
-</ul>
-Get one Fulfillment for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
 <li>Client method name:<code> get_fulfillments </code></li>
 </ul>
 Get all Fulfillments for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
+<li>Client method name:<code> get_fulfillment </code></li>
+</ul>
+Get one Fulfillment for a patient <br><br>
 [Fulfillment RDF](../data_model/#Fulfillment)
 
 
 ## Immunization
 <ul>
-<li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
-<li>Client method name:<code> get_immunization </code></li>
-</ul>
-Get one Immunization for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
 <li>Client method name:<code> get_immunizations </code></li>
 </ul>
 Get all Immunizations for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
+<li>Client method name:<code> get_immunization </code></li>
+</ul>
+Get one Immunization for a patient <br><br>
 [Immunization RDF](../data_model/#Immunization)
 
 
@@ -274,43 +274,43 @@ Get all Lab Results for a patient <br><br>
 
 ## Medication
 <ul>
-<li>URI:<code> GET /records/{record_id}/medications/ </code></li>
-<li>Client method name:<code> get_medications </code></li>
-</ul>
-Get all Medications for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/medications/{medication_id} </code></li>
 <li>Client method name:<code> get_medication </code></li>
 </ul>
 Get one Medication for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/medications/ </code></li>
+<li>Client method name:<code> get_medications </code></li>
+</ul>
+Get all Medications for a patient <br><br>
 [Medication RDF](../data_model/#Medication)
 
 
 ## Problem
 <ul>
-<li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
-<li>Client method name:<code> get_problem </code></li>
-</ul>
-Get one Problem for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/problems/ </code></li>
 <li>Client method name:<code> get_problems </code></li>
 </ul>
 Get all Problems for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
+<li>Client method name:<code> get_problem </code></li>
+</ul>
+Get one Problem for a patient <br><br>
 [Problem RDF](../data_model/#Problem)
 
 
 ## Procedure
 <ul>
-<li>URI:<code> GET /records/{record_id}/procedures/{procedure_id} </code></li>
-<li>Client method name:<code> get_procedure </code></li>
-</ul>
-Get one Procedure for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/procedures/ </code></li>
 <li>Client method name:<code> get_procedures </code></li>
 </ul>
 Get all Procedures for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/procedures/{procedure_id} </code></li>
+<li>Client method name:<code> get_procedure </code></li>
+</ul>
+Get one Procedure for a patient <br><br>
 [Procedure RDF](../data_model/#Procedure)
 
 

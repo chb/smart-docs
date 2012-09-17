@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMART API Filters and Pagination</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Using SMART Data</li>
+
+    <li><a href="/howto/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/howto/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/howto/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/howto/filters">Query Filtering and Pagination</a></li>
+    <li><a href="/howto/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/smart_data">SMART Data: Best Practices</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/filters">Query Filters</a></li>
+    <li><a href="/reference/app_manifest">App Manifest</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Container-side Javascript</a></li>
+
+    <li class="nav-header">SMART Update Guides</li>
+
+    <li><a href="/updates/smart_0.4/app">0.4 Apps</a></li>
+    <li><a href="/updates/smart_0.5/container">0.4 Containers</a></li>
+    <li><a href="/updates/smart_0.5/">0.5 Apps + Containers</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentations</li>
+
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture (2010-08)</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance (2010-08)</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+
+    <li class="nav-header">Downloads</li>
+    <li><a href="/downloads/">Download Source + VM</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>SMART API Filters and Pagination <small></small></h1>
+      </div>
+
+      <div class='simple_box'>
+This is a new API feature in the SMART v0.5 release. It is stable enough
+for use, however it is likely that minor elements of the API may change
+over time.
+</div>
+
+<h1>Query Filtering and Pagination Tutorial</h1>
+
+<p>Note: Read the filtering and pagination <a href="/reference/filters/">reference</a>
+before reading this tutorial to familiarize youself with the details.</p>
+
+<p>The SMART API now has the ability to return filtered and paginated data for
+two data types: <a href="/reference/data_model/#Lab_Result">lab results</a> and <a href="/reference/data_model/#Vital_Sign_Set">vital
+sign sets</a>. This allows you to
+limit the results returned from these calls instead of the previous
+behavior of returning all of the record's labs or vitals which in many
+real-world settings could return a large and unwieldy set of data.</p>
+
+<p>Both the SMART REST and SMART Connect APIs expose this functionality, and
+adding filtering and paging to your queries is a simple matter of adding a
+few query parameters to your SMART API calls. By default all results of the
+requested type in the record are returned in the default sort order. In
+addition, a <code>responseSummary</code> object has been added to the results returned
+which provides your callback functions a set of useful metadata that can be
+used to make further calls.</p>
+
+<p>We'll demonstrate this using the SMART Connect JSON-LD API and give an
+brief code sample for the SMART REST Python client as well.</p>
+
+<h2>An Javascript Example for Filtering Lab Results</h2>
+
+<p>For this example, we'll be using the SMART JSON-LD interface described
+<a href="../intro_to_jsonld/">here</a> to the SMART Connect Javascript library.</p>
+
+<p>To start let's set up a query with the following parameters:</p>
+
+<ul>
+<li>Filter the labs to find this patient's LDL results. LDL's have three
+LOINC codes that differ only in the method used to find the result. We'll
+make a pipe (|) seperated string of these codes: <code>&quot;13457-7|2089-1|18262-6&quot;</code></li>
+<li>Find the results from 2010-01-01 to 2012-01-01 using the <code>&quot;date_from&quot;</code>
+and <code>&quot;date_to&quot;</code> parameters.</li>
+<li>Lastly, let's restrict the number of returned results to a &quot;page&quot; 
+of 10 results by setting the <code>limit</code> parameter to <code>10</code> and the
+<code>offset</code> parameter to <code>0</code>. To fetch the next &quot;page&quot; of ten results,
+you would set the <code>offset</code> to <code>10</code> and keep the limit at <code>10</code>.</li>
+</ul>
+
+<p>The parameters above are passed to the <code>get_lab_results</code> call as
+a standard Javascript object and the results are passed to your
+callback function in the same way as the other API calls:</p>
+
+<div class="highlight"><pre><code class="javascript">    <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_lab_results</span><span class="p">({</span>
+        <span class="s1">&#39;date_from&#39;</span><span class="o">:</span> <span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;date_to&#39;</span><span class="o">:</span>   <span class="s1">&#39;2012-01-01&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;loinc&#39;</span><span class="o">:</span>     <span class="s1">&#39;13457-7|2089-1|18262-6&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;limit&#39;</span><span class="o">:</span>     <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;offset&#39;</span><span class="o">:</span>    <span class="mi">0</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">ldls</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">of_type</span><span class="p">.</span><span class="nx">LabResult</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">ldls</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">ldl</span><span class="p">){</span>
+            <span class="c1">// ouput each lab to the console</span>
+            <span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="nx">ldl</span><span class="p">.</span><span class="nx">dcterms__date</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">ldl</span><span class="p">.</span><span class="nx">quantitativeResult</span><span class="p">.</span><span class="nx">valueAndUnit</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">unit</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">quantitativeResult</span><span class="p">.</span><span class="nx">valueAndUnit</span><span class="p">.</span><span class="nx">unit</span><span class="p">;</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;LDL result: &#39;</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">unit</span><span class="p">);</span>
+        <span class="p">})</span>
+      
+        <span class="c1">// view the responseSummary object</span>
+        <span class="kd">var</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">of_type</span><span class="p">.</span><span class="nx">ResponseSummary</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;resultsReturned&#39;</span><span class="p">,</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">resultsReturned</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;totalResultCount&#39;</span><span class="p">,</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">totalResultCount</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;nextPageURL&#39;</span><span class="p">,</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">nextPageURL</span><span class="p">);</span>
+    <span class="p">})</span>
+</code></pre>
+</div>
+
+<h2>Filtering Vital Sign Sets</h2>
+
+<p>For <code>Vital Sign Sets</code> all of the above parameters are the same except for
+one: instead of being able to filter the results on a set of LOINC codes
+you can filter on the <code>encounter_type</code> with two types supported:
+<code>ambulatory</code> or <code>inpatient</code>.</p>
+
+<h2>Future Work</h2>
+
+<p>We plan on adding filtering and pagination features of more calls in the
+API and adding richer sets of filtering criteria in the future.</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33617191-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

@@ -14,10 +14,8 @@ over time.
 
 # Query Filtering and Pagination Tutorial
 
-Note: Read the filtering and pagination [reference][(/reference/filters/)]
+Note: Read the filtering and pagination [reference](/reference/filters/)
 before reading this tutorial to familiarize youself with the details.
-
-## Introducting Query Filters and Pagination
 
 The SMART API now has the ability to return filtered and paginated data for
 two data types: [lab results](/reference/data_model/#Lab_Result) and [vital
@@ -47,8 +45,8 @@ To start let's set up a query with the following parameters:
 - Filter the labs to find this patient's LDL results. LDL's have three
   LOINC codes that differ only in the method used to find the result. We'll
   make a pipe (|) seperated string of these codes: `"13457-7|2089-1|18262-6"`
-- Find the results from 2010-01-01 to 2012-01-01 using the "date_from"
-  and "date_to" parameters.
+- Find the results from 2010-01-01 to 2012-01-01 using the `"date_from"`
+  and `"date_to"` parameters.
 - Lastly, let's restrict the number of returned results to a "page" 
   of 10 results by setting the `limit` parameter to `10` and the
   `offset` parameter to `0`. To fetch the next "page" of ten results,
@@ -58,6 +56,7 @@ The parameters above are passed to the `get_lab_results` call as
 a standard Javascript object and the results are passed to your
 callback function in the same way as the other API calls:
 
+{% highlight javascript %}
     SMART.get_lab_results({
         'date_from': '2010-01-01',
         'date_to':   '2012-01-01',
@@ -79,13 +78,15 @@ callback function in the same way as the other API calls:
         console.log('resultsReturned', rs.resultsReturned);
         console.log('totalResultCount', rs.totalResultCount);
         console.log('nextPageURL', rs.nextPageURL);
-})
+    })
+{% endhighlight %}
 
 ## Filtering Vital Sign Sets
 
 For `Vital Sign Sets` all of the above parameters are the same except for
 one: instead of being able to filter the results on a set of LOINC codes
-you can filter on the `encounter_type`.
+you can filter on the `encounter_type` with two types supported:
+`ambulatory` or `inpatient`.
 
 ## Future Work
 

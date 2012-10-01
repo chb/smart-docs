@@ -19,6 +19,11 @@ SMART 0.5 adds support for three new clinical statement types:
 
 We've also updated the models in SMART 0.5 with more consistent naming and date
 handling, as well as specific improvements described below.
+
+Also, the [Lab Panel](/reference/data_model#Lab_Panel) model is now part of our auto-generated
+online documentation. A panel has a code of its own, and groups together individual
+lab results which can also be queried independently. Please, take a look in case you 
+haven't seen this model before.
     
 For a full description of the SMART 0.5 data models, visit our [Data Model Page](/reference/data_model)
 

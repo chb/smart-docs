@@ -112,6 +112,11 @@
 <p>We've also updated the models in SMART 0.5 with more consistent naming and date
 handling, as well as specific improvements described below.</p>
 
+<p>Also, the <a href="/reference/data_model#Lab_Panel">Lab Panel</a> model is now part of our auto-generated
+online documentation. A panel has a code of its own, and groups together individual
+lab results which can also be queried independently. Please, take a look in case you 
+haven't seen this model before.</p>
+
 <p>For a full description of the SMART 0.5 data models, visit our <a href="/reference/data_model">Data Model Page</a></p>
 
 <h2>New and Improved Sample Apps</h2>
@@ -156,6 +161,22 @@ with SMART RDF data as simple, familiar JSON structures.  </p>
 
 <p>See our <a href="/howto/intro_to_jsonld/">Introduction to JSON-LD</a> for details.</p>
 
+<p>Also, the JavaScript client now has a fail callback handler that can be
+used to process a callback in the event that the app is launched outside
+the context of a SMART container. Your app could, for instance, decide
+to provide directions ot the user about launching from  within a container
+or switch to an alternative mode if that happens.</p>
+
+<h3>Code pattern:</h3>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">SMART</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Fetch SMART data and do work</span>
+<span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// App launched outside a container</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
 <h2>Container Manifest API</h2>
 
 <p>We've consolidated the <code>/version</code> and <code>/capabilities</code> API calls at a common
@@ -163,6 +184,16 @@ with SMART RDF data as simple, familiar JSON structures.  </p>
 <code>GET/manifest</code> to obtain a JSON description of its capabilities.</p>
 
 <p>For an example, see: <a href="http://sandbox-api.smartplatforms.org/manifest">http://sandbox-api.smartplatforms.org/manifest</a></p>
+
+<h2>Change in the REST call path for the preferences API calls</h2>
+
+<p>The call path for the REST call for the preferences API is now
+'GET /users/{user_id}/apps/{smart_app_id}/preferences' (used to be
+'GET /accounts/{user_id}/apps/{smart_app_id}/preferences').</p>
+
+<h2>No more alerts</h2>
+
+<p>The alerts data model (from SMART  0.4) has been dropped in SMART 0.5.</p>
 
 <h1>HOWTO:  Update Your SMART Apps to SMART 0.5</h1>
 
@@ -175,9 +206,6 @@ call methods that you use in your apps. For example, in a SMART Connect app, if
 you use a call like <code>SMART.PROBLEMS_get()</code>, you will need to change it to
 <code>SMART.get_problems()</code>. Similarly, in a SMART REST app, you will have to change
 <code>SMART.records_X_problems_GET()</code> to <code>SMART.get_problems()</code>.</p>
-
-<p>(The SMART Java client isn't yet ready for SMART 0.5; it's on our <a href="https://github.com/chb/smart_project_management/issues?milestone=7&page=1&sort=updated&state=open">todo
-list</a>!)</p>
 
 <p>For a complete list of the convenience method names in the SMART 0.5 clients,
 please see our <a href="/reference/rest_api/">REST API documentation</a>.</p>
@@ -260,6 +288,15 @@ new filtering and pagination capabilities introduced in SMART 0.5.</p>
 endpoint to one of three groups (public access; user-restricted access;
 app-restricted access).  For full details see our <a href="/reference/rest_api">REST API
 Page</a>.</p>
+
+<h2>Change in the REST call path for the preferences API calls</h2>
+
+<p>Update the call path to 'GET /users/{user_id}/apps/{smart_app_id}/preferences'</p>
+
+<h2>Deprecate your Alerts API</h2>
+
+<p>If you did have the Alerts API implemented in your SMART 0.4 container,
+you should deprecate (or disable) the code related to it.</p>
 
 <h2>Test With the API Verifier</h2>
 

@@ -65,6 +65,21 @@ with SMART RDF data as simple, familiar JSON structures.
 
 See our [Introduction to JSON-LD](/howto/intro_to_jsonld/) for details.
 
+Also, the JavaScript client now has a fail callback handler that can be
+used to process a callback in the event that the app is launched outside
+the context of a SMART container. Your app could, for instance, decide
+to provide directions ot the user about launching from  within a container
+or switch to an alternative mode if that happens.
+
+### Code pattern: 
+{% highlight javascript %}
+SMART.ready(function () {
+    // Fetch SMART data and do work
+}).fail(function () {
+    // App launched outside a container
+});
+{% endhighlight %}
+
 ## Container Manifest API
 
 We've consolidated the `/version` and `/capabilities` API calls at a common
@@ -72,6 +87,16 @@ We've consolidated the `/version` and `/capabilities` API calls at a common
 `GET/manifest` to obtain a JSON description of its capabilities.
 
 For an example, see: <http://sandbox-api.smartplatforms.org/manifest>
+
+## Change in the REST call path for the preferences API calls
+
+The call path for the REST call for the preferences API is now
+'GET /users/{user_id}/apps/{smart_app_id}/preferences' (used to be
+'GET /accounts/{user_id}/apps/{smart_app_id}/preferences').
+
+## No more alerts
+
+The alerts data model (from SMART  0.4) has been dropped in SMART 0.5.
      
 # HOWTO:  Update Your SMART Apps to SMART 0.5
 ## Updating Your API Call Names
@@ -82,9 +107,6 @@ call methods that you use in your apps. For example, in a SMART Connect app, if
 you use a call like `SMART.PROBLEMS_get()`, you will need to change it to
 `SMART.get_problems()`. Similarly, in a SMART REST app, you will have to change
 `SMART.records_X_problems_GET()` to `SMART.get_problems()`.
-
-(The SMART Java client isn't yet ready for SMART 0.5; it's on our [todo
-list](https://github.com/chb/smart_project_management/issues?milestone=7&page=1&sort=updated&state=open)!)
 
 For a complete list of the convenience method names in the SMART 0.5 clients,
 please see our [REST API documentation](/reference/rest_api/).
@@ -167,6 +189,15 @@ SMART 0.5 makes authorization policies more explicit by assigning each API
 endpoint to one of three groups (public access; user-restricted access;
 app-restricted access).  For full details see our [REST API
 Page](/reference/rest_api).
+
+## Change in the REST call path for the preferences API calls
+
+Update the call path to 'GET /users/{user_id}/apps/{smart_app_id}/preferences'
+
+## Deprecate your Alerts API
+
+If you did have the Alerts API implemented in your SMART 0.4 container,
+you should deprecate (or disable) the code related to it.
 
 ## Test With the API Verifier
 

@@ -21,9 +21,8 @@ includenav: smartnav.markdown
 
 # Changelog
 
-Click here for the list of [Changes to the API and Payloads](../change_log/).
-And here is an [Atom Feed](https://github.com/chb/smart-docs/commits/gh-pages.atom)
-if you would like to keep up to date that way as well.
+Click here for the list of [Changes to the API and Payloads for the
+latest release](/updates/smart_0.5/).
 
 
 # RDF Overview

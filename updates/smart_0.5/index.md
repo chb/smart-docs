@@ -122,8 +122,8 @@ There have been a few changes and simplifications to the existing SMART data
 models that may require you to change your code:
 
 1. `LabResult` elements now simply have a `dcterms:date` property indicating
-the clinically effective time of the measurement.  No more hunting through
-attributions to figure out dates!  
+the clinically effective time of the measurement (`specimenCollected` has
+been removed). No more hunting through attributions to figure out dates!
 
 2. `Vital Signs` elements been renamed to `Vital Sign Set` for clarity (since
 each `Vital Sign Set` contains a set of results that were recorded together).

@@ -68,7 +68,7 @@
     <li class="nav-header">SMART Update Guides</li>
 
     <li><a href="/updates/smart_0.4/app">0.4 Apps</a></li>
-    <li><a href="/updates/smart_0.5/container">0.4 Containers</a></li>
+    <li><a href="/updates/smart_0.4/container">0.4 Containers</a></li>
     <li><a href="/updates/smart_0.5/">0.5 Apps + Containers</a></li>
 
     <li class="nav-header">Reference EMR Installation</li>
@@ -217,8 +217,8 @@ models that may require you to change your code:</p>
 
 <ol>
 <li><p><code>LabResult</code> elements now simply have a <code>dcterms:date</code> property indicating
-the clinically effective time of the measurement.  No more hunting through
-attributions to figure out dates!  </p></li>
+the clinically effective time of the measurement (<code>specimenCollected</code> has
+been removed). No more hunting through attributions to figure out dates!</p></li>
 <li><p><code>Vital Signs</code> elements been renamed to <code>Vital Sign Set</code> for clarity (since
 each <code>Vital Sign Set</code> contains a set of results that were recorded together).</p></li>
 <li><p><code>Vital Signs</code> elements may now include head circumference measurements

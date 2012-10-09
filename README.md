@@ -2,17 +2,17 @@
 SMART Documentation
 ===================
 
-This is the SMART technical documentation, hosted at <http://dev.smartplatforms.org>
+This is the SMART technical documentation, hosted at
+<http://dev.smartplatforms.org>
 
 - See <http://smartplatforms.org> for high-level project info and news
 - Need help? Ask a question at <http://groups.google.com/group/smart-app-developers>
 - Found an error in these docs? FIXME: Fork them on Github!
-
-TODO
-----
-- Add "edit this page" links to github
-- Fix the atom feed for the changelog
-- On data model page move table captions (urls) to top
+- Want an Atom feed of commits from our Github repositories? Use this:
+  <https://github.com/chb/smart_server/commits/master.atom>
+  for a feed of the commits to the `smart_server` repository's `master`
+  branch. Change the appropriate section of the URL above for other
+  repositories and branches.
 
 
 Installing Jekyll and Friends

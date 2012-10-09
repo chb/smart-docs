@@ -32,7 +32,7 @@ in order to run the SMART Reference EMR in your own environment:
 
 * Recent Linux installation (Kernel 2.6+).We recommend an up-to-date version of
   Ubuntu, and these instructions are written from that perspective.
-* Note: These instructions have been updated for Ubuntu 11.10.
+* Note: These instructions have been updated for Ubuntu 12.04
 * Note: We recommend you do this by sudo'ing from a non-root user. If you
   would like to do this as root make sure you create at least one non-root user
   with `useradd -m {USER}` otherwise the default locale will not be set. This
@@ -47,7 +47,7 @@ in order to run the SMART Reference EMR in your own environment:
         $ sudo apt-get install python-psycopg2 python-m2crypto \
             python-simplejson python-argparse python-setuptools python-pyparsing
 
-        $ sudo easy_install -U "rdflib>=3.0.0"  rdfextras
+        $ sudo easy_install -U "rdflib==3.1.0" "rdfextras==0.1"
 
 * Django 1.3+
 
@@ -64,7 +64,18 @@ in order to run the SMART Reference EMR in your own environment:
 
 # Setup Database
 
-You'll have the easiest time naming your database `smart`
+* Create a PostgreSQL user for your SMART service, e.g. `smart` and
+  setup a password. You'll have the easiest time if you name your
+  database `smart` as well.
+
+        $ sudo su - postgres
+        $ pg_dropcluster --stop 9.1 main
+        $ pg_createcluster --start -e UTF-8 9.1 main
+        $ createuser --superuser smart
+        $ psql
+        $ postgres=# \password smart
+        $ postgres=# \q
+        $ exit
 
 * There are two ways to authenticate to PostgreSQL: use your Unix credentials,
   or use a separate username and password. We strongly recommend the latter,
@@ -74,10 +85,10 @@ You'll have the easiest time naming your database `smart`
 
 * in `/etc/postgresql/9.1/main/pg_hba.conf`, find the line that reads:
 
-        local     all     all        peer
+        local     all     all        XXX
 
-  This should be the second uncommented line in your default config. Change
-`ident` to `md5`:
+This should be the second uncommented line in your default config. Note XXX
+in this line could be `ident`, `peer`, or another name. Change XXX to `md5`:
 
         local     all     all        md5
 
@@ -101,14 +112,14 @@ You'll have the easiest time naming your database `smart`
 * get Tomcat and OpenRDF-Sesame:
 
         $ sudo apt-get install tomcat7
-        $ wget http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
+        $ wget http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.9/openrdf-sesame-2.6.9-sdk.tar.gz
 
 * install OpenRDF Sesame as a Tomcat web application
 
-        $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
+        $ tar -xzvf openrdf-sesame-2.6.9-sdk.tar.gz
         $ sudo mkdir /usr/share/tomcat7/.aduna
         $ sudo chown tomcat7.tomcat7 /usr/share/tomcat7/.aduna/
-        $ sudo cp -r openrdf-sesame-2.6.5/war/* /var/lib/tomcat7/webapps/
+        $ sudo cp -r openrdf-sesame-2.6.9/war/* /var/lib/tomcat7/webapps/
 
 * restart Tomcat (optional since autoDeploy is typically enabled in Tomcat by default)
   
@@ -158,16 +169,20 @@ Reset the SMART server, regenerate sample data, and reload:
 
     $ python smart_manager.py -r -p -l
 
+## Loading additional apps
+
+    $ cd smart_server
+
+    # file path can be a URL or local file; OAuth secret can be any string
+    $ python manage.py load_app http://path/to/manifest.json smartapp-secret
+
 # Manual steps: if you don't take the automated approach...
 
 ## 1. Download, Install, and Configure SMART Backend Server
 
 * get the code
 
-      $ git clone https://github.com/chb/smart_server.git
-      $ cd smart_server
-      $ git submodule init
-      $ git submodule update
+      $ git clone --recursive https://github.com/chb/smart_server.git
 
 * copy `settings.py.default` to `settings.py` and update it:
   * set `DATABASE_USER` to the username you chose, in this documentation
@@ -180,8 +195,12 @@ Reset the SMART server, regenerate sample data, and reload:
     be running, including port number  e.g. `http://localhost:7001`
 
 * copy `bootstrap_helpers/application_list.json.default` to
-  `bootstrap_helpers/application_list.json` and customize to include
-  the apps you want.
+  `bootstrap_helpers/application_list.json` and customize it to include
+  the apps that you want.
+
+* copy `bootstrap_helpers/bootstrap_applications.py.default` to
+  `bootstrap_helpers/bootstrap_applications.py` and customize it to include
+  the service apps that you want.
 
 * update the database and repository settings in `reset.sh` (if you
   changed the default DB and repository endpoints in `settings.py`)
@@ -209,10 +228,7 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
 * get the code
 
-        $ git clone https://github.com/chb/smart_ui_server.git
-        $ cd smart_ui_server
-        $ git submodule init
-        $ git submodule update
+        $ git --recursive clone https://github.com/chb/smart_ui_server.git
 
 * copy `settings.py.default` to `settings.py` and update:
 	* set `DATABASE_USER` to the username you chose, in this
@@ -238,10 +254,7 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
 * get the source code
 
-       $ git clone https://github.com/chb/smart_sample_apps.git
-       $ cd smart_sample_apps
-       $ git submodule init
-       $ git submodule update
+       $ git --recursive clone https://github.com/chb/smart_sample_apps.git
 
 * copy `settings.py.default` to `settings.py` and update:
     * set `APP_HOME` to the complete path to the location where you've
@@ -255,7 +268,7 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
 * get the source code and generate sample data
 
-        $ git clone https://github.com/chb/smart_sample_patients.git
+        $ git --recursive clone https://github.com/chb/smart_sample_patients.git
         $ cd smart_sample_patients/bin
         $ python generate.py --write ../test-data/
 

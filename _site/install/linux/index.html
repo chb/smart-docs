@@ -124,7 +124,7 @@ in order to run the SMART Reference EMR in your own environment:</p>
 <ul>
 <li>Recent Linux installation (Kernel 2.6+).We recommend an up-to-date version of
 Ubuntu, and these instructions are written from that perspective.</li>
-<li>Note: These instructions have been updated for Ubuntu 11.10.</li>
+<li>Note: These instructions have been updated for Ubuntu 12.04</li>
 <li><p>Note: We recommend you do this by sudo'ing from a non-root user. If you
 would like to do this as root make sure you create at least one non-root user
 with <code>useradd -m {USER}</code> otherwise the default locale will not be set. This
@@ -138,7 +138,7 @@ issue is most common on a new OS build.</p></li>
 <pre><code>$ sudo apt-get install python-psycopg2 python-m2crypto \
     python-simplejson python-argparse python-setuptools python-pyparsing
 
-$ sudo easy_install -U &quot;rdflib&gt;=3.0.0&quot;  rdfextras
+$ sudo easy_install -U &quot;rdflib==3.1.0&quot; &quot;rdfextras==0.1&quot;
 </code></pre></li>
 <li><p>Django 1.3+</p>
 
@@ -156,9 +156,20 @@ $ sudo easy_install -U &quot;rdflib&gt;=3.0.0&quot;  rdfextras
 
 <h1>Setup Database</h1>
 
-<p>You'll have the easiest time naming your database <code>smart</code></p>
-
 <ul>
+<li><p>Create a PostgreSQL user for your SMART service, e.g. <code>smart</code> and
+setup a password. You'll have the easiest time if you name your
+database <code>smart</code> as well.</p>
+
+<pre><code>$ sudo su - postgres
+$ pg_dropcluster --stop 9.1 main
+$ pg_createcluster --start -e UTF-8 9.1 main
+$ createuser --superuser smart
+$ psql
+$ postgres=# \password smart
+$ postgres=# \q
+$ exit
+</code></pre></li>
 <li><p>There are two ways to authenticate to PostgreSQL: use your Unix credentials,
 or use a separate username and password. We strongly recommend the latter,
 and our instructions are tailored appropriately. If you know how to use
@@ -166,12 +177,12 @@ PostgreSQL and want to use Unix-logins, go for it, just remember that when
 you use Apache, it will usually try to log in using its username, <code>www-data</code>.</p></li>
 <li><p>in <code>/etc/postgresql/9.1/main/pg_hba.conf</code>, find the line that reads:</p>
 
-<pre><code>local     all     all        peer
+<pre><code>local     all     all        XXX
 </code></pre></li>
 </ul>
 
-<p>This should be the second uncommented line in your default config. Change
-<code>ident</code> to <code>md5</code>:</p>
+<p>This should be the second uncommented line in your default config. Note XXX
+in this line could be <code>ident</code>, <code>peer</code>, or another name. Change XXX to <code>md5</code>:</p>
 
 <pre><code>    local     all     all        md5
 </code></pre>
@@ -199,14 +210,14 @@ $ postgres=# \q
 <li><p>get Tomcat and OpenRDF-Sesame:</p>
 
 <pre><code>$ sudo apt-get install tomcat7
-$ wget http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
+$ wget http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.9/openrdf-sesame-2.6.9-sdk.tar.gz
 </code></pre></li>
 <li><p>install OpenRDF Sesame as a Tomcat web application</p>
 
-<pre><code>$ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
+<pre><code>$ tar -xzvf openrdf-sesame-2.6.9-sdk.tar.gz
 $ sudo mkdir /usr/share/tomcat7/.aduna
 $ sudo chown tomcat7.tomcat7 /usr/share/tomcat7/.aduna/
-$ sudo cp -r openrdf-sesame-2.6.5/war/* /var/lib/tomcat7/webapps/
+$ sudo cp -r openrdf-sesame-2.6.9/war/* /var/lib/tomcat7/webapps/
 </code></pre></li>
 <li><p>restart Tomcat (optional since autoDeploy is typically enabled in Tomcat by default)</p>
 
@@ -262,6 +273,14 @@ master branch!)</p>
 <pre><code>$ python smart_manager.py -r -p -l
 </code></pre>
 
+<h2>Loading additional apps</h2>
+
+<pre><code>$ cd smart_server
+
+# file path can be a URL or local file; OAuth secret can be any string
+$ python manage.py load_app http://path/to/manifest.json smartapp-secret
+</code></pre>
+
 <h1>Manual steps: if you don't take the automated approach...</h1>
 
 <h2>1. Download, Install, and Configure SMART Backend Server</h2>
@@ -269,10 +288,7 @@ master branch!)</p>
 <ul>
 <li><p>get the code</p>
 
-<p>$ git clone <a href="https://github.com/chb/smart_server.git">https://github.com/chb/smart_server.git</a>
-  $ cd smart_server
-  $ git submodule init
-  $ git submodule update</p></li>
+<p>$ git clone --recursive <a href="https://github.com/chb/smart_server.git">https://github.com/chb/smart_server.git</a></p></li>
 <li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update it:</p>
 
 <ul>
@@ -286,8 +302,11 @@ including port number  e.g. <code>http://localhost:7000</code></li>
 be running, including port number  e.g. <code>http://localhost:7001</code></li>
 </ul></li>
 <li><p>copy <code>bootstrap_helpers/application_list.json.default</code> to
-<code>bootstrap_helpers/application_list.json</code> and customize to include
-the apps you want.</p></li>
+<code>bootstrap_helpers/application_list.json</code> and customize it to include
+the apps that you want.</p></li>
+<li><p>copy <code>bootstrap_helpers/bootstrap_applications.py.default</code> to
+<code>bootstrap_helpers/bootstrap_applications.py</code> and customize it to include
+the service apps that you want.</p></li>
 <li><p>update the database and repository settings in <code>reset.sh</code> (if you
 changed the default DB and repository endpoints in <code>settings.py</code>)</p></li>
 <li><p>set things up (supplying the smart db password when prompted twice)</p>
@@ -317,10 +336,7 @@ worry, just set up the SMART Sample Apps server, and run <code>reset.sh</code> a
 <ul>
 <li><p>get the code</p>
 
-<pre><code>$ git clone https://github.com/chb/smart_ui_server.git
-$ cd smart_ui_server
-$ git submodule init
-$ git submodule update
+<pre><code>$ git --recursive clone https://github.com/chb/smart_ui_server.git
 </code></pre></li>
 <li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update:</p>
 
@@ -350,10 +366,7 @@ change their value in the UI server default settings file.)</li>
 <ul>
 <li><p>get the source code</p>
 
-<p>$ git clone <a href="https://github.com/chb/smart_sample_apps.git">https://github.com/chb/smart_sample_apps.git</a>
-   $ cd smart_sample_apps
-   $ git submodule init
-   $ git submodule update</p></li>
+<p>$ git --recursive clone <a href="https://github.com/chb/smart_sample_apps.git">https://github.com/chb/smart_sample_apps.git</a></p></li>
 <li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update:</p>
 
 <ul>
@@ -370,7 +383,7 @@ we suggest, there's no need to change anything.</li>
 <ul>
 <li><p>get the source code and generate sample data</p>
 
-<pre><code>$ git clone https://github.com/chb/smart_sample_patients.git
+<pre><code>$ git --recursive clone https://github.com/chb/smart_sample_patients.git
 $ cd smart_sample_patients/bin
 $ python generate.py --write ../test-data/
 </code></pre></li>

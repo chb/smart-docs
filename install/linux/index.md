@@ -47,7 +47,7 @@ in order to run the SMART Reference EMR in your own environment:
         $ sudo apt-get install python-psycopg2 python-m2crypto \
             python-simplejson python-argparse python-setuptools python-pyparsing
 
-        $ sudo easy_install -U "rdflib==3.1.0" "rdfextras==0.1"
+        $ sudo easy_install -U "rdflib==3.2.0" "rdfextras==0.1"
 
 * Django 1.3+
 

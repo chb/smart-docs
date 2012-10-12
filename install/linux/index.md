@@ -96,16 +96,6 @@ in this line could be `ident`, `peer`, or another name. Change XXX to `md5`:
 
         $ sudo service postgresql restart
 
-* Create a PostgreSQL user for your SMART service, e.g. `smart` and setup a password
-
-        $ sudo su - postgres
-        $ pg_dropcluster --stop 9.1 main
-        $ pg_createcluster --start -e UTF-8 9.1 main
-        $ createuser --superuser smart
-        $ psql
-        $ postgres=# \password smart
-        $ postgres=# \q
-
 
 # Install `openrdf-sesame` (and Tomcat)
 

@@ -27,6 +27,14 @@ generic Ubuntu 12.04 server virtual machine. The default username and
 password are "smart". After logging in, follow the on-screen
 instructions to set up the smart-vm host substitution on your local
 machine. You can then try out the SMART reference server by pointing
-your browser at <http://smart-vm:7001>
+your browser at <http://smart-vm:7001>.
 
-[Download the SMART VMWare Virtual Machine (API version 0.5.1)](http://media.smartplatforms.org/smart-vm-0.5.1.zip)
+Latest release version:
+
+[Download the SMART VMWare Virtual Machine (API version 0.5.2)](http://media.smartplatforms.org/smart-vm/smart-vm-0.5.2.zip)
+
+Older versions available:
+
+[SMART VMWare Virtual Machine (API version 0.5.1)](http://media.smartplatforms.org/smart-vm/smart-vm-0.5.1.zip)
+[SMART VMWare Virtual Machine (API version 0.4)](http://media.smartplatforms.org/smart-vm/smart-vm-0.4.zip)
+[SMART VMWare Virtual Machine (API version 0.3)](http://media.smartplatforms.org/smart-vm/smart-vm-0.3.zip)

@@ -16,19 +16,19 @@ to return to your `SMART` directory. Tested on OS X Lion and Mountain Lion.
 
 # Install Homebrew
 
-We use [Homebrew][] as package manager to install a few Linux tools. Since this
+We use [Homebrew] as package manager to install most libraries. Since this
 needs some extra command line tools to compile code, you first have to do
 *one* of the following:
 
-* Install [Xcode][] from the App Store (it's free, if large), then open
+* Install [Xcode] from the App Store (it's free, if large), then open
   `Xcode > Preferences > Downloads > Components` and install the `Command Line
   Tools`
 
-* Download only the [Command Line Tools][] (search for the correct version) from
+* Download only the [Command Line Tools][shell] (search for the correct version) from
   the Apple Developer Center (you will need a free developer account for this)
 
 
-[Homebrew][] is a superb replacement for the old managers Fink and MacPorts and
+[Homebrew] is a superb replacement for the old managers Fink and MacPorts and
 you will love it! Here's a one-line installer for it:
 
     $ /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
@@ -39,34 +39,18 @@ If you had Homebrew installed before, make sure to update it:
 
 [Homebrew]: http://mxcl.github.com/homebrew/
 [Xcode]: http://itunes.apple.com/ch/app/xcode/id497799835?l=en&mt=12
-[Command Line Tools]: https://developer.apple.com/downloads/index.action
+[shell]: https://developer.apple.com/downloads/index.action
 
 
-# Install Python Tools 
+# Install Python Tools and Django
 
-## `lxml` - an pythonic xml library
+## `lxml`, `psycopg` and RDF packages
 
-Download [lxml][] version 2.3.4 or later (via source tarball), double-click to
-unarchive, then build and install:
+As of this writing, this will install lxml 3.0.1, psycopg 2.4.5 and rdflib 3.2.3. You will see a lot of warnings from clang that you can safely ignore.
 
-    $ cd lxml-2.3.4
-    $ python setup.py build --static-deps
-    $ sudo python setup.py install
-
-## `psycopg2` - an advanced PostgreSQL driver for Python
-
-Download the [latest stable release][psycopg], unarchive, build and install:
-
-    $ cd psycopg2-2.4.5
-    $ python setup.py build
-    $ sudo python setup.py install
-
-## RDF packages
-
+    $ sudo easy_install lxml
+    $ sudo easy_install psycopg2
     $ sudo easy_install -U "rdflib>=3.0.0"  rdfextras
-
-
-# Install Django 
 
 ## Django
 
@@ -83,30 +67,38 @@ You have to use [Django 1.3][django] for now. Download, unarchive and install:
 
 # PostgreSQL
 
-It's easiest to use the [Mac installer][postgres-mac] because it also sets up
-the `postgres` user which is needed.
+OS X 10.8 ships with PostgreSQL including a launchd-item, but I was out of luck finding its data directory. So we...
 
-* Download the latest installer (I used 9.1.4) and run it. You can keep most
-  default settings:
-  
-  - Install into `/Library/PostgreSQL/9.1`
-  - Port `5432`
-  - Remember your password!
-  - Locale `en_US.UTF-8` (any `.UTF-8` will do)
+* Install postgres with homebrew (installs version 9.2.1):
+
+      $ brew install postgresql
+      $ initdb /usr/local/var/postgres -E utf8
+      $ cp /usr/local/Cellar/postgresql/9.2.1/homebrew.mxcl.postgresql.plist \
+        ~/Library/LaunchAgents/
+
+* Now we must change the socket as by default, it resides in `/tmp`. First, create the directory and make it yours:
+
+      $ sudo mkdir /var/pgsql_socket/
+      $ sudo chown `whoami`:admin /var/pgsql_socket/
+    
+    In the file `/usr/local/var/postgres/postgresql.conf`, change _unix_socket_directory_ to read:
+
+       unix_socket_directory = '/var/pgsql_socket/'
+
+* Launch Postgres
+
+      $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 * Create a PostgreSQL user for your SMART service. We will be using *smart*,
   use your own password:
       
-        $ sudo su - postgres
         $ createuser --superuser smart
         $ psql postgres
         $ postgres=# \password smart
         $ postgres=# \q
 
-*Caveat*: When using Postgres < 9.1 see the [instructions][] on how to change
-the Postgres config to use md5 passwords. Also, if you haven't configured
-postgres to use UTF-8, you seemingly need to use `pg_createcluster` which does
-not ship on the Mac. You're on your own.
+> **Caveat**: When using Postgres < 9.1 see the [instructions] on how to change
+the Postgres config to use md5 passwords.
 
 [postgres-mac]: http://www.postgresql.org/download/macosx/
 [instructions]: https://github.com/chb/smart_server
@@ -121,24 +113,27 @@ not ship on the Mac. You're on your own.
 * Configure Tomcat: The environment variable *$CATALINA_HOME* needs to point
   to the tomcat base directory. So in your Bash `.profile` add:
 
-      $ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.28/libexec
-
-  If you don't use Bash adjust accordingly. Reload your profile file with:
+      $ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.32/libexec
+  
+  If brew didn't install version 7.0.32, change that number accordingly. If you don't use Bash adjust accordingly. Reload your profile file with:
 
       $ source ~/.profile
 
 * Install openrdf-sesame
 
-        $ curl -O http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
-        $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
-        $ mkdir $CATALINA_HOME/.aduna
-        $ cp -r openrdf-sesame-2.6.5/war/* $CATALINA_HOME/webapps/
+      $ curl -O http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
+      $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
+      $ mkdir $CATALINA_HOME/.aduna
+      $ mkdir $CATALINA_HOME/logs
+      $ cp -r openrdf-sesame-2.6.5/war/* $CATALINA_HOME/webapps/
           
 * Launch Tomcat and check its availability
   
-        $ CATALINA_HOME/bin/startup.sh
+      $ $CATALINA_HOME/bin/startup.sh
   
-You should now be able to access `http://localhost:8080/openrdf-workbench/`.
+You should now be able to access `http://localhost:8080/openrdf-workbench/`
+
+> OS X no longer ships with **Java** installed. Tomcat runs on Java, so if you haven't installed Java yet simply type `java` in the Terminal and the OS will prompt and install Java for you.
 
 
 # Automated SMART install
@@ -155,8 +150,7 @@ We're now ready to get the latest and greatest from SMART.
 
         $ python smart_manager.py -a
 
-This will fetch all needed repositories, run an installer that asks you for some
-configurations, generate patient sample data and in the end run the server.
+This will fetch all needed repositories, run an installer that asks you for some configurations, generate patient sample data and in the end run the server.
 
 
 # Running SMART

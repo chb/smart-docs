@@ -10,7 +10,7 @@ includenav: smartnav.markdown
 
 ## Warning
 
-*The SMART VM is not locked down for use on a public network (it
+*The SMART VM is NOT locked down for use on a public network (it
 was meant to be used within the confines of a local machine). If you
 decide to host the VM on the public network you will need
 to take a few additional precautions described below to secure
@@ -44,7 +44,7 @@ Basic steps:
     (substitute "localhost" with the DNS of the machine that you want).
     
   * Take a look at the apache virtual servers' configurations in 
-    "/etc/apache2/sites-enabled" to change any occurence of "smart-vm"
+    "/etc/apache2/sites-enabled" and change any occurence of "smart-vm"
     with your server's DNS.
 
   * Restart Apache: `sudo service apache2 restart`

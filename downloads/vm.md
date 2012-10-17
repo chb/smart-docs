@@ -30,18 +30,14 @@ Basic steps:
   * Apply the following Tomcat configuration changes to restric public access
     to port 8080:
 
-<pre>
    /var/lib/tomcat7/conf/context.xml
    <Context>
    +  <Valve className="org.apache.catalina.valves.RemoteHostValve"
 allow="localhost"/>
-</pre>
 
-<pre>
    /var/lib/tomcat7/conf/server.xml
    <Connector port="8080" protocol="HTTP/1.1"
    +          enableLookups="true"
-</pre>
 
   * Restart Tomcat: `sudo service tomcat7 restart`
   

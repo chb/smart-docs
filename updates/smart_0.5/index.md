@@ -24,6 +24,9 @@ Also, the [Lab Panel](/reference/data_model#Lab_Panel) model is now part of our 
 online documentation. A panel has a code of its own, and groups together individual
 lab results which can also be queried independently. Please, take a look in case you 
 haven't seen this model before.
+
+Finally, the [Problems](/reference/data_model#Problem) model was extended to
+allow problem status annotation and referencing of relevant encounters. 
     
 For a full description of the SMART 0.5 data models, visit our [Data Model Page](/reference/data_model)
 

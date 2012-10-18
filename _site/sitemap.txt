@@ -3,6 +3,7 @@ http://dev.smartplatforms.org/archive.html
 http://dev.smartplatforms.org/atom.xml
 http://dev.smartplatforms.org/categories.html
 http://dev.smartplatforms.org/downloads/index.html
+http://dev.smartplatforms.org/downloads/vm/index.html
 http://dev.smartplatforms.org/howto/background_and_helper_apps/index.html
 http://dev.smartplatforms.org/howto/build_a_rest_app/index.html
 http://dev.smartplatforms.org/howto/build_a_smart_app/index.html

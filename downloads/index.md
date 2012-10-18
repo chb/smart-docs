@@ -24,4 +24,4 @@ code for the:
 
 We also offer a ready-to-go SMART server virtual machine:
 
-[SMART Virtual Machine Instructions and Download](http://dev.smartplatforms.org/downloads/vm.html)
+[VM Instructions and Download](/downloads/vm/)

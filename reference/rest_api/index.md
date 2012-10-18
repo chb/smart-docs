@@ -29,7 +29,8 @@ medication in our sample EMR might have the `URI`:
 
 # Changelog
 
-See here for all of the [changes to the API and payloads](../change_log/)
+Click here for the list of [Changes to the API and Payloads for the
+latest release](/updates/smart_0.5/).
 
 
 # Overview

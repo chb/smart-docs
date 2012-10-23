@@ -76,18 +76,17 @@ OS X 10.8 ships with PostgreSQL including a launchd-item, but I was out of luck 
       $ cp /usr/local/Cellar/postgresql/9.2.1/homebrew.mxcl.postgresql.plist \
         ~/Library/LaunchAgents/
 
-* Now we must change the socket as by default, it resides in `/tmp`. First, create the directory and make it yours:
-
-      $ sudo mkdir /var/pgsql_socket/
-      $ sudo chown `whoami`:admin /var/pgsql_socket/
-    
-    In the file `/usr/local/var/postgres/postgresql.conf`, change _unix_socket_directory_ to read:
-
-       unix_socket_directory = '/var/pgsql_socket/'
-
 * Launch Postgres
 
       $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+
+* Because of some socket issues we must symlink the socket from its default in `/tmp` to `/var/pgsql_socket`. Both are needed and I haven't been able to figure out why. First, create the directory and make it yours:
+
+      $ sudo mkdir /var/pgsql_socket
+      $ sudo chown `whoami`:admin /var/pgsql_socket/
+      $ ln -s /tmp/.s.PGSQL.5432 /var/pgsql_socket/.s.PGSQL.5432
+
+  > If you know how to circumvent this, let us know!
 
 * Create a PostgreSQL user for your SMART service. We will be using *smart*,
   use your own password:
@@ -160,13 +159,13 @@ If you've just run the automated install, you only need to start Tomcat via
 
 ## To start SMART (and Tomcat):
 
-    $ CATALINA_HOME/bin/startup.sh
+    $ $CATALINA_HOME/bin/startup.sh
     $ python smart_manager.py -v -w
 
 ## To stop SMART (and Tomcat):
 
     $ python smart_manager.py -k
-    $ CATALINA_HOME/bin/shutdown.sh
+    $ $CATALINA_HOME/bin/shutdown.sh
 
 Nobody is stopping you from putting these two commands in a start- and/or stop
 script, of course. :)

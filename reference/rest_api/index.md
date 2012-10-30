@@ -168,29 +168,29 @@ Get users by name (or all users if blank) <br><br>
 
 ## Allergy
 <ul>
-<li>URI:<code> GET /records/{record_id}/allergies/{allergy_id} </code></li>
-<li>Client method name:<code> get_allergy </code></li>
-</ul>
-Get one Allergy for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/allergies/ </code></li>
 <li>Client method name:<code> get_allergies </code></li>
 </ul>
 Get all Allergies and Allergy Exclusions for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/allergies/{allergy_id} </code></li>
+<li>Client method name:<code> get_allergy </code></li>
+</ul>
+Get one Allergy for a patient <br><br>
 [Allergy RDF](../data_model/#Allergy)
 
 
 ## Clinical Note
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
-<li>Client method name:<code> get_clinical_note </code></li>
-</ul>
-Get one Clinical Note for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
 <li>Client method name:<code> get_clinical_notes </code></li>
 </ul>
 Get all Clinical Notes for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
+<li>Client method name:<code> get_clinical_note </code></li>
+</ul>
+Get one Clinical Note for a patient <br><br>
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
 
@@ -205,15 +205,15 @@ Get Demographics for a patient <br><br>
 
 ## Encounter
 <ul>
-<li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
-<li>Client method name:<code> get_encounter </code></li>
-</ul>
-Get one Encounter for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
 <li>Client method name:<code> get_encounters </code></li>
 </ul>
 Get all Encounters for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
+<li>Client method name:<code> get_encounter </code></li>
+</ul>
+Get one Encounter for a patient <br><br>
 [Encounter RDF](../data_model/#Encounter)
 
 
@@ -233,15 +233,15 @@ Get all Fulfillments for a patient <br><br>
 
 ## Immunization
 <ul>
-<li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
-<li>Client method name:<code> get_immunization </code></li>
-</ul>
-Get one Immunization for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
 <li>Client method name:<code> get_immunizations </code></li>
 </ul>
 Get all Immunizations for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
+<li>Client method name:<code> get_immunization </code></li>
+</ul>
+Get one Immunization for a patient <br><br>
 [Immunization RDF](../data_model/#Immunization)
 
 
@@ -289,15 +289,15 @@ Get one Medication for a patient <br><br>
 
 ## Problem
 <ul>
-<li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
-<li>Client method name:<code> get_problem </code></li>
-</ul>
-Get one Problem for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/problems/ </code></li>
 <li>Client method name:<code> get_problems </code></li>
 </ul>
 Get all Problems for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
+<li>Client method name:<code> get_problem </code></li>
+</ul>
+Get one Problem for a patient <br><br>
 [Problem RDF](../data_model/#Problem)
 
 

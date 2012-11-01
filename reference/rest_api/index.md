@@ -151,15 +151,15 @@ Get the ontology used by a SMART container <br><br>
 
 ## User
 <ul>
-<li>URI:<code> GET /users/{user_id} </code></li>
-<li>Client method name:<code> get_user </code></li>
-</ul>
-Get a single user by ID <br><br>
-<ul>
 <li>URI:<code> GET /users/search </code></li>
 <li>Client method name:<code> search_users </code></li>
 </ul>
 Get users by name (or all users if blank) <br><br>
+<ul>
+<li>URI:<code> GET /users/{user_id} </code></li>
+<li>Client method name:<code> get_user </code></li>
+</ul>
+Get a single user by ID <br><br>
 [User RDF](../data_model/#User)
 
 
@@ -168,15 +168,15 @@ Get users by name (or all users if blank) <br><br>
 
 ## Allergy
 <ul>
-<li>URI:<code> GET /records/{record_id}/allergies/ </code></li>
-<li>Client method name:<code> get_allergies </code></li>
-</ul>
-Get all Allergies and Allergy Exclusions for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/allergies/{allergy_id} </code></li>
 <li>Client method name:<code> get_allergy </code></li>
 </ul>
 Get one Allergy for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/allergies/ </code></li>
+<li>Client method name:<code> get_allergies </code></li>
+</ul>
+Get all Allergies and Allergy Exclusions for a patient <br><br>
 [Allergy RDF](../data_model/#Allergy)
 
 
@@ -205,15 +205,15 @@ Get Demographics for a patient <br><br>
 
 ## Encounter
 <ul>
-<li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
-<li>Client method name:<code> get_encounters </code></li>
-</ul>
-Get all Encounters for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
 <li>Client method name:<code> get_encounter </code></li>
 </ul>
 Get one Encounter for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
+<li>Client method name:<code> get_encounters </code></li>
+</ul>
+Get all Encounters for a patient <br><br>
 [Encounter RDF](../data_model/#Encounter)
 
 
@@ -248,14 +248,14 @@ Get one Immunization for a patient <br><br>
 ## Lab Panel
 <ul>
 <li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
-<li>Client method name:<code> get_lab_panels </code></li>
-</ul>
-Get all Lab Panels for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
 <li>Client method name:<code> get_lab_panel </code></li>
 </ul>
 Get one Lab Panel for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
+<li>Client method name:<code> get_lab_panels </code></li>
+</ul>
+Get all Lab Panels for a patient <br><br>
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 

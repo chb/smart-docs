@@ -109,15 +109,15 @@ Currently there are three "scopes" or access control categories:
 
 ## App Manifest
 <ul>
-<li>URI:<code> GET /apps/manifests/ </code></li>
-<li>Client method name:<code> get_app_manifests </code></li>
-</ul>
-Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
-<ul>
 <li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
 <li>Client method name:<code> get_app_manifest </code></li>
 </ul>
 Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins <br><br>
+<ul>
+<li>URI:<code> GET /apps/manifests/ </code></li>
+<li>Client method name:<code> get_app_manifests </code></li>
+</ul>
+Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
 [App Manifest RDF](../data_model/#App_Manifest)
 
 
@@ -261,15 +261,15 @@ Get one Lab Panel for a patient <br><br>
 
 ## Lab Result
 <ul>
-<li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
-<li>Client method name:<code> get_lab_results </code></li>
-</ul>
-Get all Lab Results for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/lab_results/{lab_result_id} </code></li>
 <li>Client method name:<code> get_lab_result </code></li>
 </ul>
 Get one Lab Result for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
+<li>Client method name:<code> get_lab_results </code></li>
+</ul>
+Get all Lab Results for a patient <br><br>
 [Lab Result RDF](../data_model/#Lab_Result)
 
 
@@ -289,15 +289,15 @@ Get all Medications for a patient <br><br>
 
 ## Problem
 <ul>
-<li>URI:<code> GET /records/{record_id}/problems/ </code></li>
-<li>Client method name:<code> get_problems </code></li>
-</ul>
-Get all Problems for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
 <li>Client method name:<code> get_problem </code></li>
 </ul>
 Get one Problem for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/problems/ </code></li>
+<li>Client method name:<code> get_problems </code></li>
+</ul>
+Get all Problems for a patient <br><br>
 [Problem RDF](../data_model/#Problem)
 
 
@@ -326,15 +326,15 @@ Get Social History for a patient <br><br>
 
 ## Vital Sign Set
 <ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
-<li>Client method name:<code> get_vital_sign_set </code></li>
-</ul>
-Get one Vital Sign Set for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
 <li>Client method name:<code> get_vital_sign_sets </code></li>
 </ul>
 Get all Vital Sign Sets for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
+<li>Client method name:<code> get_vital_sign_set </code></li>
+</ul>
+Get one Vital Sign Set for a patient <br><br>
 [Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
 
 

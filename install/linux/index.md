@@ -260,13 +260,13 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
         $ git --recursive clone https://github.com/chb/smart_sample_patients.git
         $ cd smart_sample_patients/bin
-        $ python generate.py --write ../test-data/
+        $ python generate.py --write ../generated-data/
 
 * Load into SMART EMR
 
         $ cd /path/to/smart_server
         $ PYTHONPATH=.:.. DJANGO_SETTINGS_MODULE=settings /usr/bin/python \
-          load_tools/load_one_patient.py /path/to/smart_sample_patients/test-data/*
+          load_tools/load_one_patient.py /path/to/smart_sample_patients/generated-data/*
  
  Expect this to take a few minutes.
 

@@ -276,15 +276,15 @@ Get one Allergy for a patient <br><br>
 <h2>Clinical Note</h2>
 
 <p><ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
-</ul>
-Get all Clinical Notes for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
 <li>Client method name:<code> get_clinical_note </code></li>
 </ul>
 Get one Clinical Note for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
 <a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
 
 <h2>Demographics</h2>
@@ -313,15 +313,15 @@ Get all Encounters for a patient <br><br>
 <h2>Fulfillment</h2>
 
 <p><ul>
-<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
-<li>Client method name:<code> get_fulfillments </code></li>
-</ul>
-Get all Fulfillments for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
 <li>Client method name:<code> get_fulfillment </code></li>
 </ul>
 Get one Fulfillment for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
+<li>Client method name:<code> get_fulfillments </code></li>
+</ul>
+Get all Fulfillments for a patient <br><br>
 <a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
 
 <h2>Immunization</h2>
@@ -355,15 +355,15 @@ Get one Lab Panel for a patient <br><br>
 <h2>Lab Result</h2>
 
 <p><ul>
-<li>URI:<code> GET /records/{record_id}/lab_results/{lab_result_id} </code></li>
-<li>Client method name:<code> get_lab_result </code></li>
-</ul>
-Get one Lab Result for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
 <li>Client method name:<code> get_lab_results </code></li>
 </ul>
 Get all Lab Results for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_results/{lab_result_id} </code></li>
+<li>Client method name:<code> get_lab_result </code></li>
+</ul>
+Get one Lab Result for a patient <br><br>
 <a href="../data_model/#Lab_Result">Lab Result RDF</a></p>
 
 <h2>Medication</h2>
@@ -420,15 +420,15 @@ Get Social History for a patient <br><br>
 <h2>Vital Sign Set</h2>
 
 <p><ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
-<li>Client method name:<code> get_vital_sign_sets </code></li>
-</ul>
-Get all Vital Sign Sets for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
 <li>Client method name:<code> get_vital_sign_set </code></li>
 </ul>
 Get one Vital Sign Set for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
+<li>Client method name:<code> get_vital_sign_sets </code></li>
+</ul>
+Get all Vital Sign Sets for a patient <br><br>
 <a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
 
 <h1>User Calls</h1>
@@ -436,10 +436,20 @@ Get one Vital Sign Set for a patient <br><br>
 <h2>User Preferences</h2>
 
 <p><ul>
+<li>URI:<code> DELETE /users/{user_id}/apps/{smart_app_id}/preferences </code></li>
+<li>Client method name:<code> delete_user_preferences </code></li>
+</ul>
+Delete user preferences for an app <br><br>
+<ul>
 <li>URI:<code> GET /users/{user_id}/apps/{smart_app_id}/preferences </code></li>
 <li>Client method name:<code> get_user_preferences </code></li>
 </ul>
 Get user preferences for an app <br><br>
+<ul>
+<li>URI:<code> PUT /users/{user_id}/apps/{smart_app_id}/preferences </code></li>
+<li>Client method name:<code> put_user_preferences </code></li>
+</ul>
+Set new user preferences for an app <br><br>
 <a href="../data_model/#User_Preferences">User Preferences RDF</a></p>
 
 

@@ -27,6 +27,7 @@ values.
     "version" : "YOUR.VERSION.NUMBER",
 
     "mode" : "ui",
+    "standalone": false,
     "scope": "record",
 
     "index" : "http://PATH/TO/YOUR/index.html",
@@ -39,19 +40,25 @@ values.
 
 SMART Applications can run in one of three modes:
 
-* The UI Apps mode (`ui`): These apps interact with the user in the context
-  of the SMART container. Several of the sample apps fall in this category
-  the Med List, Problems List, and Got Statins apps. These are SMART's "normal"
-  apps.
+* The UI Apps mode (`ui`):  
+  These apps interact with the user in the context of the SMART container.
+  Several of the sample apps fall in this category the Med List, Problems
+  List, and Got Statins apps. These are SMART's "normal" apps.
 
-* The Frame UI Apps mode (`frame_ui`): These apps can launch and layout
-  multiple apps side-by-side. Apps in this category include: i2b2 EMR View,
-  as well as our [Frame UI Sample](/howto/how_to_build_smart_frame_ui_apps).
-* The Background Apps mode (`background`): perform some function automatically
+* The Frame UI Apps mode (`frame_ui`):  
+  These apps can launch and layout multiple apps side-by-side. Apps in this
+  category include: i2b2 EMR View, as well as our [Frame UI Sample](/howto/how_to_build_smart_frame_ui_apps).
 
-  in the background. A sample app in this category is the Surescripts Connector,
-  which automatically gets a Surescripts dispensing history for each patient
-  record and updates the medications list accordingly. 
+* The Background Apps mode (`background`):  
+  They perform some function automatically in the background. A sample app in this
+  category is the Surescripts Connector, which automatically gets a
+  Surescripts dispensing history for each patient record and updates the
+  medications list accordingly.
+
+
+## Standalone Apps
+
+If the app can run in its own browser window (or is a non-browser app such as a native iOS or Android app) set the `standalone` flag to `true`. It is false by default and may be omitted from the manifest.
 
 
 # Sample Manifest Files

@@ -75,52 +75,35 @@ You will probably also need the `oauth` and `util` modules:
 ## Using the SMART Client
 
 To make a SMART REST API call, you'll need to instantiate a `SmartClient` object,
-set its context, and choose the call you want to make.
-
-You'll need to instantiate a `SmartClient` object:
+set its record-id, and choose the call you want to make.
 
 {% highlight python %}
-  client = SmartClient(APP_ID,
-                       SMART_SERVER_PARAMS,
-                       SMART_SERVER_OAUTH,
-                       resource_tokens)
+  client = SmartClient(API_BASE, SMART_SERVER_OAUTH)
 {% endhighlight  %}
 
 In this call:
 
-* `APP_ID`: the application identifier, as assigned by the SMART Container. In the 
-case of our SMART Reference EMR, this is the same as the OAuth `consumer_key`,
-but not all SMART Containers will choose to identify apps by their OAuth
-consumer token.
-
-* `SMART_SERVER_PARAMS`: a Python dictionary containing at least `api_base`, the
-URL base to which SMART API REST calls are made, e.g.:
+* `API_BASE`: the URL base to which SMART API REST calls are made, e.g.:
 
 {% highlight python %}
-    SMART_SERVER_PARAMS = {'api_base' : 'http://sandbox-api.smartplatforms.org'}
+    API_BASE = 'http://sandbox-api.smartplatforms.org'
 {% endhighlight %}
 
-* SMART_SERVER_OAUTH: a Python dictionary containing the OAuth consumer credentials:
+* `SMART_SERVER_OAUTH`: a Python dictionary containing the OAuth consumer credentials:
 
 {% highlight python %}
-  `SMART_SERVER_OAUTH` = {'consumer_key' : 'smartapp123', 'consumer_secret' : 'X1Y2Z3...'}
-{% endhighlight %}
-
-* `resource_tokens`: a Python dictionary containing the OAuth resource credentials:
-
-{% highlight python %}
-  resource_tokens = {'oauth_token' : 'tok456', 'oauth_token_secret' : 'A7B4Z1...'}
+  `SMART_SERVER_OAUTH` = {
+      'consumer_key': 'my-app@apps.smartplatforms.org',
+      'consumer_secret' : 'smartapp-secret'
+  }
 {% endhighlight %}
 
 Once instantiated, a SMART client object can be used for as many API calls as
-needed. Of course, if you need to use different credentials, in particular a
-different set of resource tokens, you should instantiate a new `SmartClient`. If
-you know you won't be needing to access the API with existing credentials, you
-can use the `.update_token()` method on an existing `SmartClient`, but we recommend
-you use that sparingly.
+needed. If you need to use different credentials, in particular to access
+resources of a different record, you should instantiate a new `SmartClient`.
 
 
-### SMART Client Context
+### SMART Client Record Context
 
 The `SmartClient` object contains a little bit of additional context: the
 `record_id`. This can be set like any normal Python attribute:
@@ -133,22 +116,55 @@ If you do not set up this context, you will have to provide the `record_id`
 parameter on every API call.
 
 
-### Where do I Get the Tokens and Context?
+### Where do I Get the Tokens?
 
 The consumer key and secret are defined once for your app when it is set up
 within the SMART Container. If you're developing against the SMART Reference EMR
 Sandbox, you'll want to use:
 
 {% highlight python %}
-  {'consumer_key': 'my-app@apps.smartplatforms.org', 'consumer_secret': 'smartapp-secret'}
+{
+    'consumer_key': 'my-app@apps.smartplatforms.org',
+    'consumer_secret': 'smartapp-secret'
+}
 {% endhighlight  %}
 
 See the warning about setting a strong `consumer_secret`
 [here](/howto/build_a_rest_app)
 
-To get the resource token and patient-record context, you need to understand how
-SMART Connect passes this information to your app via a URL parameter. See the
-[SMART REST HOWTO][].
+
+## Call Authorization
+
+Before the SMART container accepts any calls, you need to have been authorized
+and issued an access token. You receive an access token through a three-legged
+OAuth dance performed like this:
+
+1. Request a token: `client.fetch_request_token()`
+2. Have the user visit `client.auth_redirect_url` in his Browser
+3. When the user authorizes the app he will be redirected to the `oauth_callback`
+   URL specified in your app's manifest. Extract the `oauth_verifier` from the
+   callback URL and make the client exchange the request token for an access
+   token:
+   `client.exchange_token(oauth_verifier)`
+
+If these steps complete successfully the client now has an access token and you
+can start making calls. Here is a minimal working example on how to receive an
+access token; note that you will receive the `record_id` passed to your `index`
+URL when the user starts your app, for simplicity reasons we assume a record id
+here:
+
+{% highlight python %}
+smart = SMARTClient(API_BASE, SMART_SERVER_OAUTH)
+
+# request a token for a specific record id
+smart.record_id = '1288992'
+smart.fetch_request_token()
+print 'Now visit:  %s' % smart.auth_redirect_url
+oauth_verifier = raw_input('Enter the oauth_verifier: ')
+
+# exchange the token
+smart.exchange_token(oauth_verifier)
+{% endhighlight %}
 
 
 ## Making the Call

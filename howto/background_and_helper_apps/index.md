@@ -47,12 +47,11 @@ Then:
 {% highlight python %}
     smart_client = smart.SmartClient(
         'smart-background-app@apps.smartplatforms.org',
-        {'api_base' : 'http://sandbox-api.smartplatforms.org'},
+        'http://sandbox-api.smartplatforms.org',
         {
           'consumer_key' : 'smart-background-app@apps.smartplatforms.org',
           'consumer_secret' : 'smartapp-secret'
-        },
-     None)
+        })
 {% endhighlight %}
 
 The important difference between this SmartClient and the one you created for

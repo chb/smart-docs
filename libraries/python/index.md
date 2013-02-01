@@ -78,10 +78,12 @@ To make a SMART REST API call, you'll need to instantiate a `SmartClient` object
 set its record-id, and choose the call you want to make.
 
 {% highlight python %}
-  client = SmartClient(API_BASE, SMART_SERVER_OAUTH)
+  client = SmartClient(APP_ID, API_BASE, SMART_SERVER_OAUTH)
 {% endhighlight  %}
 
 In this call:
+
+* `APP_ID`: Your app's id
 
 * `API_BASE`: the URL base to which SMART API REST calls are made, e.g.:
 

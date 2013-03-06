@@ -175,14 +175,19 @@ Reset the SMART server, regenerate sample data, and reload:
       $ git clone --recursive https://github.com/chb/smart_server.git
 
 * copy `settings.py.default` to `settings.py` and update it:
-  * set `DATABASE_USER` to the username you chose, in this documentation
-    `smart`, and set `DATABASE_PASSWORD` accordingly.
   * set `APP_HOME` to the complete path to the location where you've
     installed `smart_server`, e.g. `/web/smart_server`
   * set `SITE_URL_PREFIX` to the URL where your server is running,
     including port number  e.g. `http://localhost:7000`
+  * set `CHROME_CONSUMER` to `chrome`
+  * set `CHROME_SECRET` to `chrome`
   * set `SMART_UI_SERVER_LOCATION` to the URL where your UI server will
     be running, including port number  e.g. `http://localhost:7001`
+  * set PLUGIN_USE_PROXY to `False`
+  * set `TRIPLESTORE['engine']` to `sesame`
+  * set `TRIPLESTORE['record_endpoint']` to `http://localhost:8080/openrdf-sesame/repositories/record_rdf`
+  * set `DATABASE_USER` to the username you chose, in this documentation
+    `smart`, and set `DATABASE_PASSWORD` accordingly.
 
 * copy `bootstrap_helpers/application_list.json.default` to
   `bootstrap_helpers/application_list.json` and customize it to include
@@ -221,12 +226,9 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
         $ git --recursive clone https://github.com/chb/smart_ui_server.git
 
 * copy `settings.py.default` to `settings.py` and update:
-	* set `DATABASE_USER` to the username you chose, in this
-      documentation `smart`, and set `DATABASE_PASSWORD`
-      accordingly.
-	* set `SMART_UI_BASE` to the complete path to the location where
+	* set `APP_HOME` to the complete path to the location where
       you've installed `smart_ui_server`, e.g. `/web/smart_ui_server`
-	* set `SMART_SERVER_LOCATION`, `CONSUMER_KEY`,
+	* set `SMART_API_SERVER_BASE`, `CONSUMER_KEY`,
       `CONSUMER_SECRET` appropriately to match the SMART Server's
       location and chrome credentials. (Check your `bootstrap.py` within
       `smart_server` for those credentials. If you change them, you'll
@@ -234,6 +236,9 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
       changed `bootstrap.py`, then your `CONSUMER_KEY` and
       `CONSUMER_SECRET` are both `chrome`, and you don't need to
       change their value in the UI server default settings file.)
+	* set `DATABASE_USER` to the username you chose, in this
+      documentation `smart`, and set `DATABASE_PASSWORD`
+      accordingly.
 
 * set things up (supplying the smart db password when prompted twice)
 
@@ -249,7 +254,8 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 * copy `settings.py.default` to `settings.py` and update:
     * set `APP_HOME` to the complete path to the location where you've
       installed `smart_sample_apps`, e.g. `/web/smart_sample_apps`
-    * set `SMART_SERVER_PARAMS` to point to the location of the SMART
+    * set `SMART_APP_SERVER_BASE` to `http://localhost:8001`
+    * set `SMART_API_SERVER_BASE` to point to the location of the SMART
       Server. If you are running the SMART server on `localhost:7000` as
       we suggest, there's no need to change anything.
 

@@ -223,7 +223,7 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
 * get the code
 
-        $ git --recursive clone https://github.com/chb/smart_ui_server.git
+        $ git clone --recursive https://github.com/chb/smart_ui_server.git
 
 * copy `settings.py.default` to `settings.py` and update:
 	* set `APP_HOME` to the complete path to the location where
@@ -249,7 +249,7 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
 * get the source code
 
-       $ git --recursive clone https://github.com/chb/smart_sample_apps.git
+       $ git clone --recursive https://github.com/chb/smart_sample_apps.git
 
 * copy `settings.py.default` to `settings.py` and update:
     * set `APP_HOME` to the complete path to the location where you've
@@ -264,7 +264,7 @@ worry, just set up the SMART Sample Apps server, and run `reset.sh` again.
 
 * get the source code and generate sample data
 
-        $ git --recursive clone https://github.com/chb/smart_sample_patients.git
+        $ git clone --recursive https://github.com/chb/smart_sample_patients.git
         $ cd smart_sample_patients/bin
         $ python generate.py --write ../generated-data/
 

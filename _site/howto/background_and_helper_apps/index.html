@@ -121,12 +121,12 @@ The SMART Platform supports this background app use case as follows:</p>
 <p>Importantly, a background app is not necessarily a web app, since it may not
 have a user-facing web interface. In this example, we will demonstrate just
 that: a simple Python program that acts as a SMART background app, but does not
-respond to any web requests. So, if you've figured out how to build a SMART REST
+respond to any web requests. So, if you&#39;ve figured out how to build a SMART REST
 app, all you need to know now is how to obtain the credentials needed to cycle
-through all the SMART Container's medical records.</p>
+through all the SMART Container&#39;s medical records.</p>
 
 <p>The first thing you need is, of course, a SmartClient instance to make REST API
-calls against the SMART container. If you don't have that library running yet,
+calls against the SMART container. If you don&#39;t have that library running yet,
 check out the SMART Python Client. </p>
 
 <p>Make sure you understand the warning about setting a strong <code>consumer_secret</code>
@@ -136,32 +136,29 @@ in production <a href="/howto/build_a_rest_app/#consumer_secret_warning">here</a
 
 <div class="highlight"><pre><code class="python">    <span class="n">smart_client</span> <span class="o">=</span> <span class="n">smart</span><span class="o">.</span><span class="n">SmartClient</span><span class="p">(</span>
         <span class="s">&#39;smart-background-app@apps.smartplatforms.org&#39;</span><span class="p">,</span>
-        <span class="p">{</span><span class="s">&#39;api_base&#39;</span> <span class="p">:</span> <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span><span class="p">},</span>
+        <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span><span class="p">,</span>
         <span class="p">{</span>
           <span class="s">&#39;consumer_key&#39;</span> <span class="p">:</span> <span class="s">&#39;smart-background-app@apps.smartplatforms.org&#39;</span><span class="p">,</span>
           <span class="s">&#39;consumer_secret&#39;</span> <span class="p">:</span> <span class="s">&#39;smartapp-secret&#39;</span>
-        <span class="p">},</span>
-     <span class="bp">None</span><span class="p">)</span>
-</code></pre>
-</div>
+        <span class="p">})</span>
+</code></pre></div>
 
 <p>The important difference between this SmartClient and the one you created for
 use in SMART REST API calls is that this one has no resource-specific
-credentials. That's because, at first, you're not going to make API calls
+credentials. That&#39;s because, at first, you&#39;re not going to make API calls
 specific to any single medical record. In OAuth parlance, this is called a
-&quot;2-legged call.&quot; Now, it's time to iterate through all records available at that
+&quot;2-legged call.&quot; Now, it&#39;s time to iterate through all records available at that
 SMART Container. The specific API calls to do this can be found in our REST API,
 but the SMART Python client library makes it easy for you:</p>
 
 <div class="highlight"><pre><code class="python">    <span class="k">for</span> <span class="n">record_id</span> <span class="ow">in</span> <span class="n">smart_client</span><span class="o">.</span><span class="n">loop_over_records</span><span class="p">():</span>
       <span class="c"># do stuff with each record</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>Note that, in each iteration, the smart_client is modified to automatically use
+<p>Note that, in each iteration, the smart<em>client is modified to automatically use
 the credentials needed to access this specific record. If you were to call the
 API manually, you would have to extract the tokens you get from the container,
-and insert them into the smart_client object.</p>
+and insert them into the smart</em>client object.</p>
 
 <p>So, using a simple query to read drug names:</p>
 
@@ -176,18 +173,16 @@ and insert them into the smart_client object.</p>
 <span class="s">          ?drugname_code dcterms:title ?drugname .</span>
 <span class="s">        }</span>
 <span class="s">    &quot;&quot;&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>We can simply iterate through the records, retrieve each record's medications,
+<p>We can simply iterate through the records, retrieve each record&#39;s medications,
 and print them to the screen:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="k">for</span> <span class="n">record_id</span> <span class="ow">in</span> <span class="n">smart_client</span><span class="o">.</span><span class="n">loop_over_records</span><span class="p">():</span>
     <span class="n">medications</span> <span class="o">=</span> <span class="n">smart_client</span><span class="o">.</span><span class="n">get_medications</span><span class="p">(</span><span class="n">record_id</span> <span class="o">=</span> <span class="n">record_id</span><span class="p">)</span>
     <span class="n">med_names</span> <span class="o">=</span> <span class="n">medications</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">QUERY</span><span class="p">)</span>
     <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">record_id</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">med_names</span><span class="p">]))</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Helper Apps</h2>
 

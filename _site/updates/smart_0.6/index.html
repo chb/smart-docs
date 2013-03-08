@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMART 0.6 Update Guide (Apps + Containers)</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
+    <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+    <li><a href="/howto/rx_reminder">RxReminder App</a></li>
+
+    <li class="nav-header">Using SMART Data</li>
+
+    <li><a href="/howto/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/howto/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/howto/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/howto/filters">Query Filtering and Pagination</a></li>
+    <li><a href="/howto/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/smart_data">SMART Data: Best Practices</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/filters">Query Filters</a></li>
+    <li><a href="/reference/app_manifest">App Manifest</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Container-side Javascript</a></li>
+
+    <li class="nav-header">SMART Update Guides</li>
+
+    <li><a href="/updates/smart_0.4/app">0.4 Apps</a></li>
+    <li><a href="/updates/smart_0.4/container">0.4 Containers</a></li>
+    <li><a href="/updates/smart_0.5/">0.5 Apps + Containers</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentations</li>
+
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture (2010-08)</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance (2010-08)</a></li>
+    <li><a href="http://media.smartplatforms.org/smart-screencast.mp4">Demo</a></li>
+
+    <li class="nav-header">Downloads</li>
+    <li><a href="/downloads/">Download Source + VM</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>SMART 0.6 Update Guide (Apps + Containers) <small></small></h1>
+      </div>
+
+      <div id="toc"></div>
+
+<h1>What&#39;s new in SMART 0.6</h1>
+
+<h2>Native Apps Workflow</h2>
+
+<p>SMART 0.6 containers are now exposing standard OAuth endpoints. This means the SMART API is no longer limited to web apps only, any platform capable of managing OAuth tokens and performing REST calls is now able to exchange data with a SMART container. This opens the door for native app development in general and mobile apps in particular.<br>
+To help kickstart native mobile apps we have created an iOS framework for app developers, its Android counterpart is in the making.</p>
+
+<h2>Documents API</h2>
+
+<p>(Nikolai)</p>
+<div class="highlight"><pre><code class="text">mechanism for encapsulating metadata and links stored in external URLs
+documents include patient images, radiography images, EKG data files, scanned documents
+metadata about the file
+SMART could expose the public URL of the resource OR could proxy through the file and expose an obfuscated link (possibly by adding a “raw=true” parameter to the regular API URL)
+The API call returns the complete collection of data files for the patient
+Optional date and file type filters
+The container maintains an index of the available files
+</code></pre></div>
+<h3>Patient Images</h3>
+
+<p>(Nikolai)</p>
+
+<h3>Radiography Images</h3>
+
+<p>(Nikolai / Nich)</p>
+
+<h2>Family History API</h2>
+
+<p>(Nikolai)</p>
+
+<ul>
+<li>Demographics (date of birth, date of death)</li>
+<li>Biometrics (height)</li>
+<li>Problems (unlimited)</li>
+</ul>
+
+<h2>Scratchpad API</h2>
+<div class="highlight"><pre><code class="text">App annotation of patient records handled through and extension of the preferences API scoped to the app-record
+“fire-and-forget” type (non-transactional)
+All apps allowed to read each others’ scratchpads
+Data is “opaque” to the container, but self-structured by the app
+</code></pre></div>
+<h2>Clinical Notes Write API</h2>
+
+<p>(Arjun)</p>
+
+<h2>Extended Demographic API</h2>
+
+<p>(Nikolai)</p>
+<div class="highlight"><pre><code class="text">Date of death
+Gestational Age at Birth
+</code></pre></div>
+<h2>Filters/Pagination</h2>
+
+<p>(Arjun)</p>
+
+<h1>HOWTO:  Update Your SMART Apps to SMART 0.6</h1>
+
+<h2>Update vitals sign height units from m to cm</h2>
+
+<p>(Nikolai)</p>
+
+<h2>REST apps</h2>
+
+<p>(Pascal / Arjun)</p>
+
+<h1>HOWTO:  Update Your Container to SMART 0.6</h1>
+
+<h2>Implement OAuth endpoints</h2>
+
+<p>SMART 0.6 requires your container to expose a standalone record selection endpoint and the <a href="http://tools.ietf.org/html/rfc5849">standard OAuth 1.0 endpoints</a>.</p>
+
+<h3>The new user endpoint is:</h3>
+<div class="highlight"><pre><code class="text">/apps//launch
+</code></pre></div>
+<p>The purpose of this web page is to allow the user to select a record against which to run the SMART app. Whether you display a list of records available to the user or choose a different approach is up to you.<br>
+As soon as the user selects a record, the app&#39;s <code>index</code> URL, with appended parameters <code>record_id</code> and <code>api_base</code>, should be requested.</p>
+
+<h3>The OAuth endpoints are:</h3>
+
+<ul>
+<li><p><strong>Request Token</strong> usually at <code>/oauth/request_token</code><br>
+Endopoint to obtain an OAuth request token. The <code>oauth_callback</code> parameter should be ignored and assumed to be <code>oob</code>, it must be specified in the app manifest. An additional parameter <code>smart_record_id</code>, identifying the record to which to tie the token, must be present when requesting a token.</p></li>
+<li><p><strong>Authorize Token</strong> usually at <code>/oauth/authorize</code><br>
+Endpoint to let the user authorize an OAuth request token. This address is usually loaded in a web browser and <strong>will display a UI</strong>.<br>
+The page should have the user log in (if he hasn&#39;t done so previously) and should ask the user to authorize the given app to access container data, along with a button to authorize. If a user has authorized an app before there is no need to ask him again and the token should be authorized automatically after login. If the app is authorized, the browser should redirect the user to the app&#39;s <code>oauth_callback</code> URL, specified in the app manifest.</p></li>
+<li><p><strong>Exchange Token</strong> usually at <code>/oauth/access_token</code><br>
+Endpoint to exchange the request token with an OAuth access token, if a valid request token and a valid token verifier is presented.</p></li>
+</ul>
+
+<h3>Server Manifest</h3>
+
+<p>These four endpoint URLS must be placed in the server manifest under the top-level key <code>launch_urls</code>, for example:</p>
+<div class="highlight"><pre><code class="text">&quot;launch_urls&quot;: {
+    &quot;app_launch&quot;: &quot;https://smart.emr.com/apps//launch&quot;, 
+    &quot;authorize_token&quot;: &quot;https://smart.emr.com/oauth/authorize&quot;, 
+    &quot;exchange_token&quot;: &quot;https://smart.emr.com/oauth/access_token&quot;, 
+    &quot;request_token&quot;: &quot;https://smart.emr.com/oauth/request_token&quot;
+},
+</code></pre></div>
+<h3>Endpoint UI</h3>
+
+<p>Keep in mind that the record selection page as well as the token authorization page may be requested for a standalone REST app, displaying in a user&#39;s desktop browser, or from a native app on a mobile phone. We suggest you use <a href="http://css-tricks.com/css-media-queries/">CSS media queries</a> to provide a slick UI in either case.</p>
+
+<h2>Update vitals sign height units from m to cm</h2>
+
+<p>(Nikolai)</p>
+
+<h2>Update filters/pagination implementation</h2>
+
+<p>(Arjun)</p>
+
+<h2>Implement new APIs (Documents, Family History, Scratchpad)</h2>
+
+<p>(Nikolai)</p>
+
+<h2>Extend existing APIs (Demographics, Clinical Notes)</h2>
+
+<h1>(Nikolai / Arjun)</h1>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33617191-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

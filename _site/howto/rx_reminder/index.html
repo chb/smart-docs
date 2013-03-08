@@ -106,12 +106,12 @@ first.</p>
 
 <h2>Choosing the right tools</h2>
 
-<p>Since you can write a SMART REST app in any language using any toolkit, there's
-a lot of flexibility. In general, you'll want to look for a language with
+<p>Since you can write a SMART REST app in any language using any toolkit, there&#39;s
+a lot of flexibility. In general, you&#39;ll want to look for a language with
 existing OAuth libraries to handle the details of signing requests to the SMART
-container. Here we'll illustrate the highlights with a simple python-based SMART
+container. Here we&#39;ll illustrate the highlights with a simple python-based SMART
 REST app called <em>RxReminder. RxReminder</em> is written using the web.py HTTP
-Framework, but we won't delve into <a href="http://webpy.org/">web.py</a> here. All you
+Framework, but we won&#39;t delve into <a href="http://webpy.org/">web.py</a> here. All you
 need to understand is that web.py provides a simple mechanism to map python
 functions to URLs.</p>
 
@@ -121,7 +121,7 @@ github</a>.</p>
 <h2>App Structure</h2>
 
 <p>First, recall that every SMART UI app must serve: <code>index.html</code> which loads
-smart-api-client.js to provide the app's functionality.</p>
+smart-api-client.js to provide the app&#39;s functionality.</p>
 
 <p>Just like the app in the HOWTO, we serve the index file as follows in webpy:</p>
 
@@ -130,14 +130,13 @@ smart-api-client.js to provide the app's functionality.</p>
   <span class="k">class</span> <span class="nc">RxReminder</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c"># good stuff coming here</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Initializing the SMART API Client</h2>
 
-<p>Now we're getting to the fun part: handling requests for index.html. We'll be
+<p>Now we&#39;re getting to the fun part: handling requests for index.html. We&#39;ll be
 using the Python SMART API client libraries to interact with the SMART
-container. For authentication, we'll use the OAuth token and secret provided in
+container. For authentication, we&#39;ll use the OAuth token and secret provided in
 a URL parameter that came along with the request for our index.html, just like
 in the HOWTO.</p>
 
@@ -155,11 +154,10 @@ in the HOWTO.</p>
                             <span class="n">SMART_SERVER_PARAMS</span><span class="p">,</span>
                             <span class="n">SMART_SERVER_OAUTH</span><span class="p">,</span>
                             <span class="n">resource_tokens</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>If you're building your application from scratch without using the sample code,
-you'll want to define SMART_SERVER_OAUTH and SMART_SERVER_PARAMS:</p>
+<p>If you&#39;re building your application from scratch without using the sample code,
+you&#39;ll want to define SMART<em>SERVER</em>OAUTH and SMART<em>SERVER</em>PARAMS:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="c"># Basic configuration:  the consumer key and secret we&#39;ll use</span>
   <span class="c"># to OAuth-sign requests.</span>
@@ -171,23 +169,22 @@ you'll want to define SMART_SERVER_OAUTH and SMART_SERVER_PARAMS:</p>
   <span class="n">SMART_SERVER_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
       <span class="s">&#39;api_base&#39;</span> <span class="p">:</span> <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span>
   <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Generating Reminders</h2>
 
-<p>Now that we've got access tokens, and initialized a client object, let's
+<p>Now that we&#39;ve got access tokens, and initialized a client object, let&#39;s
 interact with some health data! <em>RxReminder</em> needs to get a list of medications
-due for refills. We'll accomplish this by finding the most recent fulfillment
-event for each medication. Then we'll look at how many days' supply of
+due for refills. We&#39;ll accomplish this by finding the most recent fulfillment
+event for each medication. Then we&#39;ll look at how many days&#39; supply of
 medication were dispensed to find out on what day the patient will run out.</p>
 
 <p>We use our SmartClient object called client to fetch a SMART Response object
 including a list of medications, via <code>get_medications() (or, in more
 verbose form, client.get(&quot;/records/%s/medications/{record_id}&quot;)</code> SMART API call.</p>
 
-<p>Then we'll get fancy with RDF, running a SPARQL query to find a list of fills
-for each medication in meds.graph. Finally, we'll loop through the fills to find
+<p>Then we&#39;ll get fancy with RDF, running a SPARQL query to find a list of fills
+for each medication in meds.graph. Finally, we&#39;ll loop through the fills to find
 the most recent one, using the dispensed quantity to determine when the patient
 will run out of medication.</p>
 
@@ -220,10 +217,9 @@ will run out of medication.</p>
 
     <span class="c">#Print a formatted list</span>
     <span class="k">return</span> <span class="n">header</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_last_dates</span><span class="p">()</span> <span class="o">+</span> <span class="n">footer</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>The details of finding the most recent prescription are in the update_pill_dates
+<p>The details of finding the most recent prescription are in the update<em>pill</em>dates
 function. Please <a href="http://github.com/chb/smart_rx_reminder">check out the source on github</a>
 to see the whole picture!</p>
 

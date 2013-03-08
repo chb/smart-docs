@@ -126,27 +126,25 @@ latest release</a>.</p>
 
 <p>SMART API calls return data in the form of RDF graphs. Within these graphs,
 top-level SMART data objects have fully dereferenceable URIs. For instance,
-let's consider a SMART-enabled EMR hosted with its API base at
+let&#39;s consider a SMART-enabled EMR hosted with its API base at
 <a href="http://sample_smart_emr.com/smart-app/">http://sample_smart_emr.com/smart-app/</a>. An individual medication in this EMR
 might be retrievable via:</p>
-
-<pre><code>GET http://sample_smart_emr.com/smart-app/records/123456/medications/664373).
-</code></pre>
-
+<div class="highlight"><pre><code class="text">GET http://sample_smart_emr.com/smart-app/records/123456/medications/664373).
+</code></pre></div>
 <p>When you issue a GET request for a top-level SMART object like a medication,
-you'll receive a graph containing:</p>
+you&#39;ll receive a graph containing:</p>
 
 <ol>
 <li>The object itself</li>
-<li>All properties linking it to &quot;core data&quot; elements (such as a medication's <code>drugName</code>,
+<li>All properties linking it to &quot;core data&quot; elements (such as a medication&#39;s <code>drugName</code>,
 which is a <code>CodedValue</code> node)</li>
 <li>All properties linking it to other top-level SMART objects</li>
 <li>All &quot;core data&quot; elements belonging to the elements in (3)</li>
 </ol>
 
-<p>For instance, when you <code>GET</code> a medication, you'll get all the information about
+<p>For instance, when you <code>GET</code> a medication, you&#39;ll get all the information about
 that medication and any fulfillments that belong to it! Likewise, when you <code>GET</code>
-a fulfillment, you'll get all the information about that fulfillment and the
+a fulfillment, you&#39;ll get all the information about that fulfillment and the
 medication to which it belongs.</p>
 
 <p>Another way to say this is: when you make an API call for data, the graph you
@@ -154,11 +152,11 @@ receive goes one top-level SMART element deep.</p>
 
 <h1>Important note: RDF/XML Serializations are not unique!</h1>
 
-<p>It's important to understand that SMART API calls return RDF graphs <a href="http://www.w3.org/TR/REC-rdf-syntax/">RDF/XML</a>
+<p>It&#39;s important to understand that SMART API calls return RDF graphs <a href="http://www.w3.org/TR/REC-rdf-syntax/">RDF/XML</a>
 &mdash; and for a given graph, there are <em>multiple</em> possible serializations. We
-don't make guarantees about how a graph will be serialized, beyond saying that
-it's valid RDF/XML. So to consume the SMART API, you should parse the RDF/XML
-payloads as RDF/XML &mdash; for example, <code>don't</code> try to query them directly with
+don&#39;t make guarantees about how a graph will be serialized, beyond saying that
+it&#39;s valid RDF/XML. So to consume the SMART API, you should parse the RDF/XML
+payloads as RDF/XML &mdash; for example, <code>don&#39;t</code> try to query them directly with
 xpath!</p>
 
 <p>To give a concrete example, a medication might be serialized as:</p>
@@ -166,21 +164,23 @@ xpath!</p>
 <div class="highlight"><pre><code class="html">  <span class="nt">&lt;sp:Medication&gt;</span>
     ... { additional properties here }....
   <span class="nt">&lt;/sp:Medication&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>Or you could see the equivalent:</p>
+
+Or you could see the equivalent:
+
 
 <div class="highlight"><pre><code class="html">  <span class="nt">&lt;rdf:Description&gt;</span>
         <span class="nt">&lt;rdf:type</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://smartplatforms.org/terms#Medication&quot;</span><span class="nt">/&gt;</span>
     ... { additional properties here }....
   <span class="nt">&lt;/rdf:Description&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<h1>Namespaces</h1>
 
-<p>A common set of namespace prefixes is used for the examples below. These are:</p>
+# Namespaces
+
+A common set of namespace prefixes is used for the examples below. These are:
+
 
 <table class="table table-striped">
   <caption align="bottom">RDF Namespaces</caption>
@@ -215,55 +215,61 @@ xpath!</p>
   </tr>
 </table>
 
-<h1>Naming Conventions in the SMART Ontology</h1>
 
-<p>We use the prefix <code>sp</code> to designate the <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>
+# Naming Conventions in the SMART Ontology
+
+We use the prefix `sp` to designate the <http://smartplatforms.org/terms>
 namespace. Within this namespace, we use a simple convention to differentiate 
-between classes and predicates:</p>
+between classes and predicates:
 
-<ul>
-<li><p>Class names are designated by <code>CamelCase</code> with a capitalized first character.
-Examples: <code>sp:Medication</code> and <code>sp:LabResult</code>.</p></li>
-<li><p>Predicate names are designated by <code>camelCase</code> with a lower-case first character.
-Examples: <code>sp:medication</code> or <code>sp:valueAndUnit</code>.</p></li>
-</ul>
+* Class names are designated by `CamelCase` with a capitalized first character.
+  Examples: `sp:Medication` and `sp:LabResult`.
 
-<p>You may wonder why classes and predicates tend to have similar names. For
-example, we define a class <code>sp:Medication</code> as well as a predicate <code>sp:medication</code>.
-Here's why: a predicate like <code>sp:medication</code> is used to indicate that a clinical
-statement is associated with a medication; a class like <code>sp:Medication</code> is used to
+* Predicate names are designated by `camelCase` with a lower-case first character.
+  Examples: `sp:medication` or `sp:valueAndUnit`.
+
+You may wonder why classes and predicates tend to have similar names. For
+example, we define a class `sp:Medication` as well as a predicate `sp:medication`.
+Here's why: a predicate like `sp:medication` is used to indicate that a clinical
+statement is associated with a medication; a class like `sp:Medication` is used to
 indicate that a clinical statement is a medication. For example, each
-<code>sp:Fulfillment</code> statement is associated with a <code>sp:Medication</code> statement via the
-predicate <code>sp:medication</code>. This makes sense when we consider a few RDF triples
+`sp:Fulfillment` statement is associated with a `sp:Medication` statement via the
+predicate `sp:medication`. This makes sense when we consider a few RDF triples
 that expresses the basic pattern, associating a fulfillment with its medication
-via the <code>sp:medication</code> predicate</p>
+via the `sp:medication` predicate
+
 
 <div class="highlight"><pre><code class="html">  _:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
   _:m456 rdf:type sp:Medication.    # declares a Medication statement
   _:f123 sp:medication _:m456.      # links the Fulfillment to its Medication
-</code></pre>
-</div>
+</code></pre></div>
+
+
 
 <hr>
 
 <!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT OR REMOVE ME! -->
 
-<h1>Clinical Statement Types</h1>
+
+
+# Clinical Statement Types
+
 
 <h2 id='Allergy'><code>Allergy</code></h2>
 
-<p><code>Allergy</code> is a subtype of and inherits properties from:
-<a href="#SMART_Statement">SMART Statement</a></p>
+`Allergy` is a subtype of and inherits properties from:
+[SMART Statement](#SMART_Statement)
 
-<p>SMART provides structure for representing alleriges accoring to well-specified standard vocabularies. A patient with no known allergies produces an AllergyExclusion providing further details (see below). Otherwise, each allergy has a category (drug, food, etc.), a severity, a reaction, and a substance or class of substances. Since we want these allergies to work as inputs to automated computations, we require specific coding systems to represent substances and classes of substances.</p>
 
-<ol>
-<li><p>A drug allergy to a particular drug (e.g. cephalexin) must define a &quot;substance&quot; field with an ingredient-type RxNorm code (tty=&quot;IN&quot;). (This is to avoid overly-specific statements like &quot;the patient is allergic to a 500mg cephalexin oral tablet&quot;!)</p></li>
-<li><p>A drug allergy to an entire class of drugs (e.g. sulfonamides) must define a &quot;class&quot; field with an NDFRT code for the drug class.</p></li>
-<li><p>A food or environmental allergy must define a &quot;substance&quot; field with a UNII code.</p></li>
-</ol>
+SMART provides structure for representing alleriges accoring to well-specified standard vocabularies. A patient with no known allergies produces an AllergyExclusion providing further details (see below). Otherwise, each allergy has a category (drug, food, etc.), a severity, a reaction, and a substance or class of substances. Since we want these allergies to work as inputs to automated computations, we require specific coding systems to represent substances and classes of substances.
 
-<p>For instance, below are two allergies: first, an allergy to the entire class of sulfonamides (note the sp:class predicate and the NDFRT code provided); then, an allergy to a single cephalosporin drug, cephalexin (note the sp:substance predicate and the RxNorm Ingredient CUI provided):</p>
+1. A drug allergy to a particular drug (e.g. cephalexin) must define a "substance" field with an ingredient-type RxNorm code (tty="IN"). (This is to avoid overly-specific statements like "the patient is allergic to a 500mg cephalexin oral tablet"!)
+
+2. A drug allergy to an entire class of drugs (e.g. sulfonamides) must define a "class" field with an NDFRT code for the drug class.
+
+3. A food or environmental allergy must define a "substance" field with a UNII code.
+
+For instance, below are two allergies: first, an allergy to the entire class of sulfonamides (note the sp:class predicate and the NDFRT code provided); then, an allergy to a single cephalosporin drug, cephalexin (note the sp:substance predicate and the RxNorm Ingredient CUI provided):
 
 <div id='Allergy_examples'>
 
@@ -276,6 +282,7 @@ via the <code>sp:medication</code> predicate</p>
     <li class="">      <a href="" data-target="#Allergy_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span>
@@ -402,10 +409,8 @@ via the <code>sp:medication</code> predicate</p>
       <span class="nt">&lt;/sp:category&gt;</span>
    <span class="nt">&lt;/sp:Allergy&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml">_:_5dddf0db-086c-4c3e-a8de-8eb47f790124 <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#code</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/416098002</span><span class="nt">&gt;</span> .
@@ -469,10 +474,8 @@ _:_be2bbf04-a1bd-486d-a5fc-a44752ac54c1 <span class="nt">&lt;http:</span><span c
 _:_e9e7363a-ed4b-4914-9b90-2204de1a6b6a <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#code</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/39579001</span><span class="nt">&gt;</span> .
 _:_e9e7363a-ed4b-4914-9b90-2204de1a6b6a <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;Anaphylaxis&quot; .
 _:_e9e7363a-ed4b-4914-9b90-2204de1a6b6a <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#CodedValue</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -538,10 +541,8 @@ _:_e9e7363a-ed4b-4914-9b90-2204de1a6b6a <span class="nt">&lt;http:</span><span c
     sp:severity [ a sp:CodedValue;
             dcterms:title &quot;Severe&quot;;
             sp:code <span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/24484000</span><span class="nt">&gt;</span> ] .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -668,10 +669,8 @@ _:_e9e7363a-ed4b-4914-9b90-2204de1a6b6a <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -798,9 +797,9 @@ severity
 <p><code>Allergy Exclusion</code> is a subtype of and inherits properties from:
 <a href="#SMART_Statement">SMART Statement</a></p>
 
-<p>In clinical documentation, asserting that a patient has &quot;No known allergies&quot; is very different from not mentioning whether a patient has any allergies.  It's a positive affirmation that a question was asked and answered.  SMART models this information as an explicit clinical statement of the type AllergyExclusion.</p>
+<p>In clinical documentation, asserting that a patient has &quot;No known allergies&quot; is very different from not mentioning whether a patient has any allergies.  It&#39;s a positive affirmation that a question was asked and answered.  SMART models this information as an explicit clinical statement of the type AllergyExclusion.</p>
 
-<p>While it might seem inelegant to expose explicit AllergyExclusion statements, this model is designed to combat a clinical modeling pattern where a single flag (&quot;isNegated&quot; or &quot;negationIndicator&quot; for example) negates the meaning of an entire statement.  Interpreting statements in a world where negation flags exist can be tricky.  Every app has to understand the subtlety of this flag -- and it's not always clear what it means to negate a statement with multiple parts.  For more information about exclusion statements in clinical modeling, see <a href="http://omowizard.wordpress.com/2011/06/06/unambiguous-data-positive-presence-positive-absence/">http://omowizard.wordpress.com/2011/06/06/unambiguous-data-positive-presence-positive-absence/</a>.</p>
+<p>While it might seem inelegant to expose explicit AllergyExclusion statements, this model is designed to combat a clinical modeling pattern where a single flag (&quot;isNegated&quot; or &quot;negationIndicator&quot; for example) negates the meaning of an entire statement.  Interpreting statements in a world where negation flags exist can be tricky.  Every app has to understand the subtlety of this flag -- and it&#39;s not always clear what it means to negate a statement with multiple parts.  For more information about exclusion statements in clinical modeling, see <a href="http://omowizard.wordpress.com/2011/06/06/unambiguous-data-positive-presence-positive-absence/">http://omowizard.wordpress.com/2011/06/06/unambiguous-data-positive-presence-positive-absence/</a>.</p>
 
 <div id='Allergy_Exclusion_examples'>
 
@@ -813,6 +812,7 @@ severity
     <li class="">      <a href="" data-target="#Allergy_Exclusion_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span>
@@ -838,10 +838,8 @@ severity
   <span class="nt">&lt;/sp:allergyExclusionName&gt;</span>
 <span class="nt">&lt;/sp:AllergyExclusion&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/160244002</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;No known allergies&quot; .
@@ -855,10 +853,8 @@ _:_f9241fb9-7416-441d-bf7e-67eb7252af34 <span class="nt">&lt;http:</span><span c
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#AllergyExclusion</span><span class="nt">&gt;</span> .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#allergyExclusionName</span><span class="nt">&gt;</span> _:_f9241fb9-7416-441d-bf7e-67eb7252af34 .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/allergy_exclusions/987235</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#belongsTo</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -876,10 +872,8 @@ _:_f9241fb9-7416-441d-bf7e-67eb7252af34 <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;160244002&quot;;
     dcterms:title &quot;No known allergies&quot;;
     sp:system &quot;http://purl.bioontology.org/ontology/SNOMEDCT/&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -911,10 +905,8 @@ _:_f9241fb9-7416-441d-bf7e-67eb7252af34 <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -975,6 +967,7 @@ belongsTo
     <li class="">      <a href="" data-target="#Clinical_Note_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
@@ -1005,10 +998,8 @@ belongsTo
     <span class="nt">&lt;/sp:provider&gt;</span>
  <span class="nt">&lt;/sp:ClinicalNote&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml">_:_ee64c6a3-bf33-4669-ac66-72adb45db376 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#resoruce</span><span class="nt">&gt;</span> &quot;http://purl.org/NET/mediatypes/text/html&quot; .
@@ -1025,10 +1016,8 @@ _:_c38d10b7-efaf-45a5-bee8-c51db2e9b691 <span class="nt">&lt;http:</span><span c
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/hasFormat</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//url.of.raw.note/content</span><span class="nt">&gt;</span> .
 <span class="nt">&lt;http:</span><span class="err">//url.of.raw.note/content</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/format</span><span class="nt">&gt;</span> _:_ee64c6a3-bf33-4669-ac66-72adb45db376 .
 <span class="nt">&lt;http:</span><span class="err">//url.of.raw.note/content</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#DocumentWithFormat</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -1048,10 +1037,8 @@ _:_c38d10b7-efaf-45a5-bee8-c51db2e9b691 <span class="nt">&lt;http:</span><span c
 
 <span class="nt">&lt;http:</span><span class="err">//url.of.raw.note/content</span><span class="nt">&gt;</span> a sp:DocumentWithFormat;
     dcterms:format [ rdf:resoruce &quot;http://purl.org/NET/mediatypes/text/html&quot; ] .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -1090,10 +1077,8 @@ _:_c38d10b7-efaf-45a5-bee8-c51db2e9b691 <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -1198,6 +1183,7 @@ provider
     <li class="">      <a href="" data-target="#Demographics_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span>
@@ -1259,10 +1245,8 @@ provider
 
    <span class="nt">&lt;/sp:Demographics&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml">_:_41dbcb12-571e-4ef5-97d9-50abe19be51f <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#Tel</span><span class="nt">&gt;</span> .
@@ -1299,10 +1283,8 @@ _:_a324604d-9243-4674-85ea-95d9f53bb063 <span class="nt">&lt;http:</span><span c
 _:_a324604d-9243-4674-85ea-95d9f53bb063 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#postal-code</span><span class="nt">&gt;</span> &quot;54321&quot; .
 _:_a324604d-9243-4674-85ea-95d9f53bb063 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#locality</span><span class="nt">&gt;</span> &quot;Wonderland&quot; .
 _:_a324604d-9243-4674-85ea-95d9f53bb063 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#region</span><span class="nt">&gt;</span> &quot;OZ&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -1340,10 +1322,8 @@ _:_a324604d-9243-4674-85ea-95d9f53bb063 <span class="nt">&lt;http:</span><span c
                 vcard:Tel;
             rdf:value &quot;800-555-1212&quot; ];
     foaf:gender &quot;male&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -1407,10 +1387,8 @@ _:_a324604d-9243-4674-85ea-95d9f53bb063 <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -1605,6 +1583,7 @@ A person's (administrative) gender.  This should consist of the string "male" or
     <li class="">      <a href="" data-target="#Encounter_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
@@ -1632,10 +1611,8 @@ A person's (administrative) gender.  This should consist of the string "male" or
       <span class="nt">&lt;/sp:encounterType&gt;</span>
     <span class="nt">&lt;/sp:Encounter&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms/codes/EncounterType#ambulatory</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/identifier</span><span class="nt">&gt;</span> &quot;ambulatory&quot; .
@@ -1651,10 +1628,8 @@ A person's (administrative) gender.  This should consist of the string "male" or
 _:_c0bc6809-a506-44b7-a399-9cd567ff08fe <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#CodedValue</span><span class="nt">&gt;</span> .
 _:_c0bc6809-a506-44b7-a399-9cd567ff08fe <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;Ambulatory encounter&quot; .
 _:_c0bc6809-a506-44b7-a399-9cd567ff08fe <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#code</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms/codes/EncounterType#ambulatory</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -1674,10 +1649,8 @@ _:_c0bc6809-a506-44b7-a399-9cd567ff08fe <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;ambulatory&quot;;
     dcterms:title &quot;Ambulatory encounter&quot;;
     sp:system &quot;http://smartplatforms.org/terms/codes/EncounterType#&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -1711,10 +1684,8 @@ _:_c0bc6809-a506-44b7-a399-9cd567ff08fe <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -1833,6 +1804,7 @@ Date when encounter began, as an ISO-8601 string <a href='http://www.w3.org/2001
     <li class="">      <a href="" data-target="#Fulfillment_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
@@ -1880,10 +1852,8 @@ Date when encounter began, as an ISO-8601 string <a href='http://www.w3.org/2001
     <span class="nt">&lt;sp:dispenseDaysSupply&gt;</span>30<span class="nt">&lt;/sp:dispenseDaysSupply&gt;</span>
  <span class="nt">&lt;/sp:Fulfillment&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml">_:_65df4bd6-7796-4e9c-a797-e7000d4637c6 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#ValueAndUnit</span><span class="nt">&gt;</span> .
@@ -1914,10 +1884,8 @@ _:_6585973a-dd28-49c0-abdd-661ea3baf8f7 <span class="nt">&lt;http:</span><span c
 _:_6585973a-dd28-49c0-abdd-661ea3baf8f7 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#country-name</span><span class="nt">&gt;</span> &quot;Australia&quot; .
 _:_6585973a-dd28-49c0-abdd-661ea3baf8f7 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#street-address</span><span class="nt">&gt;</span> &quot;111 Lake Drive&quot; .
 _:_6585973a-dd28-49c0-abdd-661ea3baf8f7 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#locality</span><span class="nt">&gt;</span> &quot;WonderCity&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -1947,10 +1915,8 @@ _:_6585973a-dd28-49c0-abdd-661ea3baf8f7 <span class="nt">&lt;http:</span><span c
     sp:quantityDispensed [ a sp:ValueAndUnit;
             sp:unit &quot;{tablet}&quot;;
             sp:value &quot;60&quot; ] .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -1998,10 +1964,8 @@ _:_6585973a-dd28-49c0-abdd-661ea3baf8f7 <span class="nt">&lt;http:</span><span c
     <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;60&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -2153,6 +2117,7 @@ quantityDispensed
     <li class="">      <a href="" data-target="#Immunization_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span>
@@ -2223,10 +2188,8 @@ quantityDispensed
 
    <span class="nt">&lt;/sp:Immunization&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?</span><span class="na">rpt=</span><span class="s">cvx#25</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;typhoid, oral&quot; .
@@ -2268,10 +2231,8 @@ _:_68105c6e-ef8c-4f90-a807-abd889266f0e <span class="nt">&lt;http:</span><span c
 _:_e8a9bf7c-e0e0-4ef7-8460-b5354f095bdd <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#code</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms/codes/ImmunizationRefusalReason#allergy</span><span class="nt">&gt;</span> .
 _:_e8a9bf7c-e0e0-4ef7-8460-b5354f095bdd <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;Allergy to vaccine/vaccine components, or allergy to eggs&quot; .
 _:_e8a9bf7c-e0e0-4ef7-8460-b5354f095bdd <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#CodedValue</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -2317,10 +2278,8 @@ _:_e8a9bf7c-e0e0-4ef7-8460-b5354f095bdd <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;TYPHOID&quot;;
     dcterms:title &quot;TYPHOID&quot;;
     sp:system &quot;http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -2406,10 +2365,8 @@ _:_e8a9bf7c-e0e0-4ef7-8460-b5354f095bdd <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -2536,10 +2493,8 @@ refusalReason
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 No example yet.
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms#LabPanel</caption>
@@ -2612,6 +2567,7 @@ labResult
     <li class="">      <a href="" data-target="#Lab_Result_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:sp=</span><span class="s">&quot;http://smartplatforms.org/terms#&quot;</span> 
@@ -2718,10 +2674,8 @@ labResult
       <span class="nt">&lt;sp:notes&gt;</span>Blood sample appears to have hemolyzed<span class="nt">&lt;/sp:notes&gt;</span>
    <span class="nt">&lt;/sp:LabResult&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms/codes/LabStatus#final</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#system</span><span class="nt">&gt;</span> &quot;http://smartplatforms.org/terms/codes/LabStatus#&quot; .
@@ -2787,10 +2741,8 @@ _:_a5f35f5d-4be0-4a8f-a14f-cf97251de62a <span class="nt">&lt;http:</span><span c
 _:_a5f35f5d-4be0-4a8f-a14f-cf97251de62a <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;Serum sodium&quot; .
 _:_a5f35f5d-4be0-4a8f-a14f-cf97251de62a <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#code</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/LNC/2951-2</span><span class="nt">&gt;</span> .
 _:_a5f35f5d-4be0-4a8f-a14f-cf97251de62a <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#CodedValue</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -2851,10 +2803,8 @@ _:_a5f35f5d-4be0-4a8f-a14f-cf97251de62a <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;final&quot;;
     dcterms:title &quot;Final&quot;;
     sp:system &quot;http://smartplatforms.org/terms/codes/LabStatus#&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -2969,10 +2919,8 @@ _:_a5f35f5d-4be0-4a8f-a14f-cf97251de62a <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -3144,6 +3092,7 @@ quantitativeResult
     <li class="">      <a href="" data-target="#Medication_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
@@ -3182,10 +3131,8 @@ quantitativeResult
       <span class="nt">&lt;/sp:frequency&gt;</span>
    <span class="nt">&lt;/sp:Medication&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml">_:_bf4d34c2-8fa9-45cf-a4cf-4fe4053c54b1 <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#value</span><span class="nt">&gt;</span> &quot;2&quot; .
@@ -3210,10 +3157,8 @@ _:_b19291ab-2e71-4c15-9e2e-7bf7d9897366 <span class="nt">&lt;http:</span><span c
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/medications/123</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#startDate</span><span class="nt">&gt;</span> &quot;2007-03-14&quot; .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/medications/123</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#drugName</span><span class="nt">&gt;</span> _:_9e738eda-f85f-44fd-8379-d4ec04671081 .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/medications/123</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#instructions</span><span class="nt">&gt;</span> &quot;Take two tablets twice daily as needed for pain&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -3240,10 +3185,8 @@ _:_b19291ab-2e71-4c15-9e2e-7bf7d9897366 <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;856845&quot;;
     dcterms:title &quot;AMITRIPTYLINE HCL 50 MG TAB&quot;;
     sp:system &quot;http://purl.bioontology.org/ontology/RXNORM/&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -3288,10 +3231,8 @@ _:_b19291ab-2e71-4c15-9e2e-7bf7d9897366 <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -3491,6 +3432,7 @@ belongsTo
     <li class="">      <a href="" data-target="#Problem_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span>
@@ -3517,10 +3459,8 @@ belongsTo
       <span class="nt">&lt;sp:endDate&gt;</span>2007-08-01<span class="nt">&lt;/sp:endDate&gt;</span>
     <span class="nt">&lt;/sp:Problem&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/161891005</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#Code</span><span class="nt">&gt;</span> .
@@ -3536,10 +3476,8 @@ _:_33f56176-2e67-4a84-b869-7be24dc7800d <span class="nt">&lt;http:</span><span c
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/problems/961237</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#startDate</span><span class="nt">&gt;</span> &quot;2007-06-12&quot; .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/problems/961237</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#problemName</span><span class="nt">&gt;</span> _:_33f56176-2e67-4a84-b869-7be24dc7800d .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/problems/961237</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#belongsTo</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591</span><span class="nt">&gt;</span> .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -3559,10 +3497,8 @@ _:_33f56176-2e67-4a84-b869-7be24dc7800d <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;161891005&quot;;
     dcterms:title &quot;Backache (finding)&quot;;
     sp:system &quot;http://purl.bioontology.org/ontology/SNOMEDCT/&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -3596,10 +3532,8 @@ _:_33f56176-2e67-4a84-b869-7be24dc7800d <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -3722,7 +3656,7 @@ Date on which problem began, as an ISO-8601 string. <a href='http://www.w3.org/2
 <p><code>Procedure</code> is a subtype of and inherits properties from:
 <a href="#SMART_Statement">SMART Statement</a></p>
 
-<p>The SMART Procedure model describes a procedure that has been performed on a patient.  Examples include surgical procedures (such as an appendectomy) and physical exam procedures (such as a diabetic foot exam).  More broadly, the SMART procedure model is used to capture events under SNOMED CT's Procedure hierarchy. </p>
+<p>The SMART Procedure model describes a procedure that has been performed on a patient.  Examples include surgical procedures (such as an appendectomy) and physical exam procedures (such as a diabetic foot exam).  More broadly, the SMART procedure model is used to capture events under SNOMED CT&#39;s Procedure hierarchy. </p>
 
 <div id='Procedure_examples'>
 
@@ -3735,6 +3669,7 @@ Date on which problem began, as an ISO-8601 string. <a href='http://www.w3.org/2
     <li class="">      <a href="" data-target="#Procedure_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
@@ -3770,10 +3705,8 @@ Date on which problem began, as an ISO-8601 string. <a href='http://www.w3.org/2
     <span class="nt">&lt;/sp:provider&gt;</span>
  <span class="nt">&lt;/sp:Procedure&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml">_:_3967986c-a26a-49f4-a47b-0ef293e79bdd <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#n</span><span class="nt">&gt;</span> _:_da60f0d1-e91b-4032-82c2-d7bd8c391b77 .
@@ -3794,10 +3727,8 @@ _:_e49d3cbe-2c52-4f13-a9b5-5822bd25c7da <span class="nt">&lt;http:</span><span c
 _:_da60f0d1-e91b-4032-82c2-d7bd8c391b77 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#Name</span><span class="nt">&gt;</span> .
 _:_da60f0d1-e91b-4032-82c2-d7bd8c391b77 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#given-name</span><span class="nt">&gt;</span> &quot;Joshua&quot; .
 _:_da60f0d1-e91b-4032-82c2-d7bd8c391b77 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/2006/vcard/ns#family-name</span><span class="nt">&gt;</span> &quot;Mandel&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -3821,10 +3752,8 @@ _:_da60f0d1-e91b-4032-82c2-d7bd8c391b77 <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;80146002&quot;;
     dcterms:title &quot;Appendectomy&quot;;
     sp:system &quot;http://purl.bioontology.org/ontology/SNOMEDCT/&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -3867,10 +3796,8 @@ _:_da60f0d1-e91b-4032-82c2-d7bd8c391b77 <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -4014,6 +3941,7 @@ belongsTo
     <li class="">      <a href="" data-target="#Social_History_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span>
@@ -4038,10 +3966,8 @@ belongsTo
       <span class="nt">&lt;/sp:smokingStatus&gt;</span>
     <span class="nt">&lt;/sp:SocialHistory&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/8517006</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/identifier</span><span class="nt">&gt;</span> &quot;8517006&quot; .
@@ -4055,10 +3981,8 @@ _:_13ebdcc9-bec8-44e0-bb75-e0111f78c7af <span class="nt">&lt;http:</span><span c
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/social_history</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#SocialHistory</span><span class="nt">&gt;</span> .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/social_history</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#belongsTo</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591</span><span class="nt">&gt;</span> .
 <span class="nt">&lt;http:</span><span class="err">//sandbox-api.smartplatforms.org/records/2169591/social_history</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#smokingStatus</span><span class="nt">&gt;</span> _:_13ebdcc9-bec8-44e0-bb75-e0111f78c7af .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -4076,10 +4000,8 @@ _:_13ebdcc9-bec8-44e0-bb75-e0111f78c7af <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;8517006&quot;;
     dcterms:title &quot;Former smoker&quot;;
     sp:system &quot;http://purl.bioontology.org/ontology/SNOMEDCT/&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -4111,10 +4033,8 @@ _:_13ebdcc9-bec8-44e0-bb75-e0111f78c7af <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -4180,6 +4100,7 @@ smokingStatus
     <li class="">      <a href="" data-target="#Vital_Sign_Set_examples > div.json_ld" data-toggle="tab">JSON-LD</a></li>
   </ul>
 </div>
+
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
@@ -4435,10 +4356,8 @@ smokingStatus
     <span class="nt">&lt;/sp:bloodPressure&gt;</span>
   <span class="nt">&lt;/sp:VitalSignSet&gt;</span>
 <span class="nt">&lt;/rdf:RDF&gt;</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='n_triples'>
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/LNC/8867-4</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/identifier</span><span class="nt">&gt;</span> &quot;8867-4&quot; .
@@ -4608,10 +4527,8 @@ _:_4b476bfc-c14d-4928-9884-c29926ace9b5 <span class="nt">&lt;http:</span><span c
 _:_d5f71913-e3c3-4cf2-860e-95ce02630ad6 <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#code</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//purl.bioontology.org/ontology/SNOMEDCT/33586001</span><span class="nt">&gt;</span> .
 _:_d5f71913-e3c3-4cf2-860e-95ce02630ad6 <span class="nt">&lt;http:</span><span class="err">//www.w3.org/1999/02/22-rdf-syntax-ns#type</span><span class="nt">&gt;</span> <span class="nt">&lt;http:</span><span class="err">//smartplatforms.org/terms#CodedValue</span><span class="nt">&gt;</span> .
 _:_d5f71913-e3c3-4cf2-860e-95ce02630ad6 <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms/title</span><span class="nt">&gt;</span> &quot;Sitting&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='turtle'>
 <div class="highlight"><pre><code class="xml">@prefix dcterms: <span class="nt">&lt;http:</span><span class="err">//purl.org/dc/terms</span><span class="nt">/&gt;</span> .
@@ -4775,10 +4692,8 @@ _:_d5f71913-e3c3-4cf2-860e-95ce02630ad6 <span class="nt">&lt;http:</span><span c
     dcterms:identifier &quot;ambulatory&quot;;
     dcterms:title &quot;Ambulatory encounter&quot;;
     sp:system &quot;http://smartplatforms.org/terms/codes/EncounterType#&quot; .
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <div class='json_ld'>
 <div class="highlight"><pre><code class="javascript"><span class="p">{</span>
@@ -5080,10 +4995,8 @@ _:_d5f71913-e3c3-4cf2-860e-95ce02630ad6 <span class="nt">&lt;http:</span><span c
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <p></div></p>
 
@@ -6776,10 +6689,8 @@ vitalName
         }
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <h2 id='Ontology'><code>Ontology</code></h2>
 
@@ -6787,10 +6698,8 @@ vitalName
 
 <div class='rdf_xml active'>
 <div class="highlight"><pre><code class="xml">See: http://sandbox-api.smartplatforms.org/ontology
-</code></pre>
+</code></pre></div>
 </div>
-
-<p></div></p>
 
 <h2 id='User'><code>User</code></h2>
 
@@ -7023,8 +6932,7 @@ A person's (administrative) gender.  This should consist of the string "male" or
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>235719002<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:AllergyCategory&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AllergyCategory</caption>
@@ -7116,8 +7024,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>409137002<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:AllergyExclusion&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AllergyExclusion</caption>
@@ -7218,8 +7125,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>24484000<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:AllergySeverity&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/AllergySeverity</caption>
@@ -7302,8 +7208,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>10904000<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:BloodPressureBodyPosition&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/BloodPressureBodyPosition</caption>
@@ -7395,8 +7300,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>368208006<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:BloodPressureBodySite&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/BloodPressureBodySite</caption>
@@ -7488,8 +7392,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/BloodPressureMethod#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>auscultation<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:BloodPressureMethod&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/BloodPressureMethod</caption>
@@ -7599,8 +7502,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/EncounterType#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>virtual<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:EncounterType&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/EncounterType</caption>
@@ -7683,8 +7585,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>partialDose<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:ImmunizationAdministrationStatus&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ImmunizationAdministrationStatus</caption>
@@ -7741,7 +7642,7 @@ system
 <p><code>ImmunizationClass</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a></p>
 
-<p>codes are drawn from the CDC's Vaccine Group vocabulary.  URIs are of the form:</p>
+<p>codes are drawn from the CDC&#39;s Vaccine Group vocabulary.  URIs are of the form:</p>
 
 <p><a href="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#code">http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=vg#code</a></p>
 
@@ -7802,7 +7703,7 @@ system
 <p><code>ImmunizationProduct</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a></p>
 
-<p>codes are drawn from the CDC's Vaccine Group vocabulary.  URIs are of the form:</p>
+<p>codes are drawn from the CDC&#39;s Vaccine Group vocabulary.  URIs are of the form:</p>
 
 <p><a href="http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#code">http://www2a.cdc.gov/nip/IIS/IISStandards/vaccines.asp?rpt=cvx#code</a></p>
 
@@ -7979,8 +7880,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>recentOrganOrStemCellTransplant<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:ImmunizationRefusalReason&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ImmunizationRefusalReason</caption>
@@ -8037,7 +7937,7 @@ system
 <p><code>LOINC</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a></p>
 
-<p>LOINC code where URI matches:  <a href="http://purl.bioontology.org/ontology/LNC/{loinc_code}">http://purl.bioontology.org/ontology/LNC/{loinc_code}</a></p>
+<p>LOINC code where URI matches:  <a href="http://purl.bioontology.org/ontology/LNC/%7Bloinc_code%7D">http://purl.bioontology.org/ontology/LNC/{loinc_code}</a></p>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/LOINC</caption>
@@ -8120,8 +8020,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/LabResultInterpretation#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>abnormal<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:LabResultInterpretation&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/LabResultInterpretation</caption>
@@ -8204,8 +8103,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/LabStatus#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>final<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:LabResultStatus&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/LabResultStatus</caption>
@@ -8398,8 +8296,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>73425007<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:ProblemStatus&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ProblemStatus</caption>
@@ -8548,8 +8445,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>385658003<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:ProcedureStatus&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/ProcedureStatus</caption>
@@ -8661,7 +8557,7 @@ system
 <p><code>RxNorm_Ingredient</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a>, <a href="#RxNorm">RxNorm</a></p>
 
-<p>RxNorm TTY='in'</p>
+<p>RxNorm TTY=&#39;in&#39;</p>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/RxNorm_Ingredient</caption>
@@ -8718,7 +8614,7 @@ system
 <p><code>RxNorm_Semantic</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a>, <a href="#RxNorm">RxNorm</a></p>
 
-<p>RxNorm TTY in ('SCD','SBD','GPCK','BPCK')</p>
+<p>RxNorm TTY in (&#39;SCD&#39;,&#39;SBD&#39;,&#39;GPCK&#39;,&#39;BPCK&#39;)</p>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/RxNorm_Semantic</caption>
@@ -8775,7 +8671,7 @@ system
 <p><code>SNOMED</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a></p>
 
-<p>SNOMED code with URI matchign <a href="http://purl.bioontology.org/ontology/SNOMEDCT/{snomed_concept_id}">http://purl.bioontology.org/ontology/SNOMEDCT/{snomed_concept_id}</a></p>
+<p>SNOMED code with URI matchign <a href="http://purl.bioontology.org/ontology/SNOMEDCT/%7Bsnomed_concept_id%7D">http://purl.bioontology.org/ontology/SNOMEDCT/{snomed_concept_id}</a></p>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/SNOMED</caption>
@@ -8885,8 +8781,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/SNOMEDCT/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>266919005<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:SmokingStatus&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/SmokingStatus</caption>
@@ -8969,8 +8864,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://smartplatforms.org/terms/codes/TranslationFidelity#<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>verified<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:TranslationFidelity&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/TranslationFidelity</caption>
@@ -9027,7 +8921,7 @@ system
 <p><code>UNII</code> is a subtype of and inherits properties from:
 <a href="#Code">Code</a>, <a href="#Component">Component</a>, <a href="#DataType">DataType</a></p>
 
-<p>UNII code with URI matching <a href="http://fda.gov/UNII/{UNII}">http://fda.gov/UNII/{UNII}</a></p>
+<p>UNII code with URI matching <a href="http://fda.gov/UNII/%7BUNII%7D">http://fda.gov/UNII/{UNII}</a></p>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/UNII</caption>
@@ -9173,8 +9067,7 @@ system
   <span class="nt">&lt;sp:system&gt;</span>http://purl.bioontology.org/ontology/LNC/<span class="nt">&lt;/sp:system&gt;</span>
   <span class="nt">&lt;dcterms:identifier&gt;</span>8306-3<span class="nt">&lt;/dcterms:identifier&gt;</span>
 <span class="nt">&lt;/spcode:VitalSign&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <table class='table table-striped'>
 <caption align='bottom' style='font-style: italic'>http://smartplatforms.org/terms/codes/VitalSign</caption>

@@ -97,7 +97,7 @@
 
       <div id="toc"></div>
 
-<h1>What's new in SMART 0.5</h1>
+<h1>What&#39;s new in SMART 0.5</h1>
 
 <h2>New and Improved Data Models</h2>
 
@@ -109,13 +109,13 @@
 <li><a href="/reference/data_model#Social_History">Social History</a> (currently tracks smoking status)</li>
 </ul>
 
-<p>We've also updated the models in SMART 0.5 with more consistent naming and date
+<p>We&#39;ve also updated the models in SMART 0.5 with more consistent naming and date
 handling, as well as specific improvements described below.</p>
 
 <p>Also, the <a href="/reference/data_model#Lab_Panel">Lab Panel</a> model is now part of our auto-generated
 online documentation. A panel has a code of its own, and groups together individual
 lab results which can also be queried independently. Please, take a look in case you 
-haven't seen this model before.</p>
+haven&#39;t seen this model before.</p>
 
 <p>Finally, the <a href="/reference/data_model#Problem">Problems</a> model was extended to
 allow problem status annotation and referencing of relevant encounters. </p>
@@ -147,8 +147,7 @@ have LOINC code of <code>29571-7</code> or <code>38478-4</code> and occurred bet
 and December 31, 2012, you can apply filters like:</p>
 
 <div class="highlight"><pre><code class="html">GET /records/1234567/lab_results/?loinc=29571-7|38478-4<span class="err">&amp;</span>date_from=2010-01-01<span class="err">&amp;</span>date_to=2012-12-31<span class="err">&amp;</span>limit=10<span class="err">&amp;</span>offset=0
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>Your app will only receive clinical statements matching the supplied filters.
 An attached <code>ResponseSummary</code> object describes the result set.</p>
@@ -177,12 +176,11 @@ or switch to an alternative mode if that happens.</p>
 <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="c1">// App launched outside a container</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Container Manifest API</h2>
 
-<p>We've consolidated the <code>/version</code> and <code>/capabilities</code> API calls at a common
+<p>We&#39;ve consolidated the <code>/version</code> and <code>/capabilities</code> API calls at a common
 <code>/manifest</code> endpoint.  To learn about a container, apps can simply
 <code>GET/manifest</code> to obtain a JSON description of its capabilities.</p>
 
@@ -191,8 +189,8 @@ or switch to an alternative mode if that happens.</p>
 <h2>Change in the REST call path for the preferences API calls</h2>
 
 <p>The call path for the REST call for the preferences API is now
-'GET /users/{user_id}/apps/{smart_app_id}/preferences' (used to be
-'GET /accounts/{user_id}/apps/{smart_app_id}/preferences').</p>
+&#39;GET /users/{user<em>id}/apps/{smart</em>app<em>id}/preferences&#39; (used to be
+&#39;GET /accounts/{user</em>id}/apps/{smart<em>app</em>id}/preferences&#39;).</p>
 
 <h2>No more alerts</h2>
 
@@ -242,8 +240,7 @@ JavaScript clients.</p>
 
 <div class="highlight"><pre><code class="python"><span class="n">labs</span> <span class="o">=</span> <span class="n">SMART</span><span class="o">.</span><span class="n">get_lab_results</span><span class="p">(</span><span class="n">loinc</span> <span class="o">=</span> <span class="s">&quot;29571-7|38478-4&quot;</span><span class="p">,</span> <span class="n">limit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">labs</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h3>JavaScript example:</h3>
 
@@ -254,10 +251,9 @@ JavaScript clients.</p>
 <span class="p">}).</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">of_type</span><span class="p">.</span><span class="nx">LabResult</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>If you're writing a SMART Connect app, you should check out the JSON-LD
+<p>If you&#39;re writing a SMART Connect app, you should check out the JSON-LD
 interface we now supply with each API response.  This interface provides an
 intuitive alternative to <code>rdfquery</code> by letting you build SMART Connect apps
 without SPARQL queries.</p>
@@ -294,7 +290,7 @@ Page</a>.</p>
 
 <h2>Change in the REST call path for the preferences API calls</h2>
 
-<p>Update the call path to 'GET /users/{user_id}/apps/{smart_app_id}/preferences'</p>
+<p>Update the call path to &#39;GET /users/{user<em>id}/apps/{smart</em>app_id}/preferences&#39;</p>
 
 <h2>Deprecate your Alerts API</h2>
 

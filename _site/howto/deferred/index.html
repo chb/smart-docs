@@ -120,7 +120,7 @@ performance of your app with parallel ajax calls and, once you are familiar with
 the pattern, to avoid messy code structures like deeply nested callbacks.</p>
 
 <p>Using this pattern is similar to attaching multiple callback functions to
-<a href="http://api.jquery.com/jQuery.ajax/">jQuery.ajax's</a> <code>.success</code>, <code>.error</code>, and
+<a href="http://api.jquery.com/jQuery.ajax/">jQuery.ajax&#39;s</a> <code>.success</code>, <code>.error</code>, and
 <code>.complete</code> handlers, in fact, those handlers use Deferred Object under the
 hood.</p>
 
@@ -134,15 +134,12 @@ hood.</p>
 
 <h2>A Real-World Example</h2>
 
-<p><a href="https://github.com/chb/smart_sample_apps/blob/master/static/framework/cardi
-o_risk_viz/load_data.js">The Cardiac Risk Visualiztion
+<p><a href="https://github.com/chb/smart_sample_apps/blob/master/static/framework/cardi%0Ao_risk_viz/load_data.js">The Cardiac Risk Visualiztion
 App</a> requires both demographics (gender and age) and also
 lab results (hsCRP, cholesterol, and HDL values) to compute a risk score. This
 requires two calls to the SMART Connect API:
-<a href="http://wiki.chip.org/smart-project/index.php/Developers_Docum
-entation:_SMART_App_Javascript_Libraries#SMART.get_demographics">get_demographcis</a> and
-<a href="http://wiki.chip.org/smart-project/index.php/Developers_Docume
-ntation:_SMART_App_Javascript_Libraries#SMART.get_lab_results">get_lab_results</a>.</p>
+<a href="http://wiki.chip.org/smart-project/index.php/Developers_Docum%0Aentation:_SMART_App_Javascript_Libraries#SMART.get_demographics">get_demographcis</a> and
+<a href="http://wiki.chip.org/smart-project/index.php/Developers_Docume%0Antation:_SMART_App_Javascript_Libraries#SMART.get_lab_results">get<em>lab</em>results</a>.</p>
 
 <p>In the code below each of these calls is wrapped in a function that is
 registered with $.when. Once all the registered functions signal they have now
@@ -151,7 +148,7 @@ successfully completed <code>(by calling .resolve())</code> or have failed <code
 handler is executed. Which in this example draws the full visualization being
 safe in the knowledge that all the required data is available.</p>
 
-<p>One detail to note is that both functions return the Deferred's promise object
+<p>One detail to note is that both functions return the Deferred&#39;s promise object
 to the observer. A promise object is the read-only object that is used by the
 observer function to query the current state of the function and therefore is
 the required return value of the callbacks.</p>
@@ -223,12 +220,11 @@ the code attached to the <code>.fail()</code> handler would be executed.</p>
             <span class="nx">draw_visualization</span><span class="p">();</span>
           <span class="p">});</span>
       <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>A Shorter Syntax</h2>
 
-<p>The get_demographics() and get_labs() functions above can also be written using
+<p>The get<em>demographics() and get</em>labs() functions above can also be written using
 a more compact (but equivalent) syntax:</p>
 
 <div class="highlight"><pre><code class="javascript"> <span class="kd">var</span> <span class="nx">get_demographics</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -249,14 +245,13 @@ a more compact (but equivalent) syntax:</p>
     <span class="p">});</span>
   <span class="p">}).</span><span class="nx">promise</span><span class="p">();</span>
 <span class="p">};</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Further Reading</h2>
 
 <ul>
-<li><a href="http://api.jquery.com/category/deferred-object/">Deferred Object</a> in jQuery's API docs</li>
-<li><a href="http://www.erichynds.com/jquery/using-deferreds-in-jquery/">Eric Hynds' article</a> for a further explanation and examples</li>
+<li><a href="http://api.jquery.com/category/deferred-object/">Deferred Object</a> in jQuery&#39;s API docs</li>
+<li><a href="http://www.erichynds.com/jquery/using-deferreds-in-jquery/">Eric Hynds&#39; article</a> for a further explanation and examples</li>
 </ul>
 
 

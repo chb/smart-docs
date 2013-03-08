@@ -124,121 +124,129 @@ web backend for your SMART App, using a toolkit such as
 <p>You will notice <code>generate_api.py</code> and <code>generate_readme.py</code> inside the newly formed
 directory <code>smart_client_python</code>. You do NOT need to run these. The API is
 pre-generated from the OWL specification. Unless you plan on changing the OWL
-specification (and it's very likely you don't want to do that), you won't need
+specification (and it&#39;s very likely you don&#39;t want to do that), you won&#39;t need
 to run these utilities.</p>
 
-<p>Also, you'll need <code>rdflib</code>, a Pythonic RDF library:</p>
+<p>Also, you&#39;ll need <code>rdflib</code>, a Pythonic RDF library:</p>
 
 <div class="highlight"><pre><code class="sh">  <span class="nv">$ </span>sudo apt-get install python-pyparsing
   <span class="nv">$ </span>sudo easy_install -U <span class="s2">&quot;rdflib&gt;=3.0.0&quot;</span>
   <span class="nv">$ </span>sudo easy_install rdfextras
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Set your Python Path</h2>
 
 <p>You need to make sure that <code>smart_client_python</code> (which you can rename without any
 complication, e.g. to smart<em>client) is in your Python path when you run your
 application. The easiest way to do this is to git-clone/copy/symlink the
-directory into your application path. If you're using git to manage your
+directory into your application path. If you&#39;re using git to manage your
 repository, you may want to set up <code>smart_client_python</code> as a git submodule (but
 do this _only</em> if you understand git submodules well.)</p>
 
 <h2>Import the Right Modules</h2>
 
-<p>For starters, you'll need the main module:</p>
+<p>For starters, you&#39;ll need the main module:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="kn">from</span> <span class="nn">smart_client_python</span> <span class="kn">import</span> <span class="n">smart</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>You will probably also need the <code>oauth</code> and <code>util</code> modules:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="kn">from</span> <span class="nn">smart_client_python</span> <span class="kn">import</span> <span class="n">oauth</span>
   <span class="kn">from</span> <span class="nn">smart_client_python.common</span> <span class="kn">import</span> <span class="n">util</span> <span class="k">as</span> <span class="n">smart_util</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Using the SMART Client</h2>
 
-<p>To make a SMART REST API call, you'll need to instantiate a <code>SmartClient</code> object,
-set its context, and choose the call you want to make.</p>
+<p>To make a SMART REST API call, you&#39;ll need to instantiate a <code>SmartClient</code> object,
+set its record-id, and choose the call you want to make.</p>
 
-<p>You'll need to instantiate a <code>SmartClient</code> object:</p>
-
-<div class="highlight"><pre><code class="python">  <span class="n">client</span> <span class="o">=</span> <span class="n">SmartClient</span><span class="p">(</span><span class="n">APP_ID</span><span class="p">,</span>
-                       <span class="n">SMART_SERVER_PARAMS</span><span class="p">,</span>
-                       <span class="n">SMART_SERVER_OAUTH</span><span class="p">,</span>
-                       <span class="n">resource_tokens</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="python">  <span class="n">client</span> <span class="o">=</span> <span class="n">SmartClient</span><span class="p">(</span><span class="n">APP_ID</span><span class="p">,</span> <span class="n">API_BASE</span><span class="p">,</span> <span class="n">SMART_SERVER_OAUTH</span><span class="p">)</span>
+</code></pre></div>
 
 <p>In this call:</p>
 
 <ul>
-<li><p><code>APP_ID</code>: the application identifier, as assigned by the SMART Container. In the 
-case of our SMART Reference EMR, this is the same as the OAuth <code>consumer_key</code>,
-but not all SMART Containers will choose to identify apps by their OAuth
-consumer token.</p></li>
-<li><p><code>SMART_SERVER_PARAMS</code>: a Python dictionary containing at least <code>api_base</code>, the
-URL base to which SMART API REST calls are made, e.g.:</p></li>
+<li><p><code>APP_ID</code>: Your app&#39;s id</p></li>
+<li><p><code>API_BASE</code>: the URL base to which SMART API REST calls are made, e.g.:</p></li>
 </ul>
 
-<div class="highlight"><pre><code class="python">    <span class="n">SMART_SERVER_PARAMS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;api_base&#39;</span> <span class="p">:</span> <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span><span class="p">}</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="python">    <span class="n">API_BASE</span> <span class="o">=</span> <span class="s">&#39;http://sandbox-api.smartplatforms.org&#39;</span>
+</code></pre></div>
 
 <ul>
-<li>SMART_SERVER_OAUTH: a Python dictionary containing the OAuth consumer credentials:</li>
+<li><code>SMART_SERVER_OAUTH</code>: a Python dictionary containing the OAuth consumer credentials:</li>
 </ul>
 
-<div class="highlight"><pre><code class="python">  <span class="sb">`SMART_SERVER_OAUTH`</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;consumer_key&#39;</span> <span class="p">:</span> <span class="s">&#39;smartapp123&#39;</span><span class="p">,</span> <span class="s">&#39;consumer_secret&#39;</span> <span class="p">:</span> <span class="s">&#39;X1Y2Z3...&#39;</span><span class="p">}</span>
-</code></pre>
-</div>
-
-<ul>
-<li><code>resource_tokens</code>: a Python dictionary containing the OAuth resource credentials:</li>
-</ul>
-
-<div class="highlight"><pre><code class="python">  <span class="n">resource_tokens</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;oauth_token&#39;</span> <span class="p">:</span> <span class="s">&#39;tok456&#39;</span><span class="p">,</span> <span class="s">&#39;oauth_token_secret&#39;</span> <span class="p">:</span> <span class="s">&#39;A7B4Z1...&#39;</span><span class="p">}</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="python">  <span class="sb">`SMART_SERVER_OAUTH`</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s">&#39;consumer_key&#39;</span><span class="p">:</span> <span class="s">&#39;my-app@apps.smartplatforms.org&#39;</span><span class="p">,</span>
+      <span class="s">&#39;consumer_secret&#39;</span> <span class="p">:</span> <span class="s">&#39;smartapp-secret&#39;</span>
+  <span class="p">}</span>
+</code></pre></div>
 
 <p>Once instantiated, a SMART client object can be used for as many API calls as
-needed. Of course, if you need to use different credentials, in particular a
-different set of resource tokens, you should instantiate a new <code>SmartClient</code>. If
-you know you won't be needing to access the API with existing credentials, you
-can use the <code>.update_token()</code> method on an existing <code>SmartClient</code>, but we recommend
-you use that sparingly.</p>
+needed. If you need to use different credentials, in particular to access
+resources of a different record, you should instantiate a new <code>SmartClient</code>.</p>
 
-<h3>SMART Client Context</h3>
+<h3>SMART Client Record Context</h3>
 
 <p>The <code>SmartClient</code> object contains a little bit of additional context: the
 <code>record_id</code>. This can be set like any normal Python attribute:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="n">client</span><span class="o">.</span><span class="n">record_id</span> <span class="o">=</span> <span class="s">&#39;157&#39;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>If you do not set up this context, you will have to provide the <code>record_id</code>
 parameter on every API call.</p>
 
-<h3>Where do I Get the Tokens and Context?</h3>
+<h3>Where do I Get the Tokens?</h3>
 
 <p>The consumer key and secret are defined once for your app when it is set up
-within the SMART Container. If you're developing against the SMART Reference EMR
-Sandbox, you'll want to use:</p>
+within the SMART Container. If you&#39;re developing against the SMART Reference EMR
+Sandbox, you&#39;ll want to use:</p>
 
-<div class="highlight"><pre><code class="python">  <span class="p">{</span><span class="s">&#39;consumer_key&#39;</span><span class="p">:</span> <span class="s">&#39;my-app@apps.smartplatforms.org&#39;</span><span class="p">,</span> <span class="s">&#39;consumer_secret&#39;</span><span class="p">:</span> <span class="s">&#39;smartapp-secret&#39;</span><span class="p">}</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="python"><span class="p">{</span>
+    <span class="s">&#39;consumer_key&#39;</span><span class="p">:</span> <span class="s">&#39;my-app@apps.smartplatforms.org&#39;</span><span class="p">,</span>
+    <span class="s">&#39;consumer_secret&#39;</span><span class="p">:</span> <span class="s">&#39;smartapp-secret&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>See the warning about setting a strong <code>consumer_secret</code>
 <a href="/howto/build_a_rest_app">here</a></p>
 
-<p>To get the resource token and patient-record context, you need to understand how
-SMART Connect passes this information to your app via a URL parameter. See the
-<a href="/howto/build_a_rest_app/">SMART REST HOWTO</a>.</p>
+<h2>Call Authorization</h2>
+
+<p>Before the SMART container accepts any calls, you need to have been authorized
+and issued an access token. You receive an access token through a three-legged
+OAuth dance performed like this:</p>
+
+<ol>
+<li>Request a token: <code>client.fetch_request_token()</code></li>
+<li>Have the user visit <code>client.auth_redirect_url</code> in his Browser</li>
+<li>When the user authorizes the app he will be redirected to the <code>oauth_callback</code>
+URL specified in your app&#39;s manifest. Extract the <code>oauth_verifier</code> from the
+callback URL and make the client exchange the request token for an access
+token:
+<code>client.exchange_token(oauth_verifier)</code></li>
+</ol>
+
+<p>If these steps complete successfully the client now has an access token and you
+can start making calls. Here is a minimal working example on how to receive an
+access token; note that you will receive the <code>record_id</code> passed to your <code>index</code>
+URL when the user starts your app, for simplicity reasons we assume a record id
+here:</p>
+
+<div class="highlight"><pre><code class="python"><span class="n">smart</span> <span class="o">=</span> <span class="n">SMARTClient</span><span class="p">(</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">SMART_SERVER_OAUTH</span><span class="p">)</span>
+
+<span class="c"># request a token for a specific record id</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">record_id</span> <span class="o">=</span> <span class="s">&#39;1288992&#39;</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">fetch_request_token</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&#39;Now visit:  </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">smart</span><span class="o">.</span><span class="n">auth_redirect_url</span>
+<span class="n">oauth_verifier</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Enter the oauth_verifier: &#39;</span><span class="p">)</span>
+
+<span class="c"># exchange the token</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">exchange_token</span><span class="p">(</span><span class="n">oauth_verifier</span><span class="p">)</span>
+</code></pre></div>
 
 <h2>Making the Call</h2>
 
@@ -246,8 +254,7 @@ SMART Connect passes this information to your app via a URL parameter. See the
 following call:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="n">medications</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_medications</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>Notice that the method signature follows the definitions on our <a href="/reference/rest_api">REST API Page</a>.</p>
 
@@ -255,8 +262,7 @@ following call:</p>
 <code>SmartClient</code> context, or it can be provided as a parameter like this:</p>
 
 <div class="highlight"><pre><code class="python">  <span class="n">medications</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_medications</span><span class="p">(</span><span class="n">record_id</span> <span class="o">=</span> <span class="s">&#39;456&#39;</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Working with the Results</h2>
 
@@ -280,8 +286,7 @@ use <code>rdflib</code> to do just that:</p>
 <span class="s">           }</span>
 <span class="s">           &quot;&quot;&quot;</span>
   <span class="n">med_names</span> <span class="o">=</span> <span class="n">medications</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>API Reference</h2>
 
@@ -290,12 +295,11 @@ REST URL signature to a Python method signature as described above for the
 medications use case. Check out our <a href="/reference/rest_api">API</a>. You can also use command</p>
 
 <div class="highlight"><pre><code class="sh">  <span class="nv">$ </span>python generate_readme.py
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>to automatically generate the available methods in the client library.</p>
 
-<p>If you don't want to run that code yourself, check out this library' README on
+<p>If you don&#39;t want to run that code yourself, check out this library&#39; README on
 <a href="http://github.com/chb/smart_client_python">github</a>.</p>
 
 

@@ -110,7 +110,7 @@ before reading this tutorial to familiarize youself with the details.</p>
 two data types: <a href="/reference/data_model/#Lab_Result">lab results</a> and <a href="/reference/data_model/#Vital_Sign_Set">vital
 sign sets</a>. This allows you to
 limit the results returned from these calls instead of the previous
-behavior of returning all of the record's labs or vitals which in many
+behavior of returning all of the record&#39;s labs or vitals which in many
 real-world settings could return a large and unwieldy set of data.</p>
 
 <p>Both the SMART REST and SMART Connect APIs expose this functionality, and
@@ -121,23 +121,23 @@ addition, a <code>responseSummary</code> object has been added to the results re
 which provides your callback functions a set of useful metadata that can be
 used to make further calls.</p>
 
-<p>We'll demonstrate this using the SMART Connect JSON-LD API and give an
+<p>We&#39;ll demonstrate this using the SMART Connect JSON-LD API and give an
 brief code sample for the SMART REST Python client as well.</p>
 
 <h2>An Javascript Example for Filtering Lab Results</h2>
 
-<p>For this example, we'll be using the SMART JSON-LD interface described
+<p>For this example, we&#39;ll be using the SMART JSON-LD interface described
 <a href="../intro_to_jsonld/">here</a> to the SMART Connect Javascript library.</p>
 
-<p>To start let's set up a query with the following parameters:</p>
+<p>To start let&#39;s set up a query with the following parameters:</p>
 
 <ul>
-<li>Filter the labs to find this patient's LDL results. LDL's have three
-LOINC codes that differ only in the method used to find the result. We'll
+<li>Filter the labs to find this patient&#39;s LDL results. LDL&#39;s have three
+LOINC codes that differ only in the method used to find the result. We&#39;ll
 make a pipe (|) seperated string of these codes: <code>&quot;13457-7|2089-1|18262-6&quot;</code></li>
 <li>Find the results from 2010-01-01 to 2012-01-01 using the <code>&quot;date_from&quot;</code>
 and <code>&quot;date_to&quot;</code> parameters.</li>
-<li>Lastly, let's restrict the number of returned results to a &quot;page&quot; 
+<li>Lastly, let&#39;s restrict the number of returned results to a &quot;page&quot; 
 of 10 results by setting the <code>limit</code> parameter to <code>10</code> and the
 <code>offset</code> parameter to <code>0</code>. To fetch the next &quot;page&quot; of ten results,
 you would set the <code>offset</code> to <code>10</code> and keep the limit at <code>10</code>.</li>
@@ -169,8 +169,7 @@ callback function in the same way as the other API calls:</p>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;totalResultCount&#39;</span><span class="p">,</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">totalResultCount</span><span class="p">);</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;nextPageURL&#39;</span><span class="p">,</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">nextPageURL</span><span class="p">);</span>
     <span class="p">})</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Filtering Vital Sign Sets</h2>
 

@@ -79,26 +79,42 @@ To help kickstart native mobile apps we have created an iOS framework for app de
 
 ## Implement OAuth endpoints
 
-SMART 0.6 requires your container to expose a standalone record selection endpoint and the [standard OAuth 1.0 endpoints][oauth].
+SMART 0.6 requires your container to expose a standalone record selection 
+endpoint and the [standard OAuth 1.0 endpoints][oauth].
 
 ### The new user endpoint is:
 
     /apps/{{app_id}}/launch
 
-The purpose of this web page is to allow the user to select a record against which to run the SMART app. Whether you display a list of records available to the user or choose a different approach is up to you.  
-As soon as the user selects a record, the app's `index` URL, with appended parameters `record_id` and `api_base`, should be requested.
+The purpose of this web page is to allow the user to select a record against 
+which to run the SMART app. Whether you display a list of records available 
+to the user or choose a different approach is up to you.  
+
+As soon as the user selects a record, the app's `index` URL, with appended 
+parameters `record_id` and `api_base`, should be requested.
 
 ### The OAuth endpoints are:
 
 * **Request Token** usually at `/oauth/request_token`  
-  Endopoint to obtain an OAuth request token. The `oauth_callback` parameter should be ignored and assumed to be `oob`, it must be specified in the app manifest. An additional parameter `smart_record_id`, identifying the record to which to tie the token, must be present when requesting a token.
+  Endopoint to obtain an OAuth request token. The `oauth_callback` parameter 
+  should be ignored and assumed to be `oob`, it must be specified in the app 
+  manifest. An additional parameter `smart_record_id`, identifying the record 
+  to which to tie the token, must be present when requesting a token.
   
 * **Authorize Token** usually at `/oauth/authorize`  
-  Endpoint to let the user authorize an OAuth request token. This address is usually loaded in a web browser and **will display a UI**.  
-  The page should have the user log in (if he hasn't done so previously) and should ask the user to authorize the given app to access container data, along with a button to authorize. If a user has authorized an app before there is no need to ask him again and the token should be authorized automatically after login. If the app is authorized, the browser should redirect the user to the app's `oauth_callback` URL, specified in the app manifest.
+  Endpoint to let the user authorize an OAuth request token. This address is 
+  usually loaded in a web browser and **will display a UI**.  
+  
+  The page should have the user log in (if he hasn't done so previously) and 
+  should ask the user to authorize the given app to access container data, 
+  along with a button to authorize. If a user has authorized an app before 
+  there is no need to ask him again and the token should be authorized 
+  automatically after login. If the app is authorized, the browser should 
+  redirect the user to the app's `oauth_callback` URL, specified in the app manifest.
   
 * **Exchange Token** usually at `/oauth/access_token`  
-  Endpoint to exchange the request token with an OAuth access token, if a valid request token and a valid token verifier is presented.
+  Endpoint to exchange the request token with an OAuth access token, if a valid 
+  request token and a valid token verifier is presented.
 
 ### Server Manifest
 
@@ -115,7 +131,10 @@ These four endpoint URLS must be placed in the server manifest under the top-lev
 
 ### Endpoint UI
 
-Keep in mind that the record selection page as well as the token authorization page may be requested for a standalone REST app, displaying in a user's desktop browser, or from a native app on a mobile phone. We suggest you use [CSS media queries][css-media] to provide a slick UI in either case.
+Keep in mind that the record selection page as well as the token authorization 
+page may be requested for a standalone REST app, displaying in a user's desktop 
+browser, or from a native app on a mobile phone. We suggest you use [CSS media queries][css-media] 
+to provide a slick UI in either case.
 
 [oauth]: http://tools.ietf.org/html/rfc5849
 [css-media]: http://css-tricks.com/css-media-queries/

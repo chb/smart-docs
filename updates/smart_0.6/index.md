@@ -90,8 +90,8 @@ The purpose of this web page is to allow the user to select a record against
 which to run the SMART app. Whether you display a list of records available 
 to the user or choose a different approach is up to you.  
 
-As soon as the user selects a record, the app's `index` URL, with appended 
-parameters `record_id` and `api_base`, should be requested.
+As soon as the user selects a record, the browser should redirect to the
+app's `index` URL, with appended parameters `record_id` and `api_base`.
 
 ### The OAuth endpoints are:
 

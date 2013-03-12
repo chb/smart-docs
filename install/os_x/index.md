@@ -50,7 +50,7 @@ As of this writing, this will install lxml 3.0.1, psycopg 2.4.5 and rdflib 3.2.3
 
     $ sudo easy_install lxml
     $ sudo easy_install psycopg2
-    $ sudo easy_install -U "rdflib>=3.0.0"  rdfextras
+    $ sudo easy_install -U "rdflib==3.2.3" "rdfextras==0.2" "jsonschema==0.7"
 
 ## Django
 

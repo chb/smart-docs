@@ -73,7 +73,8 @@ stated about the relative include:
 
 ## Clinical Notes Write API
 
-(Arjun)
+We have added a simple API to POST simple plain text notes to a record
+using a non-destructive write operation. 
 
 ## Extended Demographic API
 
@@ -85,7 +86,18 @@ pregnancy).
 
 ## Filters/Pagination
 
-(Arjun)
+Date filters have now been specified for all medical record APIs and
+date properties have been added to various data models.
+
+Additional filters have been added to:
+
+- `medications`: a list of pipe separated `rxnorm` codes
+- `problems`: a list of pipe separated `snomed` codes
+- `procedures`: a list of pipe separated `snomed` codes
+
+An element's single `data` property or `start_date` will be
+used as the default for sorting and filtering.
+
 
 ## Height is now expressed in centimeters
 

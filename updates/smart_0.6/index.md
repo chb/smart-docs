@@ -53,10 +53,23 @@ stated about the relative include:
 
 ## Scratchpad API
 
-    App annotation of patient records handled through and extension of the preferences API scoped to the app-record
-    "fire-and-forget" type (non-transactional)
-    All apps allowed to read each others’ scratchpads
-    Data is "opaque" to the container, but self-structured by the app
+    The new SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
+    to a patient record in free form format. This is, the app decides on the format
+    of the data that it wants to store (self-structured) making the data opaque to
+    the container. All SMART apps are allowed read access to the scratchpad data
+    for the in-scope patient of all other apps, which provides a basic 
+    interoperability facility accross apps.
+    
+    Because SMART an app has access to the scratchpad that it owns regardless
+    of the user who runs it, there is always the possibility that a user overwrites
+    the data stored by another user. A container is free to implement collision detection
+    support for its scratchpad facilities.
+    
+    *Note:* The SMART reference implementation scratchpad is not collision-safe.
+    Data may be lost by multiple copies of an app trying to write in parallel. Production
+    implementations are encouraged to implement a system that will, for example,
+    provide locks and dirty-state notification via HTTP error codes to apps writing
+    to the scratchpad.
 
 ## Clinical Notes Write API
 

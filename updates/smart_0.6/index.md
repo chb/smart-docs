@@ -11,9 +11,14 @@ includenav: smartnav.markdown
 
 ## Native Apps Workflow
 
-SMART 0.6 containers are now exposing standard OAuth endpoints. This means the SMART API is no longer limited to web apps only, any platform capable of managing OAuth tokens and performing REST calls is now able to exchange data with a SMART container. This opens the door for native app development in general and mobile apps in particular.  
-To help kickstart native mobile apps we have created an iOS framework for app developers, its Android counterpart is in the making.
+SMART 0.6 containers are now exposing standard OAuth endpoints. This means the 
+SMART API is no longer limited to web apps only, any platform capable of managing 
+OAuth tokens and performing REST calls is now able to exchange data with a SMART 
+container. This opens the door for native app development in general and mobile 
+apps in particular.
 
+To help kickstart native mobile apps we have created an iOS framework for app 
+developers, its Android counterpart is in the making.
 
 ## Documents API
 
@@ -37,18 +42,21 @@ To help kickstart native mobile apps we have created an iOS framework for app de
 
 ## Family History API
 
-(Nikolai)
+SMART 0.6 introduces the new [Family History API](/reference/data_model) which
+can be used to expose facts and findings pertaining to a patient's biological
+relative. The relatives are classified based on SNOMED CT. The facts that can
+stated about the relative include:
 
-- Demographics (date of birth, date of death)
-- Biometrics (height)
-- Problems (unlimited)
+    * Date of birth and/or date of death
+    * Height
+    * Any problem that can be expressed through SNOMED CT
 
 ## Scratchpad API
 
     App annotation of patient records handled through and extension of the preferences API scoped to the app-record
-    “fire-and-forget” type (non-transactional)
+    "fire-and-forget" type (non-transactional)
     All apps allowed to read each others’ scratchpads
-    Data is “opaque” to the container, but self-structured by the app
+    Data is "opaque" to the container, but self-structured by the app
 
 ## Clinical Notes Write API
 
@@ -56,20 +64,29 @@ To help kickstart native mobile apps we have created an iOS framework for app de
 
 ## Extended Demographic API
 
-(Nikolai)
-
-    Date of death
-    Gestational Age at Birth
+The demographics API has been extended in SMART 0.6 to include two additional
+optional fields, "Date of Death" and "Gestataional Age at Birth". The gestational
+age at birth is the the week from the estimated date of conception that
+the patient has been born at (most people are born in the 40th week of the
+pregnancy).
 
 ## Filters/Pagination
 
 (Arjun)
+
+## Height is now expressed in centimeters
+
+In SMART 0.5, the height units used in the vital sign sets model used to meters.
+In SMART 0.6 the height units used in the vital sign sets and the new family history
+APIs have been changed to centimeters.
      
 # HOWTO:  Update Your SMART Apps to SMART 0.6
 
-## Update vitals sign height units from m to cm
+## Update height units from meters to centimeters
 
-(Nikolai)
+If your SMART application queries SMART for height data, make sure that you update
+your code so that it anticipates the height in centimeters (cm) as defined by the
+new SMART 0.6 specification.
 
 ## REST apps
 
@@ -140,9 +157,11 @@ to provide a slick UI in either case.
 [css-media]: http://css-tricks.com/css-media-queries/
 
 
-## Update vitals sign height units from m to cm
+## Update height units from meters to centimeters
 
-(Nikolai)
+Starting with SMART 0.6 the height units should be returned to the SMART apps
+in centimeters (cm) instead of meters (m). Make sure that you update your
+container accordingly.
 
 ## Update filters/pagination implementation
 
@@ -150,9 +169,15 @@ to provide a slick UI in either case.
 
 ## Implement new APIs (Documents, Family History, Scratchpad)
 
-(Nikolai)
+You should implement the new Documents, Family History, and Scratchpad APIs, as outlined in the
+"What's new in SMART 0.6" section. Make sure that your container manifest call properly
+describes your container's support for these APIs and test your API output with the
+API Verifier.
 
-## Extend existing APIs (Demographics, Clinical Notes)
+## Extend existing APIs
 
-(Nikolai / Arjun)
+SMART 0.6 adds two optional fields to the Demographics API (date of death, and gestational age at birth)
+as well as write capabilities for the Clinical Notes API. You should consider implemnting these estensions
+to empower the next generation of SMART applications.
+
 =

@@ -102,8 +102,14 @@
 
 <h2>Native Apps Workflow</h2>
 
-<p>SMART 0.6 containers are now exposing standard OAuth endpoints. This means the SMART API is no longer limited to web apps only, any platform capable of managing OAuth tokens and performing REST calls is now able to exchange data with a SMART container. This opens the door for native app development in general and mobile apps in particular.<br>
-To help kickstart native mobile apps we have created an iOS framework for app developers, its Android counterpart is in the making.</p>
+<p>SMART 0.6 containers are now exposing standard OAuth endpoints. This means the 
+SMART API is no longer limited to web apps only, any platform capable of managing 
+OAuth tokens and performing REST calls is now able to exchange data with a SMART 
+container. This opens the door for native app development in general and mobile 
+apps in particular.</p>
+
+<p>To help kickstart native mobile apps we have created an iOS framework for app 
+developers, its Android counterpart is in the making.</p>
 
 <h2>Documents API</h2>
 
@@ -126,39 +132,75 @@ The container maintains an index of the available files
 
 <h2>Family History API</h2>
 
-<p>(Nikolai)</p>
-
-<ul>
-<li>Demographics (date of birth, date of death)</li>
-<li>Biometrics (height)</li>
-<li>Problems (unlimited)</li>
-</ul>
-
+<p>SMART 0.6 introduces the new <a href="/reference/data_model">Family History API</a> which
+can be used to expose facts and findings pertaining to a patient&#39;s biological
+relative. The relatives are classified based on SNOMED CT. The facts that can
+stated about the relative include:</p>
+<div class="highlight"><pre><code class="text">* Date of birth and/or date of death
+* Height
+* Any problem that can be expressed through SNOMED CT
+</code></pre></div>
 <h2>Scratchpad API</h2>
-<div class="highlight"><pre><code class="text">App annotation of patient records handled through and extension of the preferences API scoped to the app-record
-“fire-and-forget” type (non-transactional)
-All apps allowed to read each others’ scratchpads
-Data is “opaque” to the container, but self-structured by the app
+<div class="highlight"><pre><code class="text">The new SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
+to a patient record in free form format. This is, the app decides on the format
+of the data that it wants to store (self-structured) making the data opaque to
+the container. All SMART apps are allowed read access to the scratchpad data
+for the in-scope patient of all other apps, which provides a basic 
+interoperability facility accross apps.
+
+Because SMART an app has access to the scratchpad that it owns regardless
+of the user who runs it, there is always the possibility that a user overwrites
+the data stored by another user. A container is free to implement collision detection
+support for its scratchpad facilities.
+
+*Note:* The SMART reference implementation scratchpad is not collision-safe.
+Data may be lost by multiple copies of an app trying to write in parallel. Production
+implementations are encouraged to implement a system that will, for example,
+provide locks and dirty-state notification via HTTP error codes to apps writing
+to the scratchpad.
 </code></pre></div>
 <h2>Clinical Notes Write API</h2>
 
-<p>(Arjun)</p>
+<p>We have added a simple API to POST simple plain text notes to a record
+using a non-destructive write operation. </p>
 
 <h2>Extended Demographic API</h2>
 
-<p>(Nikolai)</p>
-<div class="highlight"><pre><code class="text">Date of death
-Gestational Age at Birth
-</code></pre></div>
+<p>The demographics API has been extended in SMART 0.6 to include two additional
+optional fields, &quot;Date of Death&quot; and &quot;Gestataional Age at Birth&quot;. The gestational
+age at birth is the the week from the estimated date of conception that
+the patient has been born at (most people are born in the 40th week of the
+pregnancy).</p>
+
 <h2>Filters/Pagination</h2>
 
-<p>(Arjun)</p>
+<p>Date filters have now been specified for all medical record APIs and
+date properties have been added to various data models.</p>
+
+<p>Additional filters have been added to:</p>
+
+<ul>
+<li><code>medications</code>: a list of pipe separated <code>rxnorm</code> codes</li>
+<li><code>problems</code>: a list of pipe separated <code>snomed</code> codes</li>
+<li><code>procedures</code>: a list of pipe separated <code>snomed</code> codes</li>
+</ul>
+
+<p>An element&#39;s single <code>data</code> property or <code>start_date</code> will be
+used as the default for sorting and filtering.</p>
+
+<h2>Height is now expressed in centimeters</h2>
+
+<p>In SMART 0.5, the height units used in the vital sign sets model used to meters.
+In SMART 0.6 the height units used in the vital sign sets and the new family history
+APIs have been changed to centimeters.</p>
 
 <h1>HOWTO:  Update Your SMART Apps to SMART 0.6</h1>
 
-<h2>Update vitals sign height units from m to cm</h2>
+<h2>Update height units from meters to centimeters</h2>
 
-<p>(Nikolai)</p>
+<p>If your SMART application queries SMART for height data, make sure that you update
+your code so that it anticipates the height in centimeters (cm) as defined by the
+new SMART 0.6 specification.</p>
 
 <h2>REST apps</h2>
 
@@ -168,24 +210,40 @@ Gestational Age at Birth
 
 <h2>Implement OAuth endpoints</h2>
 
-<p>SMART 0.6 requires your container to expose a standalone record selection endpoint and the <a href="http://tools.ietf.org/html/rfc5849">standard OAuth 1.0 endpoints</a>.</p>
+<p>SMART 0.6 requires your container to expose a standalone record selection 
+endpoint and the <a href="http://tools.ietf.org/html/rfc5849">standard OAuth 1.0 endpoints</a>.</p>
 
 <h3>The new user endpoint is:</h3>
 <div class="highlight"><pre><code class="text">/apps//launch
 </code></pre></div>
-<p>The purpose of this web page is to allow the user to select a record against which to run the SMART app. Whether you display a list of records available to the user or choose a different approach is up to you.<br>
-As soon as the user selects a record, the app&#39;s <code>index</code> URL, with appended parameters <code>record_id</code> and <code>api_base</code>, should be requested.</p>
+<p>The purpose of this web page is to allow the user to select a record against 
+which to run the SMART app. Whether you display a list of records available 
+to the user or choose a different approach is up to you.  </p>
+
+<p>As soon as the user selects a record, the browser should redirect to the
+app&#39;s <code>index</code> URL, with appended parameters <code>record_id</code> and <code>api_base</code>.</p>
 
 <h3>The OAuth endpoints are:</h3>
 
 <ul>
 <li><p><strong>Request Token</strong> usually at <code>/oauth/request_token</code><br>
-Endopoint to obtain an OAuth request token. The <code>oauth_callback</code> parameter should be ignored and assumed to be <code>oob</code>, it must be specified in the app manifest. An additional parameter <code>smart_record_id</code>, identifying the record to which to tie the token, must be present when requesting a token.</p></li>
+Endopoint to obtain an OAuth request token. The <code>oauth_callback</code> parameter 
+should be ignored and assumed to be <code>oob</code>, it must be specified in the app 
+manifest. An additional parameter <code>smart_record_id</code>, identifying the record 
+to which to tie the token, must be present when requesting a token.</p></li>
 <li><p><strong>Authorize Token</strong> usually at <code>/oauth/authorize</code><br>
-Endpoint to let the user authorize an OAuth request token. This address is usually loaded in a web browser and <strong>will display a UI</strong>.<br>
-The page should have the user log in (if he hasn&#39;t done so previously) and should ask the user to authorize the given app to access container data, along with a button to authorize. If a user has authorized an app before there is no need to ask him again and the token should be authorized automatically after login. If the app is authorized, the browser should redirect the user to the app&#39;s <code>oauth_callback</code> URL, specified in the app manifest.</p></li>
+Endpoint to let the user authorize an OAuth request token. This address is 
+usually loaded in a web browser and <strong>will display a UI</strong>.  </p>
+
+<p>The page should have the user log in (if he hasn&#39;t done so previously) and 
+should ask the user to authorize the given app to access container data, 
+along with a button to authorize. If a user has authorized an app before 
+there is no need to ask him again and the token should be authorized 
+automatically after login. If the app is authorized, the browser should 
+redirect the user to the app&#39;s <code>oauth_callback</code> URL, specified in the app manifest.</p></li>
 <li><p><strong>Exchange Token</strong> usually at <code>/oauth/access_token</code><br>
-Endpoint to exchange the request token with an OAuth access token, if a valid request token and a valid token verifier is presented.</p></li>
+Endpoint to exchange the request token with an OAuth access token, if a valid 
+request token and a valid token verifier is presented.</p></li>
 </ul>
 
 <h3>Server Manifest</h3>
@@ -200,11 +258,16 @@ Endpoint to exchange the request token with an OAuth access token, if a valid re
 </code></pre></div>
 <h3>Endpoint UI</h3>
 
-<p>Keep in mind that the record selection page as well as the token authorization page may be requested for a standalone REST app, displaying in a user&#39;s desktop browser, or from a native app on a mobile phone. We suggest you use <a href="http://css-tricks.com/css-media-queries/">CSS media queries</a> to provide a slick UI in either case.</p>
+<p>Keep in mind that the record selection page as well as the token authorization 
+page may be requested for a standalone REST app, displaying in a user&#39;s desktop 
+browser, or from a native app on a mobile phone. We suggest you use <a href="http://css-tricks.com/css-media-queries/">CSS media queries</a> 
+to provide a slick UI in either case.</p>
 
-<h2>Update vitals sign height units from m to cm</h2>
+<h2>Update height units from meters to centimeters</h2>
 
-<p>(Nikolai)</p>
+<p>Starting with SMART 0.6 the height units should be returned to the SMART apps
+in centimeters (cm) instead of meters (m). Make sure that you update your
+container accordingly.</p>
 
 <h2>Update filters/pagination implementation</h2>
 
@@ -212,11 +275,18 @@ Endpoint to exchange the request token with an OAuth access token, if a valid re
 
 <h2>Implement new APIs (Documents, Family History, Scratchpad)</h2>
 
-<p>(Nikolai)</p>
+<p>You should implement the new Documents, Family History, and Scratchpad APIs, as outlined in the
+&quot;What&#39;s new in SMART 0.6&quot; section. Make sure that your container manifest call properly
+describes your container&#39;s support for these APIs and test your API output with the
+API Verifier.</p>
 
-<h2>Extend existing APIs (Demographics, Clinical Notes)</h2>
+<h2>Extend existing APIs</h2>
 
-<h1>(Nikolai / Arjun)</h1>
+<p>SMART 0.6 adds two optional fields to the Demographics API (date of death, and gestational age at birth)
+as well as write capabilities for the Clinical Notes API. You should consider implemnting these estensions
+to empower the next generation of SMART applications.</p>
+
+<h1></h1>
 
 
     </div>

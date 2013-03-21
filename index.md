@@ -140,7 +140,5 @@ You'll want to follow our HOWTOs in order:
 1. [HOWTO Build a SMART App](howto/build_a_smart_app), which focused on SMART
 Connect.
 2. [HOWTO Build a SMART App](howto/build_a_rest_app) - REST API Calls
-3. [HOWTO Build SMART Background and Helper
-Apps](howto/background_and_helper_apps)
 
 For all of these, you can find our code on [Github](https://github.com/chb/)

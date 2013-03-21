@@ -49,12 +49,6 @@ SMART Applications can run in one of three modes:
   These apps can launch and layout multiple apps side-by-side. Apps in this
   category include: i2b2 EMR View, as well as our [Frame UI Sample](/howto/how_to_build_smart_frame_ui_apps).
 
-* The Background Apps mode (`background`):  
-  They perform some function automatically in the background. A sample app in this
-  category is the Surescripts Connector, which automatically gets a
-  Surescripts dispensing history for each patient record and updates the
-  medications list accordingly.
-
 
 ## Standalone Apps
 
@@ -94,21 +88,6 @@ example, this is the Meds List app manifest:
   }
 {% endhighlight  %}
 
-
-A background app needn't provide an icon or activities. For example, the
-Surescripts Connector provides the following manifest:
-
-{% highlight javascript %}
-  {
-    "name":        "SMART Connector",
-    "description": "Keeps SMART updated from a SureScripts feed (long-term, runs in background)",
-    "author":      "Josh Mandel, Children's Hospital Boston",
-    "id":          "smart-connector@apps.smartplatforms.org",
-    "version":     ".1a",
-
-    "mode" : "background"
-  }
-{% endhighlight  %}
 
 
 # Validating Your Manifest

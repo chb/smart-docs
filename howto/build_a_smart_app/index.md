@@ -250,6 +250,4 @@ them.
         href="/howto/got_statins">GotStatins</a></li>
     <li>build a more powerful SMART App, learn <a
         href="/howto/build_a_rest_app">HOWTO Build a SMART App - REST API Calls</a></li>
-    <li>build SMART Apps that work while the user is offline: <a
-        href="/howto/background_and_helper_apps">HOWTO Build SMART Background and Helper Apps</a></li>
 </ul>

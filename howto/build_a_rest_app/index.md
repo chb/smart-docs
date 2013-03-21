@@ -243,7 +243,4 @@ explanation with a templating language at this point.)
 <ul>
     <li>learn more about SMART REST API Calls with
       <a href="/howto/rx_reminder">RxReminder</a>.</li>
-    <li>learn <a href="/howto/background_and_helper_apps">
-      HOWTO Build SMART Background and Helper Apps</a> so your App can take
-      action while the user is offline. </li>
 </ul>

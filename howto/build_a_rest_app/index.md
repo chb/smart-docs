@@ -16,20 +16,6 @@ logic and REST API Calls.
 You should first read the [Main Page](../../) and [HOWTO Build a SMART App](../build_a_smart_app).
 
 
-# Screencast
-
-We are re-recording the screencast to catch up with the latest API changes.
-Please see the text-based tutorial below, or see the old screencast.
-
-<iframe src="http://player.vimeo.com/video/20766064?title=0&amp;byline=0&amp;portrait=0"
-        width="400"
-        height="340"
-        frameborder="0"
-        webkitAllowFullScreen
-        mozallowfullscreen
-        allowFullScreen>
-</iframe>
-
 
 # Server to Server Authentication
 

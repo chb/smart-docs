@@ -14,21 +14,6 @@ includenav: smartnav.markdown
 This document is a complete SMART-App-Building walk-through. You should first
 read the [Main Page](../../)
 
-# Screencast
-
-We are re-recording the screencast to catch up with the latest API old
-[screencast](http://vimeo.com/20113823).
-
-<iframe
-  src="http://player.vimeo.com/video/20113823"
-  width="500"
-  height="375"
-  frameborder="0"
-  webkitAllowFullScreen
-  mozallowfullscreen
-  allowFullScreen>
-</iframe>
-
 
 # Setting up your Environment
 

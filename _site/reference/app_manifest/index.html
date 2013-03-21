@@ -36,7 +36,6 @@
     <li class="nav-header">Tutorials</li>
     <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
     <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
-    <li><a href="/howto/background_and_helper_apps">Background + Helper Apps</a></li>
     <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
     <li><a href="/howto/got_statins">Got Statins? App</a></li>
     <li><a href="/howto/rx_reminder">RxReminder App</a></li>
@@ -140,11 +139,6 @@ List, and Got Statins apps. These are SMART&#39;s &quot;normal&quot; apps.</p></
 <li><p>The Frame UI Apps mode (<code>frame_ui</code>):<br>
 These apps can launch and layout multiple apps side-by-side. Apps in this
 category include: i2b2 EMR View, as well as our <a href="/howto/how_to_build_smart_frame_ui_apps">Frame UI Sample</a>.</p></li>
-<li><p>The Background Apps mode (<code>background</code>):<br>
-They perform some function automatically in the background. A sample app in this
-category is the Surescripts Connector, which automatically gets a
-Surescripts dispensing history for each patient record and updates the
-medications list accordingly.</p></li>
 </ul>
 
 <h2>Standalone Apps</h2>
@@ -180,20 +174,6 @@ example, this is the Meds List app manifest:</p>
         <span class="s2">&quot;methods&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">]</span>
       <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">}</span>
-</code></pre></div>
-
-<p>A background app needn&#39;t provide an icon or activities. For example, the
-Surescripts Connector provides the following manifest:</p>
-
-<div class="highlight"><pre><code class="javascript">  <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span>        <span class="s2">&quot;SMART Connector&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Keeps SMART updated from a SureScripts feed (long-term, runs in background)&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;author&quot;</span><span class="o">:</span>      <span class="s2">&quot;Josh Mandel, Children&#39;s Hospital Boston&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span>          <span class="s2">&quot;smart-connector@apps.smartplatforms.org&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;version&quot;</span><span class="o">:</span>     <span class="s2">&quot;.1a&quot;</span><span class="p">,</span>
-
-    <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="s2">&quot;background&quot;</span>
   <span class="p">}</span>
 </code></pre></div>
 

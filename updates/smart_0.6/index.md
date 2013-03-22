@@ -22,23 +22,25 @@ developers, its Android counterpart is in the making.
 
 ## Documents API
 
-(Nikolai)
+The new Documents API enables SMART containers to serve documents pertaining
+to the patient. The documents can be returned either as URLs or inlined in the
+SMART RDF. The single-document API call can also return the raw document data.
+Documents can include patient images, radiography images, EKG data files,
+scanned documents, clinical notes, etc.
 
-    mechanism for encapsulating metadata and links stored in external URLs
-    documents include patient images, radiography images, EKG data files, scanned documents
-    metadata about the file
-    SMART could expose the public URL of the resource OR could proxy through the file and expose an obfuscated link (possibly by adding a “raw=true” parameter to the regular API URL)
-    The API call returns the complete collection of data files for the patient
-    Optional date and file type filters
-    The container maintains an index of the available files
+### Photographs
 
-### Patient Images
+The Photographs API provides access to specific image documents that represent the
+patient. This allows SMART applications to show a patient photo (if available)
+to support an even more personal clinician-patient interaction. The photographs are
+returned in the Documents model format. The intent of these photographs is to show a face
+shot of the patient.
 
-(Nikolai)
+### Medical Images
 
-### Radiography Images
-
-(Nikolai / Nich)
+The Medical Images API returns DICOM-encoded studies about the patient (CT scans,
+x-rays, echographs, etc). In addition to the fileds returned by the document model,
+this data model also returns the fields study title, study type, and study date.
 
 ## Family History API
 
@@ -53,23 +55,23 @@ stated about the relative include:
 
 ## Scratchpad API
 
-    The new SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
-    to a patient record in free form format. This is, the app decides on the format
-    of the data that it wants to store (self-structured) making the data opaque to
-    the container. All SMART apps are allowed read access to the scratchpad data
-    for the in-scope patient of all other apps, which provides a basic 
-    interoperability facility accross apps.
-    
-    Because SMART an app has access to the scratchpad that it owns regardless
-    of the user who runs it, there is always the possibility that a user overwrites
-    the data stored by another user. A container is free to implement collision detection
-    support for its scratchpad facilities.
-    
-    *Note:* The SMART reference implementation scratchpad is not collision-safe.
-    Data may be lost by multiple copies of an app trying to write in parallel. Production
-    implementations are encouraged to implement a system that will, for example,
-    provide locks and dirty-state notification via HTTP error codes to apps writing
-    to the scratchpad.
+The new SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
+to a patient record in free form format. This is, the app decides on the format
+of the data that it wants to store (self-structured) making the data opaque to
+the container. All SMART apps are allowed read access to the scratchpad data
+for the in-scope patient of all other apps, which provides a basic 
+interoperability facility accross apps.
+
+Because SMART an app has access to the scratchpad that it owns regardless
+of the user who runs it, there is always the possibility that a user overwrites
+the data stored by another user. A container is free to implement collision detection
+support for its scratchpad facilities.
+
+*Note:* The SMART reference implementation scratchpad is not collision-safe.
+Data may be lost by multiple copies of an app trying to write in parallel. Production
+implementations are encouraged to implement a system that will, for example,
+provide locks and dirty-state notification via HTTP error codes to apps writing
+to the scratchpad.
 
 ## Clinical Notes Write API
 
@@ -204,5 +206,3 @@ API Verifier.
 SMART 0.6 adds two optional fields to the Demographics API (date of death, and gestational age at birth)
 as well as write capabilities for the Clinical Notes API. You should consider implemnting these estensions
 to empower the next generation of SMART applications.
-
-=

@@ -18,7 +18,7 @@ container. This opens the door for native app development in general and mobile
 apps in particular.
 
 To help kickstart native mobile apps we have created an iOS framework for app 
-developers, its Android counterpart is in the making.
+developers, its Android counterpart is coming soon.
 
 ## Documents API
 
@@ -33,13 +33,13 @@ scanned documents, clinical notes, etc.
 The Photographs API provides access to specific image documents that represent the
 patient. This allows SMART applications to show a patient photo (if available)
 to support an even more personal clinician-patient interaction. The photographs are
-returned in the Documents model format. The intent of these photographs is to show a face
-shot of the patient.
+returned in the Documents model format. The intent of these photographs is to show
+a head shot of the patient.
 
 ### Medical Images
 
 The Medical Images API returns DICOM-encoded studies about the patient (CT scans,
-x-rays, echographs, etc). In addition to the fileds returned by the document model,
+x-rays, echographs, etc). In addition to the fields returned by the document model,
 this data model also returns the fields study title, study type, and study date.
 
 ## Family History API
@@ -89,7 +89,8 @@ pregnancy).
 ## Filters/Pagination
 
 Date filters have now been specified for all medical record APIs and
-date properties have been added to various data models.
+date properties have been added to the various data models that lacked
+them.
 
 Additional filters have been added to:
 
@@ -120,9 +121,9 @@ new SMART 0.6 specification.
 
 ## REST apps
 
-Check out our REST app tutorial to learn about the new boilerplate code needed to use the
-SMART python client and update your REST apps accordingly. (Note: The Java client has 
-not yet been updated to SMART 0.6.)
+Check out our new REST app tutorial to learn about the code needed to
+use the SMART python client and update your REST apps accordingly.
+(Note: The Java client has not yet been updated to SMART 0.6.)
 
 # HOWTO:  Update Your Container to SMART 0.6
 
@@ -145,8 +146,8 @@ app's `index` URL, with appended parameters `record_id` and `api_base`.
 ### The OAuth endpoints are:
 
 * **Request Token** usually at `/oauth/request_token`  
-  Endopoint to obtain an OAuth request token. The `oauth_callback` parameter 
-  should be ignored and assumed to be `oob`, it must be specified in the app 
+  Endpoint to obtain an OAuth request token. The `oauth_callback` parameter 
+  should be ignored and is assumed to be `oob`; it must be specified in the app 
   manifest. An additional parameter `smart_record_id`, identifying the record 
   to which to tie the token, must be present when requesting a token.
   
@@ -167,7 +168,8 @@ app's `index` URL, with appended parameters `record_id` and `api_base`.
 
 ### Server Manifest
 
-These four endpoint URLS must be placed in the server manifest under the top-level key `launch_urls`, for example:
+These four endpoint URLS must be placed in the server manifest under the
+top-level key `launch_urls`, for example:
 
 ```
 "launch_urls": {
@@ -182,8 +184,8 @@ These four endpoint URLS must be placed in the server manifest under the top-lev
 
 Keep in mind that the record selection page as well as the token authorization 
 page may be requested for a standalone REST app, displaying in a user's desktop 
-browser, or from a native app on a mobile phone. We suggest you use [CSS media queries][css-media] 
-to provide a slick UI in either case.
+browser, or from a native app on a mobile phone. We suggest you use
+[CSS media queries][css-media] to provide a slick UI in either case.
 
 [oauth]: http://tools.ietf.org/html/rfc5849
 [css-media]: http://css-tricks.com/css-media-queries/

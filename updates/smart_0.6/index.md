@@ -100,7 +100,7 @@ Additional filters have been added to:
 An element's single `data` property or `start_date` will be
 used as the default for sorting and filtering.
 
-Also, SMART 0.6 no longer supports the `offser` pagnation
+Also, SMART 0.6 no longer supports the `offset` pagnation
 parameter that was introduced in SMART 0.5
 
 

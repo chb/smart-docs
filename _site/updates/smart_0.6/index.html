@@ -107,26 +107,29 @@ container. This opens the door for native app development in general and mobile
 apps in particular.</p>
 
 <p>To help kickstart native mobile apps we have created an iOS framework for app 
-developers, its Android counterpart is in the making.</p>
+developers, its Android counterpart is coming soon.</p>
 
 <h2>Documents API</h2>
 
-<p>(Nikolai)</p>
-<div class="highlight"><pre><code class="text">mechanism for encapsulating metadata and links stored in external URLs
-documents include patient images, radiography images, EKG data files, scanned documents
-metadata about the file
-SMART could expose the public URL of the resource OR could proxy through the file and expose an obfuscated link (possibly by adding a “raw=true” parameter to the regular API URL)
-The API call returns the complete collection of data files for the patient
-Optional date and file type filters
-The container maintains an index of the available files
-</code></pre></div>
-<h3>Patient Images</h3>
+<p>The new Documents API enables SMART containers to serve documents pertaining
+to the patient. The documents can be returned either as URLs or inlined in the
+SMART RDF. The single-document API call can also return the raw document data.
+Documents can include patient images, radiography images, EKG data files,
+scanned documents, clinical notes, etc.</p>
 
-<p>(Nikolai)</p>
+<h3>Photographs</h3>
 
-<h3>Radiography Images</h3>
+<p>The Photographs API provides access to specific image documents that represent the
+patient. This allows SMART applications to show a patient photo (if available)
+to support an even more personal clinician-patient interaction. The photographs are
+returned in the Documents model format. The intent of these photographs is to show
+a head shot of the patient.</p>
 
-<p>(Nikolai / Nich)</p>
+<h3>Medical Images</h3>
+
+<p>The Medical Images API returns DICOM-encoded studies about the patient (CT scans,
+x-rays, echographs, etc). In addition to the fields returned by the document model,
+this data model also returns the fields study title, study type, and study date.</p>
 
 <h2>Family History API</h2>
 
@@ -139,24 +142,25 @@ stated about the relative include:</p>
 * Any problem that can be expressed through SNOMED CT
 </code></pre></div>
 <h2>Scratchpad API</h2>
-<div class="highlight"><pre><code class="text">The new SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
+
+<p>The new SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
 to a patient record in free form format. This is, the app decides on the format
 of the data that it wants to store (self-structured) making the data opaque to
 the container. All SMART apps are allowed read access to the scratchpad data
 for the in-scope patient of all other apps, which provides a basic 
-interoperability facility accross apps.
+interoperability facility accross apps.</p>
 
-Because SMART an app has access to the scratchpad that it owns regardless
+<p>Because SMART an app has access to the scratchpad that it owns regardless
 of the user who runs it, there is always the possibility that a user overwrites
 the data stored by another user. A container is free to implement collision detection
-support for its scratchpad facilities.
+support for its scratchpad facilities.</p>
 
-*Note:* The SMART reference implementation scratchpad is not collision-safe.
+<p><em>Note:</em> The SMART reference implementation scratchpad is not collision-safe.
 Data may be lost by multiple copies of an app trying to write in parallel. Production
 implementations are encouraged to implement a system that will, for example,
 provide locks and dirty-state notification via HTTP error codes to apps writing
-to the scratchpad.
-</code></pre></div>
+to the scratchpad.</p>
+
 <h2>Clinical Notes Write API</h2>
 
 <p>We have added a simple API to POST simple plain text notes to a record
@@ -173,7 +177,8 @@ pregnancy).</p>
 <h2>Filters/Pagination</h2>
 
 <p>Date filters have now been specified for all medical record APIs and
-date properties have been added to various data models.</p>
+date properties have been added to the various data models that lacked
+them.</p>
 
 <p>Additional filters have been added to:</p>
 
@@ -185,6 +190,9 @@ date properties have been added to various data models.</p>
 
 <p>An element&#39;s single <code>data</code> property or <code>start_date</code> will be
 used as the default for sorting and filtering.</p>
+
+<p>Also, SMART 0.6 no longer supports the <code>offset</code> pagnation
+parameter that was introduced in SMART 0.5</p>
 
 <h2>Height is now expressed in centimeters</h2>
 
@@ -202,7 +210,9 @@ new SMART 0.6 specification.</p>
 
 <h2>REST apps</h2>
 
-<p>(Pascal / Arjun)</p>
+<p>Check out our new REST app tutorial to learn about the code needed to
+use the SMART python client and update your REST apps accordingly.
+(Note: The Java client has not yet been updated to SMART 0.6.)</p>
 
 <h1>HOWTO:  Update Your Container to SMART 0.6</h1>
 
@@ -225,8 +235,8 @@ app&#39;s <code>index</code> URL, with appended parameters <code>record_id</code
 
 <ul>
 <li><p><strong>Request Token</strong> usually at <code>/oauth/request_token</code><br>
-Endopoint to obtain an OAuth request token. The <code>oauth_callback</code> parameter 
-should be ignored and assumed to be <code>oob</code>, it must be specified in the app 
+Endpoint to obtain an OAuth request token. The <code>oauth_callback</code> parameter 
+should be ignored and is assumed to be <code>oob</code>; it must be specified in the app 
 manifest. An additional parameter <code>smart_record_id</code>, identifying the record 
 to which to tie the token, must be present when requesting a token.</p></li>
 <li><p><strong>Authorize Token</strong> usually at <code>/oauth/authorize</code><br>
@@ -246,7 +256,8 @@ request token and a valid token verifier is presented.</p></li>
 
 <h3>Server Manifest</h3>
 
-<p>These four endpoint URLS must be placed in the server manifest under the top-level key <code>launch_urls</code>, for example:</p>
+<p>These four endpoint URLS must be placed in the server manifest under the
+top-level key <code>launch_urls</code>, for example:</p>
 <div class="highlight"><pre><code class="text">&quot;launch_urls&quot;: {
     &quot;app_launch&quot;: &quot;https://smart.emr.com/apps//launch&quot;, 
     &quot;authorize_token&quot;: &quot;https://smart.emr.com/oauth/authorize&quot;, 
@@ -258,8 +269,8 @@ request token and a valid token verifier is presented.</p></li>
 
 <p>Keep in mind that the record selection page as well as the token authorization 
 page may be requested for a standalone REST app, displaying in a user&#39;s desktop 
-browser, or from a native app on a mobile phone. We suggest you use <a href="http://css-tricks.com/css-media-queries/">CSS media queries</a> 
-to provide a slick UI in either case.</p>
+browser, or from a native app on a mobile phone. We suggest you use
+<a href="http://css-tricks.com/css-media-queries/">CSS media queries</a> to provide a slick UI in either case.</p>
 
 <h2>Update height units from meters to centimeters</h2>
 
@@ -269,7 +280,9 @@ container accordingly.</p>
 
 <h2>Update filters/pagination implementation</h2>
 
-<p>(Arjun)</p>
+<p>Extend your filters engine with the new <code>date_[from/to]_[incluse/exclusive]</code> filters. Also,
+implement the new SMART 0.6 filters as described in the filters/pagination documentation.
+You may also want to disable the &quot;offset&quot; pagination filter.</p>
 
 <h2>Implement new APIs (Documents, Family History, Scratchpad)</h2>
 
@@ -283,8 +296,6 @@ API Verifier.</p>
 <p>SMART 0.6 adds two optional fields to the Demographics API (date of death, and gestational age at birth)
 as well as write capabilities for the Clinical Notes API. You should consider implemnting these estensions
 to empower the next generation of SMART applications.</p>
-
-<h1></h1>
 
 
     </div>

@@ -100,6 +100,9 @@ Additional filters have been added to:
 An element's single `data` property or `start_date` will be
 used as the default for sorting and filtering.
 
+Also, SMART 0.6 no longer supports the `offser` pagnation
+parameter that was introduced in SMART 0.5
+
 
 ## Height is now expressed in centimeters
 
@@ -117,7 +120,9 @@ new SMART 0.6 specification.
 
 ## REST apps
 
-(Pascal / Arjun)
+Check out our REST app tutorial to learn about the new boilerplate code needed to use the
+SMART python client and update your REST apps accordingly. (Note: The Java client has 
+not yet been updated to SMART 0.6.)
 
 # HOWTO:  Update Your Container to SMART 0.6
 
@@ -192,7 +197,9 @@ container accordingly.
 
 ## Update filters/pagination implementation
 
-(Arjun)
+Extend your filters engine with the new `date_[from/to]_[incluse/exclusive]` filters. Also,
+implement the new SMART 0.6 filters as described in the filters/pagination documentation.
+You may also want to disable the "offset" pagination filter.
 
 ## Implement new APIs (Documents, Family History, Scratchpad)
 

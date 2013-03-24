@@ -232,6 +232,12 @@ Putting all of this together we get the following code example:
 
 
 
+## `delete_scratchpad_data`
+
+- method: DELETE
+- path: `/records/{record_id}/apps/{smart_app_id}/scratchpad`
+
+
 ## `delete_user_preferences`
 
 - method: DELETE
@@ -244,8 +250,14 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/allergies/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "offset": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "date_to": null, 
+        "date_from_including": null, 
+        "date_to_including": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_allergy`
@@ -282,8 +294,14 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/clinical_notes/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_to": null, 
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "offset": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "date_to_excluding": null, 
+        "date_from_including": null, 
+        "date_to_including": null</code></pre>
 
 
 ## `get_container_manifest`
@@ -296,6 +314,22 @@ Putting all of this together we get the following code example:
 
 - method: GET
 - path: `/records/{record_id}/demographics`
+
+
+## `get_document`
+
+- method: GET
+- path: `/records/{record_id}/documents/{document_id}`
+
+
+## `get_documents`
+
+- method: GET
+- path: `/records/{record_id}/documents/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
+        "limit": null, 
+        "offset": null</code></pre>
 
 
 ## `get_encounter`
@@ -314,6 +348,22 @@ Putting all of this together we get the following code example:
         "offset": null</code></pre>
 
 
+## `get_family_history_observation`
+
+- method: GET
+- path: `/records/{record_id}/family_history/{family_history_id}`
+
+
+## `get_family_history_observations`
+
+- method: GET
+- path: `/records/{record_id}/family_history/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
+        "limit": null, 
+        "offset": null</code></pre>
+
+
 ## `get_fulfillment`
 
 - method: GET
@@ -326,8 +376,14 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/fulfillments/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "offset": null, 
+        "date_to_including": null, 
+        "date_from_including": null, 
+        "date_to": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_immunization`
@@ -342,8 +398,14 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/immunizations/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "offset": null, 
+        "date_to_including": null, 
+        "date_from_including": null, 
+        "date_to": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_lab_panel`
@@ -375,7 +437,28 @@ Putting all of this together we get the following code example:
   - optional query parameters (with defaults):
       <br><pre><code>
         "loinc": null, 
+        "date_from_excluding": null, 
         "date_from": null, 
+        "date_to": null, 
+        "date_to_including": null, 
+        "offset": null, 
+        "date_from_including": null, 
+        "date_to_excluding": null, 
+        "limit": null</code></pre>
+
+
+## `get_medical_image`
+
+- method: GET
+- path: `/records/{record_id}/medical_images/{medical_image_id}`
+
+
+## `get_medical_images`
+
+- method: [rdflib.term.Literal(u'/records/{record_id}/medical_images/'), rdflib.term.Literal(u'GET')]
+- path: `[]`
+  - optional query parameters (with defaults):
+      <br><pre><code>
         "limit": null, 
         "offset": null</code></pre>
 
@@ -392,14 +475,37 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/medications/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_to": null, 
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "offset": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "date_from_including": null, 
+        "date_to_excluding": null, 
+        "date_to_including": null, 
+        "rxnorm": null</code></pre>
 
 
 ## `get_ontology`
 
 - method: GET
 - path: `/ontology`
+
+
+## `get_photograph`
+
+- method: GET
+- path: `/records/{record_id}/photographs/{photograph_id}`
+
+
+## `get_photographs`
+
+- method: GET
+- path: `/records/{record_id}/photographs/`
+  - optional query parameters (with defaults):
+      <br><pre><code>
+        "limit": null, 
+        "offset": null</code></pre>
 
 
 ## `get_problem`
@@ -414,8 +520,15 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/problems/`
   - optional query parameters (with defaults):
       <br><pre><code>
-        "limit": null, 
-        "offset": null</code></pre>
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "date_to_excluding": null, 
+        "date_to_including": null, 
+        "offset": null, 
+        "date_from_including": null, 
+        "snomed": null, 
+        "date_to": null, 
+        "limit": null</code></pre>
 
 
 ## `get_procedure`
@@ -430,8 +543,21 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/procedures/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_from_excluding": null, 
+        "date_from": null, 
+        "date_to": null, 
+        "offset": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "snomed": null, 
+        "date_to_excluding": null, 
+        "date_from_including": null, 
+        "date_to_including": null</code></pre>
+
+
+## `get_scratchpad_data`
+
+- method: GET
+- path: `/records/{record_id}/apps/{smart_app_id}/scratchpad`
 
 
 ## `get_social_history`
@@ -464,11 +590,27 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/vital_sign_sets/`
   - optional query parameters (with defaults):
       <br><pre><code>
-        "encounter_type": null, 
+        "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
+        "offset": null, 
         "limit": null, 
-        "offset": null</code></pre>
+        "date_from_including": null, 
+        "date_to": null, 
+        "date_to_including": null, 
+        "date_to_excluding": null, 
+        "encounter_type": null</code></pre>
+
+
+## `post_clinical_note`
+
+- method: POST
+- path: `/records/{record_id}/clinical_notes/`
+
+
+## `put_scratchpad_data`
+
+- method: PUT
+- path: `/records/{record_id}/apps/{smart_app_id}/scratchpad`
 
 
 ## `put_user_preferences`
@@ -486,6 +628,7 @@ Putting all of this together we get the following code example:
         "family_name": null, 
         "gender": null, 
         "app_id": null, 
+        "date_of_birth": null, 
         "birthday": null, 
         "medical_record_number": null, 
         "given_name": null, 

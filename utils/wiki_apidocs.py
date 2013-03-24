@@ -297,12 +297,20 @@ def call_category(x):
 
 def call_sort_order(x):
     m = {"GET" : 10, "POST":20,"PUT":30,"DELETE":40}
+
+    # arjun: hack if x is a list, just return 10 as if it was a GET
+    if type(x.http_method) is list:
+        import logging
+        logging.warn('arjun: this is list:' + str(x.http_method))
+        return 10
+
     ret =  m[x.http_method]
     if ("items" in x.category): ret -= 1
     ret = call_category(x) + str(x.target) + str(ret)
     return ret
 
 main_types = sorted(main_types, key=lambda x: type_sort_order(x) + str(x.name))
+
 calls_to_document = sorted(calls_to_document, key=call_sort_order)
 
 if __name__=="__main__":

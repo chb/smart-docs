@@ -159,27 +159,19 @@ payloads as RDF/XML &mdash; for example, <code>don&#39;t</code> try to query the
 xpath!</p>
 
 <p>To give a concrete example, a medication might be serialized as:</p>
-
-<div class="highlight"><pre><code class="html">  <span class="nt">&lt;sp:Medication&gt;</span>
-    ... { additional properties here }....
-  <span class="nt">&lt;/sp:Medication&gt;</span>
+<div class="highlight"><pre><code class="text">&lt;sp:Medication&gt;
+  ... { additional properties here }....
+&lt;/sp:Medication&gt;
 </code></pre></div>
-
-
-Or you could see the equivalent:
-
-
-<div class="highlight"><pre><code class="html">  <span class="nt">&lt;rdf:Description&gt;</span>
-        <span class="nt">&lt;rdf:type</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://smartplatforms.org/terms#Medication&quot;</span><span class="nt">/&gt;</span>
-    ... { additional properties here }....
-  <span class="nt">&lt;/rdf:Description&gt;</span>
+<p>Or you could see the equivalent:</p>
+<div class="highlight"><pre><code class="text">&lt;rdf:Description&gt;
+      &lt;rdf:type rdf:resource=&quot;http://smartplatforms.org/terms#Medication&quot;/&gt;
+  ... { additional properties here }....
+&lt;/rdf:Description&gt;
 </code></pre></div>
+<h1>Namespaces</h1>
 
-
-# Namespaces
-
-A common set of namespace prefixes is used for the examples below. These are:
-
+<p>A common set of namespace prefixes is used for the examples below. These are:</p>
 
 <table class="table table-striped">
   <caption align="bottom">RDF Namespaces</caption>
@@ -214,51 +206,42 @@ A common set of namespace prefixes is used for the examples below. These are:
   </tr>
 </table>
 
+<h1>Naming Conventions in the SMART Ontology</h1>
 
-# Naming Conventions in the SMART Ontology
-
-We use the prefix `sp` to designate the <http://smartplatforms.org/terms>
+<p>We use the prefix <code>sp</code> to designate the <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>
 namespace. Within this namespace, we use a simple convention to differentiate 
-between classes and predicates:
+between classes and predicates:</p>
 
-* Class names are designated by `CamelCase` with a capitalized first character.
-  Examples: `sp:Medication` and `sp:LabResult`.
+<ul>
+<li><p>Class names are designated by <code>CamelCase</code> with a capitalized first character.
+Examples: <code>sp:Medication</code> and <code>sp:LabResult</code>.</p></li>
+<li><p>Predicate names are designated by <code>camelCase</code> with a lower-case first character.
+Examples: <code>sp:medication</code> or <code>sp:valueAndUnit</code>.</p></li>
+</ul>
 
-* Predicate names are designated by `camelCase` with a lower-case first character.
-  Examples: `sp:medication` or `sp:valueAndUnit`.
-
-You may wonder why classes and predicates tend to have similar names. For
-example, we define a class `sp:Medication` as well as a predicate `sp:medication`.
-Here's why: a predicate like `sp:medication` is used to indicate that a clinical
-statement is associated with a medication; a class like `sp:Medication` is used to
+<p>You may wonder why classes and predicates tend to have similar names. For
+example, we define a class <code>sp:Medication</code> as well as a predicate <code>sp:medication</code>.
+Here&#39;s why: a predicate like <code>sp:medication</code> is used to indicate that a clinical
+statement is associated with a medication; a class like <code>sp:Medication</code> is used to
 indicate that a clinical statement is a medication. For example, each
-`sp:Fulfillment` statement is associated with a `sp:Medication` statement via the
-predicate `sp:medication`. This makes sense when we consider a few RDF triples
+<code>sp:Fulfillment</code> statement is associated with a <code>sp:Medication</code> statement via the
+predicate <code>sp:medication</code>. This makes sense when we consider a few RDF triples
 that expresses the basic pattern, associating a fulfillment with its medication
-via the `sp:medication` predicate
-
-
-<div class="highlight"><pre><code class="html">  _:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
-  _:m456 rdf:type sp:Medication.    # declares a Medication statement
-  _:f123 sp:medication _:m456.      # links the Fulfillment to its Medication
+via the <code>sp:medication</code> predicate</p>
+<div class="highlight"><pre><code class="text">_:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
+_:m456 rdf:type sp:Medication.    # declares a Medication statement
+_:f123 sp:medication _:m456.      # links the Fulfillment to its Medication
 </code></pre></div>
-
-
-
 <hr>
 
 <!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT OR REMOVE ME! -->
 
-
-
-# Clinical Statement Types
-
+<h1>Clinical Statement Types</h1>
 
 <h2 id='Allergy'><code>Allergy</code></h2>
 
-`Allergy` is a subtype of and inherits properties from:
-[SMART Statement](#SMART_Statement)
-
+<p><code>Allergy</code> is a subtype of and inherits properties from:
+<a href="#SMART_Statement">SMART Statement</a></p>
 
 <div id='Allergy_examples'>
 

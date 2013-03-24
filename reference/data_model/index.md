@@ -66,20 +66,16 @@ xpath!
 
 To give a concrete example, a medication might be serialized as:
 
-{% highlight html %}
-  <sp:Medication>
-    ... { additional properties here }....
-  </sp:Medication>
-{% endhighlight  %}
+    <sp:Medication>
+      ... { additional properties here }....
+    </sp:Medication>
 
 Or you could see the equivalent:
 
-{% highlight html %}
-  <rdf:Description>
-        <rdf:type rdf:resource="http://smartplatforms.org/terms#Medication"/>
-    ... { additional properties here }....
-  </rdf:Description>
-{% endhighlight  %}
+    <rdf:Description>
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Medication"/>
+      ... { additional properties here }....
+    </rdf:Description>
 
 # Namespaces
 
@@ -142,11 +138,9 @@ predicate `sp:medication`. This makes sense when we consider a few RDF triples
 that expresses the basic pattern, associating a fulfillment with its medication
 via the `sp:medication` predicate
 
-{% highlight html %}
-  _:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
-  _:m456 rdf:type sp:Medication.    # declares a Medication statement
-  _:f123 sp:medication _:m456.      # links the Fulfillment to its Medication
-{% endhighlight  %}
+    _:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
+    _:m456 rdf:type sp:Medication.    # declares a Medication statement
+    _:f123 sp:medication _:m456.      # links the Fulfillment to its Medication
 
 
 <hr>

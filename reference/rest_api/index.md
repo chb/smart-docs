@@ -40,13 +40,6 @@ events, prescription events, problems, etc.) and groups of these resources in a
 [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API.
 
 
-## SMART is a Read-only API
-
-Please note that for the time being, the SMART API remains read-only. We
-are excited about building out very basic write functionality in early 
-2013 &mdash; but we want make our early APIs as easy as possible for 
-EMR and PHR vendors to expose.
-
 ## REST Design Principles
 
 In general you can interact with a:

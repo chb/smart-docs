@@ -320,6 +320,13 @@ object in the event of a failure.</p>
 
 <!-- GENERATED DOCS INSERTED BELOW THIS LINE - DON'T EDIT OR REMOVE ME! -->
 
+<h2><code>delete_scratchpad_data</code></h2>
+
+<ul>
+<li>method: DELETE</li>
+<li>path: <code>/records/{record_id}/apps/{smart_app_id}/scratchpad</code></li>
+</ul>
+
 <h2><code>delete_user_preferences</code></h2>
 
 <ul>
@@ -336,8 +343,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date</em>to&quot;: null, 
+&quot;date<em>from</em>including&quot;: null, 
+&quot;date<em>to</em>including&quot;: null, 
+&quot;date<em>to</em>excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -385,8 +398,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date<em>to&quot;: null, 
+&quot;date</em>from<em>excluding&quot;: null, 
+&quot;date</em>from&quot;: null, 
+&quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date<em>to</em>excluding&quot;: null, 
+&quot;date<em>from</em>including&quot;: null, 
+&quot;date<em>to</em>including&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -404,6 +423,27 @@ object in the event of a failure.</p>
 <li>path: <code>/records/{record_id}/demographics</code></li>
 </ul>
 
+<h2><code>get_document</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/documents/{document_id}</code></li>
+</ul>
+
+<h2><code>get_documents</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/documents/</code>
+
+<ul>
+<li>optional query parameters (with defaults):
+<br><pre><code>
+&quot;limit&quot;: null, 
+&quot;offset&quot;: null</code></pre></li>
+</ul></li>
+</ul>
+
 <h2><code>get_encounter</code></h2>
 
 <ul>
@@ -416,6 +456,27 @@ object in the event of a failure.</p>
 <ul>
 <li>method: GET</li>
 <li>path: <code>/records/{record_id}/encounters/</code>
+
+<ul>
+<li>optional query parameters (with defaults):
+<br><pre><code>
+&quot;limit&quot;: null, 
+&quot;offset&quot;: null</code></pre></li>
+</ul></li>
+</ul>
+
+<h2><code>get_family_history_observation</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/family_history/{family_history_id}</code></li>
+</ul>
+
+<h2><code>get_family_history_observations</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/family_history/</code>
 
 <ul>
 <li>optional query parameters (with defaults):
@@ -441,8 +502,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;offset&quot;: null, 
+&quot;date</em>to<em>including&quot;: null, 
+&quot;date</em>from<em>including&quot;: null, 
+&quot;date</em>to&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date<em>to</em>excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -462,8 +529,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;offset&quot;: null, 
+&quot;date</em>to<em>including&quot;: null, 
+&quot;date</em>from<em>including&quot;: null, 
+&quot;date</em>to&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date<em>to</em>excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -505,7 +578,33 @@ object in the event of a failure.</p>
 <li>optional query parameters (with defaults):
 <br><pre><code>
 &quot;loinc&quot;: null, 
-&quot;date_from&quot;: null, 
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;date</em>to&quot;: null, 
+&quot;date<em>to</em>including&quot;: null, 
+&quot;offset&quot;: null, 
+&quot;date<em>from</em>including&quot;: null, 
+&quot;date<em>to</em>excluding&quot;: null, 
+&quot;limit&quot;: null</code></pre></li>
+</ul></li>
+</ul>
+
+<h2><code>get_medical_image</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/medical_images/{medical_image_id}</code></li>
+</ul>
+
+<h2><code>get_medical_images</code></h2>
+
+<ul>
+<li>method: [rdflib.term.Literal(u&#39;/records/{record<em>id}/medical</em>images/&#39;), rdflib.term.Literal(u&#39;GET&#39;)]</li>
+<li>path: <code>[]</code>
+
+<ul>
+<li>optional query parameters (with defaults):
+<br><pre><code>
 &quot;limit&quot;: null, 
 &quot;offset&quot;: null</code></pre></li>
 </ul></li>
@@ -527,8 +626,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date<em>to&quot;: null, 
+&quot;date</em>from<em>excluding&quot;: null, 
+&quot;date</em>from&quot;: null, 
+&quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date<em>from</em>including&quot;: null, 
+&quot;date<em>to</em>excluding&quot;: null, 
+&quot;date<em>to</em>including&quot;: null, 
+&quot;rxnorm&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -537,6 +643,27 @@ object in the event of a failure.</p>
 <ul>
 <li>method: GET</li>
 <li>path: <code>/ontology</code></li>
+</ul>
+
+<h2><code>get_photograph</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/photographs/{photograph_id}</code></li>
+</ul>
+
+<h2><code>get_photographs</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/photographs/</code>
+
+<ul>
+<li>optional query parameters (with defaults):
+<br><pre><code>
+&quot;limit&quot;: null, 
+&quot;offset&quot;: null</code></pre></li>
+</ul></li>
 </ul>
 
 <h2><code>get_problem</code></h2>
@@ -555,8 +682,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;date</em>to<em>excluding&quot;: null, 
+&quot;date</em>to<em>including&quot;: null, 
+&quot;offset&quot;: null, 
+&quot;date</em>from<em>including&quot;: null, 
+&quot;snomed&quot;: null, 
+&quot;date</em>to&quot;: null, 
+&quot;limit&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -576,9 +710,23 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;date</em>to&quot;: null, 
+&quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;snomed&quot;: null, 
+&quot;date<em>to</em>excluding&quot;: null, 
+&quot;date<em>from</em>including&quot;: null, 
+&quot;date<em>to</em>including&quot;: null</code></pre></li>
 </ul></li>
+</ul>
+
+<h2><code>get_scratchpad_data</code></h2>
+
+<ul>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/apps/{smart_app_id}/scratchpad</code></li>
 </ul>
 
 <h2><code>get_social_history</code></h2>
@@ -618,12 +766,30 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;encounter<em>type&quot;: null, 
-&quot;date</em>from&quot;: null, 
-&quot;date_to&quot;: null, 
+&quot;date<em>from</em>excluding&quot;: null, 
+&quot;date<em>from&quot;: null, 
+&quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
+&quot;date</em>from<em>including&quot;: null, 
+&quot;date</em>to&quot;: null, 
+&quot;date<em>to</em>including&quot;: null, 
+&quot;date<em>to</em>excluding&quot;: null, 
+&quot;encounter_type&quot;: null</code></pre></li>
 </ul></li>
+</ul>
+
+<h2><code>post_clinical_note</code></h2>
+
+<ul>
+<li>method: POST</li>
+<li>path: <code>/records/{record_id}/clinical_notes/</code></li>
+</ul>
+
+<h2><code>put_scratchpad_data</code></h2>
+
+<ul>
+<li>method: PUT</li>
+<li>path: <code>/records/{record_id}/apps/{smart_app_id}/scratchpad</code></li>
 </ul>
 
 <h2><code>put_user_preferences</code></h2>
@@ -645,6 +811,7 @@ object in the event of a failure.</p>
 &quot;family<em>name&quot;: null, 
 &quot;gender&quot;: null, 
 &quot;app</em>id&quot;: null, 
+&quot;date<em>of</em>birth&quot;: null, 
 &quot;birthday&quot;: null, 
 &quot;medical<em>record</em>number&quot;: null, 
 &quot;given_name&quot;: null, 

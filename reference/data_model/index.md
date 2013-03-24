@@ -22,7 +22,7 @@ includenav: smartnav.markdown
 # Changelog
 
 Click here for the list of [Changes to the API and Payloads for the
-latest release](/updates/smart_0.5/).
+latest release](/updates/smart_0.6/).
 
 
 # RDF Overview

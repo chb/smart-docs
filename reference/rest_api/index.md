@@ -127,10 +127,8 @@ Get manifest for a container <br><br>
 <li>URI:<code> GET /records/search </code></li>
 <li>Client method name:<code> search_records </code></li>
 </ul>
-Get an RDF graph of sp:Demographics elements for all patients that match
-the query.  Matching treats family_name and given_name as the
-*beginning* of a name.  For instance given_name=\'J\' matches /^J/i and thus matches \'Josh\'. Date of birth is an ISO8601 string like "2008-03-21"; gender is "male" or "female".  Gender, date_of_birth, zipcode, and medical_record_number must match exactly.' <br><br>
-
+Get an RDF graph of sp:Demographics elements for all patients that match the query.  Matching treats family_name and given_name as the *beginning* of a name.  For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Date of birth is an ISO8601 string like "2008-03-21"; gender is "male" or "female".  Gender, date_of_birth, zipcode, and medical_record_number must match exactly.
+	<br><br>
 [Demographics RDF](../data_model/#Demographics)
 
 
@@ -175,18 +173,6 @@ Get all Allergies and Allergy Exclusions for a patient <br><br>
 
 
 ## Clinical Note
-<ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
-<li>Client method name:<code> get_clinical_note </code></li>
-</ul>
-Get one Clinical Note for a patient <br><br>
-
-<ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
-</ul>
-Get all Clinical Notes for a patient <br><br>
-
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
 
@@ -210,76 +196,96 @@ Get all Documents for a patient <br><br>
 <li>Client method name:<code> get_document </code></li>
 </ul>
 Get one Document for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
+<li>Client method name:<code> get_photographs </code></li>
+</ul>
+Get all Photographs for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
+<li>Client method name:<code> get_photograph </code></li>
+</ul>
+Get one Photograph for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
+<li>Client method name:<code> get_clinical_note </code></li>
+</ul>
+Get one Clinical Note for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
 [Document RDF](../data_model/#Document)
 
 
 ## Encounter
 <ul>
-<li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
-<li>Client method name:<code> get_encounter </code></li>
-</ul>
-Get one Encounter for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
 <li>Client method name:<code> get_encounters </code></li>
 </ul>
 Get all Encounters for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
+<li>Client method name:<code> get_encounter </code></li>
+</ul>
+Get one Encounter for a patient <br><br>
 [Encounter RDF](../data_model/#Encounter)
 
 
 ## Family History Observation
 <ul>
-<li>URI:<code> GET /records/{record_id}/family_history/{family_history_id} </code></li>
-<li>Client method name:<code> get_family_history_observation </code></li>
-</ul>
-Get one Family History for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/family_history/ </code></li>
 <li>Client method name:<code> get_family_history_observations </code></li>
 </ul>
 Get all Family Histories for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/family_history/{family_history_id} </code></li>
+<li>Client method name:<code> get_family_history_observation </code></li>
+</ul>
+Get one Family History for a patient <br><br>
 [Family History Observation RDF](../data_model/#Family_History_Observation)
 
 
 ## Fulfillment
 <ul>
-<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
-<li>Client method name:<code> get_fulfillments </code></li>
-</ul>
-Get all Fulfillments for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
 <li>Client method name:<code> get_fulfillment </code></li>
 </ul>
 Get one Fulfillment for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
+<li>Client method name:<code> get_fulfillments </code></li>
+</ul>
+Get all Fulfillments for a patient <br><br>
 [Fulfillment RDF](../data_model/#Fulfillment)
 
 
 ## Immunization
 <ul>
-<li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
-<li>Client method name:<code> get_immunizations </code></li>
-</ul>
-Get all Immunizations for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
 <li>Client method name:<code> get_immunization </code></li>
 </ul>
 Get one Immunization for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
+<li>Client method name:<code> get_immunizations </code></li>
+</ul>
+Get all Immunizations for a patient <br><br>
 [Immunization RDF](../data_model/#Immunization)
 
 
 ## Lab Panel
 <ul>
 <li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
-<li>Client method name:<code> get_lab_panels </code></li>
-</ul>
-Get all Lab Panels for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
 <li>Client method name:<code> get_lab_panel </code></li>
 </ul>
 Get one Lab Panel for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
+<li>Client method name:<code> get_lab_panels </code></li>
+</ul>
+Get all Lab Panels for a patient <br><br>
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 
@@ -324,18 +330,6 @@ Get all Medications for a patient <br><br>
 Get one Medication for a patient <br><br>
 [Medication RDF](../data_model/#Medication)
 
-## Photograph
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
-<li>Client method name:<code> get_photographs </code></li>
-</ul>
-Get all Photographs for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
-<li>Client method name:<code> get_photograph </code></li>
-</ul>
-Get one Photograph for a patient <br><br>
-[Photograph RDF](../data_model/#Photograph)
 
 ## Problem
 <ul>

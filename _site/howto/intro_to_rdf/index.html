@@ -150,7 +150,7 @@ triples, too. If we just used the string &quot;takes&quot; as our predicate, aga
 might mean different things I might mean &quot;consumes a drug, as part of a daily
 regimen&quot;, and you (cynic!) might mean &quot;steals from his wife&#39;s pillbox on
 Thursday mornings.&quot; To resolve this ambiguity, I could represent &#39;takes&#39; as
-<a href="http://joshuamandel.com/my_dr%0Aug_vocabulary/takes">http://joshuamandel.com/my<em>drug</em>vocabulary/takes</a>. Over time, I could build up a rich vocabulary with all
+<a href="http://joshuamandel.com/my_dr%0Aug_vocabulary/takes">http://joshuamandel.com/my_drug_vocabulary/takes</a>. Over time, I could build up a rich vocabulary with all
 kinds of terms, and use these as predicates in my RDF triples. In general,
 things work best when people can agree on the meanings of terms and use a shared
 vocabulary. So folks build up publically defined vocabularies such as
@@ -209,14 +209,14 @@ we&#39;d have</p>
 <ul>
 <li>subject <a href="http://joshuamandel.com/me">http://joshuamandel.com/me</a></li>
 <li>predicate <a href="http://joshuamandel.com/my_food_vocabulary/ate">http://joshuamandel.com/my_food_vocabulary/ate</a></li>
-<li><p>object <em>stuff</em>I<em>ate</em>this_morning </p></li>
-<li><p>subject <em>stuff</em>I<em>ate</em>this_morning</p></li>
+<li><p>object <em>stuff_I_ate_this</em>morning </p></li>
+<li><p>subject <em>stuff_I_ate_this</em>morning</p></li>
 <li><p>predicate rdfli (RDF vocabulary&#39;s &#39;list item&#39; predicate)</p></li>
 <li><p>object &quot;Joe&#39;s O&#39;s&quot;</p></li>
-<li><p>subject <em>stuff</em>I<em>ate</em>this_morning</p></li>
+<li><p>subject <em>stuff_I_ate_this</em>morning</p></li>
 <li><p>predicate rdf li</p></li>
 <li><p>object &quot;milk&quot;</p></li>
-<li><p>subject <tt><em>stuff</em>I<em>ate</em>this_morning </p></li>
+<li><p>subject <tt><em>stuff_I_ate_this</em>morning </p></li>
 <li><p>predicate rdf li</p></li>
 <li><p>object &quot;coffee&quot;</p></li>
 </ul>
@@ -276,7 +276,7 @@ SELECT ?f WHERE
 <p>A bit of syntax I&#39;ve defined a prefix called &quot;food&quot; which I&#39;ll use to refer to
 my personal food vocabulary. This is just for readability; it lets me later
 write food:ate instead of the more verbose
-<a href="http://joshuamandel.com/my_food%0A_vocabulary/ate">http://joshuamandel.com/my<em>food</em>vocabulary/ate</a>.</p>
+<a href="http://joshuamandel.com/my_food%0A_vocabulary/ate">http://joshuamandel.com/my_food_vocabulary/ate</a>.</p>
 
 <p>Now here&#39;s what the query does: it looks for triples that match the pattern
 inside the WHERE clause. In this case, triples whose subject is me; whose
@@ -286,7 +286,7 @@ discretionary. I could have called it ?nourishment or ?xyzzy. The name only
 matters within the context of my query.</p>
 
 <p>But this query has a problem it returns the blank node
-<em>stuff</em>I<em>ate</em>this_morning -- and not the actual foods! Let&#39;s fix it by
+_stuff_I_ate_this_morning -- and not the actual foods! Let&#39;s fix it by
 adding to our WHERE clause</p>
 <div class="highlight"><pre><code class="text">PREFIX food: &lt;http://joshuamandel.com/my_food_vocabulary/&gt;
 PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
@@ -315,7 +315,7 @@ lots more specific examples, try SPARQL examples for SMART.</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

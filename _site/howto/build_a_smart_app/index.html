@@ -131,7 +131,7 @@ which you can try out your app. To get going, you&#39;ll need to:</p>
 
 <p>This will open a SMART app iframe pointing to <code>localhost:8000</code>, which is where
 your app should be running. If you need an app with a different hostname (say,
-my<em>internal</em>server.net), just e-mail joshua dot mandel at childrens.harvard.edu
+my_internal_server.net), just e-mail joshua dot mandel at childrens.harvard.edu
 with a manifest file and we&#39;ll set you up!</p>
 
 <h1>Barebones App</h1>
@@ -201,10 +201,10 @@ determined by the JavaScript context.</p>
 
 <h2>Asynchronous Calls</h2>
 
-<p>Let&#39;s load the patient&#39;s medications using SMART.get<em>medications(). The most
+<p>Let&#39;s load the patient&#39;s medications using SMART.get_medications(). The most
 important thing you need to know about all SMART JavaScript APIs is that they
 are asynchronous: you won&#39;t get the meds as a result of the
-SMART.get</em>medications() call. Instead, you need to specify callback functions
+SMART.get_medications() call. Instead, you need to specify callback functions
 that will be invoked when the results are ready:</p>
 
 <div class="highlight"><pre><code class="javascript">    <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_medications</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
@@ -324,7 +324,7 @@ them.</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

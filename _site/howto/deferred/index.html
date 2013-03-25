@@ -138,7 +138,7 @@ App</a> requires both demographics (gender and age) and also
 lab results (hsCRP, cholesterol, and HDL values) to compute a risk score. This
 requires two calls to the SMART Connect API:
 <a href="http://wiki.chip.org/smart-project/index.php/Developers_Docum%0Aentation:_SMART_App_Javascript_Libraries#SMART.get_demographics">get_demographcis</a> and
-<a href="http://wiki.chip.org/smart-project/index.php/Developers_Docume%0Antation:_SMART_App_Javascript_Libraries#SMART.get_lab_results">get<em>lab</em>results</a>.</p>
+<a href="http://wiki.chip.org/smart-project/index.php/Developers_Docume%0Antation:_SMART_App_Javascript_Libraries#SMART.get_lab_results">get_lab_results</a>.</p>
 
 <p>In the code below each of these calls is wrapped in a function that is
 registered with $.when. Once all the registered functions signal they have now
@@ -223,7 +223,7 @@ the code attached to the <code>.fail()</code> handler would be executed.</p>
 
 <h2>A Shorter Syntax</h2>
 
-<p>The get<em>demographics() and get</em>labs() functions above can also be written using
+<p>The get_demographics() and get_labs() functions above can also be written using
 a more compact (but equivalent) syntax:</p>
 
 <div class="highlight"><pre><code class="javascript"> <span class="kd">var</span> <span class="nx">get_demographics</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -263,7 +263,7 @@ a more compact (but equivalent) syntax:</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

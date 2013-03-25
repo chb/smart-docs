@@ -217,10 +217,10 @@ update your client code as follows:</p>
 <ul>
 <li><p>(Wrong) Old Way</p>
 
-<p>medications = client.records<em>X</em>medications_GET()</p></li>
+<p>medications = client.records_X_medications_GET()</p></li>
 <li><p>(Correct) New Way</p>
 
-<p>medications = client.records<em>X</em>medications_GET().graph</p></li>
+<p>medications = client.records_X_medications_GET().graph</p></li>
 </ul>
 
 <p>As you can see, all you need to do is fetch the graph property from the
@@ -284,10 +284,10 @@ update your manifest:</p>
   &quot;name&quot; : &quot;My App&quot;,
   &quot;description&quot; : &quot;A cool SMART app&quot;,
   ...
-  &quot;intents&quot;: [&quot;view<em>medications&quot;]    ← delete this
-  &quot;base</em>url&quot; : &quot;http://myserver:8001&quot;, ← delete this
-  &quot;index&quot; :  &quot;{base<em>url}/smartapp/index.html&quot;,
-  &quot;icon&quot; :  &quot;{base</em>url}/smartapp/icon.png&quot;
+  &quot;intents&quot;: [&quot;view_medications&quot;]    ← delete this
+  &quot;base_url&quot; : &quot;http://myserver:8001&quot;, ← delete this
+  &quot;index&quot; :  &quot;{base_url}/smartapp/index.html&quot;,
+  &quot;icon&quot; :  &quot;{base_url}/smartapp/icon.png&quot;
 }</p></li>
 <li><p>New Way (correct)</p>
 
@@ -396,7 +396,7 @@ account once in a while.</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

@@ -156,7 +156,7 @@ workflow: one app can <code>call</code> another, passing along some launch data 
 receiving a response when the called app finishes.  The basic flow looks like
 this:</p>
 
-<h2>In the Call<em>ing</em> App</h2>
+<h2>In the Call_ing_ App</h2>
 
 <p>To start, you&#39;ll need a copy of the manifest for the app you want to call.
 Then you call it with <code>SMART.call_app</code>, passing along the manifest and any
@@ -173,7 +173,7 @@ launch data you&#39;d like the called app to receive:</p>
  <span class="p">});</span>
 </code></pre></div>
 
-<h2>In the Call<em>ed</em> App</h2>
+<h2>In the Call_ed_ App</h2>
 
 <p>The called app launches just like any SMART app.  If your apps expects any
 custom data at launch time, these should be available in: <code>SMART.ready_data</code></p>
@@ -343,14 +343,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;date_to_including&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;limit&quot;: null, 
-&quot;date</em>to&quot;: null, 
-&quot;date<em>from</em>including&quot;: null, 
-&quot;date<em>to</em>including&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null</code></pre></li>
+&quot;date_from_including&quot;: null, 
+&quot;date_to_excluding&quot;: null, 
+&quot;limit&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -398,14 +398,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>to&quot;: null, 
-&quot;date</em>from<em>excluding&quot;: null, 
-&quot;date</em>from&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
+&quot;date_to_including&quot;: null, 
+&quot;date_from_including&quot;: null, 
+&quot;date_to&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null, 
-&quot;date<em>from</em>including&quot;: null, 
-&quot;date<em>to</em>including&quot;: null</code></pre></li>
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -502,14 +502,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;date_to_including&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date</em>to<em>including&quot;: null, 
-&quot;date</em>from<em>including&quot;: null, 
-&quot;date</em>to&quot;: null, 
-&quot;limit&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null</code></pre></li>
+&quot;date_from_including&quot;: null, 
+&quot;date_to_excluding&quot;: null, 
+&quot;limit&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -529,14 +529,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;date_to_including&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date</em>to<em>including&quot;: null, 
-&quot;date</em>from<em>including&quot;: null, 
-&quot;date</em>to&quot;: null, 
-&quot;limit&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null</code></pre></li>
+&quot;date_from_including&quot;: null, 
+&quot;date_to_excluding&quot;: null, 
+&quot;limit&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -578,14 +578,14 @@ object in the event of a failure.</p>
 <li>optional query parameters (with defaults):
 <br><pre><code>
 &quot;loinc&quot;: null, 
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
-&quot;date</em>to&quot;: null, 
-&quot;date<em>to</em>including&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date<em>from</em>including&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null, 
-&quot;limit&quot;: null</code></pre></li>
+&quot;date_to_including&quot;: null, 
+&quot;limit&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;date_from_including&quot;: null, 
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -599,8 +599,8 @@ object in the event of a failure.</p>
 <h2><code>get_medical_images</code></h2>
 
 <ul>
-<li>method: [rdflib.term.Literal(u&#39;/records/{record<em>id}/medical</em>images/&#39;), rdflib.term.Literal(u&#39;GET&#39;)]</li>
-<li>path: <code>[]</code>
+<li>method: GET</li>
+<li>path: <code>/records/{record_id}/medical_images/</code>
 
 <ul>
 <li>optional query parameters (with defaults):
@@ -626,14 +626,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>to&quot;: null, 
-&quot;date</em>from<em>excluding&quot;: null, 
-&quot;date</em>from&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;date<em>from</em>including&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null, 
-&quot;date<em>to</em>including&quot;: null, 
+&quot;date_to_excluding&quot;: null, 
+&quot;date_from_including&quot;: null, 
+&quot;date_to_including&quot;: null, 
 &quot;rxnorm&quot;: null</code></pre></li>
 </ul></li>
 </ul>
@@ -682,15 +682,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
-&quot;date</em>to<em>excluding&quot;: null, 
-&quot;date</em>to<em>including&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date</em>from<em>including&quot;: null, 
+&quot;limit&quot;: null, 
 &quot;snomed&quot;: null, 
-&quot;date</em>to&quot;: null, 
-&quot;limit&quot;: null</code></pre></li>
+&quot;date_to&quot;: null, 
+&quot;date_from_including&quot;: null, 
+&quot;date_to_including&quot;: null, 
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -710,15 +710,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
-&quot;date</em>to&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
+&quot;date_to&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
 &quot;snomed&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null, 
-&quot;date<em>from</em>including&quot;: null, 
-&quot;date<em>to</em>including&quot;: null</code></pre></li>
+&quot;date_to_excluding&quot;: null, 
+&quot;date_from_including&quot;: null, 
+&quot;date_to_including&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -766,15 +766,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date<em>from</em>excluding&quot;: null, 
-&quot;date<em>from&quot;: null, 
+&quot;date_from_excluding&quot;: null, 
+&quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
+&quot;date_to_including&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;date</em>from<em>including&quot;: null, 
-&quot;date</em>to&quot;: null, 
-&quot;date<em>to</em>including&quot;: null, 
-&quot;date<em>to</em>excluding&quot;: null, 
-&quot;encounter_type&quot;: null</code></pre></li>
+&quot;date_from_including&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;encounter_type&quot;: null, 
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -808,12 +808,12 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;family<em>name&quot;: null, 
+&quot;family_name&quot;: null, 
 &quot;gender&quot;: null, 
-&quot;app</em>id&quot;: null, 
-&quot;date<em>of</em>birth&quot;: null, 
+&quot;app_id&quot;: null, 
+&quot;date_of_birth&quot;: null, 
 &quot;birthday&quot;: null, 
-&quot;medical<em>record</em>number&quot;: null, 
+&quot;medical_record_number&quot;: null, 
 &quot;given_name&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;limit&quot;: null</code></pre></li>
@@ -829,9 +829,9 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;family<em>name&quot;: null, 
+&quot;family_name&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;given</em>name&quot;: null, 
+&quot;given_name&quot;: null, 
 &quot;offset&quot;: null</code></pre></li>
 </ul></li>
 </ul>
@@ -846,7 +846,7 @@ object in the event of a failure.</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

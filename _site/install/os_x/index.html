@@ -156,8 +156,8 @@ $ sudo python setup.py install
 <p>$ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</p></li>
 <li><p>Because of some socket issues we must symlink the socket from its default in <code>/tmp</code> to <code>/var/pgsql_socket</code>. Both are needed and I haven&#39;t been able to figure out why. First, create the directory and make it yours:</p>
 
-<p>$ sudo mkdir /var/pgsql<em>socket
-  $ sudo chown <code>whoami</code>:admin /var/pgsql</em>socket/
+<p>$ sudo mkdir /var/pgsql_socket
+  $ sudo chown <code>whoami</code>:admin /var/pgsql_socket/
   $ ln -s /tmp/.s.PGSQL.5432 /var/pgsql_socket/.s.PGSQL.5432</p>
 
 <blockquote>
@@ -195,8 +195,8 @@ to the tomcat base directory. So in your Bash <code>.profile</code> add:</p>
 
 <p>$ curl -O <a href="http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz">http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz</a>
   $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
-  $ mkdir $CATALINA<em>HOME/.aduna
-  $ mkdir $CATALINA</em>HOME/logs
+  $ mkdir $CATALINA_HOME/.aduna
+  $ mkdir $CATALINA_HOME/logs
   $ cp -r openrdf-sesame-2.6.5/war/* $CATALINA_HOME/webapps/</p></li>
 <li><p>Launch Tomcat and check its availability</p>
 
@@ -252,7 +252,7 @@ script, of course. :)</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

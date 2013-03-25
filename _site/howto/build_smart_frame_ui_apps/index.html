@@ -173,13 +173,13 @@ to display:</p>
 <p>This code fetches a list of manifests from the container <code>SMART.get_manifests</code>,
 loops through them, and displays an icon for each app available. It then
 attaches a click handler to each icon: when clicked, we call
-SMART<em>HOST.launch</em>app to initiate the launch of this new app. We pass in the
+SMART_HOST.launch_app to initiate the launch of this new app. We pass in the
 app&#39;s manifests <code>m</code> and our current context <code>SMART.context</code>, which specifies the
 user and record.</p>
 
 <h3>Handling an app launch:</h3>
 
-<p>When a user clicks on an app icon and SMART<em>HOST.launch</em>app is called, the
+<p>When a user clicks on an app icon and SMART_HOST.launch_app is called, the
 SMART libraries take care of most details of the app launch process. But the
 SMART libraries expect a little bit of &quot;help&quot; (in the form of a helper
 function) to determine which IFRAME element to use in positioning the
@@ -204,7 +204,7 @@ beginning when they&#39;re all full.</p>
 (just create an account and add the &quot;Frame UI Example&quot; app.)</p>
 
 <p>You can see the code at:
-<a href="https://github.com/chb/smart_sample_apps/tree/dev/static/framework/frame_ui_example">https://github.com/chb/smart<em>sample</em>apps/tree/dev/static/framework/frame<em>ui</em>example</a> </p>
+<a href="https://github.com/chb/smart_sample_apps/tree/dev/static/framework/frame_ui_example">https://github.com/chb/smart_sample_apps/tree/dev/static/framework/frame_ui_example</a> </p>
 
 <h2>Learning more</h2>
 
@@ -226,7 +226,7 @@ these components work, take a look at our Reference material:</p>
 
       <footer>
         <div>
-          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2012
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
         </div>
       </footer>
     </div>

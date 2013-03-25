@@ -113,6 +113,12 @@ footer {
   padding: 15px;
 }
 
+.red_box_thin {
+  margin: 35px;
+  border: 2px dotted red;
+  padding: 15px;
+}
+
 .table caption { font-style: italic; }
 
 .highlight pre {

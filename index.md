@@ -75,7 +75,8 @@ the analytics platform i2b2.
 A SMART app can access the SMART API in two ways:
 
 1. via "SMART Connect", using Javascript calls from our client library
-2. via "SMART REST", using OAuth-signed REST calls to a SMART container
+2. via "SMART REST", using standard OAuth authentication and authorization
+   and simple REST calls to a SMART container
 
 Both of these approaches can be used to get at the same underlying data. SMART
 Connect is for simple applications whose logic can be completely built in HTML
@@ -118,19 +119,12 @@ are obtained, each HTTP request is signed using the shared secret.
 Writing a SMART REST app requires a bit more work than a SMART Connect app,
 because the app must be able to:
 
-1.  Interact with the SMART container to obtain tokens
+1.  Interact with the SMART container using OAuth to obtain tokens
 2.  Store tokens securely, maintaining appropriate sessions
 3.  Select the appropriate token and sign each SMART REST API call
 
-A few words about #1. The [OAuth
-specification](http://tools.ietf.org/html/rfc5849) defines a "dance" among
-three parties (client app, the server, and the resource owner) enabling the
-client app to obtain access tokens. SMART REST apps obtain tokens by a simpler
-alternative using our JavaScript library, as explained in our tutorials.
-
-To simplify the job of working with SMART REST, we provide client libraries in
-[Java](https://github.com/chb/smart_client_java) and
-[Python](https://github.com/chb/smart_client_python python).
+To simplify the job of working with SMART REST, we provide client
+libraries in [Python](/libraries/python) and [Java](/libraries/java)
 
 
 ## OK, I'm ready to code

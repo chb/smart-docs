@@ -171,7 +171,8 @@ the analytics platform i2b2.</p>
 
 <ol>
 <li>via &quot;SMART Connect&quot;, using Javascript calls from our client library</li>
-<li>via &quot;SMART REST&quot;, using OAuth-signed REST calls to a SMART container</li>
+<li>via &quot;SMART REST&quot;, using standard OAuth authentication and authorization
+and simple REST calls to a SMART container</li>
 </ol>
 
 <p>Both of these approaches can be used to get at the same underlying data. SMART
@@ -214,20 +215,13 @@ are obtained, each HTTP request is signed using the shared secret.</p>
 because the app must be able to:</p>
 
 <ol>
-<li> Interact with the SMART container to obtain tokens</li>
+<li> Interact with the SMART container using OAuth to obtain tokens</li>
 <li> Store tokens securely, maintaining appropriate sessions</li>
 <li> Select the appropriate token and sign each SMART REST API call</li>
 </ol>
 
-<p>A few words about #1. The <a href="http://tools.ietf.org/html/rfc5849">OAuth
-specification</a> defines a &quot;dance&quot; among
-three parties (client app, the server, and the resource owner) enabling the
-client app to obtain access tokens. SMART REST apps obtain tokens by a simpler
-alternative using our JavaScript library, as explained in our tutorials.</p>
-
-<p>To simplify the job of working with SMART REST, we provide client libraries in
-<a href="https://github.com/chb/smart_client_java">Java</a> and
-<a href="https://github.com/chb/smart_client_python%20python">Python</a>.</p>
+<p>To simplify the job of working with SMART REST, we provide client
+libraries in <a href="/libraries/python">Python</a> and <a href="/libraries/java">Java</a></p>
 
 <h2>OK, I&#39;m ready to code</h2>
 

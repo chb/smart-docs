@@ -252,12 +252,12 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "offset": null, 
-        "limit": null, 
         "date_to": null, 
-        "date_from_including": null, 
         "date_to_including": null, 
-        "date_to_excluding": null</code></pre>
+        "offset": null, 
+        "date_from_including": null, 
+        "date_to_excluding": null, 
+        "limit": null</code></pre>
 
 
 ## `get_allergy`
@@ -294,14 +294,14 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/clinical_notes/`
   - optional query parameters (with defaults):
       <br><pre><code>
-        "date_to": null, 
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
-        "limit": null, 
-        "date_to_excluding": null, 
+        "date_to_including": null, 
         "date_from_including": null, 
-        "date_to_including": null</code></pre>
+        "date_to": null, 
+        "limit": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_container_manifest`
@@ -378,12 +378,12 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "offset": null, 
-        "date_to_including": null, 
-        "date_from_including": null, 
         "date_to": null, 
-        "limit": null, 
-        "date_to_excluding": null</code></pre>
+        "date_to_including": null, 
+        "offset": null, 
+        "date_from_including": null, 
+        "date_to_excluding": null, 
+        "limit": null</code></pre>
 
 
 ## `get_immunization`
@@ -400,12 +400,12 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "offset": null, 
-        "date_to_including": null, 
-        "date_from_including": null, 
         "date_to": null, 
-        "limit": null, 
-        "date_to_excluding": null</code></pre>
+        "date_to_including": null, 
+        "offset": null, 
+        "date_from_including": null, 
+        "date_to_excluding": null, 
+        "limit": null</code></pre>
 
 
 ## `get_lab_panel`
@@ -439,12 +439,12 @@ Putting all of this together we get the following code example:
         "loinc": null, 
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
-        "date_to_including": null, 
         "offset": null, 
+        "date_to_including": null, 
+        "limit": null, 
+        "date_to": null, 
         "date_from_including": null, 
-        "date_to_excluding": null, 
-        "limit": null</code></pre>
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_medical_image`
@@ -455,8 +455,8 @@ Putting all of this together we get the following code example:
 
 ## `get_medical_images`
 
-- method: [rdflib.term.Literal(u'/records/{record_id}/medical_images/'), rdflib.term.Literal(u'GET')]
-- path: `[]`
+- method: GET
+- path: `/records/{record_id}/medical_images/`
   - optional query parameters (with defaults):
       <br><pre><code>
         "limit": null, 
@@ -480,8 +480,8 @@ Putting all of this together we get the following code example:
         "date_from": null, 
         "offset": null, 
         "limit": null, 
-        "date_from_including": null, 
         "date_to_excluding": null, 
+        "date_from_including": null, 
         "date_to_including": null, 
         "rxnorm": null</code></pre>
 
@@ -522,13 +522,13 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to_excluding": null, 
-        "date_to_including": null, 
         "offset": null, 
-        "date_from_including": null, 
+        "limit": null, 
         "snomed": null, 
         "date_to": null, 
-        "limit": null</code></pre>
+        "date_from_including": null, 
+        "date_to_including": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_procedure`
@@ -593,12 +593,12 @@ Putting all of this together we get the following code example:
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
+        "date_to_including": null, 
         "limit": null, 
         "date_from_including": null, 
         "date_to": null, 
-        "date_to_including": null, 
-        "date_to_excluding": null, 
-        "encounter_type": null</code></pre>
+        "encounter_type": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `post_clinical_note`

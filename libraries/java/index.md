@@ -5,7 +5,12 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
+<div class='red_box'>Note: This Java client has not been updated to the
+SMART v0.6 API yet. You can continue to use it with version v0.5 of the
+API.</div>
+
 <div class='simple_small_box'>{% include githublink %}</div>
+
 
 This document describes the SMART Java Client Library, which you can use from a
 Java application to make authenticated REST calls into a SMART container.

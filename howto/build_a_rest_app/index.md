@@ -223,10 +223,3 @@ and we're done.
 (Note that we're using clunky string concatenation to produce our HTML. Of
 course we recommend using a templating system, but we didn't want to burden the
 explanation with a templating language at this point.)
-
-## What Next?
-
-<ul>
-    <li>learn more about SMART REST API Calls with
-      <a href="/howto/rx_reminder">RxReminder</a>.</li>
-</ul>

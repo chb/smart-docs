@@ -12,7 +12,6 @@ http://dev.smartplatforms.org/howto/filters/index.html
 http://dev.smartplatforms.org/howto/got_statins/index.html
 http://dev.smartplatforms.org/howto/intro_to_jsonld/index.html
 http://dev.smartplatforms.org/howto/intro_to_rdf/index.html
-http://dev.smartplatforms.org/howto/rx_reminder/index.html
 http://dev.smartplatforms.org/howto/smart_data/index.html
 http://dev.smartplatforms.org/howto/sparql_examples/index.html
 http://dev.smartplatforms.org/index.html

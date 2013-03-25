@@ -271,6 +271,20 @@ Get all Allergies and Allergy Exclusions for a patient <br><br>
 
 <h2>Clinical Note</h2>
 
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
+<li>Client method name:<code> get_clinical_note </code></li>
+</ul>
+
+<p>Get one Clinical Note for a patient <br><br></p>
+
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+
+<p>Get all Clinical Notes for a patient <br><br></p>
+
 <p><a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
 
 <h2>Demographics</h2>
@@ -286,36 +300,16 @@ Get all Allergies and Allergy Exclusions for a patient <br><br>
 <h2>Document</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
-<li>Client method name:<code> get_clinical_note </code></li>
-</ul>
-
-<p>Get one Clinical Note for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
-<li>Client method name:<code> get_photographs </code></li>
-</ul>
-Get all Photographs for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/documents/ </code></li>
 <li>Client method name:<code> get_documents </code></li>
 </ul>
-Get all Documents for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
-</ul>
-Get all Clinical Notes for a patient <br><br>
+
+<p>Get all Documents for a patient <br><br>
 <ul>
 <li>URI:<code> GET /records/{record_id}/documents/{document_id} </code></li>
 <li>Client method name:<code> get_document </code></li>
 </ul>
 Get one Document for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
-<li>Client method name:<code> get_photograph </code></li>
-</ul>
-Get one Photograph for a patient <br><br>
 <a href="../data_model/#Document">Document RDF</a></p>
 
 <h2>Encounter</h2>
@@ -437,6 +431,21 @@ Get one Medical Image for a patient <br><br>
 </ul>
 Get one Medication for a patient <br><br>
 <a href="../data_model/#Medication">Medication RDF</a></p>
+
+<h2>Photograph</h2>
+
+<ul>
+<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
+<li>Client method name:<code> get_photographs </code></li>
+</ul>
+
+<p>Get all Photographs for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
+<li>Client method name:<code> get_photograph </code></li>
+</ul>
+Get one Photograph for a patient <br><br>
+<a href="../data_model/#Photograph">Photograph RDF</a></p>
 
 <h2>Problem</h2>
 

@@ -176,6 +176,18 @@ Get all Allergies and Allergy Exclusions for a patient <br><br>
 
 
 ## Clinical Note
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
+<li>Client method name:<code> get_clinical_note </code></li>
+</ul>
+Get one Clinical Note for a patient <br><br>
+
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
+
 [Clinical Note RDF](../data_model/#Clinical_Note)
 
 
@@ -190,35 +202,15 @@ Get Demographics for a patient <br><br>
 
 ## Document
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
-<li>Client method name:<code> get_clinical_note </code></li>
-</ul>
-Get one Clinical Note for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
-<li>Client method name:<code> get_photographs </code></li>
-</ul>
-Get all Photographs for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/documents/ </code></li>
 <li>Client method name:<code> get_documents </code></li>
 </ul>
 Get all Documents for a patient <br><br>
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
-</ul>
-Get all Clinical Notes for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/documents/{document_id} </code></li>
 <li>Client method name:<code> get_document </code></li>
 </ul>
 Get one Document for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
-<li>Client method name:<code> get_photograph </code></li>
-</ul>
-Get one Photograph for a patient <br><br>
 [Document RDF](../data_model/#Document)
 
 
@@ -333,6 +325,18 @@ Get all Medications for a patient <br><br>
 Get one Medication for a patient <br><br>
 [Medication RDF](../data_model/#Medication)
 
+## Photograph
+<ul>
+<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
+<li>Client method name:<code> get_photographs </code></li>
+</ul>
+Get all Photographs for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
+<li>Client method name:<code> get_photograph </code></li>
+</ul>
+Get one Photograph for a patient <br><br>
+[Photograph RDF](../data_model/#Photograph)
 
 ## Problem
 <ul>

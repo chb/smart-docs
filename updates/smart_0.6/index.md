@@ -7,6 +7,7 @@ includenav: smartnav.markdown
 
 <div id="toc"></div>
 
+
 # What's new in SMART 0.6
 
 ## Native Apps Workflow
@@ -22,36 +23,43 @@ developers, its Android counterpart is coming soon.
 
 ## Documents API
 
-The new Documents API enables SMART containers to serve documents pertaining
+The new [Documents API][] enables SMART containers to serve documents pertaining
 to the patient. The documents can be returned either as URLs or inlined in the
 SMART RDF. The single-document API call can also return the raw document data.
 Documents can include patient images, radiography images, EKG data files,
 scanned documents, clinical notes, etc.
 
+[documents api]: /reference/data_model/#Document
+
 ### Photographs
 
-The Photographs API provides access to specific image documents that represent the
+The [Photographs API][] provides access to specific image documents that represent the
 patient. This allows SMART applications to show a patient photo (if available)
 to support an even more personal clinician-patient interaction. The photographs are
 returned in the Documents model format. The intent of these photographs is to show
 a head shot of the patient.
 
+[photographs api]: /reference/data_model/#Photograph
+
 ### Medical Images
 
-The Medical Images API returns DICOM-encoded studies about the patient (CT scans,
+The [Medical Images API][] returns DICOM-encoded studies about the patient (CT scans,
 x-rays, echographs, etc). In addition to the fields returned by the document model,
 this data model also returns the fields study title, study type, and study date.
 
+[medical images api]: /reference/data_model/#Medical_Image
+
 ## Family History API
 
-SMART 0.6 introduces the new [Family History API](/reference/data_model) which
-can be used to expose facts and findings pertaining to a patient's biological
-relative. The relatives are classified based on SNOMED CT. The facts that can
-stated about the relative include:
+SMART 0.6 introduces the new [Family History
+API](/reference/data_model/#Family_History_Observation) which can be
+used to expose facts and findings pertaining to a patient's biological
+relative. The relatives are classified based on SNOMED CT. The facts
+that can stated about the relative include:
 
-    * Date of birth and/or date of death
-    * Height
-    * Any problem that can be expressed through SNOMED CT
+* Date of birth and/or date of death
+* Height
+* Any problem that can be expressed through SNOMED CT
 
 ## Scratchpad API
 
@@ -71,12 +79,16 @@ support for its scratchpad facilities.
 Data may be lost by multiple copies of an app trying to write in parallel. Production
 implementations are encouraged to implement a system that will, for example,
 provide locks and dirty-state notification via HTTP error codes to apps writing
-to the scratchpad.
+to the scratchpad. See the [REST API](/reference/rest_api/) for more
+details.
 
 ## Clinical Notes Write API
 
 We have added a simple API to POST simple plain text notes to a record
-using a non-destructive write operation. 
+using a non-destructive write operation. See the [clinical note][] data
+model.
+
+[clinical note]: /reference/data_model/#Clinical_Note
 
 ## Extended Demographic API
 
@@ -84,7 +96,8 @@ The demographics API has been extended in SMART 0.6 to include two additional
 optional fields, "Date of Death" and "Gestataional Age at Birth". The gestational
 age at birth is the the week from the estimated date of conception that
 the patient has been born at (most people are born in the 40th week of the
-pregnancy).
+pregnancy). See the [demographics data model](/reference/data_model/#Demographics)
+for details.
 
 ## Filters/Pagination
 
@@ -102,8 +115,10 @@ An element's single `data` property or `start_date` will be
 used as the default for sorting and filtering.
 
 Also, SMART 0.6 no longer supports the `offset` pagnation
-parameter that was introduced in SMART 0.5
+parameter that was introduced in SMART 0.5.
 
+See the [Filters and Pagination](/howto/filters) tutorial for more
+details.
 
 ## Height is now expressed in centimeters
 
@@ -111,6 +126,8 @@ In SMART 0.5, the height units used in the vital sign sets model used to meters.
 In SMART 0.6 the height units used in the vital sign sets and the new family history
 APIs have been changed to centimeters.
      
+
+
 # HOWTO:  Update Your SMART Apps to SMART 0.6
 
 ## Update height units from meters to centimeters
@@ -121,9 +138,13 @@ new SMART 0.6 specification.
 
 ## REST apps
 
-Check out our new REST app tutorial to learn about the code needed to
+Check out our new [REST app tutorial][] to learn about the code needed to
 use the SMART python client and update your REST apps accordingly.
 (Note: The Java client has not yet been updated to SMART 0.6.)
+
+[rest app tutorial](/howto/build_a_rest_app)
+
+
 
 # HOWTO:  Update Your Container to SMART 0.6
 

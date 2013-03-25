@@ -124,6 +124,7 @@ footer {
 .highlight pre {
   border-left: 2px solid #ddd;
   border-radius: 0px;
+  padding-left: 4px !important;
 }
 
 .nav-tabs {

@@ -101,15 +101,15 @@ Currently there are three "scopes" or access control categories:
 
 ## App Manifest
 <ul>
-<li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
-<li>Client method name:<code> get_app_manifest </code></li>
-</ul>
-Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins <br><br>
-<ul>
 <li>URI:<code> GET /apps/manifests/ </code></li>
 <li>Client method name:<code> get_app_manifests </code></li>
 </ul>
 Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
+<ul>
+<li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
+<li>Client method name:<code> get_app_manifest </code></li>
+</ul>
+Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins <br><br>
 [App Manifest RDF](../data_model/#App_Manifest)
 
 
@@ -187,15 +187,20 @@ Get Demographics for a patient <br><br>
 
 ## Document
 <ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
+<ul>
 <li>URI:<code> GET /records/{record_id}/documents/ </code></li>
 <li>Client method name:<code> get_documents </code></li>
 </ul>
 Get all Documents for a patient <br><br>
 <ul>
-<li>URI:<code> GET /records/{record_id}/documents/{document_id} </code></li>
-<li>Client method name:<code> get_document </code></li>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
+<li>Client method name:<code> get_clinical_note </code></li>
 </ul>
-Get one Document for a patient <br><br>
+Get one Clinical Note for a patient <br><br>
 <ul>
 <li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
 <li>Client method name:<code> get_photographs </code></li>
@@ -207,15 +212,10 @@ Get all Photographs for a patient <br><br>
 </ul>
 Get one Photograph for a patient <br><br>
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
-<li>Client method name:<code> get_clinical_note </code></li>
+<li>URI:<code> GET /records/{record_id}/documents/{document_id} </code></li>
+<li>Client method name:<code> get_document </code></li>
 </ul>
-Get one Clinical Note for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
-</ul>
-Get all Clinical Notes for a patient <br><br>
+Get one Document for a patient <br><br>
 [Document RDF](../data_model/#Document)
 
 
@@ -278,14 +278,14 @@ Get all Immunizations for a patient <br><br>
 ## Lab Panel
 <ul>
 <li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
-<li>Client method name:<code> get_lab_panel </code></li>
-</ul>
-Get one Lab Panel for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
 <li>Client method name:<code> get_lab_panels </code></li>
 </ul>
 Get all Lab Panels for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_panels/ </code></li>
+<li>Client method name:<code> get_lab_panel </code></li>
+</ul>
+Get one Lab Panel for a patient <br><br>
 [Lab Panel RDF](../data_model/#Lab_Panel)
 
 
@@ -359,6 +359,15 @@ Get one Procedure for a patient <br><br>
 [Procedure RDF](../data_model/#Procedure)
 
 
+## Scratchpad Data
+<ul>
+<li>URI:<code> GET /records/{record_id}/apps/{smart_app_id}/scratchpad </code></li>
+<li>Client method name:<code> get_scratchpad_data </code></li>
+</ul>
+Get scratchpad data for an app <br><br>
+[Scratchpad Data RDF](../data_model/#Scratchpad_Data)
+
+
 ## Social History
 <ul>
 <li>URI:<code> GET /records/{record_id}/social_history </code></li>
@@ -370,29 +379,20 @@ Get Social History for a patient <br><br>
 
 ## Vital Sign Set
 <ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
-<li>Client method name:<code> get_vital_sign_sets </code></li>
-</ul>
-Get all Vital Sign Sets for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
 <li>Client method name:<code> get_vital_sign_set </code></li>
 </ul>
 Get one Vital Sign Set for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
+<li>Client method name:<code> get_vital_sign_sets </code></li>
+</ul>
+Get all Vital Sign Sets for a patient <br><br>
 [Vital Sign Set RDF](../data_model/#Vital_Sign_Set)
 
 
 
 # User Calls
-
-## Scratchpad Data
-<ul>
-<li>URI:<code> GET /records/{record_id}/apps/{smart_app_id}/scratchpad </code></li>
-<li>Client method name:<code> get_scratchpad_data </code></li>
-</ul>
-Get scratchpad data for an app <br><br>
-[Scratchpad Data RDF](../data_model/#Scratchpad_Data)
-
 
 ## User Preferences
 <ul>

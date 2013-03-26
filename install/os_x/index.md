@@ -14,7 +14,9 @@ Mac OS X. We will be installing everything needed for SMART into the directory
 open from this location. Of course you can use your own location, just remember
 to return to your `SMART` directory. Tested on OS X Lion and Mountain Lion.
 
-# Install Homebrew
+
+Install Homebrew
+================
 
 We use [Homebrew] as package manager to install most libraries. Since this
 needs some extra command line tools to compile code, you first have to do
@@ -42,38 +44,30 @@ If you had Homebrew installed before, make sure to update it:
 [shell]: https://developer.apple.com/downloads/index.action
 
 
-# Install Python Tools and Django
+Install Django and Python Tools
+===============================
 
-## `lxml`, `psycopg` and RDF packages
+We have to use [Django 1.3][django] for now. You will see a lot of warnings from clang that you can safely ignore.
 
-As of this writing, this will install lxml 3.0.1, psycopg 2.4.5 and rdflib 3.2.3. You will see a lot of warnings from clang that you can safely ignore.
+    $ sudo easy_install django==1.3.2
+    $ sudo easy_install lxml, psycopg2
+    $ sudo easy_install -U rdflib rdfextras jsonschema
 
-    $ sudo easy_install lxml
-    $ sudo easy_install psycopg2
-    $ sudo easy_install -U "rdflib==3.2.3" "rdfextras==0.2" "jsonschema==0.7"
+At the time of this writing, this will install Django `1.3.2`, lxml `3.1.0`, psycopg `2.4.6`, rdflib `3.4.0`, rdfextras `0.4` and jsonschema `1.1`. Those versions all work well, if you are having trouble with newer versions you want to specify which version to install.
 
-## Django
-
-You have to use [Django 1.3][django] for now. Download, unarchive and install:
-
-    $ cd Django-1.3.1
-    $ sudo python setup.py install
-
-
-[lxml]: http://pypi.python.org/pypi/lxml/2.3.4#downloads
-[psycopg]: http://initd.org/psycopg/
 [django]: https://www.djangoproject.com/download/
 
 
-# PostgreSQL
+PostgreSQL
+==========
 
 OS X 10.8 ships with PostgreSQL including a launchd-item, but I was out of luck finding its data directory. So we...
 
-* Install postgres with homebrew (installs version 9.2.1):
+* Install postgres with homebrew (installs version 9.2.3):
 
       $ brew install postgresql
       $ initdb /usr/local/var/postgres -E utf8
-      $ cp /usr/local/Cellar/postgresql/9.2.1/homebrew.mxcl.postgresql.plist \
+      $ cp /usr/local/Cellar/postgresql/9.2.3/homebrew.mxcl.postgresql.plist \
         ~/Library/LaunchAgents/
 
 * Launch Postgres
@@ -103,7 +97,8 @@ the Postgres config to use md5 passwords.
 [instructions]: https://github.com/chb/smart_server
 
 
-# Tomcat and openrdf-sesame
+Tomcat and openrdf-sesame
+=========================
 
 * Install Tomcat
 
@@ -135,7 +130,8 @@ You should now be able to access `http://localhost:8080/openrdf-workbench/`
 > OS X no longer ships with **Java** installed. Tomcat runs on Java, so if you haven't installed Java yet simply type `java` in the Terminal and the OS will prompt and install Java for you.
 
 
-# Automated SMART install
+Automated SMART install
+=======================
 
 We're now ready to get the latest and greatest from SMART.
 
@@ -151,8 +147,15 @@ We're now ready to get the latest and greatest from SMART.
 
 This will fetch all needed repositories, run an installer that asks you for some configurations, generate patient sample data and in the end run the server.
 
+## The reset script
 
-# Running SMART
+If you didn't run the automated install, mostly because you had an old SMART version around already, you might want to use the script `smart_server/reset.sh` to recreate your Postgres databases.
+
+> This drops the current database, so all data will be lost!
+
+
+Running SMART
+=============
 
 If you've just run the automated install, you only need to start Tomcat via
 `$CATALINA_HOME/bin/startup.sh`, in the future:

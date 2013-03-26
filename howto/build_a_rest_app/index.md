@@ -10,11 +10,11 @@ includenav: smartnav.markdown
 
 <div class='simple_small_box'>{% include githublink %}</div>
 
-This document shows you how to build a more advanced SMART App with server-side
-logic and REST API Calls.
+This document shows you how to build a more advanced SMART App with
+server-side logic and REST API Calls.
 
-You should first read the [Main Page](../../) and [HOWTO Build a SMART App](../build_a_smart_app).
-
+You should first read the [Main Page](../../) and [HOWTO Build a SMART
+App](../build_a_smart_app) before reading this document.
 
 
 # Server to Server Authentication
@@ -22,7 +22,7 @@ You should first read the [Main Page](../../) and [HOWTO Build a SMART App](../b
 When your app was making JavaScript API calls, authentication and authorization
 were entirely transparent to you, the app builder, because the SMART Container
 was able to take care of it all: the JavaScript API call simply notified the
-outer frame of the data request, and the outer-frame knows who the logged-in
+outer frame of the data request, and the outer frame knows who the logged-in
 user is and what medical record they're currently considering.
 
 Now, we consider the case where you want the backend of your app to obtain data
@@ -33,28 +33,44 @@ somehow, and you, the app builder, need to know how to ensure that your calls
 are properly authenticated.
 
 
-## OAuth
+# Choosing the Right Tools
 
-For this purpose, we use OAuth, an open-standard for access delegation.
+Since you can write a SMART REST app in any language using any toolkit,
+you have a lot of flexibility. In general, you'll want to look for a
+language with existing OAuth libraries to handle the details of signing
+requests to the SMART container. Here we'll illustrate the highlights
+with a simple Python-based SMART REST demo app called unimaginatively
+called `smart_rest_minimal`.  This app is written using the [Flask][]
+web microframework. This won't be a tutorial on Flask, but to get
+started all you'll need to understand is that Flask provides a simple
+mechanism to map HTTP URLs to Python functions.
+
+[flask]: http://flask.pocoo.org/
+
+
+# Getting to know OAuth
+
+To authenticate your apps' calls to the SMART Container, SMART uses
+[OAuth][], an open standard for access delegation.
+
+[oauth]: http://tools.ietf.org/html/rfc5849
+
 
 OAuth bundles two important features:
 
-<ol>
-    <li>a way to label and sign HTTP requests using an identifier token and a
-secret string</li>
-    <li>a dance involving the user's browser, the data server, and the server
-that wishes to consume the data, which, when the user approves the exchange,
-provides the data consumer with the token and secret needed to perform the
-authenticated API calls as per (1).</li>
-</ol>
+1. a way to label and sign HTTP requests using an identifier token and a
+secret string
 
-SMART employs (1), but implements a much simpler approach to (2), providing your
-app with the requisite token and secret. We'll describe this simpler approach
-here. At a high-level, your app can simply look for a URL parameter called
-`oauth_header` set by the SMART JavaScript client library. In this value, you
-will find the OAuth token and secret you need.
+2. a dance involving the user's browser, the data server,
+and the server that wishes to consume the data, which, when the user
+approves the exchange, provides the data consumer with the token and
+secret needed to perform the authenticated API calls as per (1).
 
-## Change Your App's OAuth Consumer Secret in Production (Important!)
+SMART employs (1) and, as of SMART v0.6, (2) the full OAuth
+authentication "dance".
+
+
+# Change Your App's OAuth Consumer Secret in Production (Important!)
 
 Each SMART container your app runs against must first "install" your app
 by inserting your app's manifest into it's database. This data includes
@@ -69,157 +85,131 @@ OAuth-signed REST API calls.
   ("smartapp-secret") while in development is acceptable, but:
   <br />
   <br />
-  <strong><em>You MUST change the <code>consumer-secret</code> in PRODUCTION!</em></strong>
+  <strong>
+    <em>
+      YOU MUST CHANGE THE <code>consumer-secret</code> IN PRODUCTION!
+    </em>
+  </strong>
 </div>
 
 This secret is provisioned when your app is loaded into the smart
 container with the following command:
 
-    manage.py load_app <manifest-location> <secret>
+    $ manage.py load_app <manifest-location> <secret>
 
-## Passing Tokens via URL Parameter
 
-The SMART container will pass all necessary fields to your app via the
-`oauth_header` URL parameter. Specifically, the actual request sent to your
-app's backend server for index.html looks like this:
+# OAuth
 
-{% highlight javascript %}
-    GET /index.html?oauth_header={Header value here...}
-{% endhighlight  %}
+SMART REST apps now perform the standard OAuth 1.0a dance including
+providing authorization callback URLs instead of the previous
+"simplified" dance. This allows developers to use more standard
+libraries and methods write native apps (including mobile apps).
 
-You need to first extract that header from the GET parameter:
+Here is a diagram of the OAuth 1.0 flow for you visual learners:
+<http://developer.yahoo.com/oauth/guide/oauth-auth-flow.html>
 
-{% highlight javascript %}
-    oauth_header = web.input().oauth_header
-{% endhighlight  %}
 
-You'll also to need to URL-decode it:
+# Authentication Flow
 
-{% highlight javascript %}
-    oauth_header = urllib.unquote(oauth_header)
-{% endhighlight  %}
+## Initializing the SMARTClient
 
-The field contains a complete OAuth Authorization header that includes a few
-extra fields, including notably smart_record_id, smart_oauth_token and
-smart_oauth_token_secret. smart_record_id indicates the medical record ID
-of the current context, while the OAuth token and secret are the credentials
-your app needs to make REST API calls back into the SMART EMR. Why, then, are
-they themselves delivered in OAuth authorization header format? So you can
-verify that these tokens are authentic before you actually use them!
+First, initialize the SMARTClient with the URL of the SMART container
+you are attempting to access (the `api_base`) and your app's
+`consumer_key` and `consumer_secret` which you registered with the
+container previously so the container can authenticate your app's
+requests. This may be on you app's users first hit of your app's `index`
+page. You may or may not have a patient's `record_id` at this point.
 
-In other words, the SMART container is sending you credentials you can use to
-sign your API request. Those credentials are, themselves, signed, so you know
-they're okay to use.
 
-Thankfully, you don't need to worry too much about the details, because we
-provide you with the utilities you need to extract the fields you need quickly
-and efficiently:
+## Getting the `record_id`
 
-{% highlight javascript %}
-    # parse it into a python dictionary
-    oauth_params = oauth.parse_header(oauth_header)
-{% endhighlight  %}
+If you don't have a `record_id`, you will be able to redirect to the
+container's record selection page (the `smart.launch_url`) which will
+redirect back to your app's `index` page with the user selected
+`record_id` in the URL parameters for you to read.
 
-Then get the specific parameters you need to sign your own API calls:
 
-{% highlight javascript %}
-    record_id = oauth_params['smart_record_id']
-    resource_credentials = {'oauth_token':        oauth_params['smart_oauth_token'],
-                            'oauth_token_secret': oauth_params['smart_oauth_token_secret']}
-{% endhighlight  %}
+## Requesting the Request Token
 
-The SMART Connect OAuth Header contains a few more parameters that will prove
-useful:
+The next step in the OAuth dance is for your app to request the
+request_token to allow access to a specific patient record. This is done
+simply by initializing the SMARTClient with the `api_base` and desired
+`record_id`. Assuming your initialized SMARTClient is stored in a
+variable named `smart`:
 
-<ul>
-  <li>`smart_app_id`: the identifier of the app being invoked</li>
-  <li>`smart_container_api_base`: the base URL for API calls into the SMART EMR</li>
-</ul>
 
-Now, why would your app need these, since presumably it knows its own ID and
-where the SMART container is located to make API, right?
+    smart.fetch_request_token()
 
-In the simple case, yes, but in more advanced cases, your backend server might
-support multiple simultaneous apps made available to multiple SMART Containers.
-Thus, in a given setting, your app needs to know definitely which SMART
-Container it's connecting to and, if you're using one server to host multiple
-apps, which of your apps is being invoked in the first place.
 
-## Using SMART Client Libraries
+## Authorizing the request
 
-Read up on the SMART Python Library.
+If this call was successful, the next step in the dance is to have
+the user signal to the container that they approve this request for
+access. This is done by having your app redirect the user's browser
+to the container's "access authorization page":
 
-Using those instructions, you can instantiate a SmartClient with the 
-credentials obtained above:
+     flask.redirect(smart.auth_redirect_url)
 
-{% highlight javascript %}
-    client = SmartClient('my-app@apps.smartplatforms.org',
-                         {'api_base' : 'http://sandbox-api.smartplatforms.org'},
-                         {'consumer_key' : 'my-app@apps.smartplatforms.org',
-                         'consumer_secret' : 'smartapp-secret'},
-                         resource_credentials)
-{% endhighlight  %}
 
-Since we're working against the SMART Reference EMR Sandbox, the APP_ID and
-consumer-level credentials are all fixed. Of course when connecting against a
-different SMART Container (e.g. your own), those will probably change.
+## Exchange the Request Token for the Access Token
 
-# Obtaining SMART Health Data
+Once the user authorizes your app's request with the container, the
+container will redirect the users' browser to the `oauth_callback` URL
+(typically `/authorized`) that you defined in the manifest that you
+installed with the container passing an `oauth_verifer` as a HTTP
+parameter. Your app's handler for this URL should then "exchange" the
+`request_token` and the `oauth_verifer` with the container to receive
+the `access_token` which your app will use to make requests for
+protected data from the container.
 
-With our smart_client instance ready to go, loaded with the right credentials,
-we can start making API calls. Let's get the medication list:
+    acc_token = smart.exchange_token(verifier)
 
-{% highlight javascript %}
-    medications = smart_client.get_medications(record_id = record_id)
-{% endhighlight  %}
+## Accessing Protected Data With the acc_token
 
-Just like in the first SMART App we built, the result is an SMARTResponse object
-containing an RDF graph of data, which we can query for just the fields we want:
+A few final steps are required before accessing data: your app will need
+to store the access token in a web session (or other means) so it can be
+reused across multiple requests. And the smart client's internal token
+should be "updated" e.g.
 
-{% highlight javascript %}
-    query = """
-        PREFIX dcterms:<http://purl.org/dc/terms/>
-        PREFIX sp:<http://smartplatforms.org/terms#>
-        PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        SELECT  ?drugname ?rxcui
+
+    flask.session['acc_token'] = acc_token
+    smart.update_token(acc_token)
+
+
+Now accessing data using the SMART REST API is simply a matter of
+making calls such as:
+
+
+    # Now we're ready to get data!
+    # Let's fetch demographics and display the name
+    demo = smart.get_demographics()
+
+
+
+The result is an SMARTResponse object containing an RDF graph of data,
+which we can query for just the fields we want which you can query with
+SPARQL e.g.:
+
+    
+    sparql = """
+        PREFIX vc: <http://www.w3.org/2006/vcard/ns#>
+        SELECT ?given ?family
         WHERE {
-           ?med rdf:type sp:Medication .
-           ?med sp:drugName ?drugname_code .
-           ?drugname_code dcterms:title ?drugname .
-           ?drugname_code sp:code ?rxcui_url .
-           ?rxcui_url dcterms:identifier ?rxcui .
+            [] vc:n ?vcard .
+            OPTIONAL { ?vcard vc:given-name ?given . }
+            OPTIONAL { ?vcard vc:family-name ?family . }
         }
-        """
- 
-    med_names_and_cuis = medications.graph.query(query)
-    meds = [{'name': med[0], 'rxcui': med[1]} for med in med_names_and_cuis]
-{% endhighlight  %}    
+    """
+    results = demo.graph.query(sparql)
+    record_name = 'Unknown'
+    if len(results) > 0:
+        res = list(results)[0]
+        record_name = '%s %s' % (res[0], res[1])
 
-So far, we're not doing anything novel compared to our SMART Connect App. Let's
-make use of this fully capable backend we have, and integrate this data with
-other information. We'll use [RxNav](http://rxnav.nlm.nih.gov/), the National
-Library of Medicine's resource for RxNorm. In particular, we'll pull out the
-ingredients for each medication:
 
-{% highlight javascript %}
-    for med in meds:
-      rxnav_info_xml = urllib.urlopen("http://rxnav.nlm.nih.gov/REST/rxcui/%s/related?rela=has_ingredient" % med['rxcui']).read()
-      info = ElementTree.fromstring(rxnav_info_xml)
-      med['ingredients'] = [ing.text for ing in info.findall('relatedGroup/conceptGroup/conceptProperties/name')]
-{% endhighlight  %}
 
-Most of that code above is to quickly parse the XML we get back from RxNav and
-obtain the ingredient names.
+## What Next?
 
-Now that we've combined the SMART record data with a third-party data source, we
-can just render our HTML:
+Check out the SMART REST examples:
 
-{% highlight javascript %}
-    meds_html = "\n".join(["<li>%s<br /><small>ingredients: %s</small><br /><br /></li>" % (str(med['name']), ", ".join(med['ingredients'])) for med in meds])
-{% endhighlight  %}
-
-and we're done.
-
-(Note that we're using clunky string concatenation to produce our HTML. Of
-course we recommend using a templating system, but we didn't want to burden the
-explanation with a templating language at this point.)
+XXX

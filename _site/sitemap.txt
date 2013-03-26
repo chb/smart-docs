@@ -33,3 +33,4 @@ http://dev.smartplatforms.org/updates/smart_0.4/app/index.html
 http://dev.smartplatforms.org/updates/smart_0.4/container/index.html
 http://dev.smartplatforms.org/updates/smart_0.5/index.html
 http://dev.smartplatforms.org/updates/smart_0.6/index.html
+http://dev.smartplatforms.org/updates/smart_0.6/rest_apps.html

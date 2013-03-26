@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Updating Your SMART REST App</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+
+    <li class="nav-header">Using SMART Data</li>
+
+    <li><a href="/howto/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/howto/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/howto/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/howto/filters">Query Filtering and Pagination</a></li>
+    <li><a href="/howto/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/smart_data">SMART Data: Best Practices</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/filters">Query Filters</a></li>
+    <li><a href="/reference/app_manifest">App Manifest</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Container-side Javascript</a></li>
+
+    <li class="nav-header">SMART Update Guides</li>
+
+    <li><a href="/updates/smart_0.6/">0.6 Apps + Containers</a></li>
+    <li><a href="/updates/smart_0.5/">0.5 Apps + Containers</a></li>
+    <li><a href="/updates/smart_0.4/app">0.4 Apps</a></li>
+    <li><a href="/updates/smart_0.4/container">0.4 Containers</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentations</li>
+
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture (2010-08)</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance (2010-08)</a></li>
+
+    <li class="nav-header">Downloads</li>
+    <li><a href="/downloads/">Download Source + VM</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>Updating Your SMART REST App <small></small></h1>
+      </div>
+
+        <div id='under_construction' class='red_box_thin'>
+          This document is in the process of being updated to
+          SMART v0.6 and will be ready shortly.
+          <br><br>
+          Thanks for your patience!
+        </div>
+
+      <div id="toc"> </div>
+
+<div class='simple_small_box'>Help us improve! You can correct errors or add to this page by clicking
+<a class='githublink' href=''>here</a> to edit this page on Github.
+</div>
+
+<p>SMART v0.6 introduces significant changes to SMART REST app
+authentication and authorization. SMART Containers now implement the
+standard <a href="http://tools.ietf.org/html/rfc5849">OAuth</a> 1.0a authentication delegation protocol. This change
+allows for app developers to use more standardized tools to connect to
+SMART containers and the creation of native client libraries including
+mobile clients.</p>
+
+<p>You should first read the <a href="../../">Main Page</a> and
+<a href="../build_a_smart_rest_app">HOWTO Build a SMART REST App</a>.</p>
+
+<hr>
+
+<h2>Getting Started</h2>
+
+<p>As a prerequisite, you should be familiar the SMART&#39;s previous
+&quot;simplified&quot; OAuth-based authentication protocol. In general, the
+changes will be to conform to the standard ways to using OAuth. This
+document will also assume you are using the SMART Python client.</p>
+
+<h2>Update Your App&#39;s Manifest</h2>
+
+<p>TODO: check with Nikolai and P2</p>
+
+<p>You must add <code>oauth_callback</code> item to your app&#39;s manifest. Here is a
+sample manifest that points to a locally hosted app:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;name&quot;: &quot;SMART REST Minimal&quot;,
+  &quot;description&quot;: &quot;The minimal SMART REST Flask app&quot;,
+  &quot;author&quot;: &quot;Arjun Sanyal &amp; Pascal Pfiffner, Harvard Medical School&quot;,
+  &quot;id&quot;: &quot;minimal-rest-example@apps.smartplatforms.org&quot;,
+  &quot;mode&quot;: &quot;ui&quot;,
+  &quot;scope&quot;: &quot;record&quot;,
+  &quot;index&quot;: &quot;http://localhost:8008/&quot;,
+  &quot;oauth_callback&quot;: &quot;http://localhost:8008/authorize&quot;,
+  &quot;icon&quot;: &quot;http://localhost:8008/static/icon.png&quot;,
+  &quot;smart_version&quot;: &quot;0.6&quot;,
+  &quot;version&quot;: &quot;.1&quot;
+}
+</code></pre></div>
+<h2>Getting the Latest Client Code</h2>
+
+<p>First, you will need to update your app&#39;s references to the
+<code>smart_client</code> to XXX to get the latest changes.</p>
+
+<p>TODO: we should provide a tag at a minimum here.</p>
+
+<h2>Importing SMARTClient</h2>
+
+<p>You will only need to change imports such as:</p>
+<div class="highlight"><pre><code class="text">from smart_client import oauth
+from smart_client.smart import SmartClient
+</code></pre></div>
+<p>to</p>
+<div class="highlight"><pre><code class="text">from smart_client.client import SMARTClient
+</code></pre></div>
+<p>Notice the change in capitalization and there is no need to <code>import
+oauth</code> anymore.</p>
+
+<h2>Configuring SMARTClient</h2>
+
+<p>Instead of just looking for a URL parameter called <code>oauth_header</code> that
+the container provides your app&#39;s index page, you will now need to
+provide more information up front to initialize the SMARTClient. For an
+app running against a locally hosted SMART contatiner a good way to
+define the necessary parameters is with a static <code>dict</code>, e.g.:</p>
+<div class="highlight"><pre><code class="text">  # SMART Container OAuth Endpoint Configuration
+  _ENDPOINT = {
+      &quot;url&quot;: &quot;http://localhost:7000&quot;,
+      &quot;name&quot;: &quot;Localhost&quot;,
+      &quot;app_id&quot;: &quot;rest-example@apps.smartplatforms.org&quot;,
+      &quot;consumer_key&quot;: &quot;rest-example@apps.smartplatforms.org&quot;,
+      &quot;consumer_secret&quot;: &quot;changeMEinPRODUCTION!&quot;
+  }
+</code></pre></div>
+<p>The <code>app_id</code>, <code>consumer_key</code>, and <code>consumer_secret</code> here are the
+parameters that you defined and recieved when installing your app into
+the container.</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33617191-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

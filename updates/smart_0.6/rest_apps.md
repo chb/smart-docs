@@ -36,8 +36,6 @@ document will also assume you are using the SMART Python client.
 
 ## Update Your App's Manifest
 
-TODO: check with Nikolai and P2
-
 You must add `oauth_callback` item to your app's manifest. Here is a
 sample manifest that points to a locally hosted app:
 
@@ -99,3 +97,5 @@ define the necessary parameters is with a static `dict`, e.g.:
 The `app_id`, `consumer_key`, and `consumer_secret` here are the
 parameters that you defined and recieved when installing your app into
 the container.
+
+

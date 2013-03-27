@@ -40,11 +40,12 @@ you have a lot of flexibility. In general, you'll want to look for a
 language with existing OAuth libraries to handle the details of signing
 requests to the SMART container. Here we'll illustrate the highlights
 with a simple Python-based SMART REST demo app called unimaginatively
-called `smart_rest_minimal`.  This app is written using the [Flask][]
+called [smart_rest_minimal][].  This app is written using the [Flask][]
 web microframework. This won't be a tutorial on Flask, but to get
 started all you'll need to understand is that Flask provides a simple
 mechanism to map HTTP URLs to Python functions.
 
+[smart_rest_minimal]: https://github.com/chb/smart_rest_minimal
 [flask]: http://flask.pocoo.org/
 
 
@@ -210,6 +211,5 @@ SPARQL e.g.:
 
 ## What Next?
 
-Check out the SMART REST examples:
-
-XXX
+To see how this all works, carefully read over the
+code for the [smart_rest_minimal][] app.

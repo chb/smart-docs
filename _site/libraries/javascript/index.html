@@ -352,10 +352,10 @@ object in the event of a failure.</p>
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date_to_including&quot;: null, 
-&quot;date_from_including&quot;: null, 
-&quot;date_to&quot;: null, 
 &quot;limit&quot;: null, 
+&quot;date_to&quot;: null, 
+&quot;date_from_including&quot;: null, 
+&quot;date_to_including&quot;: null, 
 &quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
@@ -404,14 +404,14 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date_to&quot;: null, 
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;date_to_including&quot;: null, 
 &quot;date_from_including&quot;: null, 
-&quot;date_to_excluding&quot;: null, 
-&quot;limit&quot;: null</code></pre></li>
+&quot;date_to&quot;: null, 
+&quot;limit&quot;: null, 
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -433,7 +433,13 @@ object in the event of a failure.</p>
 
 <ul>
 <li>method: GET</li>
-<li>path: <code>/records/{record_id}/documents/{document_id}</code></li>
+<li>path: <code>/records/{record_id}/documents/{document_id}</code>
+
+<ul>
+<li>optional query parameters (with defaults):
+<br><pre><code>
+&quot;format&quot;: null</code></pre></li>
+</ul></li>
 </ul>
 
 <h2><code>get_documents</code></h2>
@@ -445,6 +451,7 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;format&quot;: null, 
 &quot;limit&quot;: null, 
 &quot;offset&quot;: null</code></pre></li>
 </ul></li>
@@ -512,10 +519,10 @@ object in the event of a failure.</p>
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date_to_including&quot;: null, 
+&quot;limit&quot;: null, 
 &quot;date_from_including&quot;: null, 
 &quot;date_to_excluding&quot;: null, 
-&quot;limit&quot;: null</code></pre></li>
+&quot;date_to_including&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -537,12 +544,12 @@ object in the event of a failure.</p>
 <br><pre><code>
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
-&quot;date_to&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;date_to_excluding&quot;: null, 
 &quot;date_from_including&quot;: null, 
-&quot;date_to_including&quot;: null</code></pre></li>
+&quot;date_to&quot;: null, 
+&quot;date_to_including&quot;: null, 
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -583,15 +590,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
-&quot;date_to&quot;: null, 
 &quot;loinc&quot;: null, 
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
-&quot;date_to_excluding&quot;: null, 
 &quot;date_from_including&quot;: null, 
-&quot;date_to_including&quot;: null</code></pre></li>
+&quot;date_to&quot;: null, 
+&quot;date_to_including&quot;: null, 
+&quot;date_to_excluding&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -599,7 +606,13 @@ object in the event of a failure.</p>
 
 <ul>
 <li>method: GET</li>
-<li>path: <code>/records/{record_id}/medical_images/{medical_image_id}</code></li>
+<li>path: <code>/records/{record_id}/medical_images/{medical_image_id}</code>
+
+<ul>
+<li>optional query parameters (with defaults):
+<br><pre><code>
+&quot;format&quot;: null</code></pre></li>
+</ul></li>
 </ul>
 
 <h2><code>get_medical_images</code></h2>
@@ -611,6 +624,7 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;format&quot;: null, 
 &quot;limit&quot;: null, 
 &quot;offset&quot;: null</code></pre></li>
 </ul></li>
@@ -632,12 +646,12 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date_to&quot;: null, 
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
-&quot;date_to&quot;: null, 
-&quot;offset&quot;: null, 
-&quot;limit&quot;: null, 
 &quot;date_to_excluding&quot;: null, 
+&quot;limit&quot;: null, 
+&quot;offset&quot;: null, 
 &quot;date_from_including&quot;: null, 
 &quot;date_to_including&quot;: null, 
 &quot;rxnorm&quot;: null</code></pre></li>
@@ -655,21 +669,7 @@ object in the event of a failure.</p>
 
 <ul>
 <li>method: GET</li>
-<li>path: <code>/records/{record_id}/photographs/{photograph_id}</code></li>
-</ul>
-
-<h2><code>get_photographs</code></h2>
-
-<ul>
-<li>method: GET</li>
-<li>path: <code>/records/{record_id}/photographs/</code>
-
-<ul>
-<li>optional query parameters (with defaults):
-<br><pre><code>
-&quot;limit&quot;: null, 
-&quot;offset&quot;: null</code></pre></li>
-</ul></li>
+<li>path: <code>/records/{record_id}/photograph</code></li>
 </ul>
 
 <h2><code>get_problem</code></h2>
@@ -688,15 +688,15 @@ object in the event of a failure.</p>
 <ul>
 <li>optional query parameters (with defaults):
 <br><pre><code>
+&quot;date_to&quot;: null, 
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
 &quot;limit&quot;: null, 
 &quot;snomed&quot;: null, 
-&quot;date_to&quot;: null, 
+&quot;date_to_excluding&quot;: null, 
 &quot;date_from_including&quot;: null, 
-&quot;date_to_including&quot;: null, 
-&quot;date_to_excluding&quot;: null</code></pre></li>
+&quot;date_to_including&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -720,11 +720,11 @@ object in the event of a failure.</p>
 &quot;date_from_excluding&quot;: null, 
 &quot;date_from&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;date_to_including&quot;: null, 
-&quot;date_from_including&quot;: null, 
+&quot;limit&quot;: null, 
 &quot;snomed&quot;: null, 
 &quot;date_to_excluding&quot;: null, 
-&quot;limit&quot;: null</code></pre></li>
+&quot;date_from_including&quot;: null, 
+&quot;date_to_including&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 
@@ -817,12 +817,11 @@ object in the event of a failure.</p>
 &quot;family_name&quot;: null, 
 &quot;gender&quot;: null, 
 &quot;app_id&quot;: null, 
-&quot;birthday&quot;: null, 
 &quot;date_of_birth&quot;: null, 
-&quot;limit&quot;: null, 
+&quot;medical_record_number&quot;: null, 
 &quot;given_name&quot;: null, 
 &quot;offset&quot;: null, 
-&quot;medical_record_number&quot;: null</code></pre></li>
+&quot;limit&quot;: null</code></pre></li>
 </ul></li>
 </ul>
 

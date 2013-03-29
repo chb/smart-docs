@@ -244,16 +244,16 @@ Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404. 
 <h2>User</h2>
 
 <ul>
-<li>URI:<code> GET /users/search </code></li>
-<li>Client method name:<code> search_users </code></li>
-</ul>
-
-<p>Get users by name (or all users if blank) <br><br>
-<ul>
 <li>URI:<code> GET /users/{user_id} </code></li>
 <li>Client method name:<code> get_user </code></li>
 </ul>
-Get a single user by ID <br><br>
+
+<p>Get a single user by ID <br><br>
+<ul>
+<li>URI:<code> GET /users/search </code></li>
+<li>Client method name:<code> search_users </code></li>
+</ul>
+Get users by name (or all users if blank) <br><br>
 <a href="../data_model/#User">User RDF</a></p>
 
 <h1>Record Calls</h1>
@@ -261,21 +261,32 @@ Get a single user by ID <br><br>
 <h2>Allergy</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/allergies/{allergy_id} </code></li>
-<li>Client method name:<code> get_allergy </code></li>
-</ul>
-
-<p>Get one Allergy for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/allergies/ </code></li>
 <li>Client method name:<code> get_allergies </code></li>
 </ul>
-Get all Allergies and Allergy Exclusions for a patient <br><br>
+
+<p>Get all Allergies and Allergy Exclusions for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/allergies/{allergy_id} </code></li>
+<li>Client method name:<code> get_allergy </code></li>
+</ul>
+Get one Allergy for a patient <br><br>
 <a href="../data_model/#Allergy">Allergy RDF</a></p>
 
 <h2>Clinical Note</h2>
 
-<p><a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
+<li>Client method name:<code> get_clinical_note </code></li>
+</ul>
+
+<p>Get one Clinical Note for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
+<a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
 
 <h2>Demographics</h2>
 
@@ -290,36 +301,16 @@ Get all Allergies and Allergy Exclusions for a patient <br><br>
 <h2>Document</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
+<li>URI:<code> GET /records/{record_id}/documents/{document_id} </code></li>
+<li>Client method name:<code> get_document </code></li>
 </ul>
 
-<p>Get all Clinical Notes for a patient <br><br>
+<p>Get one Document for a patient <br><br>
 <ul>
 <li>URI:<code> GET /records/{record_id}/documents/ </code></li>
 <li>Client method name:<code> get_documents </code></li>
 </ul>
 Get all Documents for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
-<li>Client method name:<code> get_clinical_note </code></li>
-</ul>
-Get one Clinical Note for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/ </code></li>
-<li>Client method name:<code> get_photographs </code></li>
-</ul>
-Get all Photographs for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/photographs/{photograph_id} </code></li>
-<li>Client method name:<code> get_photograph </code></li>
-</ul>
-Get one Photograph for a patient <br><br>
-<ul>
-<li>URI:<code> GET /records/{record_id}/documents/{document_id} </code></li>
-<li>Client method name:<code> get_document </code></li>
-</ul>
-Get one Document for a patient <br><br>
 <a href="../data_model/#Document">Document RDF</a></p>
 
 <h2>Encounter</h2>
@@ -355,16 +346,16 @@ Get one Family History for a patient <br><br>
 <h2>Fulfillment</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
-<li>Client method name:<code> get_fulfillment </code></li>
-</ul>
-
-<p>Get one Fulfillment for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
 <li>Client method name:<code> get_fulfillments </code></li>
 </ul>
-Get all Fulfillments for a patient <br><br>
+
+<p>Get all Fulfillments for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
+<li>Client method name:<code> get_fulfillment </code></li>
+</ul>
+Get one Fulfillment for a patient <br><br>
 <a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
 
 <h2>Immunization</h2>
@@ -400,16 +391,16 @@ Get one Lab Panel for a patient <br><br>
 <h2>Lab Result</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
-<li>Client method name:<code> get_lab_results </code></li>
-</ul>
-
-<p>Get all Lab Results for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/lab_results/{lab_result_id} </code></li>
 <li>Client method name:<code> get_lab_result </code></li>
 </ul>
-Get one Lab Result for a patient <br><br>
+
+<p>Get one Lab Result for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
+<li>Client method name:<code> get_lab_results </code></li>
+</ul>
+Get all Lab Results for a patient <br><br>
 <a href="../data_model/#Lab_Result">Lab Result RDF</a></p>
 
 <h2>Medical Image</h2>
@@ -441,6 +432,16 @@ Get one Medical Image for a patient <br><br>
 </ul>
 Get one Medication for a patient <br><br>
 <a href="../data_model/#Medication">Medication RDF</a></p>
+
+<h2>Photograph</h2>
+
+<ul>
+<li>URI:<code> GET /records/{record_id}/photograph </code></li>
+<li>Client method name:<code> get_photograph </code></li>
+</ul>
+
+<p>Get one Photograph for a patient <br><br>
+<a href="../data_model/#Photograph">Photograph RDF</a></p>
 
 <h2>Problem</h2>
 
@@ -495,16 +496,16 @@ Get one Procedure for a patient <br><br>
 <h2>Vital Sign Set</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
-<li>Client method name:<code> get_vital_sign_set </code></li>
-</ul>
-
-<p>Get one Vital Sign Set for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
 <li>Client method name:<code> get_vital_sign_sets </code></li>
 </ul>
-Get all Vital Sign Sets for a patient <br><br>
+
+<p>Get all Vital Sign Sets for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
+<li>Client method name:<code> get_vital_sign_set </code></li>
+</ul>
+Get one Vital Sign Set for a patient <br><br>
 <a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
 
 <h1>User Calls</h1>

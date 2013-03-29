@@ -253,10 +253,10 @@ Putting all of this together we get the following code example:
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
-        "date_to_including": null, 
-        "date_from_including": null, 
-        "date_to": null, 
         "limit": null, 
+        "date_to": null, 
+        "date_from_including": null, 
+        "date_to_including": null, 
         "date_to_excluding": null</code></pre>
 
 
@@ -294,14 +294,14 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/clinical_notes/`
   - optional query parameters (with defaults):
       <br><pre><code>
-        "date_to": null, 
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
         "date_to_including": null, 
         "date_from_including": null, 
-        "date_to_excluding": null, 
-        "limit": null</code></pre>
+        "date_to": null, 
+        "limit": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_container_manifest`
@@ -320,6 +320,9 @@ Putting all of this together we get the following code example:
 
 - method: GET
 - path: `/records/{record_id}/documents/{document_id}`
+  - optional query parameters (with defaults):
+      <br><pre><code>
+        "format": null</code></pre>
 
 
 ## `get_documents`
@@ -328,6 +331,7 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/documents/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "format": null, 
         "limit": null, 
         "offset": null</code></pre>
 
@@ -380,10 +384,10 @@ Putting all of this together we get the following code example:
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
-        "date_to_including": null, 
+        "limit": null, 
         "date_from_including": null, 
         "date_to_excluding": null, 
-        "limit": null</code></pre>
+        "date_to_including": null</code></pre>
 
 
 ## `get_immunization`
@@ -400,12 +404,12 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
         "offset": null, 
         "limit": null, 
-        "date_to_excluding": null, 
         "date_from_including": null, 
-        "date_to_including": null</code></pre>
+        "date_to": null, 
+        "date_to_including": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_lab_panel`
@@ -436,21 +440,24 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/lab_results/`
   - optional query parameters (with defaults):
       <br><pre><code>
-        "date_to": null, 
         "loinc": null, 
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
         "limit": null, 
-        "date_to_excluding": null, 
         "date_from_including": null, 
-        "date_to_including": null</code></pre>
+        "date_to": null, 
+        "date_to_including": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_medical_image`
 
 - method: GET
 - path: `/records/{record_id}/medical_images/{medical_image_id}`
+  - optional query parameters (with defaults):
+      <br><pre><code>
+        "format": null</code></pre>
 
 
 ## `get_medical_images`
@@ -459,6 +466,7 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/medical_images/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "format": null, 
         "limit": null, 
         "offset": null</code></pre>
 
@@ -475,12 +483,12 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/medications/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_to": null, 
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
-        "offset": null, 
-        "limit": null, 
         "date_to_excluding": null, 
+        "limit": null, 
+        "offset": null, 
         "date_from_including": null, 
         "date_to_including": null, 
         "rxnorm": null</code></pre>
@@ -495,17 +503,7 @@ Putting all of this together we get the following code example:
 ## `get_photograph`
 
 - method: GET
-- path: `/records/{record_id}/photographs/{photograph_id}`
-
-
-## `get_photographs`
-
-- method: GET
-- path: `/records/{record_id}/photographs/`
-  - optional query parameters (with defaults):
-      <br><pre><code>
-        "limit": null, 
-        "offset": null</code></pre>
+- path: `/records/{record_id}/photograph`
 
 
 ## `get_problem`
@@ -520,15 +518,15 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/problems/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_to": null, 
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
         "limit": null, 
         "snomed": null, 
-        "date_to": null, 
+        "date_to_excluding": null, 
         "date_from_including": null, 
-        "date_to_including": null, 
-        "date_to_excluding": null</code></pre>
+        "date_to_including": null</code></pre>
 
 
 ## `get_procedure`
@@ -547,11 +545,11 @@ Putting all of this together we get the following code example:
         "date_from_excluding": null, 
         "date_from": null, 
         "offset": null, 
-        "date_to_including": null, 
-        "date_from_including": null, 
+        "limit": null, 
         "snomed": null, 
         "date_to_excluding": null, 
-        "limit": null</code></pre>
+        "date_from_including": null, 
+        "date_to_including": null</code></pre>
 
 
 ## `get_scratchpad_data`
@@ -628,12 +626,11 @@ Putting all of this together we get the following code example:
         "family_name": null, 
         "gender": null, 
         "app_id": null, 
-        "birthday": null, 
         "date_of_birth": null, 
-        "limit": null, 
+        "medical_record_number": null, 
         "given_name": null, 
         "offset": null, 
-        "medical_record_number": null</code></pre>
+        "limit": null</code></pre>
 
 
 ## `search_users`

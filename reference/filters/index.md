@@ -4,12 +4,13 @@ title: SMART API Filters and Pagination
 includenav: smartnav.markdown
 ---
 {% include JB/setup %}
+
+<div id='under_construction' class='red_box_thin'>
+    This document is in the process of being updated to
+    SMART v0.6 and will be ready shortly.
+</div>
+
 <div class='simple_box'>
-  <p>
-  This is a new API feature in the SMART v0.5 release. It is stable
-enough for use, however it is likely that minor elements of the API may
-change over time.
-  </p>
   {% include githublink %}
 </div>
 

@@ -341,7 +341,6 @@ if __name__=="__main__":
             queryParams = {}
             if call.cardinality == "multiple":
                 queryParams['limit']  = None
-                queryParams['offset'] = None
 
             for p in call.parameters + call.filters:
                 queryParams[p.client_parameter_name] = None

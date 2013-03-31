@@ -93,12 +93,7 @@
         <h1>SMART API Filters and Pagination <small></small></h1>
       </div>
 
-      <div id='under_construction' class='red_box_thin'>
-    This document is in the process of being updated to
-    SMART v0.6 and will be ready shortly.
-</div>
-
-<div class='simple_box'>
+      <div class='simple_box'>
   Help us improve! You can correct errors or add to this page by clicking
 <a class='githublink' href=''>here</a> to edit this page on Github.
 
@@ -106,99 +101,81 @@
 
 <div id="toc"></div>
 
-<h1>Query filters on &quot;fetch all&quot; calls</h1>
+<p>The SMART API offers a basic filtering capability to narrow down large
+clinical statement result sets on the server before returning data to
+the client. As of SMART 0.6, for all API calls that return multiple
+SMART Clinical Statements (e.g. <code>GET /records/xxx/lab_results</code>), you can
+attach date filters if relevant to the returned data type, and in a few
+select cases other datatype specific filters (such as LOINC codes on lab
+results) as URL parameters.</p>
 
-<p>The SMART 0.5 API introduces a basic filtering capability to narrow down result
-sets.  For API calls that return SMART Clinical Statements (e.g. <code>GET
-/records/xxx/lab_results</code>), you can attach filters as URL parameters.</p>
+<h1>Common Date Filters</h1>
 
-<p>Our initial focus is to support the highest-volume data:
-lab results and vital sign sets.</p>
+<p>All SMART API calls for clinical statements that have a <code>date</code> or
+<code>startDate</code> attribute can now be filtered on those attributes by sending
+the following query parameters in the request.</p>
 
-<p>Here&#39;s how filtering works.</p>
-
-<h2>Filtering Lab Results</h2>
-
-<p>Parameters for <code>GET /records/xxx/lab_results/</code>:</p>
-
-<ul>
-<li><p><code>date_from</code>: earliest result to fetch.  e.g. <code>date_from=2000-05-01</code></p></li>
-<li><p><code>date_to</code>: latest result to fetch.  e.g. <code>date_to=2012-01-01</code></p></li>
-<li><p><code>loinc</code>: pipe-separated LOINC codes.  e.g. <code>loinc=29571-7|38478-4</code></p></li>
-</ul>
-
-<h2>Filtering Vital Sign Sets</h2>
-
-<p>Parameters for <code>GET /records/xxx/vital_sign_sets</code>:</p>
+<p>Note: even if the data includes an <code>endDate</code>, it is not used by any of
+the current filters.</p>
 
 <ul>
-<li><p><code>date_from</code>: earliest result to fetch.  e.g. <code>date_from=2000-05-01</code></p></li>
-<li><p><code>date_to</code>: latest result to fetch.  e.g. <code>date_to=2012-01-01</code></p></li>
-<li><p><code>encounter_type</code>: pipe-separated encounter types.  e.g. <code>encounter_type=ambulatory</code></p></li>
+<li><code>date_from</code></li>
+<li><code>date_from_excluding</code></li>
+<li><code>date_from_including</code></li>
+<li><code>date_to</code></li>
+<li><code>date_to_excluding</code></li>
+<li><code>date_to_including</code></li>
 </ul>
 
-<h1>Paginating results</h1>
+<h1>Statement Specific Filters</h1>
 
-<p>Along with the filters described above, each &quot;fetch all&quot; call can now return
-paginated results. Just attach <code>limit=</code> and <code>offset=</code> parameters to a query.
-For instance, to fetch the first page of twenty results, you could add:</p>
-<div class="highlight"><pre><code class="text">limit=20&amp;offset=0
-</code></pre></div>
+<p>The following calls have additional filters:</p>
+
+<h2><a href="/reference/data_model/#Lab_Result">Lab Results</a></h2>
+
+<p><code>loinc</code>: a pipe-separated LOINC codes. e.g. <code>loinc=29571-7|38478-4</code></p>
+
+<h2><a href="/reference/data_model/#Vital_Sign_Set">Vital Sign Sets</a></h2>
+
+<p><code>encounter_type</code>: pipe-separated encounter types. e.g. <code>encounter_type=ambulatory</code></p>
+
+<h2><a href="/reference/data_model/#Medication">Medications</a></h2>
+
+<p><code>rxnorm</code>: a pipe-separated list of RXNORM codes. e.g. <code>rxnorm=856845</code></p>
+
+<h2><a href="/reference/data_model/#Problem">Problems</a></h2>
+
+<p><code>snomed</code>: a pipe-seperated list of SNOMED codes. e.g. <code>snomed=161891005i</code></p>
+
+<h2><a href="/reference/data_model/#Procedure">Procedures</a></h2>
+
+<p><code>snomed</code>: a pipe-seperated list of SNOMED codes. e.g. <code>snomed=161891005</code></p>
+
+<h1>The Default Sort Order and Paginating Results</h1>
+
+<p>Each SMART API call that returns sets of Clinical Statements now have a
+default sort order defined for them based on either the <code>date</code> or
+<code>startDate</code> attribute. The previously defined <code>offset</code> parameter has
+been removed. This requires a change in an app&#39;s pagination strategy to
+use date filters, the <code>limit</code> parameter, and the metadata in the
+<code>ResponseSummary</code> to paginate results.  See
+also <code>resultsReturned</code> and <code>totalResultCount</code> in the <code>ResponseSummary</code>
+object in the next section.</p>
+
 <p>The default behavior of any call is to return all results, if no limit
 is supplied in the request.</p>
 
-<h1>Sorting Results</h1>
-
-<p>When paginating results, a default sort order is applied.  This default presents
-results sorted by date, i.e using the <code>dcterms:date</code> or <code>sp:startDate</code> property.</p>
-
-<p>A future API release is expected to support custom sort orders.</p>
-
 <h1>Response Summary</h1>
 
-<p>To complement the filtering and pagination API, each query response includes a
-<code>spapi:ResponseSummary</code>.  The response summary provides a <code>nextPageURL</code> as well
-as a <code>resultOrder</code> to simplify traversal of results in client code.</p>
-<div class="highlight"><pre><code class="text">[] a spapi:ResponseSummary; 
-smartapi:processingTimeMs: &quot;120&quot;;
-smartapi:nextPageURL: &quot;http://sandbox-api.smartplatforms.org/records/123/medications/1235?limit=10&amp;offset=20&quot;;
-smartapi:resultsReturned: 7;
-smartapi:totalResultCount: 200;
-smartapi:resultOrder (&lt;http://sandbox-api.smartplatforms.org/records/123/medications/1235&gt;,
-&lt;http://sandbox-api.smartplatforms.org/records/123/medications/963&gt;,
-&lt;http://sandbox-api.smartplatforms.org/records/123/medications/8254&gt;,
-&lt;http://sandbox-api.smartplatforms.org/records/123/medications/9732&gt;,
-&lt;http://sandbox-api.smartplatforms.org/records/123/medications/235&gt;,
-&lt;http://sandbox-api.smartplatforms.org/records/123/medications/87342&gt;,
-&lt;http://sandbox-api.smartplatforms.org/records/123/medications/2336&gt;);
-</code></pre></div>
-<h1>More details: Reference Implementation</h1>
-
-<p>The examples below provide background on how we&#39;ve implemented filters in the
-SMART Reference EMR.</p>
-
-<h2>Each parameter decomposes to a rule that can be expressed in SPARQL.</h2>
-
-<h3>Rules for LabResults</h3>
-
-<h4><code>loinc=x|y|z</code> ?</h4>
-<div class="highlight"><pre><code class="text">sp:labName/sp:code ?l. 
-FILTER(
-   ?l = uri(&lt;http://purl.bioontology.org/ontology/LNC/x&gt;) ||
-   ?l = uri(&lt;http://purl.bioontology.org/ontology/LNC/y&gt;) ||
-   ?l = uri(&lt;http://purl.bioontology.org/ontology/LNC/z&gt;)
-)
-</code></pre></div>
-<h4><code>date_from=x</code> ?</h4>
-<div class="highlight"><pre><code class="text">sp:specimenCollected/sp:startDate ?d. 
-FILTER(?d &gt;= x).
-)
-</code></pre></div>
-<h3>Rules for VitalSigns</h3>
-
-<h4><code>encounter_type=x</code>?</h4>
-<div class="highlight"><pre><code class="text">?v sp:encounter/sp:encounterType/sp:code ?c. 
-FILTER(c=uri(&lt;http://smartplatforms.org/terms/codes/EncounterType#x&gt;)
+<p>To complement the filtering and pagination API, each query response
+includes a <code>api:ResponseSummary</code>. e.g.</p>
+<div class="highlight"><pre><code class="text">&lt;rdf:Description rdf:nodeID=&quot;Naa3f4ca7b6024d6ab616aa31fa5ab528&quot;&gt;
+    &lt;api:processingTimeMs rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#integer&quot;&gt;19&lt;/api:processingTimeMs&gt;
+    &lt;rdf:type rdf:resource=&quot;http://smartplatforms.org/terms/api#ResponseSummary&quot;/&gt;
+    &lt;api:resultsReturned rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#integer&quot;&gt;2&lt;/api:resultsReturned&gt;
+    &lt;api:totalResultCount rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#integer&quot;&gt;2&lt;/api:totalResultCount&gt;
+    &lt;api:resultOrder rdf:nodeID=&quot;Nff3cac65263543dfa82450b51355c031&quot;/&gt;
+  &lt;/rdf:Description&gt;
 </code></pre></div>
 
     </div>

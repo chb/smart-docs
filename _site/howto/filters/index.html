@@ -93,30 +93,20 @@
         <h1>SMART API Filters and Pagination <small></small></h1>
       </div>
 
-      <div id='under_construction' class='red_box_thin'>
-    This document is in the process of being updated to
-    SMART v0.6 and will be ready shortly.
-</div>
-
-<h1>Query Filtering and Pagination Tutorial</h1>
+      <h1>Query Filtering and Pagination Tutorial</h1>
 
 <p>Note: Read the filtering and pagination <a href="/reference/filters/">reference</a>
 before reading this tutorial to familiarize youself with the details.</p>
 
-<p>The SMART API now has the ability to return filtered and paginated data for
-two data types: <a href="/reference/data_model/#Lab_Result">lab results</a> and <a href="/reference/data_model/#Vital_Sign_Set">vital
-sign sets</a>. This allows you to
-limit the results returned from these calls instead of the previous
-behavior of returning all of the record&#39;s labs or vitals which in many
-real-world settings could return a large and unwieldy set of data.</p>
-
-<p>Both the SMART REST and SMART Connect APIs expose this functionality, and
-adding filtering and paging to your queries is a simple matter of adding a
-few query parameters to your SMART API calls. By default all results of the
-requested type in the record are returned in the default sort order. In
-addition, a <code>responseSummary</code> object has been added to the results returned
-which provides your callback functions a set of useful metadata that can be
-used to make further calls.</p>
+<p>The SMART API now has the ability to return filtered and paginated data
+for all clinical statement data types. Both the SMART REST and SMART
+Connect APIs expose this functionality, and adding filtering and paging
+to your queries is a simple matter of adding a few query parameters to
+your SMART API calls. By default all results of the requested type in
+the record are returned in the default sort order based on the <code>date</code> or
+<code>startDate</code> attribute of the data. In addition, a <code>responseSummary</code>
+object provides your callback functions a set of useful metadata that
+can be used to make further calls.</p>
 
 <p>We&#39;ll demonstrate this using the SMART Connect JSON-LD API and give an
 brief code sample for the SMART REST Python client as well.</p>
@@ -129,15 +119,16 @@ brief code sample for the SMART REST Python client as well.</p>
 <p>To start let&#39;s set up a query with the following parameters:</p>
 
 <ul>
-<li>Filter the labs to find this patient&#39;s LDL results. LDL&#39;s have three
+<li><p>Filter the labs to find this patient&#39;s LDL results. LDL&#39;s have three
 LOINC codes that differ only in the method used to find the result. We&#39;ll
-make a pipe (|) seperated string of these codes: <code>&quot;13457-7|2089-1|18262-6&quot;</code></li>
-<li>Find the results from 2010-01-01 to 2012-01-01 using the <code>&quot;date_from&quot;</code>
-and <code>&quot;date_to&quot;</code> parameters.</li>
-<li>Lastly, let&#39;s restrict the number of returned results to a &quot;page&quot; 
-of 10 results by setting the <code>limit</code> parameter to <code>10</code> and the
-<code>offset</code> parameter to <code>0</code>. To fetch the next &quot;page&quot; of ten results,
-you would set the <code>offset</code> to <code>10</code> and keep the limit at <code>10</code>.</li>
+make a pipe (|) seperated string of these codes: <code>&quot;13457-7|2089-1|18262-6&quot;</code></p></li>
+<li><p>Find the results from 2010-01-01 to 2012-01-01 using the <code>&quot;date_from&quot;</code>
+and <code>&quot;date_to&quot;</code> parameters.</p></li>
+<li><p>Lastly, let&#39;s restrict the number of returned results to a &quot;page&quot; of
+10 results by setting the <code>limit</code> parameter to <code>10</code>. To fetch the next
+&quot;page&quot; of ten results, your code would update the <code>date_from</code> query
+parameter to the value of the last result returned from the previous
+call and keep the limit at <code>10</code>.</p></li>
 </ul>
 
 <p>The parameters above are passed to the <code>get_lab_results</code> call as
@@ -167,18 +158,6 @@ callback function in the same way as the other API calls:</p>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;nextPageURL&#39;</span><span class="p">,</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">nextPageURL</span><span class="p">);</span>
     <span class="p">})</span>
 </code></pre></div>
-
-<h2>Filtering Vital Sign Sets</h2>
-
-<p>For <code>Vital Sign Sets</code> all of the above parameters are the same except for
-one: instead of being able to filter the results on a set of LOINC codes
-you can filter on the <code>encounter_type</code> with two types supported:
-<code>ambulatory</code> or <code>inpatient</code>.</p>
-
-<h2>Future Work</h2>
-
-<p>We plan on adding filtering and pagination features of more calls in the
-API and adding richer sets of filtering criteria in the future.</p>
 
 
     </div>

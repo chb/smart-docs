@@ -5,113 +5,87 @@ includenav: smartnav.markdown
 ---
 {% include JB/setup %}
 
-<div id='under_construction' class='red_box_thin'>
-    This document is in the process of being updated to
-    SMART v0.6 and will be ready shortly.
-</div>
-
 <div class='simple_box'>
   {% include githublink %}
 </div>
 
 <div id="toc"></div>
 
-# Query filters on "fetch all" calls
-The SMART 0.5 API introduces a basic filtering capability to narrow down result
-sets.  For API calls that return SMART Clinical Statements (e.g. `GET
-/records/xxx/lab_results`), you can attach filters as URL parameters.
+The SMART API offers a basic filtering capability to narrow down large
+clinical statement result sets on the server before returning data to
+the client. As of SMART 0.6, for all API calls that return multiple
+SMART Clinical Statements (e.g. `GET /records/xxx/lab_results`), you can
+attach date filters if relevant to the returned data type, and in a few
+select cases other datatype specific filters (such as LOINC codes on lab
+results) as URL parameters.
 
-Our initial focus is to support the highest-volume data:
-lab results and vital sign sets.
 
-Here's how filtering works.
+# Common Date Filters
 
-##  Filtering Lab Results
-Parameters for `GET /records/xxx/lab_results/`:
+All SMART API calls for clinical statements that have a `date` or
+`startDate` attribute can now be filtered on those attributes by sending
+the following query parameters in the request.
 
-* `date_from`: earliest result to fetch.  e.g. `date_from=2000-05-01`
+Note: even if the data includes an `endDate`, it is not used by any of
+the current filters.
 
-* `date_to`: latest result to fetch.  e.g. `date_to=2012-01-01`
+- `date_from`
+- `date_from_excluding`
+- `date_from_including`
+- `date_to`
+- `date_to_excluding`
+- `date_to_including`
 
-* `loinc`: pipe-separated LOINC codes.  e.g. `loinc=29571-7|38478-4`
 
-## Filtering Vital Sign Sets
-Parameters for `GET /records/xxx/vital_sign_sets`:
+# Statement Specific Filters
 
-* `date_from`: earliest result to fetch.  e.g. `date_from=2000-05-01`
+The following calls have additional filters:
 
-* `date_to`: latest result to fetch.  e.g. `date_to=2012-01-01`
+## [Lab Results](/reference/data_model/#Lab_Result)
 
-* `encounter_type`: pipe-separated encounter types.  e.g. `encounter_type=ambulatory`
+  `loinc`: a pipe-separated LOINC codes. e.g. `loinc=29571-7|38478-4`
 
-# Paginating results
+## [Vital Sign Sets](/reference/data_model/#Vital_Sign_Set)
 
-Along with the filters described above, each "fetch all" call can now return
-paginated results. Just attach `limit=` and `offset=` parameters to a query.
-For instance, to fetch the first page of twenty results, you could add:
+  `encounter_type`: pipe-separated encounter types. e.g. `encounter_type=ambulatory`
 
-```
-limit=20&offset=0
-```
+## [Medications](/reference/data_model/#Medication)
+
+  `rxnorm`: a pipe-separated list of RXNORM codes. e.g. `rxnorm=856845`
+
+## [Problems](/reference/data_model/#Problem)
+
+  `snomed`: a pipe-seperated list of SNOMED codes. e.g. `snomed=161891005i`
+
+## [Procedures](/reference/data_model/#Procedure)
+
+  `snomed`: a pipe-seperated list of SNOMED codes. e.g. `snomed=161891005`
+
+
+# The Default Sort Order and Paginating Results
+
+Each SMART API call that returns sets of Clinical Statements now have a
+default sort order defined for them based on either the `date` or
+`startDate` attribute. The previously defined `offset` parameter has
+been removed. This requires a change in an app's pagination strategy to
+use date filters, the `limit` parameter, and the metadata in the
+`ResponseSummary` to paginate results.  See
+also `resultsReturned` and `totalResultCount` in the `ResponseSummary`
+object in the next section.
 
 The default behavior of any call is to return all results, if no limit
 is supplied in the request.
 
-# Sorting Results
-When paginating results, a default sort order is applied.  This default presents
-results sorted by date, i.e using the `dcterms:date` or `sp:startDate` property.
-
-A future API release is expected to support custom sort orders.
 
 # Response Summary
-To complement the filtering and pagination API, each query response includes a
-`spapi:ResponseSummary`.  The response summary provides a `nextPageURL` as well
-as a `resultOrder` to simplify traversal of results in client code.
 
-```
-[] a spapi:ResponseSummary; 
-smartapi:processingTimeMs: "120";
-smartapi:nextPageURL: "http://sandbox-api.smartplatforms.org/records/123/medications/1235?limit=10&offset=20";
-smartapi:resultsReturned: 7;
-smartapi:totalResultCount: 200;
-smartapi:resultOrder (<http://sandbox-api.smartplatforms.org/records/123/medications/1235>,
-<http://sandbox-api.smartplatforms.org/records/123/medications/963>,
-<http://sandbox-api.smartplatforms.org/records/123/medications/8254>,
-<http://sandbox-api.smartplatforms.org/records/123/medications/9732>,
-<http://sandbox-api.smartplatforms.org/records/123/medications/235>,
-<http://sandbox-api.smartplatforms.org/records/123/medications/87342>,
-<http://sandbox-api.smartplatforms.org/records/123/medications/2336>);
-```
+To complement the filtering and pagination API, each query response
+includes a `api:ResponseSummary`. e.g.
 
-# More details: Reference Implementation
-
-The examples below provide background on how we've implemented filters in the
-SMART Reference EMR.
-
-## Each parameter decomposes to a rule that can be expressed in SPARQL. 
-
-### Rules for LabResults
-
-#### `loinc=x|y|z` ? 
-```
-sp:labName/sp:code ?l. 
-FILTER(
-   ?l = uri(<http://purl.bioontology.org/ontology/LNC/x>) ||
-   ?l = uri(<http://purl.bioontology.org/ontology/LNC/y>) ||
-   ?l = uri(<http://purl.bioontology.org/ontology/LNC/z>)
-)
-```
-#### `date_from=x` ? 
-```
-sp:specimenCollected/sp:startDate ?d. 
-FILTER(?d >= x).
-)
-```
-
-### Rules for VitalSigns
-
-#### `encounter_type=x`?
-```
-?v sp:encounter/sp:encounterType/sp:code ?c. 
-FILTER(c=uri(<http://smartplatforms.org/terms/codes/EncounterType#x>)
-```
+    <rdf:Description rdf:nodeID="Naa3f4ca7b6024d6ab616aa31fa5ab528">
+        <api:processingTimeMs rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</api:processingTimeMs>
+        <rdf:type rdf:resource="http://smartplatforms.org/terms/api#ResponseSummary"/>
+        <api:resultsReturned rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</api:resultsReturned>
+        <api:totalResultCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</api:totalResultCount>
+        <api:resultOrder rdf:nodeID="Nff3cac65263543dfa82450b51355c031"/>
+      </rdf:Description>

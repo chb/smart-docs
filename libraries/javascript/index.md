@@ -252,11 +252,11 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to_excluding": null, 
-        "date_to_including": null, 
-        "date_from_including": null, 
         "date_to": null, 
-        "limit": null</code></pre>
+        "date_from_including": null, 
+        "date_to_including": null, 
+        "limit": null, 
+        "date_to_excluding": null</code></pre>
 
 
 ## `get_allergy`
@@ -294,10 +294,10 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
+        "date_to_excluding": null, 
         "limit": null, 
         "date_from_including": null, 
-        "date_to_excluding": null, 
+        "date_to": null, 
         "date_to_including": null</code></pre>
 
 
@@ -377,10 +377,10 @@ Putting all of this together we get the following code example:
         "date_from_excluding": null, 
         "date_from": null, 
         "date_to": null, 
-        "date_to_including": null, 
-        "date_from_including": null, 
+        "limit": null, 
         "date_to_excluding": null, 
-        "limit": null</code></pre>
+        "date_from_including": null, 
+        "date_to_including": null</code></pre>
 
 
 ## `get_immunization`
@@ -397,10 +397,10 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
+        "date_to_excluding": null, 
         "date_to_including": null, 
         "date_from_including": null, 
-        "date_to_excluding": null, 
+        "date_to": null, 
         "limit": null</code></pre>
 
 
@@ -435,29 +435,10 @@ Putting all of this together we get the following code example:
         "date_from_excluding": null, 
         "date_from": null, 
         "date_to": null, 
-        "limit": null, 
+        "date_to_including": null, 
         "date_from_including": null, 
         "date_to_excluding": null, 
-        "date_to_including": null</code></pre>
-
-
-## `get_medical_image`
-
-- method: GET
-- path: `/records/{record_id}/medical_images/{medical_image_id}`
-  - optional query parameters (with defaults):
-      <br><pre><code>
-        "format": null</code></pre>
-
-
-## `get_medical_images`
-
-- method: GET
-- path: `/records/{record_id}/medical_images/`
-  - optional query parameters (with defaults):
-      <br><pre><code>
-        "limit": null, 
-        "format": null</code></pre>
+        "limit": null</code></pre>
 
 
 ## `get_medication`
@@ -472,13 +453,13 @@ Putting all of this together we get the following code example:
 - path: `/records/{record_id}/medications/`
   - optional query parameters (with defaults):
       <br><pre><code>
+        "date_to": null, 
         "date_from_excluding": null, 
         "date_from": null, 
         "date_to_excluding": null, 
-        "limit": null, 
-        "date_to": null, 
         "date_from_including": null, 
         "date_to_including": null, 
+        "limit": null, 
         "rxnorm": null</code></pre>
 
 
@@ -508,11 +489,11 @@ Putting all of this together we get the following code example:
       <br><pre><code>
         "date_from_excluding": null, 
         "date_from": null, 
-        "date_to": null, 
+        "date_to_excluding": null, 
         "date_to_including": null, 
         "date_from_including": null, 
         "snomed": null, 
-        "date_to_excluding": null, 
+        "date_to": null, 
         "limit": null</code></pre>
 
 
@@ -578,9 +559,9 @@ Putting all of this together we get the following code example:
         "date_from": null, 
         "date_to_excluding": null, 
         "date_to_including": null, 
+        "limit": null, 
         "date_from_including": null, 
         "date_to": null, 
-        "limit": null, 
         "encounter_type": null</code></pre>
 
 

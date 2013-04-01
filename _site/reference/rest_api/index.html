@@ -191,16 +191,16 @@ read another&#39;s preferences or add a &quot;global&quot; set of user preferenc
 <h2>App Manifest</h2>
 
 <ul>
-<li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
-<li>Client method name:<code> get_app_manifest </code></li>
-</ul>
-
-<p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins <br><br>
-<ul>
 <li>URI:<code> GET /apps/manifests/ </code></li>
 <li>Client method name:<code> get_app_manifests </code></li>
 </ul>
-Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
+
+<p>Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
+<ul>
+<li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
+<li>Client method name:<code> get_app_manifest </code></li>
+</ul>
+Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins <br><br>
 <a href="../data_model/#App_Manifest">App Manifest RDF</a></p>
 
 <h2>ContainerManifest</h2>
@@ -237,16 +237,16 @@ Returns a JSON list of all SMART UI app manifests installed on the container. <b
 <h2>User</h2>
 
 <ul>
-<li>URI:<code> GET /users/search </code></li>
-<li>Client method name:<code> search_users </code></li>
-</ul>
-
-<p>Get users by name (or all users if blank) <br><br>
-<ul>
 <li>URI:<code> GET /users/{user_id} </code></li>
 <li>Client method name:<code> get_user </code></li>
 </ul>
-Get a single user by ID <br><br>
+
+<p>Get a single user by ID <br><br>
+<ul>
+<li>URI:<code> GET /users/search </code></li>
+<li>Client method name:<code> search_users </code></li>
+</ul>
+Get users by name (or all users if blank) <br><br>
 <a href="../data_model/#User">User RDF</a></p>
 
 <h1>Record Calls</h1>
@@ -269,16 +269,16 @@ Get one Allergy for a patient <br><br>
 <h2>Clinical Note</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
-<li>Client method name:<code> get_clinical_notes </code></li>
-</ul>
-
-<p>Get all Clinical Notes for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/clinical_notes/{clinical_note_id} </code></li>
 <li>Client method name:<code> get_clinical_note </code></li>
 </ul>
-Get one Clinical Note for a patient <br><br>
+
+<p>Get one Clinical Note for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> get_clinical_notes </code></li>
+</ul>
+Get all Clinical Notes for a patient <br><br>
 <a href="../data_model/#Clinical_Note">Clinical Note RDF</a></p>
 
 <h2>Demographics</h2>
@@ -309,46 +309,46 @@ Get all Documents for a patient <br><br>
 <h2>Encounter</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
-<li>Client method name:<code> get_encounters </code></li>
-</ul>
-
-<p>Get all Encounters for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/encounters/{encounter_id} </code></li>
 <li>Client method name:<code> get_encounter </code></li>
 </ul>
-Get one Encounter for a patient <br><br>
+
+<p>Get one Encounter for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/encounters/ </code></li>
+<li>Client method name:<code> get_encounters </code></li>
+</ul>
+Get all Encounters for a patient <br><br>
 <a href="../data_model/#Encounter">Encounter RDF</a></p>
 
 <h2>Family History Observation</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/family_history/{family_history_id} </code></li>
-<li>Client method name:<code> get_family_history_observation </code></li>
-</ul>
-
-<p>Get one Family History for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/family_history/ </code></li>
 <li>Client method name:<code> get_family_history_observations </code></li>
 </ul>
-Get all Family Histories for a patient <br><br>
+
+<p>Get all Family Histories for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/family_history/{family_history_id} </code></li>
+<li>Client method name:<code> get_family_history_observation </code></li>
+</ul>
+Get one Family History for a patient <br><br>
 <a href="../data_model/#Family_History_Observation">Family History Observation RDF</a></p>
 
 <h2>Fulfillment</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
-<li>Client method name:<code> get_fulfillments </code></li>
-</ul>
-
-<p>Get all Fulfillments for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
 <li>Client method name:<code> get_fulfillment </code></li>
 </ul>
-Get one Fulfillment for a patient <br><br>
+
+<p>Get one Fulfillment for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
+<li>Client method name:<code> get_fulfillments </code></li>
+</ul>
+Get all Fulfillments for a patient <br><br>
 <a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
 
 <h2>Immunization</h2>
@@ -384,31 +384,31 @@ Get one Lab Panel for a patient <br><br>
 <h2>Lab Result</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
-<li>Client method name:<code> get_lab_results </code></li>
-</ul>
-
-<p>Get all Lab Results for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/lab_results/{lab_result_id} </code></li>
 <li>Client method name:<code> get_lab_result </code></li>
 </ul>
-Get one Lab Result for a patient <br><br>
+
+<p>Get one Lab Result for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/lab_results/ </code></li>
+<li>Client method name:<code> get_lab_results </code></li>
+</ul>
+Get all Lab Results for a patient <br><br>
 <a href="../data_model/#Lab_Result">Lab Result RDF</a></p>
 
 <h2>Medical Image</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/medical_images/ </code></li>
-<li>Client method name:<code> get_medical_images </code></li>
-</ul>
-
-<p>Get all Medical Images for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/medical_images/{medical_image_id} </code></li>
 <li>Client method name:<code> get_medical_image </code></li>
 </ul>
-Get one Medical Image for a patient <br><br>
+
+<p>EXPERIMENTAL: Get one Medical Image for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/medical_images/ </code></li>
+<li>Client method name:<code> get_medical_images </code></li>
+</ul>
+EXPERIMENTAL: Get all Medical Images for a patient <br><br>
 <a href="../data_model/#Medical_Image">Medical Image RDF</a></p>
 
 <h2>Medication</h2>
@@ -439,16 +439,16 @@ Get all Medications for a patient <br><br>
 <h2>Problem</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/problems/ </code></li>
-<li>Client method name:<code> get_problems </code></li>
-</ul>
-
-<p>Get all Problems for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
 <li>Client method name:<code> get_problem </code></li>
 </ul>
-Get one Problem for a patient <br><br>
+
+<p>Get one Problem for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/problems/ </code></li>
+<li>Client method name:<code> get_problems </code></li>
+</ul>
+Get all Problems for a patient <br><br>
 <a href="../data_model/#Problem">Problem RDF</a></p>
 
 <h2>Procedure</h2>
@@ -489,16 +489,16 @@ Get one Procedure for a patient <br><br>
 <h2>Vital Sign Set</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
-<li>Client method name:<code> get_vital_sign_sets </code></li>
-</ul>
-
-<p>Get all Vital Sign Sets for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
 <li>Client method name:<code> get_vital_sign_set </code></li>
 </ul>
-Get one Vital Sign Set for a patient <br><br>
+
+<p>Get one Vital Sign Set for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
+<li>Client method name:<code> get_vital_sign_sets </code></li>
+</ul>
+Get all Vital Sign Sets for a patient <br><br>
 <a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
 
 <h1>User Calls</h1>

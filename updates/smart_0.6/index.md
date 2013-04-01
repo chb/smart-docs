@@ -43,6 +43,9 @@ a head shot of the patient.
 
 ### Medical Images
 
+<span style='color:red'>EXPERIMENTAL: This data model and API
+should be considered experimental as of v0.6</span>
+
 The [Medical Images API][] returns DICOM-encoded studies about the patient (CT scans,
 x-rays, echographs, etc). In addition to the fields returned by the document model,
 this data model also returns the fields study title, study type, and study date.

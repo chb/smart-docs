@@ -51,7 +51,7 @@ We have to use [Django 1.3][django] for now. You will see a lot of warnings from
 
     $ sudo easy_install django==1.3.2
     $ sudo easy_install lxml, psycopg2
-    $ sudo easy_install -U rdflib rdfextras jsonschema
+    $ sudo easy_install -U rdflib rdfextras jsonschema httplib2
 
 At the time of this writing, this will install Django `1.3.2`, lxml `3.1.0`, psycopg `2.4.6`, rdflib `3.4.0`, rdfextras `0.4` and jsonschema `1.1`. Those versions all work well, if you are having trouble with newer versions you want to specify which version to install.
 

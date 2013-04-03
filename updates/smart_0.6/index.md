@@ -18,8 +18,11 @@ OAuth tokens and performing REST calls is now able to exchange data with a SMART
 container. This opens the door for native app development in general and mobile 
 apps in particular.
 
-To help kickstart native mobile apps we have created an iOS framework for app 
-developers, its Android counterpart is coming soon.
+To help kickstart native mobile apps we have created an [iOS
+framework][] for app developers, its Android counterpart is coming soon.
+
+[iOS framework]: https://github.com/chb/SMARTFramework-ios
+
 
 ## Documents API
 

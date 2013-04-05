@@ -257,7 +257,7 @@ def wiki_api_for_type(t, calls_for_t):
 
     last_description = ""
     for call in calls_for_t:
-        if (str(call.http_method) != "GET"): continue # Document only the GET calls for now!
+        #if (str(call.http_method) != "GET"): continue # Document only the GET calls for now!
 
         print "<ul>"
         print "<li>URI:<code>", strip_smart(str(call.http_method)), str(call.path), "</code></li>"

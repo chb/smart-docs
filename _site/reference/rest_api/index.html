@@ -59,6 +59,7 @@
 
     <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
     <li><a href="/libraries/python">Python</a></li>
+    <li><a href="https://github.com/chb/SMARTFramework-ios">iOS</a></li>
     <li><a href="/libraries/java">Java</a></li>
     <li><a href="/libraries/dotnet">.NET</a></li>
     <li><a href="/libraries/container_javascript">Container-side Javascript</a></li>
@@ -191,16 +192,16 @@ read another&#39;s preferences or add a &quot;global&quot; set of user preferenc
 <h2>App Manifest</h2>
 
 <ul>
-<li>URI:<code> GET /apps/manifests/ </code></li>
-<li>Client method name:<code> get_app_manifests </code></li>
-</ul>
-
-<p>Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
-<ul>
 <li>URI:<code> GET /apps/{descriptor}/manifest </code></li>
 <li>Client method name:<code> get_app_manifest </code></li>
 </ul>
-Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins <br><br>
+
+<p>Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like &quot;got-statins <br><br>
+<ul>
+<li>URI:<code> GET /apps/manifests/ </code></li>
+<li>Client method name:<code> get_app_manifests </code></li>
+</ul>
+Returns a JSON list of all SMART UI app manifests installed on the container. <br><br>
 <a href="../data_model/#App_Manifest">App Manifest RDF</a></p>
 
 <h2>ContainerManifest</h2>
@@ -237,16 +238,16 @@ Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404. 
 <h2>User</h2>
 
 <ul>
-<li>URI:<code> GET /users/search </code></li>
-<li>Client method name:<code> search_users </code></li>
-</ul>
-
-<p>Get users by name (or all users if blank) <br><br>
-<ul>
 <li>URI:<code> GET /users/{user_id} </code></li>
 <li>Client method name:<code> get_user </code></li>
 </ul>
-Get a single user by ID <br><br>
+
+<p>Get a single user by ID <br><br>
+<ul>
+<li>URI:<code> GET /users/search </code></li>
+<li>Client method name:<code> search_users </code></li>
+</ul>
+Get users by name (or all users if blank) <br><br>
 <a href="../data_model/#User">User RDF</a></p>
 
 <h1>Record Calls</h1>
@@ -254,16 +255,16 @@ Get a single user by ID <br><br>
 <h2>Allergy</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/allergies/ </code></li>
-<li>Client method name:<code> get_allergies </code></li>
-</ul>
-
-<p>Get all Allergies and Allergy Exclusions for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/allergies/{allergy_id} </code></li>
 <li>Client method name:<code> get_allergy </code></li>
 </ul>
-Get one Allergy for a patient <br><br>
+
+<p>Get one Allergy for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/allergies/ </code></li>
+<li>Client method name:<code> get_allergies </code></li>
+</ul>
+Get all Allergies and Allergy Exclusions for a patient <br><br>
 <a href="../data_model/#Allergy">Allergy RDF</a></p>
 
 <h2>Clinical Note</h2>
@@ -274,6 +275,11 @@ Get one Allergy for a patient <br><br>
 </ul>
 
 <p>Get one Clinical Note for a patient <br><br>
+<ul>
+<li>URI:<code> POST /records/{record_id}/clinical_notes/ </code></li>
+<li>Client method name:<code> post_clinical_note </code></li>
+</ul>
+Post a Clinical Note for a patient <br><br>
 <ul>
 <li>URI:<code> GET /records/{record_id}/clinical_notes/ </code></li>
 <li>Client method name:<code> get_clinical_notes </code></li>
@@ -324,46 +330,46 @@ Get one Encounter for a patient <br><br>
 <h2>Family History Observation</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/family_history/ </code></li>
-<li>Client method name:<code> get_family_history_observations </code></li>
-</ul>
-
-<p>Get all Family Histories for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/family_history/{family_history_id} </code></li>
 <li>Client method name:<code> get_family_history_observation </code></li>
 </ul>
-Get one Family History for a patient <br><br>
+
+<p>Get one Family History for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/family_history/ </code></li>
+<li>Client method name:<code> get_family_history_observations </code></li>
+</ul>
+Get all Family Histories for a patient <br><br>
 <a href="../data_model/#Family_History_Observation">Family History Observation RDF</a></p>
 
 <h2>Fulfillment</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
-<li>Client method name:<code> get_fulfillments </code></li>
-</ul>
-
-<p>Get all Fulfillments for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/fulfillments/{fulfillment_id} </code></li>
 <li>Client method name:<code> get_fulfillment </code></li>
 </ul>
-Get one Fulfillment for a patient <br><br>
+
+<p>Get one Fulfillment for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/fulfillments/ </code></li>
+<li>Client method name:<code> get_fulfillments </code></li>
+</ul>
+Get all Fulfillments for a patient <br><br>
 <a href="../data_model/#Fulfillment">Fulfillment RDF</a></p>
 
 <h2>Immunization</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
-<li>Client method name:<code> get_immunizations </code></li>
-</ul>
-
-<p>Get all Immunizations for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/immunizations/{immunization_id} </code></li>
 <li>Client method name:<code> get_immunization </code></li>
 </ul>
-Get one Immunization for a patient <br><br>
+
+<p>Get one Immunization for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/immunizations/ </code></li>
+<li>Client method name:<code> get_immunizations </code></li>
+</ul>
+Get all Immunizations for a patient <br><br>
 <a href="../data_model/#Immunization">Immunization RDF</a></p>
 
 <h2>Lab Panel</h2>
@@ -399,16 +405,16 @@ Get one Lab Result for a patient <br><br>
 <h2>Medication</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/medications/ </code></li>
-<li>Client method name:<code> get_medications </code></li>
-</ul>
-
-<p>Get all Medications for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/medications/{medication_id} </code></li>
 <li>Client method name:<code> get_medication </code></li>
 </ul>
-Get one Medication for a patient <br><br>
+
+<p>Get one Medication for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/medications/ </code></li>
+<li>Client method name:<code> get_medications </code></li>
+</ul>
+Get all Medications for a patient <br><br>
 <a href="../data_model/#Medication">Medication RDF</a></p>
 
 <h2>Photograph</h2>
@@ -424,16 +430,16 @@ Get one Medication for a patient <br><br>
 <h2>Problem</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
-<li>Client method name:<code> get_problem </code></li>
-</ul>
-
-<p>Get one Problem for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/problems/ </code></li>
 <li>Client method name:<code> get_problems </code></li>
 </ul>
-Get all Problems for a patient <br><br>
+
+<p>Get all Problems for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/problems/{problem_id} </code></li>
+<li>Client method name:<code> get_problem </code></li>
+</ul>
+Get one Problem for a patient <br><br>
 <a href="../data_model/#Problem">Problem RDF</a></p>
 
 <h2>Procedure</h2>
@@ -454,11 +460,21 @@ Get all Procedures for a patient <br><br>
 <h2>Scratchpad Data</h2>
 
 <ul>
+<li>URI:<code> PUT /records/{record_id}/apps/{smart_app_id}/scratchpad </code></li>
+<li>Client method name:<code> put_scratchpad_data </code></li>
+</ul>
+
+<p>Set new scratchpad data for an app <br><br>
+<ul>
+<li>URI:<code> DELETE /records/{record_id}/apps/{smart_app_id}/scratchpad </code></li>
+<li>Client method name:<code> delete_scratchpad_data </code></li>
+</ul>
+Delete scratchpad data for an app <br><br>
+<ul>
 <li>URI:<code> GET /records/{record_id}/apps/{smart_app_id}/scratchpad </code></li>
 <li>Client method name:<code> get_scratchpad_data </code></li>
 </ul>
-
-<p>Get scratchpad data for an app <br><br>
+Get scratchpad data for an app <br><br>
 <a href="../data_model/#Scratchpad_Data">Scratchpad Data RDF</a></p>
 
 <h2>Social History</h2>
@@ -474,16 +490,16 @@ Get all Procedures for a patient <br><br>
 <h2>Vital Sign Set</h2>
 
 <ul>
-<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
-<li>Client method name:<code> get_vital_sign_set </code></li>
-</ul>
-
-<p>Get one Vital Sign Set for a patient <br><br>
-<ul>
 <li>URI:<code> GET /records/{record_id}/vital_sign_sets/ </code></li>
 <li>Client method name:<code> get_vital_sign_sets </code></li>
 </ul>
-Get all Vital Sign Sets for a patient <br><br>
+
+<p>Get all Vital Sign Sets for a patient <br><br>
+<ul>
+<li>URI:<code> GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id} </code></li>
+<li>Client method name:<code> get_vital_sign_set </code></li>
+</ul>
+Get one Vital Sign Set for a patient <br><br>
 <a href="../data_model/#Vital_Sign_Set">Vital Sign Set RDF</a></p>
 
 <h1>User Calls</h1>
@@ -496,6 +512,16 @@ Get all Vital Sign Sets for a patient <br><br>
 </ul>
 
 <p>Get user preferences for an app <br><br>
+<ul>
+<li>URI:<code> DELETE /users/{user_id}/apps/{smart_app_id}/preferences </code></li>
+<li>Client method name:<code> delete_user_preferences </code></li>
+</ul>
+Delete user preferences for an app <br><br>
+<ul>
+<li>URI:<code> PUT /users/{user_id}/apps/{smart_app_id}/preferences </code></li>
+<li>Client method name:<code> put_user_preferences </code></li>
+</ul>
+Set new user preferences for an app <br><br>
 <a href="../data_model/#User_Preferences">User Preferences RDF</a></p>
 
 

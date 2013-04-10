@@ -180,3 +180,15 @@ All REST calls to the SMART container can now be signed with the access token:
 
 As a final note, please use an existing OAuth library for your project instead
 of rolling your own!
+
+
+### Debugging OAuth problems ###
+
+If you succeed in getting an access token, but the server subsequently rejects
+your signed requests, use our debug endpoint to get more information about what
+is going wrong with your request.
+
+Send a signed request to:
+
+    http://sandbox-api-v06.smartplatforms.org/oauth/debug
+

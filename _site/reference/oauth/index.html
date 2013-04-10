@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Working with OAuth against a SMART Container</title>
+    
+    <meta name="author" content="SMART Platforms">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/twitter-2.0/css/pygments.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter-2.0/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+      <div class="content">
+        
+
+<section id="jekyll-page">
+  <div class="row">
+
+    <div class="span4">
+      <a href="/">
+        <img id='smart_top_logo' src="/images/smart.png"/>
+      </a>
+      
+        <div id="left_nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">Tutorials</li>
+    <li><a href="/howto/build_a_smart_app">Build a SMART App</a></li>
+    <li><a href="/howto/build_a_rest_app">Build a SMART REST App</a></li>
+    <li><a href="/howto/build_smart_frame_ui_apps">Frame UI Apps</a></li>
+    <li><a href="/howto/got_statins">Got Statins? App</a></li>
+
+    <li class="nav-header">Using SMART Data</li>
+
+    <li><a href="/howto/intro_to_rdf">Intro to RDF and SPARQL</a></li>
+    <li><a href="/howto/sparql_examples">SPARQL Examples for SMART</a></li>
+    <li><a href="/howto/intro_to_jsonld">Intro to the JSON-LD API</a></li>
+    <li><a href="/howto/filters">Query Filtering and Pagination</a></li>
+    <li><a href="/howto/deferred">$.Deferred for Parallel Queries</a></li>
+    <li><a href="/howto/smart_data">SMART Data: Best Practices</a></li>
+
+    <li class="nav-header">Reference</li>
+
+    <li><a href="/reference/data_model">Data Model</a></li>
+    <li><a href="/reference/rest_api">REST API</a></li>
+    <li><a href="/reference/filters">Query Filters</a></li>
+    <li><a href="/reference/app_manifest">App Manifest</a></li>
+    <li><a href="/reference/oauth">OAuth</a></li>
+
+    <li class="nav-header">Client Libraries</li>
+
+    <li><a href="/libraries/javascript">Javascript (SMART Connect)</a></li>
+    <li><a href="/libraries/python">Python</a></li>
+    <li><a href="https://github.com/chb/SMARTFramework-ios">iOS</a></li>
+    <li><a href="/libraries/java">Java</a></li>
+    <li><a href="/libraries/dotnet">.NET</a></li>
+    <li><a href="/libraries/container_javascript">Container-side Javascript</a></li>
+
+    <li class="nav-header">SMART Update Guides</li>
+
+    <li><a href="/updates/smart_0.6/">0.6 Apps + Containers</a></li>
+    <li><a href="/updates/smart_0.5/">0.5 Apps + Containers</a></li>
+    <li><a href="/updates/smart_0.4/app">0.4 Apps</a></li>
+    <li><a href="/updates/smart_0.4/container">0.4 Containers</a></li>
+
+    <li class="nav-header">Reference EMR Installation</li>
+
+    <li><a href="/install/linux">Ubuntu Linux</a></li>
+    <li><a href="/install/os_x">OS X</a></li>
+
+    <li class="nav-header">Presentations</li>
+
+    <li><a href="http://www.slideshare.net/jmandel/2010-0826smartarchitecture">Architecture (2010-08)</a></li>
+    <li><a href="http://www.slideshare.net/jmandel/2010-08-26-smart-governance">Governance (2010-08)</a></li>
+
+    <li class="nav-header">Downloads</li>
+    <li><a href="/downloads/">Download Source + VM</a></li>
+  </ul>
+</div>
+
+      
+    </div>
+
+    <div class="span8" id="jekyll-page-content">
+      <div class="page-header">
+        <h1>Working with OAuth against a SMART Container <small></small></h1>
+      </div>
+
+      <div id="toc"></div>
+
+<div class='simple_small_box'>Help us improve! You can correct errors or add to this page by clicking
+<a class='githublink' href=''>here</a> to edit this page on Github.
+</div>
+
+<h1>SMART OAuth</h1>
+
+<h2>Prerequisites</h2>
+
+<h3>App</h3>
+
+<p>Any SMART app needs to be registered on the SMART container it wants to interact
+with. The app chooses an <code>app-id</code> (usually in email format) and the server
+assigns a <code>consumer_key</code> (usually the same as the app-id) and a <code>consumer_secret</code>.</p>
+
+<p>In order to launch the app, it needs to provide an <code>index</code> URL in the manifest.
+Opening this URL, with appended parameters <code>record_id</code> and <code>api_base</code> (explained
+below), provides your app with all the information it needs to get started.</p>
+
+<h3>Server</h3>
+
+<p>Every SMART server exposes these URLs:</p>
+
+<ul>
+<li><p><code>/apps/{app-id}/launch</code><br>
+The launch page for any app with the goal of returning a record-id to the app.
+This page usually displays a list of records after the user logs in, selecting
+a record loads the app&#39;s <code>index</code> URL.</p></li>
+<li><p><code>/oauth/request_token</code><br>
+Returns a request token if the app&#39;s consumer-key and -secret are valid</p></li>
+<li><p><code>/oauth/authorize</code>
+Authorizes the request token if the user agrees that the app may access the
+data for this record. Returns a verifier to the app&#39;s callback url.</p></li>
+<li><p><code>/oauth/access_token</code><br>
+Returns an access token if the verifier is valid</p></li>
+</ul>
+
+<h2>Authentication Flow</h2>
+
+<h3>1. Launching an app</h3>
+
+<p>SMART access tokens are scoped to a specific record, thus an app must supply a
+record-id when requesting a token. An app however has no permissions to get a
+list of record-ids, which is why the container launches your app&#39;s <code>index</code> URL
+with appended <code>record_id</code> and <code>api_base</code> parameters:</p>
+<div class="highlight"><pre><code class="text">http://www.myapp.com/go.py?record_id={record-id}&amp;api_base={api-base}
+</code></pre></div>
+<p>The app can now extract the record-id and the REST server URL. The latter can be
+used to retrieve the OAuth endpoints by requesting the manifest from the server:</p>
+<div class="highlight"><pre><code class="text">GET {api-base}/manifest
+</code></pre></div>
+<p>A JSON file is returned which contains the URLs we&#39;re interested in:</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;version&quot;: &quot;0.4&quot;, 
+    …
+    &quot;launch_urls&quot; : {
+        &quot;request_token_url&quot;: &quot;http://localhost:7000/oauth/request_token&quot;, 
+        &quot;authorize_token_url&quot;: &quot;http://localhost:7001/oauth/authorize&quot;, 
+        &quot;exchange_token_url&quot;: &quot;http://localhost:7000/oauth/access_token&quot;
+    }
+}
+</code></pre></div>
+<h4>Selecting a record</h4>
+
+<p>If your app is not being launched from a container UI and thus does not have a
+record-id, your app can load a launch page located at <code>/apps/{app-id}/launch</code> in
+a browser (or embedded web-view). Usually, the server displays a list of
+available records at that URL after the user has logged in.</p>
+
+<h3>2. Requesting a request token</h3>
+
+<p>Armed with the record-id and the server URLs, the app can now start the OAuth
+dance and request a request token by issuing a <strong>POST</strong> request to the
+<code>request_token_url</code>:</p>
+<div class="highlight"><pre><code class="text">POST /oauth/request_token
+</code></pre></div>
+<p>The standard OAuth parameters, with the callback url (<code>oauth_callback</code>) set to
+<code>oob</code> since it is defined in the app manifest, should go into the
+<strong>Authorization</strong> header. The record-id must be provided as an additional header
+parameter called <code>smart_record_id</code>.</p>
+<div class="highlight"><pre><code class="text">oauth_callback=oob
+oauth_consumer_key={consumer-key}
+oauth_nonce={oauth:nonce}
+oauth_signature_method=HMAC-SHA1
+oauth_timestamp={oauth:timestamp}
+oauth_version=1.0
+oauth_signature={oauth:signature}
+smart_record_id={record-id}
+</code></pre></div>
+<p>If the call was successful, an HTTP status code <code>200</code> is returned and the
+response body will contain the token:</p>
+<div class="highlight"><pre><code class="text">oauth_token={req-token}&amp;
+oauth_token_secret={req-secret}&amp;
+oauth_callback_confirmed=true
+</code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> <code>oauth_callback_confirmed</code> is currently NOT returned from our
+reference container, but according to <a href="http://tools.ietf.org/html/rfc5849#section-2.1">section 2.1</a>
+it must be present.</p>
+</blockquote>
+
+<p>Otherwise, an HTTP <code>403</code> status code is returned.</p>
+
+<h3>3. Authorizing the token</h3>
+
+<p>The request token needs to be authorized by the user. To do so the app loads the
+<code>authorize_token_url</code> URL in the browser (or embedded web-view):</p>
+<div class="highlight"><pre><code class="text">GET /oauth/authorize?oauth_token={req-token}
+</code></pre></div>
+<p>If the user has used this app before, in conjunction with the current record-id,
+the container may silently approve the token. If not, a UI should be displayed
+asking the user for permission. If permission is granted, the container
+redirects the browser to the URL provided as <code>oauth_callback</code> in the app
+manifest, adding the verifier:</p>
+<div class="highlight"><pre><code class="text">{callback-url}?oauth_token={req-token}&amp;oauth_verifier={verifier}
+</code></pre></div>
+<h3>4. Getting an access token</h3>
+
+<p>The request token and verifier can now be traded for an access token. This is
+achieved by issuing a POST call to the <code>exchange_token_url</code>:</p>
+<div class="highlight"><pre><code class="text">POST /oauth/access_token
+</code></pre></div>
+<p>Including the complete set of OAuth parameters in the <strong>Authorization</strong> header:</p>
+<div class="highlight"><pre><code class="text">oauth_consumer_key={consumer-key}
+oauth_nonce={oauth:nonce}
+oauth_signature_method=HMAC-SHA1
+oauth_timestamp={oauth:timestamp}
+oauth_token={req-token}
+oauth_verifier={verifier}
+oauth_version=1.0
+oauth_signature={oauth:signature}
+</code></pre></div>
+<p>If the call was successful, an HTTP status code <code>200</code> is returned and the access
+token with secret, the record-id and the user-id can be found in the body:</p>
+<div class="highlight"><pre><code class="text">oauth_token={acc-token}&amp;
+oauth_token_secret={acc-secret}&amp;
+record_id={record-id}&amp;
+user_id={user-id}
+</code></pre></div>
+<p>If the token was not granted, the status code will be <code>403</code>.</p>
+
+<h3>5. Requesting data</h3>
+
+<p>All REST calls to the SMART container can now be signed with the access token:</p>
+<div class="highlight"><pre><code class="text">oauth_consumer_key={consumer-key}
+oauth_nonce={oauth:nonce}
+oauth_signature_method=HMAC-SHA1
+oauth_timestamp={oauth:timestamp}
+oauth_token={acc-token}
+oauth_version=1.0
+oauth_signature={oauth:signature}
+</code></pre></div>
+<p>As a final note, please use an existing OAuth library for your project instead
+of rolling your own!</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+      </div>
+
+      <footer>
+        <div>
+          <a href='http://smartplatforms.org'>SMART Platforms</a> &copy; 2013
+        </div>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter-2.0/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/twitter-2.0/js/bootstrap_aks.js"></script>
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33617191-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>Toc.init($("#jekyll-page-content"), $("#toc"));</script>
+  </body>
+</html>
+

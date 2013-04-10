@@ -151,7 +151,7 @@ endpoint and the [standard OAuth 1.0 endpoints][oauth].
 
 ### The new user endpoint is:
 
-    /apps/{{app_id}}/launch
+    /apps/{app-id}/launch
 
 The purpose of this web page is to allow the user to select a record against 
 which to run the SMART app. Whether you display a list of records available 
@@ -190,7 +190,7 @@ top-level key `launch_urls`, for example:
 
 ```
 "launch_urls": {
-    "app_launch": "https://smart.emr.com/apps/{{app_id}}/launch", 
+    "app_launch": "https://smart.emr.com/apps/{app-id}/launch", 
     "authorize_token": "https://smart.emr.com/oauth/authorize", 
     "exchange_token": "https://smart.emr.com/oauth/access_token", 
     "request_token": "https://smart.emr.com/oauth/request_token"

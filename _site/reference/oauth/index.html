@@ -251,6 +251,15 @@ oauth_signature={oauth:signature}
 <p>As a final note, please use an existing OAuth library for your project instead
 of rolling your own!</p>
 
+<h3>Debugging OAuth problems</h3>
+
+<p>If you succeed in getting an access token, but the server subsequently rejects
+your signed requests, use our debug endpoint to get more information about what
+is going wrong with your request.</p>
+
+<p>Send a signed request to:</p>
+<div class="highlight"><pre><code class="text">http://sandbox-api-v06.smartplatforms.org/oauth/debug
+</code></pre></div>
 
     </div>
   </div>

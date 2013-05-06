@@ -315,15 +315,6 @@ details, see App Manifest Documentation.
 {% endhighlight  %}
 
 
-## A "working" example
-
-Here's a complete example of a SMART Container. This container implements only
-one API call: (`GET medications`), and displays an alert if the contained app
-attempts to call any other function.
-
-You can view the example live at [1] -- and be sure to view the source code!
-
-
 ## Some manifests online
 
 If you're building a container, here are some manifests you can try loading to

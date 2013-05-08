@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Updating Your SMART REST App</title>
+    <title>SMART Preferences and Scratchpad APIs</title>
     
     <meta name="author" content="SMART Platforms">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -93,90 +93,55 @@
 
     <div class="span8" id="jekyll-page-content">
       <div class="page-header">
-        <h1>Updating Your SMART REST App <small></small></h1>
+        <h1>SMART Preferences and Scratchpad APIs <small></small></h1>
       </div>
 
-      <div id="toc"> </div>
-
-<div class='simple_small_box'>Help us improve! You can correct errors or add to this page by clicking
+      <div class='simple_box'>
+  Help us improve! You can correct errors or add to this page by clicking
 <a class='githublink' href=''>here</a> to edit this page on Github.
+
 </div>
 
-<p>SMART v0.6 introduces significant changes to SMART REST app
-authentication and authorization. SMART Containers now implement the
-standard <a href="http://tools.ietf.org/html/rfc5849">OAuth</a> 1.0a authentication delegation protocol. This change
-allows for app developers to use more standardized tools to connect to
-SMART containers and the creation of native client libraries including
-mobile clients.</p>
+<div id="toc"></div>
 
-<p>You should first read the <a href="../../">Main Page</a> and
-<a href="../build_a_smart_rest_app">HOWTO Build a SMART REST App</a>.</p>
+<p>The SMART preferences and scratchpad APIs provide a facility that SMART apps
+can use to persist data about the application and user preferences, notes about
+the patient record, and other pertinant data. While the two APIs are similar,
+they have diferent intent and therefore a different scope. In both instances,
+SMART does not mandate a speific format for the data stored, only that it can be
+serialized in unicode. Each app is responsible for choosing an appropriate
+serialization format for its data.</p>
 
-<hr>
+<h2>Preferences API</h2>
 
-<h2>Getting Started</h2>
+<p>The preferences API provides a way for your app to store data within
+the SMART container automatically scoped on per user and app basis. The
+data can be stored in any format that makes sense to the app. In the
+SMART Connect client, you can now call the <code>get_user_preferences</code>,
+<code>put_user_preferences</code>, and <code>delete_user_preferences</code> methods. For the put methods
+you will have to provide a MIME content type for the data that you are
+storing within the container.</p>
 
-<p>As a prerequisite, you should be familiar the SMART&#39;s previous
-&quot;simplified&quot; OAuth-based authentication protocol. In general, the
-changes will be to conform to the standard ways to using OAuth. This
-document will also assume you are using the SMART Python client.</p>
+<h2>Scratchpad API</h2>
 
-<h2>Update Your App&#39;s Manifest</h2>
+<p>The SMART 0.6 Scratchpad API enables SMART apps to store data pertaining
+to a patient record in free form format. This is, the app decides on the format
+of the data that it wants to store (self-structured) making the data opaque to
+the container. All SMART apps are allowed read access to the scratchpad data
+for the in-scope patient of all other apps, which provides a basic 
+interoperability facility accross apps.</p>
 
-<p>You must add <code>oauth_callback</code> item to your app&#39;s manifest. Here is a
-sample manifest that points to a locally hosted app:</p>
-<div class="highlight"><pre><code class="text">{
-  &quot;name&quot;: &quot;SMART REST Minimal&quot;,
-  &quot;description&quot;: &quot;The minimal SMART REST Flask app&quot;,
-  &quot;author&quot;: &quot;Arjun Sanyal &amp; Pascal Pfiffner, Harvard Medical School&quot;,
-  &quot;id&quot;: &quot;minimal-rest-example@apps.smartplatforms.org&quot;,
-  &quot;mode&quot;: &quot;ui&quot;,
-  &quot;scope&quot;: &quot;record&quot;,
-  &quot;index&quot;: &quot;http://localhost:8008/&quot;,
-  &quot;oauth_callback&quot;: &quot;http://localhost:8008/authorize&quot;,
-  &quot;icon&quot;: &quot;http://localhost:8008/static/icon.png&quot;,
-  &quot;smart_version&quot;: &quot;0.6&quot;,
-  &quot;version&quot;: &quot;.1&quot;
-}
-</code></pre></div>
-<h2>Getting the Latest Client Code</h2>
+<p>Because SMART an app has access to the scratchpad that it owns regardless
+of the user who runs it, there is always the possibility that a user overwrites
+the data stored by another user. A container is free to implement collision detection
+support for its scratchpad facilities.</p>
 
-<p>First, you will need to update your app&#39;s references to the
-<code>smart_client</code> to XXX to get the latest changes.</p>
-
-<p>TODO: we should provide a tag at a minimum here.</p>
-
-<h2>Importing SMARTClient</h2>
-
-<p>You will only need to change imports such as:</p>
-<div class="highlight"><pre><code class="text">from smart_client import oauth
-from smart_client.smart import SmartClient
-</code></pre></div>
-<p>to</p>
-<div class="highlight"><pre><code class="text">from smart_client.client import SMARTClient
-</code></pre></div>
-<p>Notice the change in capitalization and there is no need to <code>import
-oauth</code> anymore.</p>
-
-<h2>Configuring SMARTClient</h2>
-
-<p>Instead of just looking for a URL parameter called <code>oauth_header</code> that
-the container provides your app&#39;s index page, you will now need to
-provide more information up front to initialize the SMARTClient. For an
-app running against a locally hosted SMART contatiner a good way to
-define the necessary parameters is with a static <code>dict</code>, e.g.:</p>
-<div class="highlight"><pre><code class="text">  # SMART Container OAuth Endpoint Configuration
-  _ENDPOINT = {
-      &quot;url&quot;: &quot;http://localhost:7000&quot;,
-      &quot;name&quot;: &quot;Localhost&quot;,
-      &quot;app_id&quot;: &quot;rest-example@apps.smartplatforms.org&quot;,
-      &quot;consumer_key&quot;: &quot;rest-example@apps.smartplatforms.org&quot;,
-      &quot;consumer_secret&quot;: &quot;changeMEinPRODUCTION!&quot;
-  }
-</code></pre></div>
-<p>The <code>app_id</code>, <code>consumer_key</code>, and <code>consumer_secret</code> here are the
-parameters that you defined and recieved when installing your app into
-the container.</p>
+<p><em>Note:</em> The SMART reference implementation scratchpad is not collision-safe.
+Data may be lost by multiple copies of an app trying to write in parallel. Production
+implementations are encouraged to implement a system that will, for example,
+provide locks and dirty-state notification via HTTP error codes to apps writing
+to the scratchpad. See the <a href="/reference/rest_api/">REST API</a> for more
+details.</p>
 
 
     </div>

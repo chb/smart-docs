@@ -117,7 +117,7 @@ sets.  For API calls that return SMART Clinical Statements (e.g. <code>GET
 <p>Our initial focus is to support the highest-volume data:
 lab results and vital sign sets.</p>
 
-<p>Here's how filtering works.</p>
+<p>Here&#39;s how filtering works.</p>
 
 <h2>Filtering Lab Results</h2>
 
@@ -144,10 +144,8 @@ lab results and vital sign sets.</p>
 <p>Along with the filters described above, each &quot;fetch all&quot; call can now return
 paginated results. Just attach <code>limit=</code> and <code>offset=</code> parameters to a query.
 For instance, to fetch the first page of twenty results, you could add:</p>
-
-<pre><code>limit=20&amp;offset=0
-</code></pre>
-
+<div class="highlight"><pre><code class="text">limit=20&amp;offset=0
+</code></pre></div>
 <p>The default behavior of any call is to return all results, if no limit
 is supplied in the request.</p>
 
@@ -163,8 +161,7 @@ results sorted by date, i.e using the <code>dcterms:date</code> or <code>sp:star
 <p>To complement the filtering and pagination API, each query response includes a
 <code>spapi:ResponseSummary</code>.  The response summary provides a <code>nextPageURL</code> as well
 as a <code>resultOrder</code> to simplify traversal of results in client code.</p>
-
-<pre><code>[] a spapi:ResponseSummary; 
+<div class="highlight"><pre><code class="text">[] a spapi:ResponseSummary; 
 smartapi:processingTimeMs: &quot;120&quot;;
 smartapi:nextPageURL: &quot;http://sandbox-api.smartplatforms.org/records/123/medications/1235?limit=10&amp;offset=20&quot;;
 smartapi:resultsReturned: 7;
@@ -176,11 +173,10 @@ smartapi:resultOrder (&lt;http://sandbox-api.smartplatforms.org/records/123/medi
 &lt;http://sandbox-api.smartplatforms.org/records/123/medications/235&gt;,
 &lt;http://sandbox-api.smartplatforms.org/records/123/medications/87342&gt;,
 &lt;http://sandbox-api.smartplatforms.org/records/123/medications/2336&gt;);
-</code></pre>
-
+</code></pre></div>
 <h1>More details: Reference Implementation</h1>
 
-<p>The examples below provide background on how we've implemented filters in the
+<p>The examples below provide background on how we&#39;ve implemented filters in the
 SMART Reference EMR.</p>
 
 <h2>Each parameter decomposes to a rule that can be expressed in SPARQL.</h2>
@@ -188,30 +184,24 @@ SMART Reference EMR.</p>
 <h3>Rules for LabResults</h3>
 
 <h4><code>loinc=x|y|z</code> ?</h4>
-
-<pre><code>sp:labName/sp:code ?l. 
+<div class="highlight"><pre><code class="text">sp:labName/sp:code ?l. 
 FILTER(
    ?l = uri(&lt;http://purl.bioontology.org/ontology/LNC/x&gt;) ||
    ?l = uri(&lt;http://purl.bioontology.org/ontology/LNC/y&gt;) ||
    ?l = uri(&lt;http://purl.bioontology.org/ontology/LNC/z&gt;)
 )
-</code></pre>
-
+</code></pre></div>
 <h4><code>date_from=x</code> ?</h4>
-
-<pre><code>sp:specimenCollected/sp:startDate ?d. 
+<div class="highlight"><pre><code class="text">sp:specimenCollected/sp:startDate ?d. 
 FILTER(?d &gt;= x).
 )
-</code></pre>
-
+</code></pre></div>
 <h3>Rules for VitalSigns</h3>
 
 <h4><code>encounter_type=x</code>?</h4>
-
-<pre><code>?v sp:encounter/sp:encounterType/sp:code ?c. 
+<div class="highlight"><pre><code class="text">?v sp:encounter/sp:encounterType/sp:code ?c. 
 FILTER(c=uri(&lt;http://smartplatforms.org/terms/codes/EncounterType#x&gt;)
-</code></pre>
-
+</code></pre></div>
 
     </div>
   </div>

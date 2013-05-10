@@ -171,10 +171,8 @@ your old code is:</p>
 callback handlers. You can now register two separate callbacks:  one for
 successful API calls (required) and an optional handler that will be triggered
 in the event of an error.  The basic pattern looks like this:</p>
-
-<pre><code>SMART.MEDICATIONS_get().success(callback_ok).error(callback_err);
-</code></pre>
-
+<div class="highlight"><pre><code class="text">SMART.MEDICATIONS_get().success(callback_ok).error(callback_err);
+</code></pre></div>
 <p>Where <code>callback_ok</code> and <code>callback_err</code> are your callback functions.
 <code>callback_ok</code> will be called with a SMART response object as argument when the
 call succeeds. <code>callback_err</code> will be called with a SMART error object in the
@@ -193,8 +191,7 @@ event of a failure.</p>
 </ol>
 
 <p>Putting all of this together we get the following code example:</p>
-
-<pre><code>SMART.PROBLEMS_get()
+<div class="highlight"><pre><code class="text">SMART.PROBLEMS_get()
      .success(function(problems) {
        var graph = problems.graph;
         // processing here…
@@ -204,8 +201,7 @@ event of a failure.</p>
            message = e.message;
        // display error
      });
-</code></pre>
-
+</code></pre></div>
 <h2>No More Global jQuery Object</h2>
 
 <p>The SMART connect client no longer exposes its internal jQuery (aka $) object
@@ -222,10 +218,10 @@ update your client code as follows:</p>
 <ul>
 <li><p>(Wrong) Old Way</p>
 
-<p>medications = client.records_X_medications_GET()</p></li>
+<p>medications = client.records<em>X</em>medications_GET()</p></li>
 <li><p>(Correct) New Way</p>
 
-<p>medications = client.records_X_medications_GET().graph</p></li>
+<p>medications = client.records<em>X</em>medications_GET().graph</p></li>
 </ul>
 
 <p>As you can see, all you need to do is fetch the graph property from the
@@ -241,7 +237,7 @@ updated -- in the meantime, existing Java apps should continue to work.</p>
 
 <p>For consistency, we’ve aligned our RXNORM, LOINC, and NDFRT, and SNOMED
 CT URIs to the BioPortal namespace.  So if you’ve got an app that relies
-on specific code URIs, you'll want to update them:</p>
+on specific code URIs, you&#39;ll want to update them:</p>
 
 <ul>
 <li>SNOMED CT 
@@ -265,7 +261,7 @@ on specific code URIs, you'll want to update them:</p>
 <li>NDFRT
 
 <ul>
-<li>Old: <a href="http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&id=">http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=</a></li>
+<li>Old: <a href="http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=">http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=</a></li>
 <li>New: <a href="http://purl.bioontology.org/ontology/NDFRT/">http://purl.bioontology.org/ontology/NDFRT/</a></li>
 </ul></li>
 </ul>
@@ -289,10 +285,10 @@ update your manifest:</p>
   &quot;name&quot; : &quot;My App&quot;,
   &quot;description&quot; : &quot;A cool SMART app&quot;,
   ...
-  &quot;intents&quot;: [&quot;view_medications&quot;]    ← delete this
-  &quot;base_url&quot; : &quot;http://myserver:8001&quot;, ← delete this
-  &quot;index&quot; :  &quot;{base_url}/smartapp/index.html&quot;,
-  &quot;icon&quot; :  &quot;{base_url}/smartapp/icon.png&quot;
+  &quot;intents&quot;: [&quot;view<em>medications&quot;]    ← delete this
+  &quot;base</em>url&quot; : &quot;http://myserver:8001&quot;, ← delete this
+  &quot;index&quot; :  &quot;{base<em>url}/smartapp/index.html&quot;,
+  &quot;icon&quot; :  &quot;{base</em>url}/smartapp/icon.png&quot;
 }</p></li>
 <li><p>New Way (correct)</p>
 
@@ -314,8 +310,7 @@ written for</li>
 </ol>
 
 <p>Here is an example of a complete manifest with these optional declarators:</p>
-
-<pre><code>{
+<div class="highlight"><pre><code class="text">{
   &quot;name&quot; : &quot;My App&quot;,
   &quot;description&quot; : &quot;A cool SMART app&quot;,
   &quot;author&quot; : &quot;demo&quot;,
@@ -335,8 +330,7 @@ written for</li>
           }
   }
 }
-</code></pre>
-
+</code></pre></div>
 <h1>New APIs and Calls</h1>
 
 <h2>Capabilities</h2>

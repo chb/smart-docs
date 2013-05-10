@@ -104,17 +104,17 @@
 </div>
 
 <p>This page provides a set of example queries to help you get started
-interacting with SMART patient record data. We'll build out several
+interacting with SMART patient record data. We&#39;ll build out several
 example SPARQL queries, but please feel free to add on new material as
 you discover useful tidbits!</p>
 
 <h2>Running Queries: Live In-browser or in Your Own Environment</h2>
 
 <p>You can use the form below to try out queries right away. Please note
-that to use the live query tool, you'll need to include a <code>FROM &lt;graph&gt;</code>
-clause in your query to supply data. If you're running these queries in
-your own environment, you'll run them in the context of a particular
-graph (e.g. Patient Smith's medication graph), rather than specifying
+that to use the live query tool, you&#39;ll need to include a <code>FROM &lt;graph&gt;</code>
+clause in your query to supply data. If you&#39;re running these queries in
+your own environment, you&#39;ll run them in the context of a particular
+graph (e.g. Patient Smith&#39;s medication graph), rather than specifying
 <code>FROM</code> directly in the query.</p>
 
 <p>Or you could run these examples on your own via:</p>
@@ -124,7 +124,7 @@ graph (e.g. Patient Smith's medication graph), rather than specifying
 <li>Python, Perl, PHP, or Ruby using <a href="http://librdf.org">librdf</a></li>
 <li>Java using <a href="http://jena.sourceforge.net">Jena</a>,
 <a href="http://www.openrdf.org">Sesame</a>, or <a href="http://www.mulgara.org">Mulgara</a></li>
-<li>Javascript - when possible, we'll also provide examples that will work with the
+<li>Javascript - when possible, we&#39;ll also provide examples that will work with the
 <a href="http://code.google.com/p/rdfquery/">rdfquery</a> javascript library which is
 automatically provided by the <a href="/libraries/javascript/">smart-api-client.js</a>.</li>
 </ul>
@@ -133,8 +133,8 @@ automatically provided by the <a href="/libraries/javascript/">smart-api-client.
 
 <h2>Examining a Medication List</h2>
 
-<p>Let's work with some medication data, the kind returned by a SMART API call to
-<code>GET /records/{record_id}/medications/</code>. To start off, let's write a query to find
+<p>Let&#39;s work with some medication data, the kind returned by a SMART API call to
+<code>GET /records/{record_id}/medications/</code>. To start off, let&#39;s write a query to find
 the name of each medication in the list:</p>
 
 <h3>Find Medication Names</h3>
@@ -156,8 +156,7 @@ name, this query will collapse them into one result.</p>
           <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?med sp:drugName ?medc&quot;</span><span class="p">)</span>
           <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medc dcterms:title ?t&quot;</span><span class="p">);</span>
    <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h3>Find Medication Quantities + Frequencies</h3>
 
@@ -181,8 +180,7 @@ name, this query will collapse them into one result.</p>
           <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medc dcterms:title ?t&quot;</span><span class="p">)</span>
           <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?fill dcterms:date ?fill_date&quot;</span><span class="p">);</span>
   <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h3>Find Medications Fulfilled Since January 2009</h3>
 
@@ -204,15 +202,14 @@ name, this query will collapse them into one result.</p>
                 <span class="k">return</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">fill_date</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="o">&gt;</span>  <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s2">&quot;2009-01-01T00:00:00Z&quot;</span><span class="p">);</span>
              <span class="p">});</span>
     <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Getting some Demographics</h2>
 
-<p>Here's a query that pulls out the first and last name from a patient's
+<p>Here&#39;s a query that pulls out the first and last name from a patient&#39;s
 demographics</p>
 
-<h3>Find Patient's Name</h3>
+<h3>Find Patient&#39;s Name</h3>
 
 <p><textarea id='q_demographics'></textarea>
 <button onclick='javascript:run_query($("#q_demographics"), "demographics");'>
@@ -228,14 +225,13 @@ demographics</p>
             <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?name v:given-name ?fn&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?name v:family-name ?ln&quot;</span><span class="p">);</span>
     <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>Getting some Problems</h2>
 
-<p>Here's a query that pulls out the name of each problem</p>
+<p>Here&#39;s a query that pulls out the name of each problem</p>
 
-<h3>Find Patient's Problems</h3>
+<h3>Find Patient&#39;s Problems</h3>
 
 <p><textarea id='q_problems'></textarea>
 <button onclick='javascript:run_query($("#q_problems"), "problems");'>
@@ -250,8 +246,7 @@ demographics</p>
             <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?pr sp:problemName ?pn&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?pn dcterms:title ?p&quot;</span><span class="p">);</span>
       <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h3>Finding Quantitative Labs</h3>
 
@@ -261,7 +256,9 @@ demographics</p>
 </button></p>
 
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+
 <script src='examples.js'></script>
+
 <script>
   $.each(examples, function(i,e){
     var tb = $("#"+e.id);
@@ -271,6 +268,7 @@ demographics</p>
 </script>
 
 <script src='rdf_store.js'></script>
+
 <script>
   run_query = function(qta, store) {
     var q = qta.val();  

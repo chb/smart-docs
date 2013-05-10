@@ -110,16 +110,16 @@
 
 <p>The SMART JSON-LD API provides an additional interface to the SMART datamodel
 based on Javascript objects in addition to the RDF/XML and the SPARQL
-interface. SMART's RDF-based interface will remain available for use as well.</p>
+interface. SMART&#39;s RDF-based interface will remain available for use as well.</p>
 
 <h1>What is JSON?</h1>
 
 <p><a href="http://json.org">JSON</a> is the highly popular lightweight data serialization and
-interchange format based on a simplified subset of Javascript objects.  It's a
+interchange format based on a simplified subset of Javascript objects.  It&#39;s a
 natural fit for representing data for SMART Connect apps. All JSON objects are
 valid Javascript objects so all Javascript tools and libraries &mdash;
 including tools already built into most browsers &mdash; can be used to examine
-and manipulate them. We'll see examples of this below.</p>
+and manipulate them. We&#39;ll see examples of this below.</p>
 
 <h1>What is JSON-LD?</h1>
 
@@ -129,7 +129,7 @@ data via identifiers that 3) could be &quot;fetched&quot; to find data that cont
 further links to be fetched <em>ad infinitum</em>. In essence, a &quot;web of data&quot;.
 <a href="http://json-ld.org">JSON-LD</a> is a leading standard to represent linked data in JSON.</p>
 
-<p>As a SMART app developer, you don't have to be concerned with creating
+<p>As a SMART app developer, you don&#39;t have to be concerned with creating
 JSON-LD objects or even querying for them, since the SMART JavaScript
 client library will provide you with JSON-LD objects automatically
 each time you make usual API calls like <code>get_MEDICATIONS()</code>.</p>
@@ -156,12 +156,11 @@ returning a JSON-LD Object as used by the SMART Diabetes Monograph app:</p>
         <span class="p">])</span>
       <span class="p">})</span>
     <span class="p">})</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>Looking into the first object in the <code>r.objects.of_type.Medication</code> array in a
-browser's developer tools (such as Chrome's Developer Tools or Firebug) you can
-see that it is a standard JSON object filled with the patient's data according
+browser&#39;s developer tools (such as Chrome&#39;s Developer Tools or Firebug) you can
+see that it is a standard JSON object filled with the patient&#39;s data according
 to the SMART data model for a <a href="http://dev.smartplatforms.org/reference/data_model/#Medication">medication</a>.</p>
 
 <div class="highlight"><pre><code class="javascript">    <span class="c1">// simplified to show only relevant properties</span>
@@ -185,8 +184,7 @@ to the SMART data model for a <a href="http://dev.smartplatforms.org/reference/d
         <span class="p">}</span>
       <span class="p">}</span>
     <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>The SMART Convention for Property Names</h2>
 
@@ -281,12 +279,11 @@ the comments.</p>
     <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h1>Learning More</h1>
 
-<p>SMART's JSON-LD API gives you as a web developer an natural, familiar,
+<p>SMART&#39;s JSON-LD API gives you as a web developer an natural, familiar,
 and interactively discoverable interface to SMART patient data. You can
 start using this API in your apps today. For examples of this API in use
 see the code (in <code>main.js</code>) for the SMART <a href="https://github.com/chb/smart_sample_apps/tree/master/static/framework/dm_monograph/js/main.js">Diabetes Monograph app</a>.</p>

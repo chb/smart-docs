@@ -112,7 +112,7 @@ needs some extra command line tools to compile code, you first have to do
 <em>one</em> of the following:</p>
 
 <ul>
-<li><p>Install <a href="http://itunes.apple.com/ch/app/xcode/id497799835?l=en&mt=12">Xcode</a> from the App Store (it's free, if large), then open
+<li><p>Install <a href="http://itunes.apple.com/ch/app/xcode/id497799835?l=en&amp;mt=12">Xcode</a> from the App Store (it&#39;s free, if large), then open
 <code>Xcode &gt; Preferences &gt; Downloads &gt; Components</code> and install the <code>Command Line
 Tools</code></p></li>
 <li><p>Download only the <a href="https://developer.apple.com/downloads/index.action">Command Line Tools</a> (search for the correct version) from
@@ -120,55 +120,43 @@ the Apple Developer Center (you will need a free developer account for this)</p>
 </ul>
 
 <p><a href="http://mxcl.github.com/homebrew/">Homebrew</a> is a superb replacement for the old managers Fink and MacPorts and
-you will love it! Here's a one-line installer for it:</p>
-
-<pre><code>$ /usr/bin/ruby -e &quot;$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;
-</code></pre>
-
+you will love it! Here&#39;s a one-line installer for it:</p>
+<div class="highlight"><pre><code class="text">$ /usr/bin/ruby -e &quot;$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;
+</code></pre></div>
 <p>If you had Homebrew installed before, make sure to update it:</p>
-
-<pre><code>$ brew update
-</code></pre>
-
+<div class="highlight"><pre><code class="text">$ brew update
+</code></pre></div>
 <h1>Install Python Tools</h1>
 
 <h2><code>lxml</code> - an pythonic xml library</h2>
 
 <p>Download <a href="http://pypi.python.org/pypi/lxml/2.3.4#downloads">lxml</a> version 2.3.4 or later (via source tarball), double-click to
 unarchive, then build and install:</p>
-
-<pre><code>$ cd lxml-2.3.4
+<div class="highlight"><pre><code class="text">$ cd lxml-2.3.4
 $ python setup.py build --static-deps
 $ sudo python setup.py install
-</code></pre>
-
+</code></pre></div>
 <h2><code>psycopg2</code> - an advanced PostgreSQL driver for Python</h2>
 
 <p>Download the <a href="http://initd.org/psycopg/">latest stable release</a>, unarchive, build and install:</p>
-
-<pre><code>$ cd psycopg2-2.4.5
+<div class="highlight"><pre><code class="text">$ cd psycopg2-2.4.5
 $ python setup.py build
 $ sudo python setup.py install
-</code></pre>
-
+</code></pre></div>
 <h2>RDF packages</h2>
-
-<pre><code>$ sudo easy_install -U &quot;rdflib&gt;=3.0.0&quot;  rdfextras
-</code></pre>
-
+<div class="highlight"><pre><code class="text">$ sudo easy_install -U &quot;rdflib&gt;=3.0.0&quot;  rdfextras
+</code></pre></div>
 <h1>Install Django</h1>
 
 <h2>Django</h2>
 
 <p>You have to use <a href="https://www.djangoproject.com/download/">Django 1.3</a> for now. Download, unarchive and install:</p>
-
-<pre><code>$ cd Django-1.3.1
+<div class="highlight"><pre><code class="text">$ cd Django-1.3.1
 $ sudo python setup.py install
-</code></pre>
-
+</code></pre></div>
 <h1>PostgreSQL</h1>
 
-<p>It's easiest to use the <a href="http://www.postgresql.org/download/macosx/">Mac installer</a> because it also sets up
+<p>It&#39;s easiest to use the <a href="http://www.postgresql.org/download/macosx/">Mac installer</a> because it also sets up
 the <code>postgres</code> user which is needed.</p>
 
 <ul>
@@ -183,19 +171,18 @@ default settings:</p>
 </ul></li>
 <li><p>Create a PostgreSQL user for your SMART service. We will be using <em>smart</em>,
 use your own password:</p>
-
-<pre><code>$ sudo su - postgres
+<div class="highlight"><pre><code class="text">$ sudo su - postgres
 $ createuser --superuser smart
 $ psql postgres
 $ postgres=# \password smart
 $ postgres=# \q
-</code></pre></li>
+</code></pre></div></li>
 </ul>
 
 <p><em>Caveat</em>: When using Postgres &lt; 9.1 see the <a href="https://github.com/chb/smart_server">instructions</a> on how to change
-the Postgres config to use md5 passwords. Also, if you haven't configured
+the Postgres config to use md5 passwords. Also, if you haven&#39;t configured
 postgres to use UTF-8, you seemingly need to use <code>pg_createcluster</code> which does
-not ship on the Mac. You're on your own.</p>
+not ship on the Mac. You&#39;re on your own.</p>
 
 <h1>Tomcat and openrdf-sesame</h1>
 
@@ -206,45 +193,37 @@ not ship on the Mac. You're on your own.</p>
 <li><p>Configure Tomcat: The environment variable <em>$CATALINA_HOME</em> needs to point
 to the tomcat base directory. So in your Bash <code>.profile</code> add:</p>
 
-<p>$ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.28/libexec</p></li>
-</ul>
+<p>$ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.28/libexec</p>
 
-<p>If you don't use Bash adjust accordingly. Reload your profile file with:</p>
+<p>If you don&#39;t use Bash adjust accordingly. Reload your profile file with:</p>
 
-<pre><code>  $ source ~/.profile
-</code></pre>
-
-<ul>
+<p>$ source ~/.profile</p></li>
 <li><p>Install openrdf-sesame</p>
-
-<pre><code>$ curl -O http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
+<div class="highlight"><pre><code class="text">$ curl -O http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
 $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
 $ mkdir $CATALINA_HOME/.aduna
 $ cp -r openrdf-sesame-2.6.5/war/* $CATALINA_HOME/webapps/
-</code></pre></li>
+</code></pre></div></li>
 <li><p>Launch Tomcat and check its availability</p>
-
-<pre><code>$ CATALINA_HOME/bin/startup.sh
-</code></pre></li>
+<div class="highlight"><pre><code class="text">$ CATALINA_HOME/bin/startup.sh
+</code></pre></div></li>
 </ul>
 
 <p>You should now be able to access <code>http://localhost:8080/openrdf-workbench/</code>.</p>
 
 <h1>Automated SMART install</h1>
 
-<p>We're now ready to get the latest and greatest from SMART.</p>
+<p>We&#39;re now ready to get the latest and greatest from SMART.</p>
 
 <ul>
 <li><p>Download the SMART manager</p>
-
-<pre><code>$ curl -O https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
-</code></pre></li>
+<div class="highlight"><pre><code class="text">$ curl -O https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
+</code></pre></div></li>
 <li><p>Run the manager. This will install the current <code>master</code> branch of all SMART
 repositories that we need. If you want the bleeding edge <code>dev</code> version, add a
 <code>-d</code> switch to the following command</p>
-
-<pre><code>$ python smart_manager.py -a
-</code></pre></li>
+<div class="highlight"><pre><code class="text">$ python smart_manager.py -a
+</code></pre></div></li>
 </ul>
 
 <p>This will fetch all needed repositories, run an installer that asks you for some
@@ -252,21 +231,17 @@ configurations, generate patient sample data and in the end run the server.</p>
 
 <h1>Running SMART</h1>
 
-<p>If you've just run the automated install, you only need to start Tomcat via
+<p>If you&#39;ve just run the automated install, you only need to start Tomcat via
 <code>$CATALINA_HOME/bin/startup.sh</code>, in the future:</p>
 
 <h2>To start SMART (and Tomcat):</h2>
-
-<pre><code>$ CATALINA_HOME/bin/startup.sh
+<div class="highlight"><pre><code class="text">$ CATALINA_HOME/bin/startup.sh
 $ python smart_manager.py -v -w
-</code></pre>
-
+</code></pre></div>
 <h2>To stop SMART (and Tomcat):</h2>
-
-<pre><code>$ python smart_manager.py -k
+<div class="highlight"><pre><code class="text">$ python smart_manager.py -k
 $ CATALINA_HOME/bin/shutdown.sh
-</code></pre>
-
+</code></pre></div>
 <p>Nobody is stopping you from putting these two commands in a start- and/or stop
 script, of course. :)</p>
 

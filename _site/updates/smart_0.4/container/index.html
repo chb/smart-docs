@@ -170,7 +170,7 @@ in your container’s RDF output as follows:</p>
 <li>NDFRT
 
 <ul>
-<li>Old: <a href="http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&id=">http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=</a></li>
+<li>Old: <a href="http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=">http://rxnav.nlm.nih.gov/REST/rxcui?idtype=NUI&amp;id=</a></li>
 <li>New: <a href="http://purl.bioontology.org/ontology/NDFRT/">http://purl.bioontology.org/ontology/NDFRT/</a></li>
 </ul></li>
 </ul>
@@ -270,32 +270,28 @@ now we define three container-to-app notifications:</p>
 </ol>
 
 <p>For example, if you permit a user to hide an app, you should call:</p>
-
-<pre><code>SMART_HOST.notify_app(app_instance, &quot;backgrounded&quot;);
-</code></pre>
-
+<div class="highlight"><pre><code class="text">SMART_HOST.notify_app(app_instance, &quot;backgrounded&quot;);
+</code></pre></div>
 <p>And if you restore it to view you should call</p>
 
-<p>SMART_HOST.notify_app(app_instance, &quot;foregrounded&quot;);</p>
+<p>SMART<em>HOST.notify</em>app(app_instance, &quot;foregrounded&quot;);</p>
 
 <h3>Subscribe to App Notifications</h3>
 
-<p>Apps that you've launched may send notifications and requests. For now,
+<p>Apps that you&#39;ve launched may send notifications and requests. For now,
 we define only one app-to-container notification:  an app that desires
 more screen real estate may sent a <code>request_fullscreen</code> notification to
 the container. To subscribe to a notification, call <code>SMART_HOST.on</code> as
 in the example below:</p>
-
-<pre><code>SMART_HOST.on(&quot;request_fullscreen&quot;, function(app_instance) {
+<div class="highlight"><pre><code class="text">SMART_HOST.on(&quot;request_fullscreen&quot;, function(app_instance) {
    // Replace this example with your own resizing code
   $(app_instance.iframe)
      .css({
-       width: '100%', 
-       height: '100%', 
+       width: &#39;100%&#39;, 
+       height: &#39;100%&#39;, 
      });
 });
-</code></pre>
-
+</code></pre></div>
 <h2>New APIs and Calls</h2>
 
 <h3>Capabilities</h3>
@@ -305,8 +301,7 @@ container to express a simple JSON description of API calls that it
 understands.  This way an app can <code>GET /capabilities/</code> to determine what
 data to expect.  The example below shows the capabilities of a container
 that provides Demographics, Encounters, and Vital Signs only.</p>
-
-<pre><code>{
+<div class="highlight"><pre><code class="text">{
    &quot;http://smartplatforms.org/terms#Demographics&quot;: {
        &quot;methods&quot;: [
            &quot;GET&quot;
@@ -323,8 +318,7 @@ that provides Demographics, Encounters, and Vital Signs only.</p>
        ]
    }
 }
-</code></pre>
-
+</code></pre></div>
 <p>You can see another example at: <a href="http://sandbox-dev.smartplatforms.org:7000/capabilities/">http://sandbox-dev.smartplatforms.org:7000/capabilities/</a></p>
 
 <h2>Version Number</h2>
@@ -341,10 +335,8 @@ number URL for the development sandbox:
 the SMART container automatically scoped on per user and app basis. The
 data can be stored in any format that makes sense to the app.
 The container should accept GET, PUT, and DELETE requests at the following path:</p>
-
-<pre><code>/accounts/{user_id}/apps/{smart_app_id}/preferences
-</code></pre>
-
+<div class="highlight"><pre><code class="text">/accounts/{user_id}/apps/{smart_app_id}/preferences
+</code></pre></div>
 <p>Here <code>user_id</code> is the identifier of the user account that the app wants
 to scope the preferences down to, which typically is the e-mail address
 of the user. The <code>smart_app_id</code> is the identifier of the app, for
@@ -365,7 +357,7 @@ request is issued.</p>
 
 <p>The new API Verifier app executes a series of custom and
 automatically-generated (based on the official SMART ontology) tests on
-the results of the container's API calls (within the context of a
+the results of the container&#39;s API calls (within the context of a
 patient). It will automatically fetch data from the common medical
 record call of the container (this version does not handle individual
 record item calls and various container-level calls) via both the SMART
@@ -376,11 +368,9 @@ general conformity to the SMART 0.4 specifications. You can either
 install the app and run it locally on your own server, or load the
 hosted version of the app into your container with the following
 manifest:</p>
-
-<pre><code>http://apiverifier.smartplatforms.org/static/manifests/smart_manifest-0.4.json
-</code></pre>
-
-<p>Note: While passing the API Verifier's tests does provide a high level
+<div class="highlight"><pre><code class="text">http://apiverifier.smartplatforms.org/static/manifests/smart_manifest-0.4.json
+</code></pre></div>
+<p>Note: While passing the API Verifier&#39;s tests does provide a high level
 of conformity assurance to the container developer, it does not
 guarantee the validity of the data. There are certain data problems
 which the current version of the verifier is unable to detect. Therefore

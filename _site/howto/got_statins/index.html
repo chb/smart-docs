@@ -101,34 +101,32 @@
 <a class='githublink' href=''>here</a> to edit this page on Github.
 </div>
 
-<p>If you haven't already, you should read <a href="../build_a_smart_app">HOWTO Build a SMART App</a> first.</p>
+<p>If you haven&#39;t already, you should read <a href="../build_a_smart_app">HOWTO Build a SMART App</a> first.</p>
 
 <p>Here, we build a complete SMART Connect app from pure HTML and Javascript.
-Modeled on the uniquely popular, laser-focused chef-d'oeuvre
-<a href="http://isitchristmas.com/">isitchristmas.com</a>, this app obtains a patient's
+Modeled on the uniquely popular, laser-focused chef-d&#39;oeuvre
+<a href="http://isitchristmas.com/">isitchristmas.com</a>, this app obtains a patient&#39;s
 medication list, determines whether there are statins on board, and relays the
-answer in large, bold typeface. Using the SMART Connect API, there's no need for
+answer in large, bold typeface. Using the SMART Connect API, there&#39;s no need for
 explicit authentication, session-management, or AJAX calls.</p>
 
 <p>Every SMART app exposes a URL at <code>index.html</code> where all the fun happens! First,
-don't forget to include:</p>
+don&#39;t forget to include:</p>
 
 <div class="highlight"><pre><code class="html">  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-client.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>Inside index.html, we invoke SMART.ready() with a callback function so we can be
 sure that the SMART client-side library has finished loading. At this point, a
 SMART JavaScript object that provides some basic context (such as SMART.user,
-which provides the name and ID of the user who's running the app, and
+which provides the name and ID of the user who&#39;s running the app, and
 SMART.record which provides the name and ID of the patient whose record is
 loaded).</p>
 
 <p>And now we can fetch some data from the patient record: </p>
 
 <div class="highlight"><pre><code class="javascript">  <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_medications</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>As you may remember from the HOWTO, meds is a SMART Response object that
 includes an RDF graph of medications (type sp:Medication). These medications
@@ -146,10 +144,9 @@ statins.</p>
                        <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?m rdf:type sp:Medication&quot;</span><span class="p">)</span>
                        <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?m sp:drugName ?n&quot;</span><span class="p">)</span>
                        <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?n dcterms:title ?drugname&quot;</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>Here's how it all comes together:</p>
+<p>Here&#39;s how it all comes together:</p>
 
 <div class="highlight"><pre><code class="html">  <span class="cp">&lt;!DOCTYPE html&gt;</span>
   <span class="nt">&lt;html&gt;</span>
@@ -208,8 +205,7 @@ statins.</p>
   <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
   <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>This little app can be statically hosted anywhere. If a SMART container loads it
 up in an iframe, it will have instant access to the in-context patient record

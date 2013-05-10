@@ -109,7 +109,7 @@ read the <a href="../../">Main Page</a></p>
 <p>We are re-recording the screencast to catch up with the latest API old
 <a href="http://vimeo.com/20113823">screencast</a>.</p>
 
-<iframe
+<p><iframe
   src="http://player.vimeo.com/video/20113823"
   width="500"
   height="375"
@@ -117,7 +117,7 @@ read the <a href="../../">Main Page</a></p>
   webkitAllowFullScreen
   mozallowfullscreen
   allowFullScreen>
-</iframe>
+</iframe></p>
 
 <h1>Setting up your Environment</h1>
 
@@ -126,17 +126,17 @@ container. That means you need to (a) write a web app, and (b) connect it to a
 SMART container.</p>
 
 <p>You can choose any toolkit you want to write a web app: Java Spring, Ruby on
-Rails, Python/Django, etc. For the purposes of this documentation, we've chosen
+Rails, Python/Django, etc. For the purposes of this documentation, we&#39;ve chosen
 webpy, a very simple, minimalist Python web framework, which helps us show you
 the important SMART-related code more quickly. Also, if you want to get going
 quickly with the more advanced app features, you probably want to stick with
 Java or Python for now, as those are the two programming languages in which
-we've built client libraries. That said, if you're comfortable with OAuth and
+we&#39;ve built client libraries. That said, if you&#39;re comfortable with OAuth and
 REST, you can use another programming language without fear.</p>
 
 <p>We also provide you with a SMART EMR hosted at <code>sandbox.smartplatforms.org</code>. We
-call it the SMART Reference EMR, and we've loaded it with 50 patient records on
-which you can try out your app. To get going, you'll need to:</p>
+call it the SMART Reference EMR, and we&#39;ve loaded it with 50 patient records on
+which you can try out your app. To get going, you&#39;ll need to:</p>
 
 <ol>
   <li>Navigate to the [developers sandbox](http://sandbox.smartplatforms.org/login")</li>
@@ -147,8 +147,8 @@ which you can try out your app. To get going, you'll need to:</p>
 
 <p>This will open a SMART app iframe pointing to <code>localhost:8000</code>, which is where
 your app should be running. If you need an app with a different hostname (say,
-my_internal_server.net), just e-mail joshua dot mandel at childrens.harvard.edu
-with a manifest file and we'll set you up!</p>
+my<em>internal</em>server.net), just e-mail joshua dot mandel at childrens.harvard.edu
+with a manifest file and we&#39;ll set you up!</p>
 
 <h1>Barebones App</h1>
 
@@ -159,8 +159,8 @@ with a manifest file and we'll set you up!</p>
 </ul>
 
 <p>You could set up Apache to serve these as static files. In this documentation,
-we're using webpy for everything, just for consistency. Also, you may find that,
-for putting up a couple of static files, it's easier to get going with webpy
+we&#39;re using webpy for everything, just for consistency. Also, you may find that,
+for putting up a couple of static files, it&#39;s easier to get going with webpy
 than with Apache.</p>
 
 <h2>Index</h2>
@@ -170,8 +170,7 @@ than with Apache.</p>
 is where all the fun happens! Make sure to include the SMART page script:</p>
 
 <div class="highlight"><pre><code class="html">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-client.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>This script serves to connect your HTML page to the SMART JavaScript library.</p>
 
@@ -187,7 +186,7 @@ SMART JavaScript object that provides some basic context:</p>
 <p>For a complete reference of the app context, check out the JavaScript Library
 reference.</p>
 
-<p>A more complete index file that displays the current patient's name might thus
+<p>A more complete index file that displays the current patient&#39;s name might thus
 look like:</p>
 
 <div class="highlight"><pre><code class="html">    <span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -206,23 +205,22 @@ look like:</p>
      <span class="nt">&lt;/script&gt;</span>
      <span class="nt">&lt;/body&gt;</span>
     <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h1>Using the SMART API</h1>
 
 <p>At this point, your SMART app is ready to make API calls to obtain health data.
 Remember that your app is instantiated in an IFRAME for the specific purpose of
 accessing a single medical record. This means that, from JavaScript, you can
-request medical data without specifying patient context, because it's already
+request medical data without specifying patient context, because it&#39;s already
 determined by the JavaScript context.</p>
 
 <h2>Asynchronous Calls</h2>
 
-<p>Let's load the patient's medications using SMART.get_medications(). The most
+<p>Let&#39;s load the patient&#39;s medications using SMART.get<em>medications(). The most
 important thing you need to know about all SMART JavaScript APIs is that they
-are asynchronous: you won't get the meds as a result of the
-SMART.get_medications() call. Instead, you need to specify callback functions
+are asynchronous: you won&#39;t get the meds as a result of the
+SMART.get</em>medications() call. Instead, you need to specify callback functions
 that will be invoked when the results are ready:</p>
 
 <div class="highlight"><pre><code class="javascript">    <span class="nx">SMART</span><span class="p">.</span><span class="nx">get_medications</span><span class="p">().</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
@@ -230,8 +228,7 @@ that will be invoked when the results are ready:</p>
     <span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// handle the error</span>
     <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>Why did we design the API this way? Because, in most cases, the SMART container
 will need to make a call to a server to obtain the requested data. That could
@@ -247,18 +244,17 @@ parallel.</p>
 passing it the resulting medications as a parameter. This result is in the form
 of an SMARTResponse object containing the RDF graph. RDF (Resource Description
 Framework) is an open and flexible approach to modeling all kinds of data in a
-graph structure. If you haven't used RDF, you should read our Quick Introduction
+graph structure. If you haven&#39;t used RDF, you should read our Quick Introduction
 to RDF and SPARQL.</p>
 
 <p>The bottom line is a SMART medication list is an RDF graph that can be easily
 navigated and queried. For example, if meds is an RDF graph, then:</p>
 
 <div class="highlight"><pre><code class="javascript">  <span class="nx">meds</span><span class="p">.</span><span class="nx">graph</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medication rdf:type sp:Medication&quot;</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>selects all of &quot;objects&quot; in the graph that have a datatype sp:Medication, where
-sp stands for <a href="http://smartplatforms.org/ns#"><a href="http://smartplatforms.org/ns#">http://smartplatforms.org/ns#</a></a>,
+sp stands for <a href="http://smartplatforms.org/ns#">http://smartplatforms.org/ns#</a>,
 the location of the SMART vocabulary.</p>
 
 <p>Of course, we want more than just the raw &quot;objects,&quot; we want their properties,
@@ -270,11 +266,10 @@ drug-name strings:</p>
         <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medication rdf:type sp:Medication&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?medication sp:drugName ?drug_name_code&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&quot;?drug_name_code dcterms:title ?drugname&quot;</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>This is effectively a JavaScript query on the RDF graph, and it returns a set of
-JavaScript objects with properties we're interested in, in particular drugname.
+JavaScript objects with properties we&#39;re interested in, in particular drugname.
 We can then iterate over the list of returned objects and extract the drugname
 property for each one:</p>
 
@@ -286,12 +281,11 @@ property for each one:</p>
          <span class="nx">med_names</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">single_med</span><span class="p">)</span> <span class="p">{</span>
              <span class="c1">// do something with single_med.drugname</span>
            <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2>The Complete App</h2>
 
-<p>So, to display the patient's medications, we set up an HTML list, &lt;ul&gt;, and we
+<p>So, to display the patient&#39;s medications, we set up an HTML list, &lt;ul&gt;, and we
 append to it with the name of each drug in our iteration:</p>
 
 <div class="highlight"><pre><code class="html">    <span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -321,10 +315,9 @@ append to it with the name of each drug in our iteration:</p>
      <span class="nt">&lt;/script&gt;</span>
      <span class="nt">&lt;/body&gt;</span>
     <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
-<p>And that's it! In a few lines of HTML and JavaScript code, we've got ourselves
+<p>And that&#39;s it! In a few lines of HTML and JavaScript code, we&#39;ve got ourselves
 an app that can request the medications from the current record and display
 them.</p>
 

@@ -22,7 +22,7 @@ You include this file in every additional page of your app, e.g. via the
 HTML `<script>` tag:
 
 {% highlight html %}
- <script src="http://sandbox-dev.smartplatforms.org:8001/framework/smart/scripts/smart-api-client.js"></script>
+ <script src="http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-client.js"></script>
 {% endhighlight %}
 
 Once this script loads, your app will have access to a javascript variable

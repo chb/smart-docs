@@ -108,9 +108,9 @@
 container. This manifest defines the app&#39;s name, ID, a description, and its
 application mode.</p>
 
-<p>If you&#39;re building a straightforward SMART UI App, here&#39;s a template you can use
-for your manifest file. Just replace the ALL-CAPS placeholders with your own
-values.</p>
+<p>If you&#39;re building a straightforward SMART Connect App, here&#39;s a
+template you can use for your manifest file. Just replace the ALL-CAPS
+placeholders with your own values.</p>
 
 <div class="highlight"><pre><code class="javascript">  <span class="p">{</span>
     <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;YOUR APP NAME&quot;</span><span class="p">,</span>
@@ -130,7 +130,7 @@ values.</p>
 
 <h1>Application Modes</h1>
 
-<p>SMART Applications can run in one of three modes:</p>
+<p>SMART Applications can run in one of two modes:</p>
 
 <ul>
 <li><p>The UI Apps mode (<code>ui</code>):<br>
@@ -138,13 +138,16 @@ These apps interact with the user in the context of the SMART container.
 Several of the sample apps fall in this category the Med List, Problems
 List, and Got Statins apps. These are SMART&#39;s &quot;normal&quot; apps.</p></li>
 <li><p>The Frame UI Apps mode (<code>frame_ui</code>):<br>
-These apps can launch and layout multiple apps side-by-side. Apps in this
-category include: i2b2 EMR View, as well as our <a href="/howto/how_to_build_smart_frame_ui_apps">Frame UI Sample</a>.</p></li>
+These apps can launch and layout multiple apps side-by-side. Apps in
+this category include: i2b2 EMR View, as well as our Frame UI Example
+app in our sample apps repository.</p></li>
 </ul>
 
 <h2>Standalone Apps</h2>
 
-<p>If the app can run in its own browser window (or is a non-browser app such as a native iOS or Android app) set the <code>standalone</code> flag to <code>true</code>. It is false by default and may be omitted from the manifest.</p>
+<p>If the app can run in its own browser window (or is a non-browser app
+such as a native iOS or Android app) set the <code>standalone</code> flag to
+<code>true</code>. It is false by default and may be omitted from the manifest.</p>
 
 <h1>Sample Manifest Files</h1>
 
@@ -165,7 +168,7 @@ example, this is the Meds List app manifest:</p>
     <span class="s2">&quot;icon&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://localhost:8001/framework/med_list/icon.png&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8001/framework/med_list/index.html&quot;</span><span class="p">,</span>
 
-    <span class="s2">&quot;smart_version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;smart_version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.6&quot;</span><span class="p">,</span>
 
     <span class="s2">&quot;requires&quot;</span> <span class="o">:</span> <span class="p">{</span>
       <span class="s2">&quot;http://smartplatforms.org/terms#Medications&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -177,6 +180,12 @@ example, this is the Meds List app manifest:</p>
     <span class="p">}</span>
   <span class="p">}</span>
 </code></pre></div>
+
+<h1>Add <code>oauth_callback</code> for SMART REST Apps</h1>
+
+<p>If you are writing a manifest for a SMART REST app the <code>oauth_callback</code>
+parameter is required. Read the full details at the <a href="../howto/build_a_rest_app/">REST
+tutorial</a></p>
 
 <h1>Validating Your Manifest</h1>
 

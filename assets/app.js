@@ -61,7 +61,7 @@ var Toc = {
 }
 
 // fill in any ghlinks
-var _gh_branch = 'docs_0_5';
+var _gh_branch = 'docs_0_6';
 var _gh_base_url = 'https://github.com/chb/smart-docs/edit/' + _gh_branch;
 var _gh_default_filename = 'index.md';
 var _gh_link = _gh_base_url + window.location.pathname + _gh_default_filename;

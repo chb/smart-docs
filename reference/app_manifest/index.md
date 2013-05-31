@@ -96,7 +96,7 @@ example, this is the Meds List app manifest:
 
 If you are writing a manifest for a SMART REST app the `oauth_callback`
 parameter is required. Read the full details at the [REST
-tutorial](../howto/build_a_rest_app/)
+tutorial](/howto/build_a_rest_app/)
 
 
 # Validating Your Manifest

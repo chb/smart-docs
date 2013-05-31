@@ -14,9 +14,9 @@ Each SMART app should provide a JSON manifest to declare itself to the
 container. This manifest defines the app's name, ID, a description, and its
 application mode.
 
-If you're building a straightforward SMART UI App, here's a template you can use
-for your manifest file. Just replace the ALL-CAPS placeholders with your own
-values.
+If you're building a straightforward SMART Connect App, here's a
+template you can use for your manifest file. Just replace the ALL-CAPS
+placeholders with your own values.
 
 {% highlight javascript %}
   {
@@ -38,7 +38,7 @@ values.
 
 # Application Modes
 
-SMART Applications can run in one of three modes:
+SMART Applications can run in one of two modes:
 
 * The UI Apps mode (`ui`):  
   These apps interact with the user in the context of the SMART container.
@@ -46,13 +46,16 @@ SMART Applications can run in one of three modes:
   List, and Got Statins apps. These are SMART's "normal" apps.
 
 * The Frame UI Apps mode (`frame_ui`):  
-  These apps can launch and layout multiple apps side-by-side. Apps in this
-  category include: i2b2 EMR View, as well as our [Frame UI Sample](/howto/how_to_build_smart_frame_ui_apps).
+  These apps can launch and layout multiple apps side-by-side. Apps in
+  this category include: i2b2 EMR View, as well as our Frame UI Example
+  app in our sample apps repository.
 
 
 ## Standalone Apps
 
-If the app can run in its own browser window (or is a non-browser app such as a native iOS or Android app) set the `standalone` flag to `true`. It is false by default and may be omitted from the manifest.
+If the app can run in its own browser window (or is a non-browser app
+such as a native iOS or Android app) set the `standalone` flag to
+`true`. It is false by default and may be omitted from the manifest.
 
 
 # Sample Manifest Files
@@ -75,7 +78,7 @@ example, this is the Meds List app manifest:
     "icon" : "http://localhost:8001/framework/med_list/icon.png",
     "index": "http://localhost:8001/framework/med_list/index.html",
 
-    "smart_version": "0.4",
+    "smart_version": "0.6",
 
     "requires" : {
       "http://smartplatforms.org/terms#Medications": {
@@ -88,6 +91,12 @@ example, this is the Meds List app manifest:
   }
 {% endhighlight  %}
 
+
+# Add `oauth_callback` for SMART REST Apps
+
+If you are writing a manifest for a SMART REST app the `oauth_callback`
+parameter is required. Read the full details at the [REST
+tutorial](../howto/build_a_rest_app/)
 
 
 # Validating Your Manifest

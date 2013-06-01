@@ -314,6 +314,12 @@ details, see App Manifest Documentation.
   }
 {% endhighlight  %}
 
+## A "working" example
+
+Here's a complete [working example](http://sample-apps.smartplatforms.org/sample_container/index.html)
+of a SMART Container. This container implements only
+one API call: (`GET medications`), and displays an alert if the contained app
+attempts to call any other function. Be sure to view the source code! 
 
 ## Some manifests online
 

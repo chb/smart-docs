@@ -74,10 +74,11 @@ reference server by pointing your browser at <http://smart-vm:7001>.
 
 Latest release version:
 
-[The SMART VMWare Virtual Machine (API version 0.6)](http://media.smartplatforms.org/smart-vm/smart-vm-0.6.zip)
+[SMART VMWare Virtual Machine (API version 0.6.1)](http://media.smartplatforms.org/smart-vm/smart-vm-0.6.1.zip)
 
 Older versions available:
 
+* [SMART VMWare Virtual Machine (API version 0.6)](http://media.smartplatforms.org/smart-vm/smart-vm-0.6.zip)
 * [SMART VMWare Virtual Machine (API version 0.5.2)](http://media.smartplatforms.org/smart-vm/smart-vm-0.5.2.zip)
 * [SMART VMWare Virtual Machine (API version 0.5.1)](http://media.smartplatforms.org/smart-vm/smart-vm-0.5.1.zip)
 * [SMART VMWare Virtual Machine (API version 0.4)](http://media.smartplatforms.org/smart-vm/smart-vm-0.4.zip)

@@ -131,7 +131,7 @@ the container. All SMART apps are allowed read access to the scratchpad data
 for the in-scope patient of all other apps, which provides a basic 
 interoperability facility accross apps.</p>
 
-<p>Because SMART an app has access to the scratchpad that it owns regardless
+<p>Because a SMART app has access to the scratchpad that it owns regardless
 of the user who runs it, there is always the possibility that a user overwrites
 the data stored by another user. A container is free to implement collision detection
 support for its scratchpad facilities.</p>
@@ -141,7 +141,7 @@ Data may be lost by multiple copies of an app trying to write in parallel. Produ
 implementations are encouraged to implement a system that will, for example,
 provide locks and dirty-state notification via HTTP error codes to apps writing
 to the scratchpad. See the <a href="/reference/rest_api/">REST API</a> for more
-details.</p>
+details on the API.</p>
 
 
     </div>

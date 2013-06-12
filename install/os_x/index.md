@@ -65,20 +65,20 @@ OS X 10.8 ships with PostgreSQL including a launchd-item, but I was out of luck 
 
 * Install postgres with homebrew (installs version 9.2.3):
 
-      $ brew install postgresql
-      $ initdb /usr/local/var/postgres -E utf8
-      $ cp /usr/local/Cellar/postgresql/9.2.3/homebrew.mxcl.postgresql.plist \
-        ~/Library/LaunchAgents/
+        $ brew install postgresql
+        $ initdb /usr/local/var/postgres -E utf8
+        $ cp /usr/local/Cellar/postgresql/9.2.3/homebrew.mxcl.postgresql.plist \
+          ~/Library/LaunchAgents/
 
 * Launch Postgres
 
-      $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+        $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 * Because of some socket issues we must symlink the socket from its default in `/tmp` to `/var/pgsql_socket`. Both are needed and I haven't been able to figure out why. First, create the directory and make it yours:
 
-      $ sudo mkdir /var/pgsql_socket
-      $ sudo chown `whoami`:admin /var/pgsql_socket/
-      $ ln -s /tmp/.s.PGSQL.5432 /var/pgsql_socket/.s.PGSQL.5432
+        $ sudo mkdir /var/pgsql_socket
+        $ sudo chown `whoami`:admin /var/pgsql_socket/
+        $ ln -s /tmp/.s.PGSQL.5432 /var/pgsql_socket/.s.PGSQL.5432
 
   > If you know how to circumvent this, let us know!
 
@@ -102,28 +102,28 @@ Tomcat and openrdf-sesame
 
 * Install Tomcat
 
-      $ brew install tomcat
+        $ brew install tomcat
 
 * Configure Tomcat: The environment variable *$CATALINA_HOME* needs to point
   to the tomcat base directory. So in your Bash `.profile` add:
 
-      $ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.32/libexec
+        $ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.32/libexec
   
   If brew didn't install version 7.0.32, change that number accordingly. If you don't use Bash adjust accordingly. Reload your profile file with:
 
-      $ source ~/.profile
+        $ source ~/.profile
 
 * Install openrdf-sesame
 
-      $ curl -O http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz
-      $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
-      $ mkdir $CATALINA_HOME/.aduna
-      $ mkdir $CATALINA_HOME/logs
-      $ cp -r openrdf-sesame-2.6.5/war/* $CATALINA_HOME/webapps/
+        $ curl -O http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.7.2/openrdf-sesame-2.7.2-sdk.tar.gz
+        $ tar -xzvf openrdf-sesame-2.7.2-sdk.tar.gz
+        $ mkdir $CATALINA_HOME/.aduna
+        $ mkdir $CATALINA_HOME/logs
+        $ cp -r openrdf-sesame-2.7.2/war/* $CATALINA_HOME/webapps/
           
 * Launch Tomcat and check its availability
   
-      $ $CATALINA_HOME/bin/startup.sh
+        $ $CATALINA_HOME/bin/startup.sh
   
 You should now be able to access `http://localhost:8080/openrdf-workbench/`
 

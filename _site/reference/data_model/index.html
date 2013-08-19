@@ -130,7 +130,7 @@ top-level SMART data objects have fully dereferenceable URIs. For instance,
 let&#39;s consider a SMART-enabled EMR hosted with its API base at
 <a href="http://sample_smart_emr.com/smart-app/">http://sample_smart_emr.com/smart-app/</a>. An individual medication in this EMR
 might be retrievable via:</p>
-<div class="highlight"><pre><code class="text">GET http://sample_smart_emr.com/smart-app/records/123456/medications/664373).
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET http://sample_smart_emr.com/smart-app/records/123456/medications/664373).
 </code></pre></div>
 <p>When you issue a GET request for a top-level SMART object like a medication,
 you&#39;ll receive a graph containing:</p>
@@ -161,12 +161,12 @@ payloads as RDF/XML &mdash; for example, <code>don&#39;t</code> try to query the
 xpath!</p>
 
 <p>To give a concrete example, a medication might be serialized as:</p>
-<div class="highlight"><pre><code class="text">&lt;sp:Medication&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;sp:Medication&gt;
   ... { additional properties here }....
 &lt;/sp:Medication&gt;
 </code></pre></div>
 <p>Or you could see the equivalent:</p>
-<div class="highlight"><pre><code class="text">&lt;rdf:Description&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;rdf:Description&gt;
       &lt;rdf:type rdf:resource=&quot;http://smartplatforms.org/terms#Medication&quot;/&gt;
   ... { additional properties here }....
 &lt;/rdf:Description&gt;
@@ -230,7 +230,7 @@ indicate that a clinical statement is a medication. For example, each
 predicate <code>sp:medication</code>. This makes sense when we consider a few RDF triples
 that expresses the basic pattern, associating a fulfillment with its medication
 via the <code>sp:medication</code> predicate</p>
-<div class="highlight"><pre><code class="text">_:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
+<div class="highlight"><pre><code class="text language-text" data-lang="text">_:f123 rdf:type sp:Fulfillment.   # declares a Fulfillment statement
 _:m456 rdf:type sp:Medication.    # declares a Medication statement
 _:f123 sp:medication _:m456.      # links the Fulfillment to its Medication
 </code></pre></div>

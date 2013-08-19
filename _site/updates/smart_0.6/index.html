@@ -230,7 +230,7 @@ use the SMART python client and update your REST apps accordingly.
 endpoint and the <a href="http://tools.ietf.org/html/rfc5849">standard OAuth 1.0 endpoints</a>.</p>
 
 <h3>The new user endpoint is:</h3>
-<div class="highlight"><pre><code class="text">/apps/{app-id}/launch
+<div class="highlight"><pre><code class="text language-text" data-lang="text">/apps/{app-id}/launch
 </code></pre></div>
 <p>The purpose of this web page is to allow the user to select a record against 
 which to run the SMART app. Whether you display a list of records available 
@@ -266,7 +266,7 @@ request token and a valid token verifier is presented.</p></li>
 
 <p>These four endpoint URLS must be placed in the server manifest under the
 top-level key <code>launch_urls</code>, for example:</p>
-<div class="highlight"><pre><code class="text">&quot;launch_urls&quot;: {
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&quot;launch_urls&quot;: {
     &quot;app_launch&quot;: &quot;https://smart.emr.com/apps/{app-id}/launch&quot;, 
     &quot;authorize_token&quot;: &quot;https://smart.emr.com/oauth/authorize&quot;, 
     &quot;exchange_token&quot;: &quot;https://smart.emr.com/oauth/access_token&quot;, 

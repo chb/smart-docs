@@ -125,7 +125,7 @@ document will also assume you are using the SMART Python client.</p>
 
 <p>You must add <code>oauth_callback</code> item to your app&#39;s manifest. Here is a
 sample manifest that points to a locally hosted app:</p>
-<div class="highlight"><pre><code class="text">{
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{
   &quot;name&quot;: &quot;SMART REST Minimal&quot;,
   &quot;description&quot;: &quot;The minimal SMART REST Flask app&quot;,
   &quot;author&quot;: &quot;Arjun Sanyal &amp; Pascal Pfiffner, Harvard Medical School&quot;,
@@ -149,11 +149,11 @@ sample manifest that points to a locally hosted app:</p>
 <h2>Importing SMARTClient</h2>
 
 <p>You will only need to change imports such as:</p>
-<div class="highlight"><pre><code class="text">from smart_client import oauth
+<div class="highlight"><pre><code class="text language-text" data-lang="text">from smart_client import oauth
 from smart_client.smart import SmartClient
 </code></pre></div>
 <p>to</p>
-<div class="highlight"><pre><code class="text">from smart_client.client import SMARTClient
+<div class="highlight"><pre><code class="text language-text" data-lang="text">from smart_client.client import SMARTClient
 </code></pre></div>
 <p>Notice the change in capitalization and there is no need to <code>import
 oauth</code> anymore.</p>
@@ -165,7 +165,7 @@ the container provides your app&#39;s index page, you will now need to
 provide more information up front to initialize the SMARTClient. For an
 app running against a locally hosted SMART contatiner a good way to
 define the necessary parameters is with a static <code>dict</code>, e.g.:</p>
-<div class="highlight"><pre><code class="text">  # SMART Container OAuth Endpoint Configuration
+<div class="highlight"><pre><code class="text language-text" data-lang="text">  # SMART Container OAuth Endpoint Configuration
   _ENDPOINT = {
       &quot;url&quot;: &quot;http://localhost:7000&quot;,
       &quot;name&quot;: &quot;Localhost&quot;,

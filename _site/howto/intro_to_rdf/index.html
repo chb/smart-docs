@@ -269,7 +269,7 @@ examples. Here, we&#39;ll not even skim the surface...</p>
 
 <p>Given our breakfast graph above, let&#39;s write a query to find all the things I
 ate! Here&#39;s a first attempt (not quite perfect)</p>
-<div class="highlight"><pre><code class="text">PREFIX food: &lt;http://joshuamandel.com/my_food_vocabulary/&gt; 
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PREFIX food: &lt;http://joshuamandel.com/my_food_vocabulary/&gt; 
 SELECT ?f WHERE
 {
   &lt;http://joshuamandel.com/me&gt; food:ate ?f.
@@ -290,7 +290,7 @@ matters within the context of my query.</p>
 <p>But this query has a problem it returns the blank node
 _stuff_I_ate_this_morning -- and not the actual foods! Let&#39;s fix it by
 adding to our WHERE clause</p>
-<div class="highlight"><pre><code class="text">PREFIX food: &lt;http://joshuamandel.com/my_food_vocabulary/&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PREFIX food: &lt;http://joshuamandel.com/my_food_vocabulary/&gt;
 PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
 SELECT ?individual_food WHERE
 {

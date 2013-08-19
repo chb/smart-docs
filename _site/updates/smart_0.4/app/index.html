@@ -172,7 +172,7 @@ your old code is:</p>
 callback handlers. You can now register two separate callbacks:  one for
 successful API calls (required) and an optional handler that will be triggered
 in the event of an error.  The basic pattern looks like this:</p>
-<div class="highlight"><pre><code class="text">SMART.MEDICATIONS_get().success(callback_ok).error(callback_err);
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SMART.MEDICATIONS_get().success(callback_ok).error(callback_err);
 </code></pre></div>
 <p>Where <code>callback_ok</code> and <code>callback_err</code> are your callback functions.
 <code>callback_ok</code> will be called with a SMART response object as argument when the
@@ -192,7 +192,7 @@ event of a failure.</p>
 </ol>
 
 <p>Putting all of this together we get the following code example:</p>
-<div class="highlight"><pre><code class="text">SMART.PROBLEMS_get()
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SMART.PROBLEMS_get()
      .success(function(problems) {
        var graph = problems.graph;
         // processing here…
@@ -311,7 +311,7 @@ written for</li>
 </ol>
 
 <p>Here is an example of a complete manifest with these optional declarators:</p>
-<div class="highlight"><pre><code class="text">{
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{
   &quot;name&quot; : &quot;My App&quot;,
   &quot;description&quot; : &quot;A cool SMART app&quot;,
   &quot;author&quot; : &quot;demo&quot;,

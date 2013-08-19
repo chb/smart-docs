@@ -73,9 +73,7 @@ Here's how it all comes together:
   <a id="TheAnswer">
   ...
   </a>
-  <script 
-  src="http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-cli
-  ent.js"></script>
+  <script src="http://sample-apps.smartplatforms.org/framework/smart/scripts/smart-api-client.js"></script>
   <script>
 
   SMART.ready(function(){

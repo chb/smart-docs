@@ -272,7 +272,7 @@ parsed from raw RDF/XML via
 handlers. You can register two separate callbacks:  one for successful
 API calls (required) and an optional handler that will be triggered in
 the event of an error.  The basic pattern looks like this:</p>
-<div class="highlight"><pre><code class="text">SMART.get_medications().success(callback_ok).error(callback_err);
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SMART.get_medications().success(callback_ok).error(callback_err);
 </code></pre></div>
 <p>Where <code>callback_ok</code> and <code>callback_err</code> are your callback functions.
 <code>callback_ok</code> will be called with a SMART response object as argument

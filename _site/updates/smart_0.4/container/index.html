@@ -271,7 +271,7 @@ now we define three container-to-app notifications:</p>
 </ol>
 
 <p>For example, if you permit a user to hide an app, you should call:</p>
-<div class="highlight"><pre><code class="text">SMART_HOST.notify_app(app_instance, &quot;backgrounded&quot;);
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SMART_HOST.notify_app(app_instance, &quot;backgrounded&quot;);
 </code></pre></div>
 <p>And if you restore it to view you should call</p>
 
@@ -284,7 +284,7 @@ we define only one app-to-container notification:  an app that desires
 more screen real estate may sent a <code>request_fullscreen</code> notification to
 the container. To subscribe to a notification, call <code>SMART_HOST.on</code> as
 in the example below:</p>
-<div class="highlight"><pre><code class="text">SMART_HOST.on(&quot;request_fullscreen&quot;, function(app_instance) {
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SMART_HOST.on(&quot;request_fullscreen&quot;, function(app_instance) {
    // Replace this example with your own resizing code
   $(app_instance.iframe)
      .css({
@@ -302,7 +302,7 @@ container to express a simple JSON description of API calls that it
 understands.  This way an app can <code>GET /capabilities/</code> to determine what
 data to expect.  The example below shows the capabilities of a container
 that provides Demographics, Encounters, and Vital Signs only.</p>
-<div class="highlight"><pre><code class="text">{
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{
    &quot;http://smartplatforms.org/terms#Demographics&quot;: {
        &quot;methods&quot;: [
            &quot;GET&quot;
@@ -336,7 +336,7 @@ number URL for the development sandbox:
 the SMART container automatically scoped on per user and app basis. The
 data can be stored in any format that makes sense to the app.
 The container should accept GET, PUT, and DELETE requests at the following path:</p>
-<div class="highlight"><pre><code class="text">/accounts/{user_id}/apps/{smart_app_id}/preferences
+<div class="highlight"><pre><code class="text language-text" data-lang="text">/accounts/{user_id}/apps/{smart_app_id}/preferences
 </code></pre></div>
 <p>Here <code>user_id</code> is the identifier of the user account that the app wants
 to scope the preferences down to, which typically is the e-mail address
@@ -369,7 +369,7 @@ general conformity to the SMART 0.4 specifications. You can either
 install the app and run it locally on your own server, or load the
 hosted version of the app into your container with the following
 manifest:</p>
-<div class="highlight"><pre><code class="text">http://apiverifier.smartplatforms.org/static/manifests/smart_manifest-0.4.json
+<div class="highlight"><pre><code class="text language-text" data-lang="text">http://apiverifier.smartplatforms.org/static/manifests/smart_manifest-0.4.json
 </code></pre></div>
 <p>Note: While passing the API Verifier&#39;s tests does provide a high level
 of conformity assurance to the container developer, it does not

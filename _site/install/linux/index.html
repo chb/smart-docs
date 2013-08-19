@@ -131,22 +131,22 @@ would like to do this as root make sure you create at least one non-root user
 with <code>useradd -m {USER}</code> otherwise the default locale will not be set. This
 issue is most common on a new OS build.</p></li>
 <li><p>Update the apt-get manifests:</p>
-<div class="highlight"><pre><code class="text">$ sudo apt-get update
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo apt-get update
 </code></pre></div></li>
 <li><p>Python 2.7 with package <code>psycopg2</code></p>
-<div class="highlight"><pre><code class="text">$ sudo apt-get install python-psycopg2 python-m2crypto \
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo apt-get install python-psycopg2 python-m2crypto \
     python-simplejson python-argparse python-setuptools python-pyparsing
 
 $ sudo easy_install -U &quot;rdflib==3.2.3&quot; &quot;rdfextras==0.2&quot; &quot;jsonschema==0.7&quot; httplib2
 </code></pre></div></li>
 <li><p>Django 1.3+</p>
-<div class="highlight"><pre><code class="text">$ sudo apt-get install python-django
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo apt-get install python-django
 </code></pre></div></li>
 <li><p>PostgreSQL 8.3+</p>
-<div class="highlight"><pre><code class="text">$ sudo apt-get install postgresql
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo apt-get install postgresql
 </code></pre></div></li>
 <li><p>git</p>
-<div class="highlight"><pre><code class="text">$ sudo apt-get install git
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo apt-get install git
 </code></pre></div></li>
 </ul>
 
@@ -156,7 +156,7 @@ $ sudo easy_install -U &quot;rdflib==3.2.3&quot; &quot;rdfextras==0.2&quot; &quo
 <li><p>Create a PostgreSQL user for your SMART service, e.g. <code>smart</code> and
 setup a password. You&#39;ll have the easiest time if you name your
 database <code>smart</code> as well.</p>
-<div class="highlight"><pre><code class="text">$ sudo su - postgres
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo su - postgres
 $ pg_dropcluster --stop 9.1 main
 $ pg_createcluster --start -e UTF-8 9.1 main
 $ createuser --superuser smart
@@ -171,17 +171,17 @@ and our instructions are tailored appropriately. If you know how to use
 PostgreSQL and want to use Unix-logins, go for it, just remember that when
 you use Apache, it will usually try to log in using its username, <code>www-data</code>.</p></li>
 <li><p>in <code>/etc/postgresql/9.1/main/pg_hba.conf</code>, find the line that reads:</p>
-<div class="highlight"><pre><code class="text">local     all     all        XXX
+<div class="highlight"><pre><code class="text language-text" data-lang="text">local     all     all        XXX
 </code></pre></div></li>
 </ul>
 
 <p>This should be the second uncommented line in your default config. Note XXX
 in this line could be <code>ident</code>, <code>peer</code>, or another name. Change XXX to <code>md5</code>:</p>
-<div class="highlight"><pre><code class="text">    local     all     all        md5
+<div class="highlight"><pre><code class="text language-text" data-lang="text">    local     all     all        md5
 </code></pre></div>
 <ul>
 <li><p>You will need to restart PostgreSQL:</p>
-<div class="highlight"><pre><code class="text">$ sudo service postgresql restart
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo service postgresql restart
 </code></pre></div></li>
 </ul>
 
@@ -189,17 +189,17 @@ in this line could be <code>ident</code>, <code>peer</code>, or another name. Ch
 
 <ul>
 <li><p>get Tomcat and OpenRDF-Sesame:</p>
-<div class="highlight"><pre><code class="text">$ sudo apt-get install tomcat7
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo apt-get install tomcat7
 $ wget http://downloads.sourceforge.net/project/sesame/Sesame%202/2.6.9/openrdf-sesame-2.6.9-sdk.tar.gz
 </code></pre></div></li>
 <li><p>install OpenRDF Sesame as a Tomcat web application</p>
-<div class="highlight"><pre><code class="text">$ tar -xzvf openrdf-sesame-2.6.9-sdk.tar.gz
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ tar -xzvf openrdf-sesame-2.6.9-sdk.tar.gz
 $ sudo mkdir /usr/share/tomcat7/.aduna
 $ sudo chown tomcat7.tomcat7 /usr/share/tomcat7/.aduna/
 $ sudo cp -r openrdf-sesame-2.6.9/war/* /var/lib/tomcat7/webapps/
 </code></pre></div></li>
 <li><p>restart Tomcat (optional since autoDeploy is typically enabled in Tomcat by default)</p>
-<div class="highlight"><pre><code class="text">$ sudo service tomcat7 restart
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo service tomcat7 restart
 </code></pre></div></li>
 <li><p>check that Tomcat and OpenRDF Sesame are running by hitting
 <a href="http://localhost:8080/openrdf-workbench/">http://localhost:8080/openrdf-workbench/</a>. You should see the main OpenRDF
@@ -212,10 +212,10 @@ tomcat configuration changes:</p>
 
 <ul>
 <li><p>in <code>/var/lib/tomcat7/conf/context.xml</code> add within the <code>&lt;Context&gt;</code> element:</p>
-<div class="highlight"><pre><code class="text">&lt;Valve className=&quot;org.apache.catalina.valves.RemoteHostValve&quot; allow=&quot;localhost&quot;/&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;Valve className=&quot;org.apache.catalina.valves.RemoteHostValve&quot; allow=&quot;localhost&quot;/&gt;
 </code></pre></div></li>
 <li><p>and in <code>/var/lib/tomcat7/conf/server.xml</code> next to the other <code>&lt;Connector&gt;</code> elements:</p>
-<div class="highlight"><pre><code class="text">&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; enableLookups=&quot;true&quot;&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; enableLookups=&quot;true&quot;&gt;
 </code></pre></div></li>
 </ul>
 
@@ -228,7 +228,7 @@ two ways to do this. You can either use the easy install script (described here)
 or skip this step and follow the manual setup steps. If you complete the
 installation via the automated script, there are no further steps that you need
 to do after running the script (your SMART server will be fully functional).</p>
-<div class="highlight"><pre><code class="text">$ wget https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ wget https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
 $ python smart_manager.py -a
 </code></pre></div>
 <p>(Note:  if you&#39;d like to run the bleeding-edge SMART development branch, replace <code>master</code> with <code>dev</code> in the <code>wget</code>
@@ -238,13 +238,13 @@ master branch!)</p>
 <h2>Usage examples for smart_manager.py</h2>
 
 <p>Kill and restart the development servers</p>
-<div class="highlight"><pre><code class="text">$ python smart_manager.py -k -v -w
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ python smart_manager.py -k -v -w
 </code></pre></div>
 <p>Reset the SMART server, regenerate sample data, and reload:</p>
-<div class="highlight"><pre><code class="text">$ python smart_manager.py -r -p -l
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ python smart_manager.py -r -p -l
 </code></pre></div>
 <h2>Loading additional apps</h2>
-<div class="highlight"><pre><code class="text">$ cd smart_server
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ cd smart_server
 
 # file path can be a URL or local file; OAuth secret can be any string
 $ python manage.py load_app http://path/to/manifest.json smartapp-secret
@@ -283,11 +283,11 @@ the service apps that you want.</p></li>
 <li><p>update the database and repository settings in <code>reset.sh</code> (if you
 changed the default DB and repository endpoints in <code>settings.py</code>)</p></li>
 <li><p>set things up (supplying the smart db password when prompted twice)</p>
-<div class="highlight"><pre><code class="text">$ ./reset.sh
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ ./reset.sh
 </code></pre></div>
 <p>NOTE: On the first run of <code>reset.sh</code>, you will also see some 500s.
 Don&#39;t worry about them.  When the reset process completes, you should see:</p>
-<div class="highlight"><pre><code class="text">...
+<div class="highlight"><pre><code class="text language-text" data-lang="text">...
 No fixtures found.
 </code></pre></div></li>
 </ul>
@@ -305,7 +305,7 @@ worry, just set up the SMART Sample Apps server, and run <code>reset.sh</code> a
 
 <ul>
 <li><p>get the code</p>
-<div class="highlight"><pre><code class="text">$ git clone --recursive https://github.com/chb/smart_ui_server.git
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ git clone --recursive https://github.com/chb/smart_ui_server.git
 </code></pre></div></li>
 <li><p>copy <code>settings.py.default</code> to <code>settings.py</code> and update:</p>
 
@@ -325,7 +325,7 @@ documentation <code>smart</code>, and set <code>DATABASE_PASSWORD</code>
 accordingly.</li>
 </ul></li>
 <li><p>set things up (supplying the smart db password when prompted twice)</p>
-<div class="highlight"><pre><code class="text">$ ./reset.sh
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ ./reset.sh
 </code></pre></div></li>
 </ul>
 
@@ -351,12 +351,12 @@ we suggest, there&#39;s no need to change anything.</li>
 
 <ul>
 <li><p>get the source code and generate sample data</p>
-<div class="highlight"><pre><code class="text">$ git clone --recursive https://github.com/chb/smart_sample_patients.git
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ git clone --recursive https://github.com/chb/smart_sample_patients.git
 $ cd smart_sample_patients/bin
 $ python generate.py --write ../generated-data/
 </code></pre></div></li>
 <li><p>Load into SMART EMR</p>
-<div class="highlight"><pre><code class="text">$ cd /path/to/smart_server
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ cd /path/to/smart_server
 $ PYTHONPATH=.:.. DJANGO_SETTINGS_MODULE=settings /usr/bin/python \
   load_tools/load_one_patient.py /path/to/smart_sample_patients/generated-data/*
 </code></pre></div>
@@ -368,17 +368,17 @@ $ PYTHONPATH=.:.. DJANGO_SETTINGS_MODULE=settings /usr/bin/python \
 <p>The Django development servers are easy to run at the prompt.</p>
 
 <p>The backend server can run on localhost in the configuration given above:</p>
-<div class="highlight"><pre><code class="text">cd /path/to/smart_server/
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd /path/to/smart_server/
 nohup python manage.py runconcurrentserver 7000 --noreload &gt; log.txt 2&gt;&amp;1 &amp;
 </code></pre></div>
 <p>The UI server, if you want it accessible from another machine, needs to specify
 a hostname or IP address. If you want port 80, you need to be root of course.
 The mask &quot;0.0.0.0&quot; will allow all incoming connections:</p>
-<div class="highlight"><pre><code class="text">cd /path/to/smart_ui_server/
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd /path/to/smart_ui_server/
 nohup python manage.py runconcurrentserver 0.0.0.0:7001 --noreload &gt; log.txt 2&gt;&amp;1 &amp;
 </code></pre></div>
 <p>And finally, the Sample Apps:</p>
-<div class="highlight"><pre><code class="text">cd /path/to/smart_sample_apps/
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd /path/to/smart_sample_apps/
 nohup python manage.py runconcurrentserver 0.0.0.0:8001 --noreload &gt; log.txt 2&gt;&amp;1 &amp;
 </code></pre></div>
 <p><em>Note</em>: In the above examples the console output is suppressed. If you are having

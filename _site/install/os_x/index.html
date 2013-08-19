@@ -122,15 +122,15 @@ the Apple Developer Center (you will need a free developer account for this)</p>
 
 <p><a href="http://mxcl.github.com/homebrew/">Homebrew</a> is a superb replacement for the old managers Fink and MacPorts and
 you will love it! Here&#39;s a one-line installer for it:</p>
-<div class="highlight"><pre><code class="text">$ /usr/bin/ruby -e &quot;$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ /usr/bin/ruby -e &quot;$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;
 </code></pre></div>
 <p>If you had Homebrew installed before, make sure to update it:</p>
-<div class="highlight"><pre><code class="text">$ brew update
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ brew update
 </code></pre></div>
 <h1>Install Django and Python Tools</h1>
 
 <p>We have to use <a href="https://www.djangoproject.com/download/">Django 1.3</a> for now. You will see a lot of warnings from clang that you can safely ignore.</p>
-<div class="highlight"><pre><code class="text">$ sudo easy_install django==1.3.2
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo easy_install django==1.3.2
 $ sudo easy_install lxml, psycopg2
 $ sudo easy_install -U rdflib rdfextras jsonschema httplib2
 </code></pre></div>
@@ -142,26 +142,25 @@ $ sudo easy_install -U rdflib rdfextras jsonschema httplib2
 
 <ul>
 <li><p>Install postgres with homebrew (installs version 9.2.3):</p>
-
-<p>$ brew install postgresql
-  $ initdb /usr/local/var/postgres -E utf8
-  $ cp /usr/local/Cellar/postgresql/9.2.3/homebrew.mxcl.postgresql.plist \
-    ~/Library/LaunchAgents/</p></li>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ brew install postgresql
+$ initdb /usr/local/var/postgres -E utf8
+$ cp /usr/local/Cellar/postgresql/9.2.3/homebrew.mxcl.postgresql.plist \
+  ~/Library/LaunchAgents/
+</code></pre></div></li>
 <li><p>Launch Postgres</p>
-
-<p>$ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</p></li>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+</code></pre></div></li>
 <li><p>Because of some socket issues we must symlink the socket from its default in <code>/tmp</code> to <code>/var/pgsql_socket</code>. Both are needed and I haven&#39;t been able to figure out why. First, create the directory and make it yours:</p>
-
-<p>$ sudo mkdir /var/pgsql_socket
-  $ sudo chown <code>whoami</code>:admin /var/pgsql_socket/
-  $ ln -s /tmp/.s.PGSQL.5432 /var/pgsql_socket/.s.PGSQL.5432</p>
-
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ sudo mkdir /var/pgsql_socket
+$ sudo chown `whoami`:admin /var/pgsql_socket/
+$ ln -s /tmp/.s.PGSQL.5432 /var/pgsql_socket/.s.PGSQL.5432
+</code></pre></div>
 <blockquote>
 <p>If you know how to circumvent this, let us know!</p>
 </blockquote></li>
 <li><p>Create a PostgreSQL user for your SMART service. We will be using <em>smart</em>,
 use your own password:</p>
-<div class="highlight"><pre><code class="text">$ createuser --superuser smart
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ createuser --superuser smart
 $ psql postgres
 $ postgres=# \password smart
 $ postgres=# \q
@@ -177,26 +176,25 @@ the Postgres config to use md5 passwords.</p>
 
 <ul>
 <li><p>Install Tomcat</p>
-
-<p>$ brew install tomcat</p></li>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ brew install tomcat
+</code></pre></div></li>
 <li><p>Configure Tomcat: The environment variable <em>$CATALINA_HOME</em> needs to point
 to the tomcat base directory. So in your Bash <code>.profile</code> add:</p>
-
-<p>$ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.32/libexec</p>
-
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.32/libexec
+</code></pre></div>
 <p>If brew didn&#39;t install version 7.0.32, change that number accordingly. If you don&#39;t use Bash adjust accordingly. Reload your profile file with:</p>
-
-<p>$ source ~/.profile</p></li>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ source ~/.profile
+</code></pre></div></li>
 <li><p>Install openrdf-sesame</p>
-
-<p>$ curl -O <a href="http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz">http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.6.5/openrdf-sesame-2.6.5-sdk.tar.gz</a>
-  $ tar -xzvf openrdf-sesame-2.6.5-sdk.tar.gz
-  $ mkdir $CATALINA_HOME/.aduna
-  $ mkdir $CATALINA_HOME/logs
-  $ cp -r openrdf-sesame-2.6.5/war/* $CATALINA_HOME/webapps/</p></li>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ curl -O http://freefr.dl.sourceforge.net/project/sesame/Sesame%202/2.7.2/openrdf-sesame-2.7.2-sdk.tar.gz
+$ tar -xzvf openrdf-sesame-2.7.2-sdk.tar.gz
+$ mkdir $CATALINA_HOME/.aduna
+$ mkdir $CATALINA_HOME/logs
+$ cp -r openrdf-sesame-2.7.2/war/* $CATALINA_HOME/webapps/
+</code></pre></div></li>
 <li><p>Launch Tomcat and check its availability</p>
-
-<p>$ $CATALINA_HOME/bin/startup.sh</p></li>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ $CATALINA_HOME/bin/startup.sh
+</code></pre></div></li>
 </ul>
 
 <p>You should now be able to access <code>http://localhost:8080/openrdf-workbench/</code></p>
@@ -211,12 +209,12 @@ to the tomcat base directory. So in your Bash <code>.profile</code> add:</p>
 
 <ul>
 <li><p>Download the SMART manager</p>
-<div class="highlight"><pre><code class="text">$ curl -O https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ curl -O https://raw.github.com/chb/smart_server/master/load_tools/smart_manager.py
 </code></pre></div></li>
 <li><p>Run the manager. This will install the current <code>master</code> branch of all SMART
 repositories that we need. If you want the bleeding edge <code>dev</code> version, add a
 <code>-d</code> switch to the following command</p>
-<div class="highlight"><pre><code class="text">$ python smart_manager.py -a
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ python smart_manager.py -a
 </code></pre></div></li>
 </ul>
 
@@ -236,11 +234,11 @@ repositories that we need. If you want the bleeding edge <code>dev</code> versio
 <code>$CATALINA_HOME/bin/startup.sh</code>, in the future:</p>
 
 <h2>To start SMART (and Tomcat):</h2>
-<div class="highlight"><pre><code class="text">$ $CATALINA_HOME/bin/startup.sh
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ $CATALINA_HOME/bin/startup.sh
 $ python smart_manager.py -v -w
 </code></pre></div>
 <h2>To stop SMART (and Tomcat):</h2>
-<div class="highlight"><pre><code class="text">$ python smart_manager.py -k
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ python smart_manager.py -k
 $ $CATALINA_HOME/bin/shutdown.sh
 </code></pre></div>
 <p>Nobody is stopping you from putting these two commands in a start- and/or stop
